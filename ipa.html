@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integrative Pattern Astrology – Triple Moon Goddess</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131d;
+      --border: #2a2a3d;
+      --accent: #9b72cf;
+      --accent-soft: #c4a0e8;
+      --text: #e8e0f0;
+      --muted: #9088a8;
+      --highlight-bg: #1a1628;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      font-size: 16px;
+      line-height: 1.75;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .policy-header {
+      text-align: center;
+      padding: 2.5rem 1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .policy-header .moon {
+      font-size: 2.2rem;
+      letter-spacing: 0.3em;
+      margin-bottom: 0.5rem;
+      color: var(--accent-soft);
+    }
+
+    .policy-header h1 {
+      font-size: 1.6rem;
+      font-weight: normal;
+      color: var(--accent-soft);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .policy-header .subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .meta {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-family: 'Courier New', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .meta span { white-space: nowrap; }
+
+    /* Infographic */
+    .infographic {
+      margin: 0 0 2.5rem;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .infographic img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.05rem;
+      font-weight: normal;
+      color: var(--accent-soft);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    h3 {
+      font-size: 0.95rem;
+      color: var(--accent-soft);
+      margin: 1.4rem 0 0.5rem;
+      font-weight: bold;
+    }
+
+    p { margin-bottom: 1rem; color: var(--text); }
+
+    em { color: var(--accent-soft); font-style: italic; }
+
+    /* Callout boxes */
+    .callout {
+      background: var(--highlight-bg);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 0.9rem 1.2rem;
+      margin: 1rem 0;
+      font-size: 0.93rem;
+      color: var(--muted);
+    }
+
+    .callout strong { color: var(--accent-soft); }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid var(--accent);
+      padding: 0.8rem 1.2rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--accent-soft);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Three layers grid */
+    .layers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.2rem 0;
+    }
+
+    .layer-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+    }
+
+    .layer-card .layer-title {
+      font-family: 'Courier New', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .layer-card .layer-name {
+      font-size: 1rem;
+      color: var(--accent-soft);
+      font-weight: bold;
+      margin-bottom: 0.4rem;
+    }
+
+    .layer-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Tradition cards */
+    .tradition-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .tradition-card .tradition-name {
+      font-weight: bold;
+      color: var(--accent-soft);
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    .tradition-card p { margin-bottom: 0; font-size: 0.9rem; }
+
+    /* Practitioner outputs */
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .vocab-grid .cell {
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .vocab-grid .cell:nth-child(odd) {
+      background: var(--surface);
+      color: var(--accent-soft);
+      font-weight: bold;
+      border-right: 1px solid var(--border);
+    }
+
+    .vocab-grid .cell:nth-child(even) {
+      background: var(--bg);
+    }
+
+    .vocab-grid .cell:last-child,
+    .vocab-grid .cell:nth-last-child(2) {
+      border-bottom: none;
+    }
+
+    /* Patent badge */
+    .patent-badge {
+      display: inline-block;
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      padding: 0.25rem 0.7rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem;
+      color: var(--accent-soft);
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    .policy-footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-family: 'Courier New', monospace;
+    }
+
+    .policy-footer a { color: var(--accent); text-decoration: none; }
+    .policy-footer a:hover { text-decoration: underline; }
+
+    /* Responsive */
+    @media (max-width: 580px) {
+      .layers-grid { grid-template-columns: 1fr; }
+      .vocab-grid { grid-template-columns: 1fr; }
+      .vocab-grid .cell:nth-child(odd) { border-right: none; border-bottom: 0; }
+      .vocab-grid .cell:nth-child(even) { border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header class="policy-header">
+    <div class="moon">☽ ☾</div>
+    <h1>Integrative Pattern Astrology</h1>
+    <div class="subtitle">What I Built and Why It Matters</div>
+    <div class="meta">
+      <span>Lisa Hagan</span>
+      <span>March 6, 2026</span>
+      <span>triplemoongoddess.com</span>
+    </div>
+  </header>
+
+  <div class="infographic">
+    <img src="IPA_Infographic.png" alt="Decoding the Human Pattern — Integrative Pattern Astrology infographic showing the three dimensions of assessment: Nature (Blueprint), Nurture (Adaptation), and Agency (The Gap), with four ancient traditions feeding into a unified clinical engine." />
+  </div>
+
+  <div style="text-align:center; margin-bottom: 2rem;">
+    <span class="patent-badge">Patent Pending — Application #63/998,305 — Filed March 6, 2026</span>
+  </div>
+
+  <!-- The Short Version -->
+  <section>
+    <h2>The Short Version</h2>
+    <p>I built a system that answers three questions no existing clinical tool can answer simultaneously:</p>
+    <div class="layers-grid">
+      <div class="layer-card">
+        <div class="layer-title">Layer 1</div>
+        <div class="layer-name">Nature</div>
+        <p>Who were you born as?</p>
+      </div>
+      <div class="layer-card">
+        <div class="layer-title">Layer 2</div>
+        <div class="layer-name">Nurture</div>
+        <p>Who did life shape you to become?</p>
+      </div>
+      <div class="layer-card">
+        <div class="layer-title">Layer 3</div>
+        <div class="layer-name">Agency</div>
+        <p>Where did you exercise free will in between?</p>
+      </div>
+    </div>
+    <div class="pull-quote">
+      The gap between who you were born as and who you became? That gap is free will. And for the first time, it's readable.
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section>
+    <h2>The Problem I'm Adding To</h2>
+    <p>Therapy is extraordinary. It has saved lives — including mine. The clinical tools practitioners use every day have helped millions of people and represent decades of accumulated wisdom. IPA is not here to replace any of that. It is here to add to it — to make existing clinical work more efficient and more comprehensive by providing a layer of context that currently doesn't exist.</p>
+    <p>That missing layer is the ability to distinguish between who a person was born as, who life shaped them to become, and where they exercised agency in between — as three separate, simultaneously readable dimensions.</p>
+    <p>This distinction matters most for a specific population — one that is chronically underserved by existing clinical tools:</p>
+    <div class="callout">
+      <strong>People carrying umbrella diagnoses</strong> like fibromyalgia, chronic fatigue syndrome, and autoimmune conditions — real symptoms, inadequate explanations.<br/><br/>
+      <strong>People with PTSD and complex trauma</strong> whose current presentation masks their constitutional baseline.<br/><br/>
+      <strong>People who have been told their symptoms are exaggerated, psychosomatic, or not real.</strong><br/><br/>
+      <strong>People who have been misdiagnosed, underdiagnosed, or dismissed</strong> — told they are crazy or exaggerating when they are neither.
+    </div>
+    <div class="pull-quote">
+      For this population especially, knowing the difference between a constitutional pattern and an adaptive one is not just clinically useful — it is validating in a way that can change the entire treatment relationship. It tells the person: this is real, this is yours, and here is why.
+    </div>
+  </section>
+
+  <!-- The Zygote and the Journey -->
+  <section>
+    <h2>The Zygote and the Journey</h2>
+    <p>Here is the simplest way I know to explain what IPA does:</p>
+    <p><strong style="color:var(--accent-soft);">The zygote</strong> is who you were at conception — before environment, before experience, before anyone got to you. Complete. Encoded. Fully yourself before the world had a chance to respond to you.</p>
+    <p><strong style="color:var(--accent-soft);">The journey</strong> is everything that happened after — the family you were born into, the experiences that shaped you, the adaptations you made to survive and belong and be loved.</p>
+    <p><strong style="color:var(--accent-soft);">The gap</strong> between the zygote and the journey is where you exercised free will — consciously or not. It is the most clinically rich territory in any assessment. It is where change is possible. It is where the work lives.</p>
+    <div class="callout">
+      <strong>IPA makes all three readable simultaneously</strong> — in a single individual, from a single assessment.
+    </div>
+  </section>
+
+  <!-- Nature, Nurture, Free Will -->
+  <section>
+    <h2>Nature, Nurture, and Free Will</h2>
+    <p>The nature vs. nurture debate has been going on for centuries. Researchers, philosophers, and clinicians have argued about which one determines who we become.</p>
+    <div class="pull-quote">
+      IPA's answer is simple: it's both. It has always been both. And the space between them is where free will actually lives.
+    </div>
+    <p>While existing frameworks acknowledge that both nature and nurture matter, no tool has been able to map both as simultaneously readable layers in a single person — with the gap between them identified as clinically useful information. IPA adds this dimension to the existing clinical conversation. Not replacing what already works. Adding what has been missing.</p>
+  </section>
+
+  <!-- What the System Does -->
+  <section>
+    <h2>What the System Actually Does</h2>
+    <p>IPA is both a methodology (a way of thinking) and an engine (a software tool that does the calculation). They work together — one doesn't function without the other.</p>
+
+    <h3>Layer 1 — The Blueprint (Nature)</h3>
+    <p>Your constitutional predisposition. Who you were born as. The innate patterns encoded before experience. Think of it as your factory settings — not good or bad, just yours. Scored across four ancient constitutional frameworks simultaneously: Greek humoral theory, Traditional Chinese Medicine, Ayurveda, and traditional medical astrology.</p>
+
+    <h3>Layer 2 — The Adaptation (Nurture)</h3>
+    <p>Your developmental expression. Who life shaped you to become. Where your innate patterns found expression — or couldn't. Where you adapted, compensated, redirected. Drawing on the tradition of psychological and modern pattern assessment.</p>
+
+    <h3>Layer 3 — The Gap (Free Will)</h3>
+    <p>Where the Blueprint and the Adaptation diverge. The precise points where your innate nature had to negotiate with your developmental experience. Where you made choices — conscious or not. This is the most clinically rich layer. This is where the work lives. This is where change is possible.</p>
+  </section>
+
+  <!-- Four Ancient Traditions -->
+  <section>
+    <h2>Four Ancient Traditions. One Unified Tool.</h2>
+    <p>IPA brings four classical systems of understanding human constitution into a single unified conversation. Each tradition has been developed and refined over centuries. Each contains genuine clinical wisdom. None of them is diminished by being brought alongside the others — each is honored as essential.</p>
+
+    <div class="tradition-card">
+      <div class="tradition-name">Greek Humoral Theory</div>
+      <p>One of the oldest Western medical systems, mapping four constitutional types based on elemental qualities: Hot/Dry (Choleric), Hot/Moist (Sanguine), Cold/Moist (Phlegmatic), Cold/Dry (Melancholic). The foundational architecture of IPA — the simplest, most universal constitutional logic.</p>
+    </div>
+
+    <div class="tradition-card">
+      <div class="tradition-name">Traditional Chinese Medicine (TCM)</div>
+      <p>Thousands of years of thermal and moisture theory, organ system patterns, and constitutional assessment. Provides rich clinical language for physical and energetic patterns.</p>
+    </div>
+
+    <div class="tradition-card">
+      <div class="tradition-name">Ayurveda</div>
+      <p>One of the world's oldest holistic healing systems. Three constitutional types (Vata, Pitta, Kapha) that map beautifully alongside Greek humoral theory, with practical guidance on herbs, diet, and lifestyle.</p>
+    </div>
+
+    <div class="tradition-card">
+      <div class="tradition-name">Medical/Traditional Astrology &amp; Psychological/Modern Astrology</div>
+      <p>Two astrological traditions that together provide the calculation engine. Both are honored as essential. Neither is privileged over the other.</p>
+    </div>
+  </section>
+
+  <!-- For Practitioners -->
+  <section>
+    <h2>For Practitioners</h2>
+    <p>IPA is designed to work alongside existing clinical tools — adding efficiency and comprehensiveness to what practitioners already do well. It generates outputs in multiple professional vocabularies simultaneously:</p>
+
+    <div class="vocab-grid">
+      <div class="cell">Naturopath</div>
+      <div class="cell">Greek humoral theory, TCM, and Ayurvedic constitutional language with herb and dietary recommendations</div>
+      <div class="cell">Therapist</div>
+      <div class="cell">Behavioral and relational pattern language — no astrological terminology</div>
+      <div class="cell">Integrative Medicine</div>
+      <div class="cell">Organ system predispositions and constitutional health patterns</div>
+    </div>
+
+    <div class="callout">
+      <strong>Same calculation. Different languages.</strong> Every practitioner gets the information in the vocabulary they already speak.
+    </div>
+
+    <p>A built-in feedback loop collects anonymised clinical outcome data over time — building a research database that validates IPA methodology and contributes to the growing evidence base for integrative medicine.</p>
+  </section>
+
+  <!-- The Hero's Journey -->
+  <section>
+    <h2>The Hero's Journey — In Clinical Form</h2>
+    <p>Joseph Campbell identified the pattern underlying every great human story: Leave home. Face the world. Return transformed.</p>
+
+    <div class="layers-grid">
+      <div class="layer-card">
+        <div class="layer-title">Departure</div>
+        <div class="layer-name">The Zygote</div>
+        <p>Home. Who you were before the journey began.</p>
+      </div>
+      <div class="layer-card">
+        <div class="layer-title">The Road</div>
+        <div class="layer-name">The Journey</div>
+        <p>Everything life did with your blueprint. The adaptations, the wounds, the gifts, the detours.</p>
+      </div>
+      <div class="layer-card">
+        <div class="layer-title">Return</div>
+        <div class="layer-name">The Integration</div>
+        <p>The conscious reclamation of who you always were. Nature and nurture integrated into wholeness.</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      The most fundamental question in psychology — "who was I before the world got to me?" — IPA answers with mathematical precision. And then shows you exactly where the world did get to you, and where you still have choice.
+    </div>
+  </section>
+
+  <!-- Why I Built This -->
+  <section>
+    <h2>Why I Built This</h2>
+    <p>I have 35 years of personal recovery experience — behavioral therapy, 12-step work, and a lifetime of pattern recognition that started long before I had language for it. Therapy saved my life. The clinical tools and practitioners who supported my recovery gave me everything. IPA exists because of that foundation, not in spite of it.</p>
+    <p>I built IPA because I needed it. I needed a system that could tell the difference between who I was born as and what life did to me. Between the patterns I came in with and the patterns I developed to survive. Between my nature and my adaptations.</p>
+    <p>I built it for everyone who has ever been told their symptoms aren't real. For the fibromyalgia patient who knows something is wrong but can't get anyone to explain why. For the trauma survivor whose nervous system is doing exactly what it learned to do and being punished for it. For the person carrying five different diagnoses that don't quite fit, because no single tool has been able to read all the layers at once.</p>
+    <div class="callout">
+      I validated it on myself first. The system I built to understand my clients understood me first.<br/><br/>
+      I spent decades being told I was too much, too fast, too complicated. It turns out I was just speaking a language that didn't have a name yet. <strong>IPA is that language — made into a tool anyone can use.</strong>
+    </div>
+  </section>
+
+  <!-- What's Next -->
+  <section>
+    <h2>What's Next</h2>
+    <p>IPA is currently under development at <a href="https://triplemoongoddess.com" target="_blank" rel="noopener" style="color:var(--accent);">triplemoongoddess.com</a>. The platform is designed to serve people carrying complex, chronic, and frequently dismissed conditions — fibromyalgia, PTSD, chronic fatigue, autoimmune conditions, and other presentations where current tools have left the person without adequate explanation or support.</p>
+    <p>The broader vision is a practitioner platform available to naturopaths, integrative medicine physicians, therapists, and wellness practitioners across multiple disciplines — each accessing the same calculation engine in the vocabulary of their own tradition.</p>
+    <div class="pull-quote">
+      Every tradition contains truth. IPA brings them together.
+    </div>
+  </section>
+
+  <footer class="policy-footer">
+    <p>Triple Moon Goddess &bull; <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a> &bull; <a href="mailto:lisa@triplemoongoddess.com">lisa@triplemoongoddess.com</a></p>
+    <p style="margin-top:0.5rem;">&copy; 2026 Lisa Hagan. All rights reserved. &bull; Patent Pending — Application #63/998,305</p>
+  </footer>
+
+</div>
+</body>
+</html>
