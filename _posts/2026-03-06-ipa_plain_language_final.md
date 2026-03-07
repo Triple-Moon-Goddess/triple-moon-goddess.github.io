@@ -1,3 +1,8 @@
+---
+layout: post
+title: "IPA Integrative Pattern Astrology"
+date: 2026-03-06
+---
 **INTEGRATIVE PATTERN ASTROLOGY**
 
 *What I Built and Why It Matters*
