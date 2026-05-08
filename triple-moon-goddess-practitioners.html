@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practitioner Subscriptions — Triple Moon Goddess</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #d4af6a;
+    --gold-bright: #e8c989;
+    --gold-deep: #b8945a;
+    --ink: #f5e8d0;
+    --ink-soft: #c9b896;
+    --bg: #0a0608;
+    --bg-deep: #050304;
+    --bg-card: #110a0d;
+    --line: rgba(212, 175, 106, 0.18);
+    --line-strong: rgba(212, 175, 106, 0.4);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, var(--bg) 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent),
+      radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent),
+      radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent),
+      radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent);
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+    animation: twinkle 8s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.4; }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .hero {
+    padding: 100px 0 72px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 0.2s forwards;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '✦';
+    margin: 0 14px;
+    color: var(--gold-deep);
+    font-size: 10px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--gold-bright);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 1.1s ease-out 0.4s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .hero-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto;
+    font-weight: 400;
+    line-height: 1.55;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out 0.6s forwards;
+  }
+
+  .ornament {
+    margin: 56px auto;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 0.9s forwards;
+  }
+
+  .ornament::before {
+    content: '☾';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg);
+    padding: 0 18px;
+    color: var(--gold);
+    font-size: 18px;
+  }
+
+  .pricing {
+    padding: 24px 0 80px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .tier {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%);
+    border: 1px solid var(--line);
+    padding: 48px 40px 40px;
+    backdrop-filter: blur(8px);
+    transition: border-color 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 1s forwards;
+  }
+
+  .tier:nth-child(2) { animation-delay: 1.15s; }
+  .tier:nth-child(3) { animation-delay: 1.3s; }
+
+  .tier:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-4px);
+  }
+
+  .tier::before,
+  .tier::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--gold-deep);
+    opacity: 0.5;
+  }
+  .tier::before { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+  .tier::after { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+  .tier-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .tier-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.1rem;
+    font-weight: 500;
+    color: var(--gold-bright);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .tier-name em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .tier-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  .price-block {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 24px 0;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .price-row-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+
+  .price-row-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--gold-bright);
+    font-weight: 400;
+  }
+
+  .price-row-value .unit {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-left: 4px;
+  }
+
+  .price-row-value .savings {
+    display: block;
+    font-size: 0.7rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 2px;
+    text-align: right;
+  }
+
+  .features {
+    list-style: none;
+    margin-bottom: 36px;
+  }
+
+  .features li {
+    padding: 11px 0 11px 28px;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .features li:last-child { border-bottom: none; }
+
+  .features li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    color: var(--gold);
+    font-size: 0.75rem;
+  }
+
+  .cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cta {
+    display: block;
+    text-align: center;
+    padding: 16px 28px;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-primary {
+    background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-bright) 100%);
+    color: var(--bg-deep);
+    font-weight: 500;
+  }
+
+  .cta-primary:hover {
+    background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%);
+    box-shadow: 0 0 32px rgba(212, 175, 106, 0.35);
+  }
+
+  .cta-secondary {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold-deep);
+  }
+
+  .cta-secondary:hover {
+    background: rgba(212, 175, 106, 0.08);
+    color: var(--gold-bright);
+    border-color: var(--gold);
+  }
+
+  .included {
+    margin: 64px 0;
+    padding: 56px 48px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+  }
+
+  .included h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--gold-bright);
+    margin-bottom: 12px;
+  }
+
+  .included h2 em { font-style: italic; color: var(--ink); }
+
+  .included-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 48px;
+    font-size: 1.05rem;
+  }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    text-align: left;
+  }
+
+  @media (max-width: 760px) {
+    .included { padding: 40px 24px; }
+    .included-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  }
+
+  .included-item-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .included-item-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .faq {
+    padding: 32px 0 80px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .faq h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--gold-bright);
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .faq h2 em { font-style: italic; color: var(--ink); }
+
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 24px 0;
+  }
+
+  .faq-q {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--gold-bright);
+    margin-bottom: 10px;
+  }
+
+  .faq-a {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .footer-note {
+    text-align: center;
+    padding: 40px 0 80px;
+    color: var(--ink-soft);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+  }
+
+  .footer-note a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-deep);
+    padding-bottom: 1px;
+    transition: color 0.3s ease;
+  }
+
+  .footer-note a:hover { color: var(--gold-bright); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="hero-eyebrow">For Practitioners</div>
+    <h1>Astrology meets <em>medicine</em><br>in your practice.</h1>
+    <p class="hero-lead">
+      Triple Moon Goddess offers three apps for three professional audiences —
+      astrologers and integrative practitioners, licensed therapists and psychologists,
+      and health practitioners and medical doctors. Each surfaces the chart's intelligence
+      in the language of your practice.
+    </p>
+    <div class="ornament"></div>
+  </section>
+
+  <section class="pricing" id="plans">
+
+    <div class="tier">
+      <div class="tier-label">Integrative Practitioner App</div>
+      <h2 class="tier-name">Astrologer &<br><em>Integrative Practitioner</em></h2>
+      <p class="tier-tagline">
+        The full TMG methodology — astrology surfaced, the editable libraries,
+        the orb settings, every module. For practitioners who operate the framework,
+        not just use it.
+      </p>
+
+      <div class="price-block">
+        <div class="price-row">
+          <span class="price-row-label">Monthly</span>
+          <span class="price-row-value">$100<span class="unit">/mo</span></span>
+        </div>
+        <div class="price-row">
+          <span class="price-row-label">Annual</span>
+          <span class="price-row-value">
+            $1,000<span class="unit">/yr</span>
+            <span class="savings">Save $200</span>
+          </span>
+        </div>
+      </div>
+
+      <ul class="features">
+        <li>Full astrological framework — Whole Sign &amp; Placidus charts</li>
+        <li>Custom client intake generated from the natal chart</li>
+        <li>Soul module — personal growth pattern assessment</li>
+        <li>Remedy page — constitution, diet, herbs, acupressure</li>
+        <li>Notes &amp; journal pages</li>
+        <li>Editable libraries: intake questions, herbs, food, acupressure points</li>
+        <li>Orb settings &amp; AI module configuration</li>
+        <li>Unlimited client charts &amp; sessions</li>
+        <li>Practitioner research participation</li>
+        <li>7-day free trial &amp; one hour of onboarding training with Lisa</li>
+      </ul>
+
+      <div class="cta-group">
+        <a href="#" class="cta cta-primary" data-plan="integrative-monthly">Begin Monthly</a>
+        <a href="#" class="cta cta-secondary" data-plan="integrative-annual">Begin Annual</a>
+      </div>
+    </div>
+
+    <div class="tier">
+      <div class="tier-label">Soul Pattern App</div>
+      <h2 class="tier-name">Licensed Therapist<br>&amp; <em>Psychologist</em></h2>
+      <p class="tier-tagline">
+        Personal growth pattern assessment in clinical language — no astrology
+        surfaced. Custom intake from the natal chart, results in the language
+        of your profession.
+      </p>
+
+      <div class="price-block">
+        <div class="price-row">
+          <span class="price-row-label">Monthly</span>
+          <span class="price-row-value">$150<span class="unit">/mo</span></span>
+        </div>
+        <div class="price-row">
+          <span class="price-row-label">Annual</span>
+          <span class="price-row-value">
+            $1,500<span class="unit">/yr</span>
+            <span class="savings">Save $300</span>
+          </span>
+        </div>
+      </div>
+
+      <ul class="features">
+        <li>Look up clients by email</li>
+        <li>Custom intake generated from the client's natal chart</li>
+        <li>Results compared to the chart, in personal growth pattern language</li>
+        <li>Journal page for client tracking</li>
+        <li>Practitioner notes — yours alone, isolated at the database level</li>
+        <li>Optional AI dialog (requires your own Anthropic API key, ~$5/mo)</li>
+        <li>Unlimited client sessions &amp; longitudinal follow-up</li>
+        <li>Practitioner-validated research participation</li>
+        <li>7-day free trial &amp; one hour of onboarding training with Lisa</li>
+      </ul>
+
+      <div class="cta-group">
+        <a href="#" class="cta cta-primary" data-plan="soul-monthly">Begin Monthly</a>
+        <a href="#" class="cta cta-secondary" data-plan="soul-annual">Begin Annual</a>
+      </div>
+    </div>
+
+    <div class="tier">
+      <div class="tier-label">Constitutional Health App</div>
+      <h2 class="tier-name">Health Practitioner<br>&amp; <em>Medical Doctor</em></h2>
+      <p class="tier-tagline">
+        Constitutional health assessment in medical language — no astrology
+        surfaced. Custom intake from the natal chart, remedy protocols
+        spanning constitution, diet, herbs, and acupressure.
+      </p>
+
+      <div class="price-block">
+        <div class="price-row">
+          <span class="price-row-label">Monthly</span>
+          <span class="price-row-value">$150<span class="unit">/mo</span></span>
+        </div>
+        <div class="price-row">
+          <span class="price-row-label">Annual</span>
+          <span class="price-row-value">
+            $1,500<span class="unit">/yr</span>
+            <span class="savings">Save $300</span>
+          </span>
+        </div>
+      </div>
+
+      <ul class="features">
+        <li>Look up clients by email</li>
+        <li>Custom intake generated from the client's natal chart</li>
+        <li>Results compared to the chart, in constitutional health language</li>
+        <li>Remedy page — constitution, diet, herbs, acupressure</li>
+        <li>Practitioner notes — yours alone, isolated at the database level</li>
+        <li>Optional AI dialog (requires your own Anthropic API key, ~$5/mo)</li>
+        <li>Unlimited client charts &amp; sessions</li>
+        <li>Practitioner-validated research participation</li>
+        <li>7-day free trial &amp; one hour of onboarding training with Lisa</li>
+      </ul>
+
+      <div class="cta-group">
+        <a href="#" class="cta cta-primary" data-plan="constitutional-monthly">Begin Monthly</a>
+        <a href="#" class="cta cta-secondary" data-plan="constitutional-annual">Begin Annual</a>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="included">
+    <h2>What every <em>subscription</em> includes</h2>
+    <p class="included-sub">Beyond the software, the relationship.</p>
+    <div class="included-grid">
+      <div>
+        <div class="included-item-label">7-Day Trial</div>
+        <p class="included-item-text">No charge for the first week. Cancel any time before day eight.</p>
+      </div>
+      <div>
+        <div class="included-item-label">Training Hour</div>
+        <p class="included-item-text">One hour of one-on-one onboarding with Lisa, included with every plan.</p>
+      </div>
+      <div>
+        <div class="included-item-label">Unlimited Charts</div>
+        <p class="included-item-text">No per-client cap. Bring as many practice charts as you need.</p>
+      </div>
+      <div>
+        <div class="included-item-label">Cancel Anytime</div>
+        <p class="included-item-text">Self-serve in your account portal. No retention conversations.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="included">
+    <h2>Privacy <em>by design</em></h2>
+    <p class="included-sub">Two layers of separation: the database, and your paper journal.</p>
+    <div class="included-grid">
+      <div>
+        <div class="included-item-label">Schema-Level Pseudonymization</div>
+        <p class="included-item-text">Charts, journals, intake answers, and practitioner notes each live in their own table, joined only by access code. No clinical table contains a name or email.</p>
+      </div>
+      <div>
+        <div class="included-item-label">Email Lives Alone</div>
+        <p class="included-item-text">If a client provides an email, it lives in a single identity table apart from every clinical table. Remove that one record and the clinical data becomes fully anonymous.</p>
+      </div>
+      <div>
+        <div class="included-item-label">Your Paper Journal</div>
+        <p class="included-item-text">The link from access code to your client's full identity — name, phone, address — lives in your paper journal, in your office, under your professional control. TMG never holds it.</p>
+      </div>
+      <div>
+        <div class="included-item-label">Practitioner Isolation</div>
+        <p class="included-item-text">Every clinical record is stamped with your practitioner ID. Other practitioners cannot read your notes, results, or exclusions — enforced at the database level.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2>Common <em>questions</em></h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Which app is right for me?</div>
+      <p class="faq-a">If you're an astrologer or integrative practitioner who wants the full TMG methodology with editable libraries and astrology surfaced — the <strong>Integrative Practitioner App</strong>. If you're a licensed therapist or psychologist working with personal growth patterns — the <strong>Soul Pattern App</strong>. If you're a health practitioner or medical doctor working with constitutional health and remedies — the <strong>Constitutional Health App</strong>. The two clinical apps don't surface astrology language at all.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What if I want both Soul Pattern and Constitutional Health?</div>
+      <p class="faq-a">The Integrative Practitioner App at $100/mo includes both modules along with the full astrological framework, editable libraries, and orb settings. Subscribing to both clinical apps separately would cost $300/mo. Practitioners who want the full picture choose the Integrative app.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How does the AI dialog feature work?</div>
+      <p class="faq-a">The AI dialog is an optional feature available in all three apps. You bring your own Anthropic API key — Anthropic bills you directly for usage (typically around $5/mo for normal practitioner volume). TMG never holds or processes your AI billing. The 1-hour onboarding training walks you through getting your API key and pasting it into your account settings.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I switch between monthly and annual later?</div>
+      <p class="faq-a">Yes. Both plans can be switched at any time from your account portal. Stripe prorates the difference automatically.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What happens during the 7-day trial?</div>
+      <p class="faq-a">You have full access to the platform for seven days. Your card is on file but is not charged until day eight. Cancel any time during the trial period and you owe nothing.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Does TMG see my clients' names or contact information?</div>
+      <p class="faq-a">No names, no phone numbers, no addresses. The only piece of identifying information TMG holds is an email address — and only if your client chooses to provide one. Email lives in its own identity table, completely separate from every clinical table. Charts, journals, intake answers, and your notes are joined to the email only by an access code.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I keep track of which client is which?</div>
+      <p class="faq-a">Each client has an access code. We strongly recommend you keep a paper journal in your office mapping each access code to the client's full identity — name, phone, address, anything beyond the email TMG might hold. The paper journal stays under your professional control. The 1-hour training included with your subscription walks you through the setup.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why does TMG ask me to keep a paper journal?</div>
+      <p class="faq-a">Because the privacy story works in two layers. TMG's database splits identity from clinical data and isolates each practitioner's notes — that's enforced in code and at the database level. The paper journal does something different: it keeps client PII beyond the email (full name, phone, address, scheduling details) out of TMG entirely. The paper journal is a strong recommendation, not a contractual requirement — TMG can't audit what's in your office, and we don't try to. But the privacy benefit only exists if the link actually lives somewhere TMG cannot reach.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can other practitioners see my client notes?</div>
+      <p class="faq-a">No. Every note, intake result, exclusion, and reading you write is stamped with your practitioner ID and is visible only to you. This is enforced at the database level, not just in the app — even if someone modified the app code, the database itself would reject any attempt to read another practitioner's records. This is not a setting that can be turned off.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is TMG an FSA-eligible expense?</div>
+      <p class="faq-a">No. TMG is a SaaS subscription for your practice — a deductible business expense, not a qualified medical expense. Your accountant can deduct it on your business return.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Does my subscription include readings or sessions with Lisa?</div>
+      <p class="faq-a">No. Practitioner subscriptions give you access to the TMG SaaS platform — the apps, the modules, and research participation. Lisa's individual services (natal chart readings, psychological astrology, medical astrology, and herbal &amp; dietary recommendations) are scheduled and paid for separately on the main TMG website. The one-hour onboarding training included with your subscription is a platform training session, not an astrological reading.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What happens to my client data if I cancel?</div>
+      <p class="faq-a">You have 30 days after cancellation to download per-client PDFs of questions, responses, outcomes, and your clinical notes — each labeled with the client's access code, not their name. Match the PDFs to your paper journal to identify each client. After 30 days, your account, your custom questions, your notes, and your platform records are permanently deleted. The chart and response data continues to contribute to the pseudonymized research corpus that makes TMG's methodology validation possible.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I schedule my training hour?</div>
+      <p class="faq-a">After you subscribe, you'll receive an email with a link to schedule your one-on-one training session with Lisa directly.</p>
+    </div>
+  </section>
+
+  <p class="footer-note">
+    Questions before you begin? <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a>
+  </p>
+
+</div>
+
+<script>
+  // Subscription button handlers — wire these to your Stripe Checkout endpoint.
+  // Each button has a data-plan attribute matching one of the six Stripe Prices.
+  document.querySelectorAll('.cta[data-plan]').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const plan = btn.dataset.plan;
+
+      // REPLACE THIS: call your backend that creates a Stripe Checkout Session
+      // and redirects to the returned session URL.
+      //
+      // Example:
+      //
+      // const res = await fetch('/api/create-checkout-session', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ plan })
+      // });
+      // const { url } = await res.json();
+      // window.location.href = url;
+
+      console.log('Subscribe clicked — plan:', plan);
+      alert('Plan selected: ' + plan + '\n\nWire this button to your Stripe Checkout Session endpoint.');
+    });
+  });
+</script>
+
+</body>
+</html>
