@@ -1,279 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy – Triple Moon Goddess</title>
-  <style>
-    :root {
-      --bg: #0a0a0f;
-      --surface: #13131d;
-      --border: #2a2a3d;
-      --accent: #9b72cf;
-      --accent-soft: #c4a0e8;
-      --text: #e8e0f0;
-      --muted: #9088a8;
-      --highlight-bg: #1a1628;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Triple Moon Goddess</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #d4af6a;
+    --gold-bright: #e8c989;
+    --gold-deep: #b8945a;
+    --ink: #f5e8d0;
+    --ink-soft: #c9b896;
+    --bg: #0a0608;
+    --bg-deep: #050304;
+    --bg-card: #110a0d;
+    --line: rgba(212, 175, 106, 0.18);
+    --line-strong: rgba(212, 175, 106, 0.4);
+  }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Georgia', serif;
-      font-size: 16px;
-      line-height: 1.75;
-      padding: 2rem 1rem 4rem;
-    }
+  html { scroll-behavior: smooth; }
 
-    .wrapper {
-      max-width: 800px;
-      margin: 0 auto;
-    }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
 
-    /* Header */
-    .policy-header {
-      text-align: center;
-      padding: 2.5rem 1rem 2rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 2.5rem;
-    }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, var(--bg) 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-    .policy-header .moon {
-      font-size: 2.2rem;
-      letter-spacing: 0.3em;
-      margin-bottom: 0.5rem;
-      color: var(--accent-soft);
-    }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent),
+      radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent),
+      radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent),
+      radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent);
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+    animation: twinkle 8s ease-in-out infinite;
+  }
 
-    .policy-header h1 {
-      font-size: 1.6rem;
-      font-weight: normal;
-      color: var(--accent-soft);
-      letter-spacing: 0.05em;
-      margin-bottom: 1rem;
-    }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.4; }
+  }
 
-    .meta {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      font-family: 'Courier New', monospace;
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
 
-    .meta span { white-space: nowrap; }
+  /* HERO */
+  .hero {
+    padding: 100px 0 56px;
+    text-align: center;
+  }
 
-    /* Sections */
-    section {
-      margin-bottom: 2.5rem;
-    }
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
 
-    h2 {
-      font-size: 1.05rem;
-      font-weight: normal;
-      color: var(--accent-soft);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.2rem;
-    }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '✦';
+    margin: 0 14px;
+    color: var(--gold-deep);
+    font-size: 10px;
+  }
 
-    h3 {
-      font-size: 0.95rem;
-      color: var(--accent-soft);
-      margin: 1.4rem 0 0.5rem;
-      font-weight: bold;
-    }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--gold-bright);
+    margin-bottom: 24px;
+  }
 
-    p { margin-bottom: 1rem; color: var(--text); }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ink);
+    font-weight: 300;
+  }
 
-    /* Callout boxes */
-    .callout {
-      background: var(--highlight-bg);
-      border-left: 3px solid var(--accent);
-      border-radius: 0 6px 6px 0;
-      padding: 0.9rem 1.2rem;
-      margin: 1rem 0;
-      font-size: 0.93rem;
-      color: var(--muted);
-    }
+  .meta {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin-top: 32px;
+  }
 
-    .callout strong { color: var(--accent-soft); }
+  .ornament {
+    margin: 48px auto;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position: relative;
+  }
 
-    /* Never-do list */
-    .never-list {
-      list-style: none;
-      padding: 0;
-      margin: 0.5rem 0 1rem;
-    }
+  .ornament::before {
+    content: '☾';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg);
+    padding: 0 18px;
+    color: var(--gold);
+    font-size: 18px;
+  }
 
-    .never-list li {
-      padding: 0.35rem 0 0.35rem 1.8rem;
-      position: relative;
-      color: var(--text);
-      font-size: 0.95rem;
-    }
+  /* SECTIONS */
+  section.policy {
+    margin-bottom: 56px;
+    padding: 0 8px;
+  }
 
-    .never-list li::before {
-      content: '✗';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: bold;
-    }
+  section.policy h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--gold-bright);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
 
-    /* Processor cards */
-    .processor-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem 1.2rem;
-      margin-bottom: 1rem;
-    }
+  section.policy h2 .num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    margin-right: 14px;
+    vertical-align: middle;
+  }
 
-    .processor-card .processor-name {
-      font-weight: bold;
-      color: var(--accent-soft);
-      margin-bottom: 0.3rem;
-      font-size: 0.95rem;
-    }
+  section.policy h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--gold);
+    margin-top: 24px;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
 
-    .processor-card p { margin-bottom: 0.4rem; font-size: 0.9rem; }
+  section.policy p {
+    color: var(--ink);
+    margin-bottom: 16px;
+    font-size: 0.97rem;
+  }
 
-    .processor-card a {
-      color: var(--accent);
-      font-size: 0.85rem;
-      font-family: 'Courier New', monospace;
-      text-decoration: none;
-    }
+  section.policy p strong {
+    color: var(--gold-bright);
+    font-weight: 500;
+  }
 
-    .processor-card a:hover { text-decoration: underline; }
+  section.policy a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-deep);
+    transition: color 0.3s ease;
+  }
 
-    /* Rights table */
-    .rights-grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 0;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-    }
+  section.policy a:hover { color: var(--gold-bright); }
 
-    .rights-grid .cell {
-      padding: 0.6rem 0.9rem;
-      border-bottom: 1px solid var(--border);
-    }
+  section.policy code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.88em;
+    background: rgba(212, 175, 106, 0.08);
+    padding: 2px 8px;
+    border-radius: 3px;
+    color: var(--gold-bright);
+  }
 
-    .rights-grid .cell:nth-child(odd) {
-      background: var(--surface);
-      color: var(--accent-soft);
-      font-weight: bold;
-      border-right: 1px solid var(--border);
-    }
+  /* CALLOUTS */
+  .callout {
+    background: linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--gold);
+    padding: 18px 24px;
+    margin: 20px 0;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
 
-    .rights-grid .cell:nth-child(even) {
-      background: var(--bg);
-    }
+  .callout strong {
+    color: var(--gold-bright);
+    font-weight: 500;
+  }
 
-    .rights-grid .cell:last-child,
-    .rights-grid .cell:nth-last-child(2) {
-      border-bottom: none;
-    }
+  /* NEVER LIST */
+  .never-list {
+    list-style: none;
+    margin: 12px 0 16px 0;
+  }
 
-    /* Data table */
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-      margin-bottom: 1rem;
-    }
+  .never-list li {
+    padding: 8px 0 8px 32px;
+    position: relative;
+    color: var(--ink);
+    font-size: 0.97rem;
+    border-bottom: 1px solid var(--line);
+  }
 
-    .data-table th {
-      background: var(--surface);
-      color: var(--accent-soft);
-      padding: 0.6rem 0.8rem;
-      text-align: left;
-      border: 1px solid var(--border);
-      font-weight: normal;
-      letter-spacing: 0.04em;
-    }
+  .never-list li:last-child { border-bottom: none; }
 
-    .data-table td {
-      padding: 0.5rem 0.8rem;
-      border: 1px solid var(--border);
-      vertical-align: top;
-      color: var(--text);
-    }
+  .never-list li::before {
+    content: '✗';
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    color: var(--gold);
+    font-weight: bold;
+    font-size: 0.95rem;
+  }
 
-    .data-table tr:nth-child(even) td { background: var(--surface); }
+  /* PROCESSOR CARDS */
+  .processor-card {
+    background: linear-gradient(180deg, rgba(20, 12, 8, 0.5) 0%, rgba(10, 6, 8, 0.85) 100%);
+    border: 1px solid var(--line);
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.4s ease;
+  }
 
-    /* Footer */
-    .policy-footer {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.82rem;
-      font-family: 'Courier New', monospace;
-    }
+  .processor-card:hover { border-color: var(--line-strong); }
 
-    .policy-footer a { color: var(--accent); text-decoration: none; }
-    .policy-footer a:hover { text-decoration: underline; }
+  .processor-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--gold-bright);
+    margin-bottom: 10px;
+    font-style: italic;
+  }
 
-    /* Responsive */
-    @media (max-width: 540px) {
-      .rights-grid { grid-template-columns: 1fr; }
-      .rights-grid .cell:nth-child(odd) { border-right: none; border-bottom: 0; }
-      .rights-grid .cell:nth-child(even) { border-bottom: 1px solid var(--border); }
-    }
-  </style>
+  .processor-card p {
+    margin-bottom: 10px;
+    font-size: 0.93rem;
+  }
+
+  .processor-card a {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    border-bottom: none;
+    color: var(--gold);
+  }
+
+  .processor-card a:hover {
+    color: var(--gold-bright);
+    text-decoration: underline;
+  }
+
+  /* DATA TABLES */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 16px 0 20px;
+  }
+
+  .data-table th {
+    background: rgba(20, 12, 8, 0.7);
+    color: var(--gold-bright);
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid var(--line);
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .data-table td {
+    padding: 12px 16px;
+    border: 1px solid var(--line);
+    vertical-align: top;
+    color: var(--ink);
+  }
+
+  .data-table tr:nth-child(even) td {
+    background: rgba(20, 12, 8, 0.3);
+  }
+
+  /* RIGHTS GRID */
+  .rights-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border: 1px solid var(--line);
+    margin-bottom: 16px;
+    font-size: 0.93rem;
+  }
+
+  .rights-grid .cell {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .rights-grid .cell:nth-child(odd) {
+    background: rgba(20, 12, 8, 0.5);
+    color: var(--gold-bright);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    border-right: 1px solid var(--line);
+  }
+
+  .rights-grid .cell:nth-child(even) {
+    color: var(--ink);
+  }
+
+  .rights-grid .cell:last-child,
+  .rights-grid .cell:nth-last-child(2) {
+    border-bottom: none;
+  }
+
+  @media (max-width: 540px) {
+    .rights-grid { grid-template-columns: 1fr; }
+    .rights-grid .cell:nth-child(odd) { border-right: none; }
+    .rights-grid .cell:nth-child(even) { border-bottom: 1px solid var(--line); }
+  }
+
+  /* FOOTER */
+  .policy-footer {
+    text-align: center;
+    margin: 80px 0 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .policy-footer a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-deep);
+    padding-bottom: 1px;
+  }
+
+  .policy-footer a:hover { color: var(--gold-bright); }
+
+  .policy-footer .version {
+    margin-top: 14px;
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+</style>
 </head>
 <body>
-<div class="wrapper">
 
-  <header class="policy-header">
-    <div class="moon">☽ ☾</div>
-    <h1>Triple Moon Goddess &mdash; Privacy Policy</h1>
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Privacy Policy</div>
+    <h1>How we hold<br>your <em>data</em>.</h1>
     <div class="meta">
-      <span>Effective: January 2025</span>
-      <span>Version: 2025-01</span>
-      <span>Last Reviewed: February 2026</span>
+      <span>Effective January 2025</span>
+      <span>·</span>
+      <span>Version 2025-01</span>
+      <span>·</span>
+      <span>Last reviewed February 2026</span>
     </div>
-  </header>
+    <div class="ornament"></div>
+  </section>
 
-  <!-- 1. Who We Are -->
-  <section id="who-we-are">
-    <h2>1. Who We Are</h2>
+  <!-- 1. WHO WE ARE -->
+  <section class="policy" id="who-we-are">
+    <h2><span class="num">I</span>Who We Are</h2>
     <p>Triple Moon Goddess is a wellness journaling and medical astrology application operated by <strong>Lisa</strong> ("we", "us", "our"). For all data protection enquiries, please contact:</p>
     <p>
-      Email: <a href="mailto:Lisa@TripleMoonGoddess.com" style="color:var(--accent);">Lisa@TripleMoonGoddess.com</a><br/>
-      Website: <a href="https://triplemoongoddess.com" style="color:var(--accent);" target="_blank" rel="noopener">triplemoongoddess.com</a>
+      Email: <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a><br>
+      Website: <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a>
     </p>
     <div class="callout">
       We are a sole operator and do not currently have a designated Data Protection Officer (DPO). If you are in the EU/EEA and your enquiry is unresolved, you have the right to lodge a complaint with your local supervisory authority.
     </div>
   </section>
 
-  <!-- 2. Who This Applies To -->
-  <section id="scope">
-    <h2>2. Who This Policy Applies To</h2>
+  <!-- 2. SCOPE -->
+  <section class="policy" id="scope">
+    <h2><span class="num">II</span>Who This Policy Applies To</h2>
     <p>This policy applies to all users of the Triple Moon Goddess journal application (PWA), the natal chart generator, the phone widget application, and any associated email communications.</p>
-    <p>This policy applies to users worldwide. Where additional rights apply in your jurisdiction — EU/EEA/UK (GDPR), California (CCPA), Brazil (LGPD), Canada (PIPEDA), Australia (Privacy Act) — those rights are addressed in Section 11.</p>
+    <p>This policy applies to users worldwide. Where additional rights apply in your jurisdiction — EU/EEA/UK (GDPR), California (CCPA), Brazil (LGPD), Canada (PIPEDA), Australia (Privacy Act) — those rights are addressed in Section XI.</p>
   </section>
 
-  <!-- 3. What Data We Collect -->
-  <section id="data-collected">
-    <h2>3. What Data We Collect</h2>
+  <!-- 3. WHAT DATA -->
+  <section class="policy" id="data-collected">
+    <h2><span class="num">III</span>What Data We Collect</h2>
 
-    <h3>3.1 Identity &amp; Contact Data</h3>
+    <h3>Identity &amp; Contact Data</h3>
     <p>Collected only if you voluntarily provide it:</p>
     <table class="data-table">
       <thead>
@@ -289,30 +460,30 @@
       <strong>Separation guarantee:</strong> Your name/email are stored in a separate Firestore collection (<code>user_identities</code>) from your health records. No single database document contains both your identity and your health data.
     </div>
 
-    <h3>3.2 Health &amp; Wellness Data (Special Category)</h3>
+    <h3>Health &amp; Wellness Data (Special Category)</h3>
     <p>This is health data under GDPR Article 9. It includes daily body scores (mood, energy, optimism, physical/mental stamina), sleep data, symptoms, medication and supplement logs, food and beverage log, tongue observations (Traditional Chinese Medicine), personal notes and reflections, and astrology transit journal responses.</p>
 
-    <h3>3.3 Technical &amp; Device Data</h3>
+    <h3>Technical &amp; Device Data</h3>
     <p>Anonymous Firebase Authentication UID, FCM push notification tokens, app preferences (tab config, reminder times, food plan, house system), timezone, and rate-limit counters keyed by anonymous UID.</p>
 
-    <h3>3.4 Usage Data</h3>
+    <h3>Usage Data</h3>
     <p>We use Firebase (Google) infrastructure. Firebase collects basic performance and crash data per its own terms. We do not use Google Analytics, Facebook Pixel, any advertising trackers, session replay tools, or heatmap software.</p>
   </section>
 
-  <!-- 4. How We Use Your Data -->
-  <section id="use">
-    <h2>4. How We Use Your Data &amp; Legal Basis</h2>
+  <!-- 4. HOW WE USE -->
+  <section class="policy" id="use">
+    <h2><span class="num">IV</span>How We Use Your Data &amp; Legal Basis</h2>
 
-    <h3>4.1 Necessary Processing</h3>
+    <h3>Necessary Processing</h3>
     <p>Legal basis: Legitimate interests / Contract (GDPR Art 6(1)(b) and (f)) — providing app functionality, authentication, push notifications, email reminders, and rate limiting.</p>
 
-    <h3>4.2 Health Data Processing</h3>
+    <h3>Health Data Processing</h3>
     <p>Legal basis: Explicit consent (GDPR Art 9(2)(a)) — storing/displaying journal entries, generating PDF exports, enabling Practitioner Mode. You may withdraw consent at any time via <strong>Settings → Danger Zone</strong>.</p>
 
-    <h3>4.3 AI Summary Processing</h3>
+    <h3>AI Summary Processing</h3>
     <p>Legal basis: Explicit consent (GDPR Art 6(1)(a) and Art 9(2)(a)). When you choose to generate a daily AI summary, your journal data for that day is sent to Anthropic's API. This is entirely optional — you choose each time you tap the button. Declining does not affect any other functionality.</p>
 
-    <h3>4.4 What We Never Do</h3>
+    <h3>What We Never Do</h3>
     <ul class="never-list">
       <li>Sell your personal data</li>
       <li>Share your data with advertisers</li>
@@ -321,9 +492,9 @@
     </ul>
   </section>
 
-  <!-- 5. Third-Party Processors -->
-  <section id="processors">
-    <h2>5. Third-Party Processors</h2>
+  <!-- 5. PROCESSORS -->
+  <section class="policy" id="processors">
+    <h2><span class="num">V</span>Third-Party Processors</h2>
 
     <div class="processor-card">
       <div class="processor-name">Google Firebase (Alphabet Inc.)</div>
@@ -349,15 +520,15 @@
     </div>
   </section>
 
-  <!-- 6. International Transfers -->
-  <section id="transfers">
-    <h2>6. International Data Transfers</h2>
-    <p>Our primary infrastructure is based in the United States. EU/EEA/UK transfers are covered by Standard Contractual Clauses (SCCs) and, for Firebase, participation in the EU-US Data Privacy Framework. You may request a copy of the relevant transfer mechanisms by emailing <a href="mailto:Lisa@TripleMoonGoddess.com" style="color:var(--accent);">Lisa@TripleMoonGoddess.com</a>.</p>
+  <!-- 6. TRANSFERS -->
+  <section class="policy" id="transfers">
+    <h2><span class="num">VI</span>International Data Transfers</h2>
+    <p>Our primary infrastructure is based in the United States. EU/EEA/UK transfers are covered by Standard Contractual Clauses (SCCs) and, for Firebase, participation in the EU-US Data Privacy Framework. You may request a copy of the relevant transfer mechanisms by emailing <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a>.</p>
   </section>
 
-  <!-- 7. Data Retention -->
-  <section id="retention">
-    <h2>7. Data Retention</h2>
+  <!-- 7. RETENTION -->
+  <section class="policy" id="retention">
+    <h2><span class="num">VII</span>Data Retention</h2>
     <table class="data-table">
       <thead><tr><th>Data Type</th><th>Retention Period</th></tr></thead>
       <tbody>
@@ -371,79 +542,81 @@
     </table>
   </section>
 
-  <!-- 8. Security -->
-  <section id="security">
-    <h2>8. Security Measures</h2>
+  <!-- 8. SECURITY -->
+  <section class="policy" id="security">
+    <h2><span class="num">VIII</span>Security Measures</h2>
     <p>All data transmitted over HTTPS (TLS 1.2+). Data encrypted at rest via Firebase/Firestore encryption. API keys stored in Google Cloud Secret Manager — never in code. Firebase Security Rules restrict database access to each authenticated user's own data. Admin portal restricted to a single authorised account. Health data and identity data are physically separated in distinct Firestore collections; no single record contains both.</p>
     <div class="callout">No security system is 100% impenetrable. If you believe your data has been compromised, contact <strong>Lisa@TripleMoonGoddess.com</strong> immediately.</div>
   </section>
 
-  <!-- 9. Cookies -->
-  <section id="cookies">
-    <h2>9. Cookies and Local Storage</h2>
+  <!-- 9. COOKIES -->
+  <section class="policy" id="cookies">
+    <h2><span class="num">IX</span>Cookies and Local Storage</h2>
     <p>We do not use advertising cookies or tracking pixels. We use browser local storage only for: storing your access code (session continuity), recording your consent decision and timestamp, caching your Firebase authentication session, and storing widget email preference (phone widget only). These are strictly necessary for app function. No third-party tracking cookies are used.</p>
   </section>
 
-  <!-- 10. Children -->
-  <section id="children">
-    <h2>10. Children's Privacy</h2>
-    <p>This application is intended for adults aged 18 and over. We do not knowingly collect personal data from children under 13 (or under 16 in the EU/EEA). If you believe a child has submitted data to us, please contact <a href="mailto:Lisa@TripleMoonGoddess.com" style="color:var(--accent);">Lisa@TripleMoonGoddess.com</a> and we will delete it immediately.</p>
+  <!-- 10. CHILDREN -->
+  <section class="policy" id="children">
+    <h2><span class="num">X</span>Children's Privacy</h2>
+    <p>This application is intended for adults aged 18 and over. We do not knowingly collect personal data from children under 13 (or under 16 in the EU/EEA). If you believe a child has submitted data to us, please contact <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a> and we will delete it immediately.</p>
   </section>
 
-  <!-- 11. Your Rights -->
-  <section id="rights">
-    <h2>11. Your Rights</h2>
+  <!-- 11. RIGHTS -->
+  <section class="policy" id="rights">
+    <h2><span class="num">XI</span>Your Rights</h2>
 
     <h3>All Users</h3>
     <p>Right to be informed (fulfilled by this policy), right to delete data (Settings → Danger Zone), right to withdraw consent at any time.</p>
 
     <h3>EU / EEA / UK (GDPR / UK GDPR)</h3>
     <div class="rights-grid">
-      <div class="cell">Art 15 – Access</div><div class="cell">Request a copy of your data</div>
-      <div class="cell">Art 16 – Rectification</div><div class="cell">Correct inaccurate data</div>
-      <div class="cell">Art 17 – Erasure</div><div class="cell">"Right to be forgotten"</div>
-      <div class="cell">Art 18 – Restriction</div><div class="cell">Limit how we process your data</div>
-      <div class="cell">Art 20 – Portability</div><div class="cell">Receive your data in machine-readable format</div>
-      <div class="cell">Art 21 – Object</div><div class="cell">Object to processing based on legitimate interests</div>
-      <div class="cell">Art 22 – Automated decisions</div><div class="cell">We do not make automated decisions with legal effect</div>
+      <div class="cell">Art 15 — Access</div><div class="cell">Request a copy of your data</div>
+      <div class="cell">Art 16 — Rectification</div><div class="cell">Correct inaccurate data</div>
+      <div class="cell">Art 17 — Erasure</div><div class="cell">"Right to be forgotten"</div>
+      <div class="cell">Art 18 — Restriction</div><div class="cell">Limit how we process your data</div>
+      <div class="cell">Art 20 — Portability</div><div class="cell">Receive your data in machine-readable format</div>
+      <div class="cell">Art 21 — Object</div><div class="cell">Object to processing based on legitimate interests</div>
+      <div class="cell">Art 22 — Automated decisions</div><div class="cell">We do not make automated decisions with legal effect</div>
     </div>
 
     <h3>California (CCPA / CPRA)</h3>
     <p>Right to know, right to delete, right to opt out of sale (we do not sell data), right to non-discrimination, and right to correct inaccurate personal information. Categories collected: identifiers, health/medical information, internet/electronic activity (Firebase analytics). Sold/shared: No.</p>
 
     <h3>Brazil (LGPD), Canada (PIPEDA), Australia (Privacy Act)</h3>
-    <p>Users in these jurisdictions have equivalent rights to access, correction, anonymisation, portability, and deletion. Contact <a href="mailto:Lisa@TripleMoonGoddess.com" style="color:var(--accent);">Lisa@TripleMoonGoddess.com</a>. Australian users may also escalate to the OAIC.</p>
+    <p>Users in these jurisdictions have equivalent rights to access, correction, anonymisation, portability, and deletion. Contact <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a>. Australian users may also escalate to the OAIC.</p>
 
     <div class="callout">To exercise any of these rights, email <strong>Lisa@TripleMoonGoddess.com</strong>. We will respond within 30 days.</div>
   </section>
 
-  <!-- 12. Practitioner -->
-  <section id="practitioner">
-    <h2>12. Practitioner Relationship</h2>
+  <!-- 12. PRACTITIONER -->
+  <section class="policy" id="practitioner">
+    <h2><span class="num">XII</span>Practitioner Relationship</h2>
     <p>If Practitioner Mode is enabled, Lisa can view your journal entries through a secure admin portal. No additional data is shared — the same access code links your data to practitioner access. You can see whether practitioner access is enabled in Settings. Your practitioner is bound by professional confidentiality obligations.</p>
     <p>Shared Google Drive folders for tongue photos and consultation notes are governed by Google's privacy terms and the access you configure on that folder.</p>
   </section>
 
-  <!-- 13. Changes -->
-  <section id="changes">
-    <h2>13. Changes to This Policy</h2>
+  <!-- 13. CHANGES -->
+  <section class="policy" id="changes">
+    <h2><span class="num">XIII</span>Changes to This Policy</h2>
     <p>We will update this policy when our data practices change. Material changes will be communicated via an updated notice on the consent screen within the app and an updated effective date at the top of this document. Continued use of the app after a material change constitutes acceptance. Where legally required, we will re-obtain explicit consent.</p>
   </section>
 
-  <!-- 14. Contact -->
-  <section id="contact">
-    <h2>14. Contact &amp; Complaints</h2>
+  <!-- 14. CONTACT -->
+  <section class="policy" id="contact">
+    <h2><span class="num">XIV</span>Contact &amp; Complaints</h2>
     <p>For any privacy-related question, data request, or complaint:</p>
-    <p><strong>Email:</strong> <a href="mailto:Lisa@TripleMoonGoddess.com" style="color:var(--accent);">Lisa@TripleMoonGoddess.com</a></p>
+    <p><strong>Email:</strong> <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
     <p>We will respond within 30 days. If you are not satisfied with our response, you have the right to escalate to your local data protection authority:</p>
-    <p>EU/EEA: your national supervisory authority (ICO in UK, CNIL in France, BfDI in Germany) &bull; California: California Privacy Protection Agency (CPPA) &bull; Australia: Office of the Australian Information Commissioner (OAIC)</p>
+    <p>EU/EEA: your national supervisory authority (ICO in UK, CNIL in France, BfDI in Germany) · California: California Privacy Protection Agency (CPPA) · Australia: Office of the Australian Information Commissioner (OAIC)</p>
   </section>
 
-  <footer class="policy-footer">
-    <p>Triple Moon Goddess &bull; <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a> &bull; <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
-    <p style="margin-top:0.5rem;">Privacy Policy v2025-01 &bull; Last reviewed February 2026</p>
-  </footer>
+  <!-- FOOTER -->
+  <div class="policy-footer">
+    <p>Triple Moon Goddess · <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a> · <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
+    <p class="version">Privacy Policy v2025-01 · Last reviewed February 2026</p>
+  </div>
 
 </div>
+
 </body>
 </html>
