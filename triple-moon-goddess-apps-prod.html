@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Apps — Triple Moon Goddess</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #d4af6a;
+    --gold-bright: #e8c989;
+    --gold-deep: #b8945a;
+    --ink: #f5e8d0;
+    --ink-soft: #c9b896;
+    --bg: #0a0608;
+    --bg-deep: #050304;
+    --line: rgba(212, 175, 106, 0.18);
+    --line-strong: rgba(212, 175, 106, 0.4);
+
+    --accent-natal: #a78bfa;
+    --accent-journal: #e8c989;
+    --accent-blueprint: #6ee7a7;
+    --accent-widget: #5eead4;
+    --accent-tea: #f0a4b8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  html, body {
+    background: #0a0608 !important;
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, #0a0608 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent),
+      radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent),
+      radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent),
+      radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent);
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+    animation: twinkle 8s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.4; }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 100px 0 56px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 0.2s forwards;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '✦';
+    margin: 0 14px;
+    color: var(--gold-deep);
+    font-size: 10px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--gold-bright);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 1.1s ease-out 0.4s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .hero-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    color: var(--ink-soft);
+    max-width: 580px;
+    margin: 0 auto;
+    font-weight: 400;
+    line-height: 1.65;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out 0.6s forwards;
+  }
+
+  .ornament {
+    margin: 56px auto 24px;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 0.9s forwards;
+  }
+
+  .ornament::before {
+    content: '☾';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0a0608;
+    padding: 0 18px;
+    color: var(--gold);
+    font-size: 18px;
+  }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 1s forwards;
+  }
+
+  /* APP CARDS */
+  .apps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 64px;
+  }
+
+  .app-card {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%);
+    border: 1px solid var(--line);
+    padding: 40px 44px;
+    transition: border-color 0.5s ease, transform 0.4s ease;
+    opacity: 0;
+    animation: fadeUp 1s ease-out forwards;
+    overflow: hidden;
+  }
+
+  .app-card:nth-child(1) { animation-delay: 1.1s; --accent: var(--accent-natal); }
+  .app-card:nth-child(2) { animation-delay: 1.25s; --accent: var(--accent-journal); }
+  .app-card:nth-child(3) { animation-delay: 1.4s; --accent: var(--accent-blueprint); }
+  .app-card:nth-child(4) { animation-delay: 1.55s; --accent: var(--accent-widget); }
+  .app-card:nth-child(5) { animation-delay: 1.7s; --accent: var(--accent-tea); }
+
+  .app-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .app-card::before,
+  .app-card::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--gold-deep);
+    opacity: 0.4;
+    transition: border-color 0.4s ease, opacity 0.4s ease;
+  }
+  .app-card::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+  .app-card::after  { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+  .app-card:hover::before,
+  .app-card:hover::after { border-color: var(--accent); opacity: 0.7; }
+
+  .app-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .app-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(20, 12, 8, 0.8);
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 24px -8px var(--accent);
+    color: var(--accent);
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .app-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .app-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .app-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .app-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--gold-bright);
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+  }
+
+  .app-tagline {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .app-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+
+  .app-divider {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    margin-bottom: 14px;
+    opacity: 0.6;
+  }
+
+  .app-cta {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease;
+  }
+
+  .app-card:hover .app-cta { color: var(--accent); }
+
+  .app-cta .arrow {
+    display: inline-block;
+    transition: transform 0.4s ease;
+  }
+
+  .app-card:hover .app-cta .arrow { transform: translateX(4px); }
+
+  /* CLOSING */
+  .closing {
+    text-align: center;
+    padding: 56px 0 80px;
+    border-top: 1px solid var(--line);
+  }
+
+  .closing p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    line-height: 1.65;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .closing-note {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+  }
+
+  .closing-note::before,
+  .closing-note::after {
+    content: '✦';
+    margin: 0 14px;
+    color: var(--gold-deep);
+    font-size: 9px;
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 22px; }
+    .app-card { padding: 32px 24px; }
+    .app-inner { gap: 18px; }
+    .app-icon { width: 48px; height: 48px; }
+    .app-icon svg { width: 22px; height: 22px; }
+    .app-name { font-size: 1.45rem; }
+    .hero { padding: 80px 0 40px; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="hero-eyebrow">Free Apps</div>
+    <h1>Begin with the<br><em>sky</em>.</h1>
+    <p class="hero-lead">
+      Five free tools, drawn from the same chart engine the practitioner
+      platform uses. No subscription. No paywall. Enter your birth details
+      and the apps do the rest.
+    </p>
+    <div class="ornament"></div>
+    <div class="section-label">Choose an app</div>
+  </section>
+
+  <!-- APP CARDS -->
+  <section class="apps">
+
+    <a class="app-card" href="https://triple-moon-goddess.web.app/natal-chart">
+      <div class="app-inner">
+        <div class="app-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3l1.8 5.5h5.7l-4.6 3.4 1.7 5.6L12 14.4l-4.6 3.1 1.7-5.6L4.5 8.5h5.7z"/>
+          </svg>
+        </div>
+        <div class="app-body">
+          <div class="app-head">
+            <div class="app-name">Natal Chart</div>
+            <div class="app-tagline">Your cosmic blueprint</div>
+          </div>
+          <p class="app-desc">
+            Calculate your natal chart with psychological archetypes,
+            planetary strengths, and transit tracking.
+          </p>
+          <div class="app-divider"></div>
+          <span class="app-cta">Open Natal Chart <span class="arrow">→</span></span>
+        </div>
+      </div>
+    </a>
+
+    <a class="app-card" href="https://triple-moon-goddess.web.app/journal">
+      <div class="app-inner">
+        <div class="app-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 13.5A8 8 0 1 1 10.5 5a6.5 6.5 0 0 0 8.5 8.5z"/>
+          </svg>
+        </div>
+        <div class="app-body">
+          <div class="app-head">
+            <div class="app-name">Health Journal</div>
+            <div class="app-tagline">Track your patterns</div>
+          </div>
+          <p class="app-desc">
+            Daily wellness tracking correlated with moon signs and planetary
+            transits. Tongue reading, symptoms, food, and AI summaries.
+          </p>
+          <div class="app-divider"></div>
+          <span class="app-cta">Open Health Journal <span class="arrow">→</span></span>
+        </div>
+      </div>
+    </a>
+
+    <a class="app-card" href="https://triple-moon-goddess.web.app/health-blueprint">
+      <div class="app-inner">
+        <div class="app-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22V12"/>
+            <path d="M12 12c0-4 2-7 6-8 0 4-2 7-6 8z"/>
+            <path d="M12 12c0-4-2-7-6-8 0 4 2 7 6 8z"/>
+          </svg>
+        </div>
+        <div class="app-body">
+          <div class="app-head">
+            <div class="app-name">Health Blueprint</div>
+            <div class="app-tagline">What your chart reveals</div>
+          </div>
+          <p class="app-desc">
+            Enter your birth details and discover your constitutional type,
+            why your body works the way it does, and what it needs.
+          </p>
+          <div class="app-divider"></div>
+          <span class="app-cta">Open Health Blueprint <span class="arrow">→</span></span>
+        </div>
+      </div>
+    </a>
+
+    <a class="app-card" href="https://triple-moon-goddess.web.app/daily-widget">
+      <div class="app-inner">
+        <div class="app-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v3"/>
+            <path d="M12 19v3"/>
+            <path d="M2 12h3"/>
+            <path d="M19 12h3"/>
+            <path d="M5 5l2 2"/>
+            <path d="M17 17l2 2"/>
+            <path d="M19 5l-2 2"/>
+            <path d="M7 17l-2 2"/>
+          </svg>
+        </div>
+        <div class="app-body">
+          <div class="app-head">
+            <div class="app-name">Daily Widget</div>
+            <div class="app-tagline">Today's sky at a glance</div>
+          </div>
+          <p class="app-desc">
+            Current moon sign, active transits, and retrograde alerts.
+            Add to your home screen for instant access.
+          </p>
+          <div class="app-divider"></div>
+          <span class="app-cta">Open Daily Widget <span class="arrow">→</span></span>
+        </div>
+      </div>
+    </a>
+
+    <a class="app-card" href="https://triple-moon-goddess.web.app/tea-moon">
+      <div class="app-inner">
+        <div class="app-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 9h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9z"/>
+            <path d="M17 11h2a2 2 0 0 1 0 4h-2"/>
+            <path d="M8 4c0 1.5 1 1.5 1 3"/>
+            <path d="M12 4c0 1.5 1 1.5 1 3"/>
+          </svg>
+        </div>
+        <div class="app-body">
+          <div class="app-head">
+            <div class="app-name">Tea Moon</div>
+            <div class="app-tagline">Your herbal blend tonight</div>
+          </div>
+          <p class="app-desc">
+            Personalised herbal tea blends based on tonight's transiting moon
+            and your natal chart. Emailed fresh every time.
+          </p>
+          <div class="app-divider"></div>
+          <span class="app-cta">Open Tea Moon <span class="arrow">→</span></span>
+        </div>
+      </div>
+    </a>
+
+  </section>
+
+  <div class="closing">
+    <p>
+      Want to go deeper? The practitioner platform layers psychological
+      pattern assessment, constitutional protocols, and longitudinal
+      tracking on top of the same engine.
+    </p>
+    <div class="closing-note">For the curious — for the seekers</div>
+  </div>
+
+</div>
+
+</body>
+</html>
