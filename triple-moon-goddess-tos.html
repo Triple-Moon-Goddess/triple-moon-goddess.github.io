@@ -22,50 +22,15 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Inter', system-ui, sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
-    overflow-x: hidden;
-    position: relative;
-    min-height: 100vh;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%),
-      radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, var(--bg) 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent),
-      radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent),
-      radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent),
-      radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent),
-      radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent),
-      radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent),
-      radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent),
-      radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent),
-      radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent),
-      radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent);
-    background-size: 100% 100%;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.7;
-    animation: twinkle 8s ease-in-out infinite;
-  }
+  body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; position: relative; min-height: 100vh; }
+  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%), radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, var(--bg) 70%); pointer-events: none; z-index: 0; }
+  body::after { content: ''; position: fixed; inset: 0; background-image: radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent), radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent), radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent), radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent), radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent), radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent), radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent), radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent), radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent), radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent); background-size: 100% 100%; pointer-events: none; z-index: 0; opacity: 0.7; animation: twinkle 8s ease-in-out infinite; }
   @keyframes twinkle { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.4; } }
   .container { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 32px; }
+  .policy-header { text-align: center; padding: 32px 0 0; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); line-height: 2; }
+  .policy-header a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); }
+  .policy-header a:hover { color: var(--gold-bright); }
+  .policy-header .version { color: rgba(201,184,150,0.5); margin-top: 4px; }
   .hero { padding: 100px 0 56px; text-align: center; }
   .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; margin-bottom: 28px; }
   .hero-eyebrow::before, .hero-eyebrow::after { content: '✦'; margin: 0 14px; color: var(--gold-deep); font-size: 10px; }
@@ -92,14 +57,16 @@
   .tier-card:hover { border-color: var(--line-strong); }
   .tier-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: var(--gold-bright); margin-bottom: 14px; font-style: italic; }
   .tier-price { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
-  .policy-footer { text-align: center; margin: 80px 0 60px; padding-top: 40px; border-top: 1px solid var(--line); color: var(--ink-soft); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; line-height: 1.7; }
-  .policy-footer a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); padding-bottom: 1px; }
-  .policy-footer a:hover { color: var(--gold-bright); }
-  .policy-footer .version { margin-top: 14px; font-family: 'Cinzel', serif; font-style: normal; font-size: 11px; letter-spacing: 0.2em; color: var(--ink-soft); text-transform: uppercase; }
 </style>
 </head>
 <body>
 <div class="container">
+
+  <div class="policy-header">
+    <p>Triple Moon Goddess &nbsp;&middot;&nbsp; <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a> &nbsp;&middot;&nbsp; <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
+    <p class="version">Terms of Service &nbsp;&middot;&nbsp; Effective May 2026 &nbsp;&middot;&nbsp; California, USA</p>
+  </div>
+
   <section class="hero">
     <div class="hero-eyebrow">Terms of Service</div>
     <h1>Your agreement<br>with <em>Triple Moon Goddess</em>.</h1>
@@ -115,9 +82,7 @@
   <section class="policy" id="what-it-is">
     <h2><span class="num">I</span>What the Platform Is</h2>
     <p>Triple Moon Goddess is an integrative medical astrology platform that generates constitutional health profiles, personal growth pattern assessments, and remedy protocols derived from natal chart data. TMG combines Western astrology, Traditional Chinese Medicine, Ayurveda, and psychological astrology frameworks.</p>
-    <div class="callout">
-      <strong>TMG is not a medical practice, a therapy practice, or a clinical diagnostic tool. It is a data tool.</strong> All platform outputs are probabilistic, not diagnostic — they identify constitutional likelihoods derived from astrological observation, not clinical findings. TMG does not practice medicine, psychology, or any licensed health profession.
-    </div>
+    <div class="callout"><strong>TMG is not a medical practice, a therapy practice, or a clinical diagnostic tool. It is a data tool.</strong> All platform outputs are probabilistic, not diagnostic — they identify constitutional likelihoods derived from astrological observation, not clinical findings. TMG does not practice medicine, psychology, or any licensed health profession.</div>
     <p>No output from TMG constitutes a medical diagnosis, a mental health diagnosis, or a clinical recommendation. TMG outputs are one input a practitioner may choose to consider. They do not govern, direct, or form the basis of any clinical decision.</p>
     <p>If you are a licensed professional using TMG, your clinical practice — your diagnoses, your treatment decisions, your professional obligations to your clients — exists entirely independently of this platform. TMG does not become part of your practice. You use it as a tool within your practice. Your practice is yours.</p>
     <p>If you are seeking clinical care, consult a licensed medical or mental health professional.</p>
@@ -144,52 +109,10 @@
 
   <section class="policy" id="tiers">
     <h2><span class="num">IV</span>Tiers &amp; Access</h2>
-    <div class="tier-card">
-      <div class="tier-name">Individual Seeker</div>
-      <div class="tier-price">Free</div>
-      <ul class="term-list">
-        <li>Natal Chart app: full astrological chart with psychological archetypes, planetary strengths, and transit tracking</li>
-        <li>Health Blueprint: constitutional type derived from natal chart</li>
-        <li>Health Journal: daily wellness tracking correlated with moon signs and transits</li>
-        <li>Daily Widget and Tea Moon: transit-based tools derived from natal chart</li>
-        <li>One chart stored across apps</li>
-        <li>IPA pattern scoring and Soul Pattern assessment not included — available on paid tiers</li>
-        <li>Optional self-reported feedback contributes to the research corpus under pseudonymization</li>
-      </ul>
-    </div>
-    <div class="tier-card">
-      <div class="tier-name">Integrative Practitioner</div>
-      <div class="tier-price">$100 / month &nbsp;·&nbsp; $1,000 / year</div>
-      <ul class="term-list">
-        <li>Full platform: natal chart, constitutional health engine, remedy protocols, Soul Pattern assessment, astrological framework fully surfaced</li>
-        <li>Unlimited charts</li>
-        <li>Editable question libraries and orb settings</li>
-        <li>Longitudinal research participation and practitioner feedback fields</li>
-        <li>One hour of onboarding training included</li>
-      </ul>
-    </div>
-    <div class="tier-card">
-      <div class="tier-name">Soul Pattern</div>
-      <div class="tier-price">$150 / month &nbsp;·&nbsp; $1,500 / year</div>
-      <ul class="term-list">
-        <li>Soul Pattern assessment and journal — outputs presented in growth pattern language</li>
-        <li>Unlimited charts</li>
-        <li>Birth data required; astrological framework is the engine but outputs are not labeled as astrological in the interface</li>
-        <li>Longitudinal research participation and practitioner feedback fields</li>
-        <li>One hour of onboarding training included</li>
-      </ul>
-    </div>
-    <div class="tier-card">
-      <div class="tier-name">Constitutional Health</div>
-      <div class="tier-price">$150 / month &nbsp;·&nbsp; $1,500 / year</div>
-      <ul class="term-list">
-        <li>Constitutional health engine and remedy page — outputs presented in constitutional language</li>
-        <li>Unlimited charts</li>
-        <li>Birth data required; astrological framework is the engine but outputs are not labeled as astrological in the interface</li>
-        <li>Longitudinal research participation and practitioner feedback fields</li>
-        <li>One hour of onboarding training included</li>
-      </ul>
-    </div>
+    <div class="tier-card"><div class="tier-name">Individual Seeker</div><div class="tier-price">Free</div><ul class="term-list"><li>Natal Chart app: full astrological chart with psychological archetypes, planetary strengths, and transit tracking</li><li>Health Blueprint: constitutional type derived from natal chart</li><li>Health Journal: daily wellness tracking correlated with moon signs and transits</li><li>Daily Widget and Tea Moon: transit-based tools derived from natal chart</li><li>One chart stored across apps</li><li>IPA pattern scoring and Soul Pattern assessment not included — available on paid tiers</li><li>Optional self-reported feedback contributes to the research corpus under pseudonymization</li></ul></div>
+    <div class="tier-card"><div class="tier-name">Integrative Practitioner</div><div class="tier-price">$100 / month &nbsp;·&nbsp; $1,000 / year</div><ul class="term-list"><li>Full platform: natal chart, constitutional health engine, remedy protocols, Soul Pattern assessment, astrological framework fully surfaced</li><li>Unlimited charts</li><li>Editable question libraries and orb settings</li><li>Longitudinal research participation and practitioner feedback fields</li><li>One hour of onboarding training included</li></ul></div>
+    <div class="tier-card"><div class="tier-name">Soul Pattern</div><div class="tier-price">$150 / month &nbsp;·&nbsp; $1,500 / year</div><ul class="term-list"><li>Soul Pattern assessment and journal — outputs presented in growth pattern language</li><li>Unlimited charts</li><li>Birth data required; astrological framework is the engine but outputs are not labeled as astrological in the interface</li><li>Longitudinal research participation and practitioner feedback fields</li><li>One hour of onboarding training included</li></ul></div>
+    <div class="tier-card"><div class="tier-name">Constitutional Health</div><div class="tier-price">$150 / month &nbsp;·&nbsp; $1,500 / year</div><ul class="term-list"><li>Constitutional health engine and remedy page — outputs presented in constitutional language</li><li>Unlimited charts</li><li>Birth data required; astrological framework is the engine but outputs are not labeled as astrological in the interface</li><li>Longitudinal research participation and practitioner feedback fields</li><li>One hour of onboarding training included</li></ul></div>
   </section>
 
   <section class="policy" id="payments">
@@ -255,10 +178,6 @@
     <p><strong>Lisa Hagan</strong><br>Triple Moon Goddess<br><a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
   </section>
 
-  <div class="policy-footer">
-    <p>Triple Moon Goddess · <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a> · <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
-    <p class="version">Terms of Service · Effective May 2026 · California, USA</p>
-  </div>
 </div>
 </body>
 </html>
