@@ -22,10 +22,11 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; position: relative; min-height: 100vh; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; position: relative; min-height: 100vh; padding-top: 44px; }
   body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%), radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, var(--bg) 70%); pointer-events: none; z-index: 0; }
   body::after { content: ''; position: fixed; inset: 0; background-image: radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent), radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent), radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent), radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent), radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent), radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent), radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent), radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent), radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent), radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent); background-size: 100% 100%; pointer-events: none; z-index: 0; opacity: 0.7; animation: twinkle 8s ease-in-out infinite; }
   @keyframes twinkle { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.4; } }
+  .test-banner { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; background: #c41e1e; color: #fff; text-align: center; font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; padding: 12px 16px; font-weight: 600; border-bottom: 2px solid #8b0000; box-shadow: 0 2px 12px rgba(0,0,0,0.5); }
   .container { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
   .hero { padding: 100px 0 72px; text-align: center; }
   .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; margin-bottom: 28px; opacity: 0; animation: fadeUp 1s ease-out 0.2s forwards; }
@@ -85,6 +86,8 @@
 </style>
 </head>
 <body>
+
+<div class="test-banner">✦ Testing — Dev Environment ✦</div>
 
 <div class="container">
 
