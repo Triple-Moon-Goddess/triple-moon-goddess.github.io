@@ -23,9 +23,10 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
 
-  body {
-    background: var(--bg);
-    color: var(--ink);
+  html, body {
+    background: #0a0608 !important;
+    background-color: #0a0608 !important;
+    color: #f5e8d0;
     font-family: 'Inter', system-ui, sans-serif;
     font-weight: 300;
     line-height: 1.6;
@@ -41,7 +42,7 @@
     background:
       radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%),
       radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, var(--bg) 70%);
+      radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, #0a0608 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -151,14 +152,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: var(--bg);
+    background: #0a0608;
     padding: 0 18px;
     color: var(--gold);
     font-size: 18px;
   }
 
   .form-card {
-    background: linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%);
+    background: #0d0709 !important;
+    background-color: #0d0709 !important;
     border: 1px solid var(--line);
     padding: 52px 48px;
     position: relative;
@@ -195,9 +197,10 @@
   input[type="email"],
   textarea {
     width: 100%;
-    background: rgba(10, 6, 8, 0.8);
+    background: #050304 !important;
+    background-color: #050304 !important;
     border: 1px solid var(--line);
-    color: var(--ink);
+    color: #f5e8d0 !important;
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.05rem;
     font-weight: 400;
@@ -277,7 +280,7 @@
     text-transform: uppercase;
     font-weight: 500;
     background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-bright) 100%);
-    color: var(--bg-deep);
+    color: #050304;
     border: none;
     cursor: pointer;
     transition: all 0.4s ease;
@@ -293,16 +296,18 @@
     cursor: not-allowed;
   }
 
-  /* Success state — hidden until submission */
+  /* Success state — explicit dark background so it works inside Google Sites iframe */
   .success-state {
     display: none;
     text-align: center;
     padding: 48px 0 16px;
+    background: #0d0709 !important;
+    background-color: #0d0709 !important;
   }
 
   .success-icon {
     font-size: 2.2rem;
-    color: var(--gold);
+    color: #d4af6a;
     margin-bottom: 24px;
   }
 
@@ -310,21 +315,21 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.2rem;
     font-weight: 400;
-    color: var(--gold-bright);
+    color: #e8c989 !important;
     margin-bottom: 14px;
     line-height: 1.15;
   }
 
   .success-state h2 em {
     font-style: italic;
-    color: var(--ink);
+    color: #f5e8d0 !important;
     font-weight: 300;
   }
 
   .success-state p {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    color: var(--ink-soft);
+    color: #c9b896 !important;
     font-size: 1.15rem;
   }
 
@@ -355,14 +360,14 @@
 
   <div class="form-card">
 
-    <!-- Success state — shown after submission -->
+    <!-- Success state -->
     <div class="success-state" id="success-state">
       <div class="success-icon">✦</div>
       <h2>Message <em>received</em>.</h2>
       <p>Lisa will be in touch soon.</p>
     </div>
 
-    <!-- Form wrap — hidden after submission -->
+    <!-- Form wrap -->
     <div id="form-wrap">
 
       <div class="form-error" id="form-error"></div>
@@ -426,6 +431,8 @@
       if (res.ok) {
         formWrap.style.display = 'none';
         successState.style.display = 'block';
+        successState.style.backgroundColor = '#0d0709';
+        successState.style.background = '#0d0709';
       } else {
         const json = await res.json().catch(() => ({}));
         const msg = (json.errors || []).map(e => e.message).join(' ') || 'Something went wrong. Please email Lisa@TripleMoonGoddess.com directly.';
