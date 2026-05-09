@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triple Moon Goddess — Integrative Astrology for Health and Growth</title>
+<meta name="description" content="Integrative physical health and personal growth consults. Practitioner apps that do both.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #d4af6a;
+    --gold-bright: #e8c989;
+    --gold-deep: #b8945a;
+    --ink: #f5e8d0;
+    --ink-soft: #c9b896;
+    --bg: #0a0608;
+    --line: rgba(212, 175, 106, 0.18);
+    --line-strong: rgba(212, 175, 106, 0.4);
+
+    --accent-consult: #f0a4b8;
+    --accent-practitioners: #6ee7a7;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  html, body {
+    background: #0a0608 !important;
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, #0a0608 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent),
+      radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent),
+      radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent),
+      radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent);
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+    animation: twinkle 8s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.4; }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 96px 0 64px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 0.2s forwards;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '✦';
+    margin: 0 14px;
+    color: var(--gold-deep);
+    font-size: 10px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--gold-bright);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 1.1s ease-out 0.4s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .hero-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto;
+    font-weight: 400;
+    line-height: 1.65;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out 0.6s forwards;
+  }
+
+  .ornament {
+    margin: 56px auto 0;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 0.9s forwards;
+  }
+
+  .ornament::before {
+    content: '☾';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0a0608;
+    padding: 0 18px;
+    color: var(--gold);
+    font-size: 18px;
+  }
+
+  /* VIDEO */
+  .video-section {
+    padding: 24px 0 80px;
+    opacity: 0;
+    animation: fadeUp 1.1s ease-out 1.1s forwards;
+  }
+
+  .video-frame {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--line);
+    background: #050304;
+    overflow: hidden;
+  }
+
+  .video-frame::before,
+  .video-frame::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--gold-deep);
+    opacity: 0.5;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .video-frame::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+  .video-frame::after { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+  .video-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  /* DOORS */
+  .doors-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .doors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    padding-bottom: 80px;
+  }
+
+  @media (max-width: 720px) {
+    .doors { grid-template-columns: 1fr; }
+  }
+
+  .door {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%);
+    border: 1px solid var(--line);
+    padding: 48px 40px 44px;
+    transition: border-color 0.5s ease, transform 0.4s ease;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .door:nth-child(1) { --accent: var(--accent-consult); }
+  .door:nth-child(2) { --accent: var(--accent-practitioners); }
+
+  .door:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .door::before,
+  .door::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--gold-deep);
+    opacity: 0.4;
+    transition: border-color 0.4s ease, opacity 0.4s ease;
+  }
+  .door::before { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+  .door::after { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+  .door:hover::before,
+  .door:hover::after { border-color: var(--accent); opacity: 0.7; }
+
+  .door-glyph {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 22px;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 24px -6px var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    background: rgba(20, 12, 8, 0.8);
+  }
+
+  .door-glyph svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .door-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .door-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.85rem;
+    font-weight: 500;
+    color: var(--gold-bright);
+    margin-bottom: 18px;
+    line-height: 1.15;
+  }
+
+  .door-divider {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 0 auto 18px;
+    opacity: 0.6;
+  }
+
+  .door-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 26px;
+  }
+
+  .door-cta {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease;
+  }
+
+  .door:hover .door-cta { color: var(--accent); }
+
+  .door-cta .arrow {
+    display: inline-block;
+    transition: transform 0.4s ease;
+  }
+
+  .door:hover .door-cta .arrow { transform: translateX(4px); }
+
+  /* PROOF */
+  .proof {
+    text-align: center;
+    padding: 56px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 64px;
+  }
+
+  .proof blockquote {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.05rem, 2vw, 1.45rem);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    line-height: 1.55;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+    max-width: 720px;
+    margin: 0 auto 24px;
+  }
+
+  .proof cite {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.06em;
+    display: block;
+    margin-bottom: 28px;
+  }
+
+  .proof-link {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-deep);
+    padding-bottom: 3px;
+    transition: color 0.3s ease;
+  }
+
+  .proof-link:hover { color: var(--gold-bright); }
+
+  /* FOOTER */
+  .site-footer {
+    text-align: center;
+    padding: 40px 0 64px;
+  }
+
+  .site-footer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+
+  .site-footer a {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-deep);
+    padding-bottom: 3px;
+    transition: color 0.3s ease;
+  }
+
+  .site-footer a:hover { color: var(--gold-bright); }
+
+  @media (max-width: 540px) {
+    .container { padding: 0 22px; }
+    .hero { padding: 72px 0 48px; }
+    .video-section { padding: 16px 0 64px; }
+    .door { padding: 38px 26px 34px; }
+    .door-name { font-size: 1.55rem; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Triple Moon Goddess</div>
+    <h1>Integrative astrology<br>for <em>health</em> and <em>growth</em>.</h1>
+    <p class="hero-lead">
+      I do integrative physical health and personal growth consults.
+      I also build practitioner apps that do both.
+    </p>
+    <div class="ornament"></div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="video-section">
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube.com/embed/uKKrXQ4EHuc"
+        title="Triple Moon Goddess"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- DOORS -->
+  <div class="doors-eyebrow">Begin here</div>
+
+  <section class="doors">
+
+    <a class="door" href="/triple-moon-goddess-schedule-prod.html">
+      <div class="door-glyph" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="16" rx="1"/>
+          <path d="M3 9h18"/>
+          <path d="M8 3v4"/>
+          <path d="M16 3v4"/>
+        </svg>
+      </div>
+      <div class="door-eyebrow">One-on-one</div>
+      <div class="door-name">Book a Consult</div>
+      <div class="door-divider"></div>
+      <p class="door-desc">
+        Integrative physical health and personal growth, drawn from your
+        natal chart. A focused conversation built around what your chart
+        is showing right now.
+      </p>
+      <span class="door-cta">View the schedule <span class="arrow">→</span></span>
+    </a>
+
+    <a class="door" href="/triple-moon-goddess-practitioners-prod.html">
+      <div class="door-glyph" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 3v18"/>
+          <path d="M3 12h18"/>
+          <path d="M5.6 5.6l12.8 12.8"/>
+          <path d="M18.4 5.6L5.6 18.4"/>
+        </svg>
+      </div>
+      <div class="door-eyebrow">For your practice</div>
+      <div class="door-name">Practitioner Apps</div>
+      <div class="door-divider"></div>
+      <p class="door-desc">
+        Tools for astrologers, integrative practitioners, therapists, and
+        physicians — chart-driven assessment, constitutional protocols,
+        and longitudinal tracking.
+      </p>
+      <span class="door-cta">See the platform <span class="arrow">→</span></span>
+    </a>
+
+  </section>
+
+  <!-- PROOF -->
+  <div class="proof">
+    <blockquote>
+      "Within minutes she offered explanations that
+      not only made sense but hit home at a depth
+      I hadn't experienced before."
+    </blockquote>
+    <cite>— D.R., Personal Growth Consultation</cite>
+    <a class="proof-link" href="/triple-moon-goddess-testimonials.html">Read more</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>Ready to find out what your chart has been trying to tell you?</p>
+    <a href="/triple-moon-goddess-contact.html">Get in touch</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
