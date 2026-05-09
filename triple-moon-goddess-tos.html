@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Triple Moon Goddess</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #d4af6a;
+    --gold-bright: #e8c989;
+    --gold-deep: #b8945a;
+    --ink: #f5e8d0;
+    --ink-soft: #c9b896;
+    --bg: #0a0608;
+    --bg-deep: #050304;
+    --bg-card: #110a0d;
+    --line: rgba(212, 175, 106, 0.18);
+    --line-strong: rgba(212, 175, 106, 0.4);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, var(--bg) 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent),
+      radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent),
+      radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent),
+      radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent);
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+    animation: twinkle 8s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.4; }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .hero {
+    padding: 100px 0 56px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '✦';
+    margin: 0 14px;
+    color: var(--gold-deep);
+    font-size: 10px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--gold-bright);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .meta {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin-top: 32px;
+  }
+
+  .ornament {
+    margin: 48px auto;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position: relative;
+  }
+
+  .ornament::before {
+    content: '☾';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg);
+    padding: 0 18px;
+    color: var(--gold);
+    font-size: 18px;
+  }
+
+  section.policy {
+    margin-bottom: 56px;
+    padding: 0 8px;
+  }
+
+  section.policy h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--gold-bright);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  section.policy h2 .num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    margin-right: 14px;
+    vertical-align: middle;
+  }
+
+  section.policy h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--gold);
+    margin-top: 24px;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  section.policy p {
+    color: var(--ink);
+    margin-bottom: 16px;
+    font-size: 0.97rem;
+  }
+
+  section.policy p strong { color: var(--gold-bright); font-weight: 500; }
+
+  section.policy a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-deep);
+    transition: color 0.3s ease;
+  }
+
+  section.policy a:hover { color: var(--gold-bright); }
+
+  .callout {
+    background: linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--gold);
+    padding: 18px 24px;
+    margin: 20px 0;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  .callout strong { color: var(--gold-bright); font-weight: 500; }
+
+  .term-list {
+    list-style: none;
+    margin: 12px 0 16px 0;
+  }
+
+  .term-list li {
+    padding: 8px 0 8px 32px;
+    position: relative;
+    color: var(--ink);
+    font-size: 0.97rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .term-list li:last-child { border-bottom: none; }
+
+  .term-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 4px;
+    top: 10px;
+    color: var(--gold-deep);
+    font-size: 0.65rem;
+  }
+
+  .tier-card {
+    background: linear-gradient(180deg, rgba(20, 12, 8, 0.5) 0%, rgba(10, 6, 8, 0.85) 100%);
+    border: 1px solid var(--line);
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.4s ease;
+  }
+
+  .tier-card:hover { border-color: var(--line-strong); }
+
+  .tier-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--gold-bright);
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+
+  .tier-price {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .policy-footer {
+    text-align: center;
+    margin: 80px 0 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .policy-footer a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-deep);
+    padding-bottom: 1px;
+  }
+
+  .policy-footer a:hover { color: var(--gold-bright); }
+
+  .policy-footer .version {
+    margin-top: 14px;
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="hero-eyebrow">Terms of Service</div>
+    <h1>Your agreement<br>with <em>Triple Moon Goddess</em>.</h1>
+    <div class="meta">
+      <span>Effective May 2026</span>
+      <span>·</span>
+      <span>All Tiers</span>
+      <span>·</span>
+      <span>California, USA</span>
+    </div>
+    <div class="ornament"></div>
+  </section>
+
+  <section class="policy" id="intro">
+    <p>These Terms of Service ("Terms") govern your use of the Triple Moon Goddess platform and applications ("TMG," "the Platform"), operated by Lisa Hagan ("we," "us," "our"). By creating an account or using any TMG application, you agree to these Terms. If you do not agree, do not use the Platform.</p>
+    <p>These Terms apply to all tiers: Individual Seeker (free), Integrative Practitioner ($100/month or $1,000/year), Soul Pattern ($150/month or $1,500/year), and Constitutional Health ($150/month or $1,500/year). Tier-specific terms are noted where they differ.</p>
+  </section>
+
+  <section class="policy" id="what-it-is">
+    <h2><span class="num">I</span>What the Platform Is</h2>
+    <p>Triple Moon Goddess is an integrative medical astrology platform that generates constitutional health profiles, personal growth pattern assessments, and remedy protocols derived from natal chart data. TMG combines Western astrology, Traditional Chinese Medicine, Ayurveda, and psychological astrology frameworks.</p>
+    <div class="callout">
+      <strong>TMG is not a medical practice, a therapy practice, or a clinical diagnostic tool.</strong> All platform outputs are probabilistic, not diagnostic — they identify constitutional likelihoods derived from astrological observation, not clinical findings.
+    </div>
+    <p>No output from TMG constitutes a medical diagnosis, a mental health diagnosis, or a clinical recommendation. If you are seeking clinical care, consult a licensed medical or mental health professional.</p>
+  </section>
+
+  <section class="policy" id="birth-data">
+    <h2><span class="num">II</span>Birth Data &amp; Research Data Collection</h2>
+
+    <h3>Birth Data Requirement</h3>
+    <p>All TMG tiers require birth data (date, time, and location of birth) to generate a natal chart. Birth data is used solely to calculate your astrological chart and derive the platform outputs associated with your account.</p>
+
+    <h3>Research Data Collection</h3>
+    <p>By using the Platform, you agree that your session data contributes to the TMG longitudinal research corpus. This is a core function of the Platform. The research purpose is to evaluate whether astrological aspects — derived from your exact birth data — correlate with behavioral and psychological patterns over time. Birth data is therefore present in the research corpus by necessity: it is the variable being studied.</p>
+    <p>Research records are pseudonymized: your birth data is stored under a code and is never linked to your name or email address in research records. Data is analyzed at the pattern level only. Either outcome of the research — correlation or its absence — contributes to the methodology.</p>
+
+    <h3>Pseudonymization</h3>
+    <p>Birth data (date, time, and location) is inherently identifying and cannot be truly anonymized. Pseudonymization is the applicable standard: your identity (name, email) is replaced with a code, stored separately from research records, and the link is protected. Your birth data appears in the research corpus under that code — not under your name — and is analyzed at the pattern level only.</p>
+  </section>
+
+  <section class="policy" id="outputs">
+    <h2><span class="num">III</span>Platform Outputs</h2>
+
+    <h3>Non-Diagnostic by Design</h3>
+    <p>All TMG outputs are probabilistic assessments of constitutional patterns and personal growth likelihoods. They are not diagnoses, clinical assessments, or treatment recommendations. The platform is non-diagnostic as a methodological principle — not merely a research-validation gap.</p>
+
+    <h3>IPA Gap Analysis</h3>
+    <p>The IPA (Integrative Pattern Analysis) Gap Analysis methodology is patent-pending (U.S. Provisional Patent #63/998,305). IPA scores are collected and stored as research hypothesis variables. They are not surfaced in platform outputs at this stage and are not used as predictors until sufficient research data has been collected and validated.</p>
+  </section>
+
+  <section class="policy" id="tiers">
+    <h2><span class="num">IV</span>Tiers &amp; Access</h2>
+
+    <div class="tier-card">
+      <div class="tier-name">Individual Seeker</div>
+      <div class="tier-price">Free</div>
+      <ul class="term-list">
+        <li>Natal Chart app: full astrological chart with psychological archetypes, planetary strengths, and transit tracking</li>
+        <li>Health Blueprint: constitutional type derived from natal chart</li>
+        <li>Health Journal: daily wellness tracking correlated with moon signs and transits</li>
+        <li>Daily Widget and Tea Moon: transit-based tools derived from natal chart</li>
+        <li>One chart stored across apps</li>
+        <li>IPA pattern scoring and Soul Pattern assessment not included — available on paid tiers</li>
+        <li>Optional self-reported feedback contributes to the research corpus under pseudonymization</li>
+      </ul>
+    </div>
+
+    <div class="tier-card">
+      <div class="tier-name">Integrative Practitioner</div>
+      <div class="tier-price">$100 / month &nbsp;·&nbsp; $1,000 / year</div>
+      <ul class="term-list">
+        <li>Full platform: natal chart, constitutional health engine, remedy protocols, Soul Pattern assessment, astrological framework fully surfaced</li>
+        <li>Unlimited charts</li>
+        <li>Editable question libraries and orb settings</li>
+        <li>Longitudinal research participation and practitioner feedback fields</li>
+        <li>One hour of onboarding training included</li>
+      </ul>
+    </div>
+
+    <div class="tier-card">
+      <div class="tier-name">Soul Pattern</div>
+      <div class="tier-price">$150 / month &nbsp;·&nbsp; $1,500 / year</div>
+      <ul class="term-list">
+        <li>Soul Pattern assessment and journal — outputs presented in growth pattern language</li>
+        <li>Unlimited charts</li>
+        <li>Birth data required; astrological framework is the engine but outputs are not labeled as astrological in the interface</li>
+        <li>Longitudinal research participation and practitioner feedback fields</li>
+        <li>One hour of onboarding training included</li>
+      </ul>
+    </div>
+
+    <div class="tier-card">
+      <div class="tier-name">Constitutional Health</div>
+      <div class="tier-price">$150 / month &nbsp;·&nbsp; $1,500 / year</div>
+      <ul class="term-list">
+        <li>Constitutional health engine and remedy page — outputs presented in constitutional language</li>
+        <li>Unlimited charts</li>
+        <li>Birth data required; astrological framework is the engine but outputs are not labeled as astrological in the interface</li>
+        <li>Longitudinal research participation and practitioner feedback fields</li>
+        <li>One hour of onboarding training included</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="policy" id="payments">
+    <h2><span class="num">V</span>Payments &amp; Cancellation</h2>
+
+    <h3>Billing</h3>
+    <p>Paid subscriptions are billed monthly or annually in advance. By subscribing, you authorize us to charge your payment method on a recurring basis at the applicable rate for your tier.</p>
+
+    <h3>Cancellation</h3>
+    <p>You may cancel your subscription at any time. Cancellation takes effect at the end of your current billing period. You retain full access through the end of the period you have paid for.</p>
+
+    <h3>No Refunds</h3>
+    <p>All subscription fees are non-refundable. We do not issue refunds or credits for partial billing periods, unused time, or early cancellation. If you believe you were charged in error, contact us at <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a> within 30 days of the charge.</p>
+  </section>
+
+  <section class="policy" id="practitioner">
+    <h2><span class="num">VI</span>Practitioner Responsibilities</h2>
+    <p>If you use TMG in a professional capacity — as an astrologer, integrative practitioner, therapist, psychologist, or other licensed or unlicensed professional — you agree that:</p>
+    <ul class="term-list">
+      <li>You are responsible for how you apply platform outputs in your practice</li>
+      <li>TMG outputs do not substitute for your professional judgment</li>
+      <li>You will not represent TMG outputs as clinical diagnoses to your clients</li>
+      <li>You will comply with all applicable professional standards and regulations governing your practice</li>
+      <li>Your use of client birth data through TMG is subject to your own professional privacy obligations</li>
+    </ul>
+    <p>The question sets in the Soul module are a controlled methodology instrument. Practitioners on the Integrative Practitioner tier may manage their own question library within their account. Changes apply only to their own library and do not affect the TMG default methodology or other practitioners.</p>
+  </section>
+
+  <section class="policy" id="ip">
+    <h2><span class="num">VII</span>Intellectual Property</h2>
+    <p>The TMG methodology, platform, question sets, scoring architecture, and all associated content are the copyrighted intellectual property of Lisa Hagan / Triple Moon Goddess. The IPA Gap Analysis methodology is patent-pending (U.S. Provisional Patent #63/998,305).</p>
+    <p>You may not reproduce, distribute, reverse-engineer, or create derivative works from TMG methodology, outputs, or platform content without express written permission.</p>
+  </section>
+
+  <section class="policy" id="liability">
+    <h2><span class="num">VIII</span>Limitation of Liability</h2>
+    <p>To the fullest extent permitted by applicable law, TMG and Lisa Hagan are not liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Platform, including decisions made based on platform outputs.</p>
+    <p>Our total liability to you for any claim shall not exceed the greater of: (a) the total fees you paid us in the twelve months preceding the claim, or (b) the minimum amount permitted by applicable law. For users on the free tier, our liability is limited to the minimum amount permitted by applicable law.</p>
+  </section>
+
+  <section class="policy" id="disclaimers">
+    <h2><span class="num">IX</span>Disclaimers</h2>
+    <ul class="term-list">
+      <li>TMG is not a licensed medical provider, mental health provider, or clinical service</li>
+      <li>Platform outputs are not a substitute for professional medical, psychological, or therapeutic care</li>
+      <li>The correlation between astrological prediction and lived experience is a research hypothesis under active investigation — TMG does not assert that this correlation has been established</li>
+      <li>Astrological methodology reflects the training and astrological observation of Lisa Hagan and does not constitute clinical observation or clinical judgment</li>
+    </ul>
+  </section>
+
+  <section class="policy" id="governing-law">
+    <h2><span class="num">X</span>Governing Law &amp; Disputes</h2>
+    <p>These Terms are governed by the laws of the State of California, without regard to conflict of law principles. Any dispute arising under these Terms shall be resolved through good-faith negotiation. If negotiation fails, disputes shall be submitted to binding arbitration in Contra Costa County, California, under the rules of the American Arbitration Association.</p>
+  </section>
+
+  <section class="policy" id="changes">
+    <h2><span class="num">XI</span>Changes to These Terms</h2>
+    <p>We may update these Terms from time to time. If we make material changes, we will notify you by email or by posting a notice in the Platform. Your continued use of the Platform after the effective date of updated Terms constitutes acceptance of the changes.</p>
+  </section>
+
+  <section class="policy" id="contact">
+    <h2><span class="num">XII</span>Contact</h2>
+    <p>Questions about these Terms or your data:</p>
+    <p><strong>Lisa Hagan</strong><br>
+    Triple Moon Goddess<br>
+    <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
+  </section>
+
+  <div class="policy-footer">
+    <p>Triple Moon Goddess · <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a> · <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
+    <p class="version">Terms of Service · Effective May 2026 · California, USA</p>
+  </div>
+
+</div>
+
+</body>
+</html>
