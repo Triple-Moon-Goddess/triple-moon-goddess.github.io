@@ -20,479 +20,70 @@
     --line: rgba(212, 175, 106, 0.18);
     --line-strong: rgba(212, 175, 106, 0.4);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Inter', system-ui, sans-serif;
-    font-weight: 300;
-    line-height: 1.6;
-    overflow-x: hidden;
-    position: relative;
-    min-height: 100vh;
-    padding-top: 44px;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%),
-      radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, var(--bg) 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent),
-      radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent),
-      radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent),
-      radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent),
-      radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent),
-      radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent),
-      radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent),
-      radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent),
-      radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent),
-      radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent);
-    background-size: 100% 100%;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.7;
-    animation: twinkle 8s ease-in-out infinite;
-  }
-
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 0.4; }
-  }
-
-  .test-banner {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    background: #c41e1e;
-    color: #fff;
-    text-align: center;
-    font-family: 'Cinzel', serif;
-    font-size: 13px;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    padding: 12px 16px;
-    font-weight: 600;
-    border-bottom: 2px solid #8b0000;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.5);
-  }
-
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-
-  .hero {
-    padding: 100px 0 72px;
-    text-align: center;
-  }
-
-  .hero-eyebrow {
-    font-family: 'Cinzel', serif;
-    font-size: 12px;
-    letter-spacing: 0.32em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 1s ease-out 0.2s forwards;
-  }
-
-  .hero-eyebrow::before,
-  .hero-eyebrow::after {
-    content: '✦';
-    margin: 0 14px;
-    color: var(--gold-deep);
-    font-size: 10px;
-  }
-
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 400;
-    font-size: clamp(2.6rem, 5.5vw, 4.5rem);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    color: var(--gold-bright);
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 1.1s ease-out 0.4s forwards;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--ink);
-    font-weight: 300;
-  }
-
-  .hero-lead {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-    color: var(--ink-soft);
-    max-width: 640px;
-    margin: 0 auto;
-    font-weight: 400;
-    line-height: 1.55;
-    opacity: 0;
-    animation: fadeUp 1.2s ease-out 0.6s forwards;
-  }
-
-  .ornament {
-    margin: 56px auto;
-    width: 200px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    position: relative;
-    opacity: 0;
-    animation: fadeIn 1.5s ease-out 0.9s forwards;
-  }
-
-  .ornament::before {
-    content: '☾';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--bg);
-    padding: 0 18px;
-    color: var(--gold);
-    font-size: 18px;
-  }
-
-  .pricing {
-    padding: 24px 0 80px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
-    max-width: 720px;
-    margin: 0 auto;
-  }
-
-  .tier {
-    position: relative;
-    background:
-      linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%);
-    border: 1px solid var(--line);
-    padding: 48px 40px 40px;
-    backdrop-filter: blur(8px);
-    transition: border-color 0.5s ease, transform 0.5s ease;
-    opacity: 0;
-    animation: fadeUp 1s ease-out 1s forwards;
-  }
-
+  body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; position: relative; min-height: 100vh; padding-top: 44px; }
+  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%), radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, var(--bg) 70%); pointer-events: none; z-index: 0; }
+  body::after { content: ''; position: fixed; inset: 0; background-image: radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent), radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent), radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent), radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent), radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent), radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent), radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent), radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent), radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent), radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent); background-size: 100% 100%; pointer-events: none; z-index: 0; opacity: 0.7; animation: twinkle 8s ease-in-out infinite; }
+  @keyframes twinkle { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.4; } }
+  .test-banner { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; background: #c41e1e; color: #fff; text-align: center; font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; padding: 12px 16px; font-weight: 600; border-bottom: 2px solid #8b0000; box-shadow: 0 2px 12px rgba(0,0,0,0.5); }
+  .container { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  .hero { padding: 100px 0 72px; text-align: center; }
+  .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; margin-bottom: 28px; opacity: 0; animation: fadeUp 1s ease-out 0.2s forwards; }
+  .hero-eyebrow::before, .hero-eyebrow::after { content: '✦'; margin: 0 14px; color: var(--gold-deep); font-size: 10px; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2.6rem, 5.5vw, 4.5rem); line-height: 1.1; letter-spacing: -0.01em; color: var(--gold-bright); margin-bottom: 28px; opacity: 0; animation: fadeUp 1.1s ease-out 0.4s forwards; }
+  .hero h1 em { font-style: italic; color: var(--ink); font-weight: 300; }
+  .hero-lead { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 1.6vw, 1.3rem); color: var(--ink-soft); max-width: 640px; margin: 0 auto; font-weight: 400; line-height: 1.55; opacity: 0; animation: fadeUp 1.2s ease-out 0.6s forwards; }
+  .ornament { margin: 56px auto; width: 200px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); position: relative; opacity: 0; animation: fadeIn 1.5s ease-out 0.9s forwards; }
+  .ornament::before { content: '☾'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--bg); padding: 0 18px; color: var(--gold); font-size: 18px; }
+  .pricing { padding: 24px 0 80px; display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 720px; margin: 0 auto; }
+  .tier { position: relative; background: linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%); border: 1px solid var(--line); padding: 48px 40px 40px; backdrop-filter: blur(8px); transition: border-color 0.5s ease, transform 0.5s ease; opacity: 0; animation: fadeUp 1s ease-out 1s forwards; }
   .tier:nth-child(2) { animation-delay: 1.15s; }
   .tier:nth-child(3) { animation-delay: 1.3s; }
   .tier:nth-child(4) { animation-delay: 1.45s; }
   .tier:nth-child(5) { animation-delay: 1.6s; }
-
-  .tier:hover {
-    border-color: var(--line-strong);
-    transform: translateY(-4px);
-  }
-
-  .tier::before,
-  .tier::after {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    border: 1px solid var(--gold-deep);
-    opacity: 0.5;
-  }
+  .tier:hover { border-color: var(--line-strong); transform: translateY(-4px); }
+  .tier::before, .tier::after { content: ''; position: absolute; width: 24px; height: 24px; border: 1px solid var(--gold-deep); opacity: 0.5; }
   .tier::before { top: 12px; left: 12px; border-right: none; border-bottom: none; }
   .tier::after { bottom: 12px; right: 12px; border-left: none; border-top: none; }
-
-  .tier-label {
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 0.28em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 18px;
-  }
-
-  .tier-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.1rem;
-    font-weight: 500;
-    color: var(--gold-bright);
-    line-height: 1.15;
-    margin-bottom: 12px;
-  }
-
-  .tier-name em {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--ink);
-  }
-
-  .tier-tagline {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.05rem;
-    color: var(--ink-soft);
-    margin-bottom: 32px;
-    line-height: 1.5;
-  }
-
-  .price-block {
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    padding: 24px 0;
-    margin-bottom: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .price-row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 16px;
-  }
-
-  .price-row-label {
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    color: var(--ink-soft);
-    text-transform: uppercase;
-  }
-
-  .price-row-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    color: var(--gold-bright);
-    font-weight: 400;
-  }
-
-  .price-row-value .unit {
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-    font-style: italic;
-    margin-left: 4px;
-  }
-
-  .price-row-value .savings {
-    display: block;
-    font-size: 0.7rem;
-    font-family: 'Inter', sans-serif;
-    color: var(--gold);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 2px;
-    text-align: right;
-  }
-
-  .features {
-    list-style: none;
-    margin-bottom: 36px;
-  }
-
-  .features li {
-    padding: 11px 0 11px 28px;
-    position: relative;
-    border-bottom: 1px solid var(--line);
-    font-size: 0.95rem;
-    color: var(--ink);
-    line-height: 1.5;
-  }
-
+  .tier-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; margin-bottom: 18px; }
+  .tier-name { font-family: 'Cormorant Garamond', serif; font-size: 2.1rem; font-weight: 500; color: var(--gold-bright); line-height: 1.15; margin-bottom: 12px; }
+  .tier-name em { font-style: italic; font-weight: 400; color: var(--ink); }
+  .tier-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--ink-soft); margin-bottom: 32px; line-height: 1.5; }
+  .price-block { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 24px 0; margin-bottom: 32px; display: flex; flex-direction: column; gap: 14px; }
+  .price-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  .price-row-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em; color: var(--ink-soft); text-transform: uppercase; }
+  .price-row-value { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--gold-bright); font-weight: 400; }
+  .price-row-value .unit { font-size: 0.85rem; color: var(--ink-soft); font-style: italic; margin-left: 4px; }
+  .price-row-value .savings { display: block; font-size: 0.7rem; font-family: 'Inter', sans-serif; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; text-align: right; }
+  .features { list-style: none; margin-bottom: 36px; }
+  .features li { padding: 11px 0 11px 28px; position: relative; border-bottom: 1px solid var(--line); font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
   .features li:last-child { border-bottom: none; }
-
-  .features li::before {
-    content: '✦';
-    position: absolute;
-    left: 0;
-    top: 11px;
-    color: var(--gold);
-    font-size: 0.75rem;
-  }
-
-  .quote-line {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.1rem;
-    color: var(--gold-bright);
-    text-align: center;
-    margin: 0 0 32px 0;
-    padding: 24px 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    line-height: 1.5;
-  }
-
-  .cta-group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .cta {
-    display: block;
-    text-align: center;
-    padding: 16px 28px;
-    font-family: 'Cinzel', serif;
-    font-size: 12px;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cta-primary {
-    background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-bright) 100%);
-    color: var(--bg-deep);
-    font-weight: 500;
-  }
-
-  .cta-primary:hover {
-    background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%);
-    box-shadow: 0 0 32px rgba(212, 175, 106, 0.35);
-  }
-
-  .included {
-    margin: 64px 0;
-    padding: 56px 48px;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    text-align: center;
-  }
-
-  .included h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 400;
-    color: var(--gold-bright);
-    margin-bottom: 12px;
-  }
-
+  .features li::before { content: '✦'; position: absolute; left: 0; top: 11px; color: var(--gold); font-size: 0.75rem; }
+  .quote-line { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--gold-bright); text-align: center; margin: 0 0 32px 0; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); line-height: 1.5; }
+  .cta-group { display: flex; flex-direction: column; gap: 12px; }
+  .cta { display: block; text-align: center; padding: 16px 28px; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: none; transition: all 0.4s ease; }
+  .cta-primary { background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-bright) 100%); color: var(--bg-deep); font-weight: 500; }
+  .cta-primary:hover { background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%); box-shadow: 0 0 32px rgba(212, 175, 106, 0.35); }
+  .included { margin: 64px 0; padding: 56px 48px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
+  .included h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--gold-bright); margin-bottom: 12px; }
   .included h2 em { font-style: italic; color: var(--ink); }
-
-  .included-sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--ink-soft);
-    margin-bottom: 48px;
-    font-size: 1.05rem;
-  }
-
-  .included-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    text-align: left;
-  }
-
-  @media (max-width: 760px) {
-    .included { padding: 40px 24px; }
-    .included-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
-  }
-
-  .included-item-label {
-    font-family: 'Cinzel', serif;
-    font-size: 10px;
-    letter-spacing: 0.24em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .included-item-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem;
-    color: var(--ink);
-    line-height: 1.5;
-  }
-
-  .faq {
-    padding: 32px 0 80px;
-    max-width: 760px;
-    margin: 0 auto;
-  }
-
-  .faq h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 400;
-    color: var(--gold-bright);
-    text-align: center;
-    margin-bottom: 48px;
-  }
-
+  .included-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ink-soft); margin-bottom: 48px; font-size: 1.05rem; }
+  .included-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: left; }
+  @media (max-width: 760px) { .included { padding: 40px 24px; } .included-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; } }
+  .included-item-label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.24em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+  .included-item-text { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ink); line-height: 1.5; }
+  .faq { padding: 32px 0 80px; max-width: 760px; margin: 0 auto; }
+  .faq h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--gold-bright); text-align: center; margin-bottom: 48px; }
   .faq h2 em { font-style: italic; color: var(--ink); }
-
-  .faq-item {
-    border-bottom: 1px solid var(--line);
-    padding: 24px 0;
-  }
-
-  .faq-q {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: var(--gold-bright);
-    margin-bottom: 10px;
-  }
-
-  .faq-a {
-    color: var(--ink-soft);
-    font-size: 0.98rem;
-    line-height: 1.65;
-  }
-
-  .footer-note {
-    text-align: center;
-    padding: 40px 0 80px;
-    color: var(--ink-soft);
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1rem;
-  }
-
-  .footer-note a {
-    color: var(--gold);
-    text-decoration: none;
-    border-bottom: 1px solid var(--gold-deep);
-    padding-bottom: 1px;
-    transition: color 0.3s ease;
-  }
-
+  .faq-item { border-bottom: 1px solid var(--line); padding: 24px 0; }
+  .faq-q { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 500; color: var(--gold-bright); margin-bottom: 10px; }
+  .faq-a { color: var(--ink-soft); font-size: 0.98rem; line-height: 1.65; }
+  .footer-note { text-align: center; padding: 40px 0 80px; color: var(--ink-soft); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; }
+  .footer-note a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); padding-bottom: 1px; }
   .footer-note a:hover { color: var(--gold-bright); }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeIn {
-    to { opacity: 1; }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { to { opacity: 1; } }
 </style>
 </head>
 <body>
@@ -500,41 +91,23 @@
 <div class="test-banner">✦ Testing — Dev Environment ✦</div>
 
 <div class="container">
-
   <section class="hero">
     <div class="hero-eyebrow">Schedule a Consultation</div>
     <h1>The deep work,<br>in <em>your time</em>.</h1>
-    <p class="hero-lead">
-      Each consultation begins with your birth chart and the patterns it reveals —
-      then moves quickly to what to do about them. The 90 minutes is for action,
-      not recap. The intake form does the recap before we meet.
-    </p>
+    <p class="hero-lead">Each consultation begins with your birth chart and the patterns it reveals — then moves quickly to what to do about them. The 90 minutes is for action, not recap. The intake form does the recap before we meet.</p>
     <div class="ornament"></div>
   </section>
 
   <section class="pricing" id="offerings">
 
-    <!-- PERSONAL GROWTH -->
     <div class="tier">
       <div class="tier-label">Personal Growth Consultation</div>
       <h2 class="tier-name">Personal <em>Growth</em></h2>
-      <p class="tier-tagline">
-        The deep work for clients focused on the inner life — patterns in
-        relationships, work, identity, the things that keep showing up even
-        when the surface circumstances change.
-      </p>
-
+      <p class="tier-tagline">The deep work for clients focused on the inner life — patterns in relationships, work, identity, the things that keep showing up even when the surface circumstances change.</p>
       <div class="price-block">
-        <div class="price-row">
-          <span class="price-row-label">Investment</span>
-          <span class="price-row-value">$150</span>
-        </div>
-        <div class="price-row">
-          <span class="price-row-label">Length</span>
-          <span class="price-row-value">90<span class="unit">&nbsp;minutes</span></span>
-        </div>
+        <div class="price-row"><span class="price-row-label">Investment</span><span class="price-row-value">$150</span></div>
+        <div class="price-row"><span class="price-row-label">Length</span><span class="price-row-value">90<span class="unit">&nbsp;minutes</span></span></div>
       </div>
-
       <ul class="features">
         <li>One 90-minute session via Google Meet</li>
         <li>Birth chart on file required (the system can guide you through creating one)</li>
@@ -542,35 +115,20 @@
         <li>Chart and constitutional analysis reviewed before we meet</li>
         <li>The 90 minutes is spent on what to do, not recapping what you already know</li>
       </ul>
-
       <p class="quote-line">This work is honest. We will dive deep.<br>If that sounds right, you'll know.</p>
-
       <div class="cta-group">
-        <a href="https://triple-moon-goddess-dev.web.app/?page=checkout&product=personal_growth" class="cta cta-primary">Schedule &amp; Pay</a>
+        <a href="https://triple-moon-goddess-dev.web.app/?page=checkout&product=personal_growth" target="_blank" rel="noopener" class="cta cta-primary">Schedule &amp; Pay</a>
       </div>
     </div>
 
-    <!-- PHYSICAL HEALTH -->
     <div class="tier">
       <div class="tier-label">Physical Health Consultation</div>
       <h2 class="tier-name">Physical <em>Health</em></h2>
-      <p class="tier-tagline">
-        The deep work for clients focused on physical patterns — fatigue,
-        digestion, sleep, hormonal cycles, autoimmune patterns, recurring
-        symptoms that no one has been able to map.
-      </p>
-
+      <p class="tier-tagline">The deep work for clients focused on physical patterns — fatigue, digestion, sleep, hormonal cycles, autoimmune patterns, recurring symptoms that no one has been able to map.</p>
       <div class="price-block">
-        <div class="price-row">
-          <span class="price-row-label">Investment</span>
-          <span class="price-row-value">$150</span>
-        </div>
-        <div class="price-row">
-          <span class="price-row-label">Length</span>
-          <span class="price-row-value">90<span class="unit">&nbsp;minutes</span></span>
-        </div>
+        <div class="price-row"><span class="price-row-label">Investment</span><span class="price-row-value">$150</span></div>
+        <div class="price-row"><span class="price-row-label">Length</span><span class="price-row-value">90<span class="unit">&nbsp;minutes</span></span></div>
       </div>
-
       <ul class="features">
         <li>One 90-minute session via Google Meet</li>
         <li>Birth chart on file required</li>
@@ -578,35 +136,19 @@
         <li>Chart and constitutional analysis reviewed before we meet</li>
         <li>Walk away with what to do — diet, herbs, lifestyle protocols specific to your constitution</li>
       </ul>
-
       <div class="cta-group">
-        <a href="https://triple-moon-goddess-dev.web.app/?page=checkout&product=physical_health" class="cta cta-primary">Schedule &amp; Pay</a>
+        <a href="https://triple-moon-goddess-dev.web.app/?page=checkout&product=physical_health" target="_blank" rel="noopener" class="cta cta-primary">Schedule &amp; Pay</a>
       </div>
     </div>
 
-    <!-- BUNDLE: GROWTH + HEALTH -->
     <div class="tier">
       <div class="tier-label">Special Bundle</div>
       <h2 class="tier-name">Growth &<br><em>Health Bundle</em></h2>
-      <p class="tier-tagline">
-        For clients who know they want both — or who suspect their physical
-        patterns and their inner life are talking to each other. They usually are.
-      </p>
-
+      <p class="tier-tagline">For clients who know they want both — or who suspect their physical patterns and their inner life are talking to each other. They usually are.</p>
       <div class="price-block">
-        <div class="price-row">
-          <span class="price-row-label">Investment</span>
-          <span class="price-row-value">
-            $250
-            <span class="savings">Save $50</span>
-          </span>
-        </div>
-        <div class="price-row">
-          <span class="price-row-label">Length</span>
-          <span class="price-row-value">2 × 90<span class="unit">&nbsp;minutes</span></span>
-        </div>
+        <div class="price-row"><span class="price-row-label">Investment</span><span class="price-row-value">$250<span class="savings">Save $50</span></span></div>
+        <div class="price-row"><span class="price-row-label">Length</span><span class="price-row-value">2 × 90<span class="unit">&nbsp;minutes</span></span></div>
       </div>
-
       <ul class="features">
         <li>Two 90-minute sessions via Google Meet</li>
         <li>Sessions scheduled at least 7 days apart for integration time</li>
@@ -614,36 +156,19 @@
         <li>Two intake forms, both completed at least 48 hours before each session</li>
         <li>$50 savings vs booking the consultations separately</li>
       </ul>
-
       <div class="cta-group">
-        <a href="https://triple-moon-goddess-dev.web.app/?page=checkout&product=both_consults" class="cta cta-primary">Schedule &amp; Pay</a>
+        <a href="https://triple-moon-goddess-dev.web.app/?page=checkout&product=both_consults" target="_blank" rel="noopener" class="cta cta-primary">Schedule &amp; Pay</a>
       </div>
     </div>
 
-    <!-- BUNDLE: 3 PHYSICAL HEALTH -->
     <div class="tier">
       <div class="tier-label">Special Bundle</div>
       <h2 class="tier-name">3 Physical Health<br><em>Consultations</em></h2>
-      <p class="tier-tagline">
-        For clients who know they want to continue with follow-ups to their
-        physical health consultation — protocol refinement, tracking shifts,
-        adjusting the work as your constitution responds.
-      </p>
-
+      <p class="tier-tagline">For clients who know they want to continue with follow-ups to their physical health consultation — protocol refinement, tracking shifts, adjusting the work as your constitution responds.</p>
       <div class="price-block">
-        <div class="price-row">
-          <span class="price-row-label">Investment</span>
-          <span class="price-row-value">
-            $350
-            <span class="savings">Save $100</span>
-          </span>
-        </div>
-        <div class="price-row">
-          <span class="price-row-label">Length</span>
-          <span class="price-row-value">3 × 90<span class="unit">&nbsp;minutes</span></span>
-        </div>
+        <div class="price-row"><span class="price-row-label">Investment</span><span class="price-row-value">$350<span class="savings">Save $100</span></span></div>
+        <div class="price-row"><span class="price-row-label">Length</span><span class="price-row-value">3 × 90<span class="unit">&nbsp;minutes</span></span></div>
       </div>
-
       <ul class="features">
         <li>Three 90-minute sessions via Google Meet</li>
         <li>Sessions scheduled at least 14 days apart for integration time</li>
@@ -651,33 +176,19 @@
         <li>Chart and constitutional analysis reviewed before each session</li>
         <li>$100 savings vs booking the consultations separately</li>
       </ul>
-
       <div class="cta-group">
-        <a href="https://triple-moon-goddess-dev.web.app/?page=checkout&product=physical_health_3pack" class="cta cta-primary">Schedule &amp; Pay</a>
+        <a href="https://triple-moon-goddess-dev.web.app/?page=checkout&product=physical_health_3pack" target="_blank" rel="noopener" class="cta cta-primary">Schedule &amp; Pay</a>
       </div>
     </div>
 
-    <!-- INTAKE CALL -->
     <div class="tier">
       <div class="tier-label">Guided Onboarding Intake Call</div>
       <h2 class="tier-name">Guided <em>Intake Call</em></h2>
-      <p class="tier-tagline">
-        If filling out a long intake form alone feels like another thing on
-        your list, this is the right starting place. Not a consultation — a
-        guided onboarding to get you set up.
-      </p>
-
+      <p class="tier-tagline">If filling out a long intake form alone feels like another thing on your list, this is the right starting place. Not a consultation — a guided onboarding to get you set up.</p>
       <div class="price-block">
-        <div class="price-row">
-          <span class="price-row-label">Investment</span>
-          <span class="price-row-value">$100</span>
-        </div>
-        <div class="price-row">
-          <span class="price-row-label">Length</span>
-          <span class="price-row-value">60<span class="unit">&nbsp;minutes</span></span>
-        </div>
+        <div class="price-row"><span class="price-row-label">Investment</span><span class="price-row-value">$100</span></div>
+        <div class="price-row"><span class="price-row-label">Length</span><span class="price-row-value">60<span class="unit">&nbsp;minutes</span></span></div>
       </div>
-
       <ul class="features">
         <li>60 minutes via Google Meet</li>
         <li>We walk through your intake form together in conversation</li>
@@ -685,9 +196,8 @@
         <li>An actual consultation session is booked separately for $150</li>
         <li>Right starting place if you're new to this work</li>
       </ul>
-
       <div class="cta-group">
-        <a href="https://triple-moon-goddess-dev.web.app/?page=checkout&product=intake_call" class="cta cta-primary">Schedule &amp; Pay</a>
+        <a href="https://triple-moon-goddess-dev.web.app/?page=checkout&product=intake_call" target="_blank" rel="noopener" class="cta cta-primary">Schedule &amp; Pay</a>
       </div>
     </div>
 
@@ -697,64 +207,24 @@
     <h2>How <em>sessions work</em></h2>
     <p class="included-sub">The intake form does the recap. The session is for action.</p>
     <div class="included-grid">
-      <div>
-        <div class="included-item-label">Birth Chart First</div>
-        <p class="included-item-text">Every consultation requires a birth chart on file. If you don't have one yet, the booking link will guide you through creating it.</p>
-      </div>
-      <div>
-        <div class="included-item-label">Intake Before We Meet</div>
-        <p class="included-item-text">You complete the intake form online — saved by email so you can pause and resume. Symptoms, history, what you've already tried.</p>
-      </div>
-      <div>
-        <div class="included-item-label">Reviewed in Advance</div>
-        <p class="included-item-text">Lisa reviews your intake alongside your chart and constitutional analysis before the session. The 90 minutes is for what to do.</p>
-      </div>
-      <div>
-        <div class="included-item-label">Google Meet</div>
-        <p class="included-item-text">All consultations are video sessions. The booking confirmation includes the meeting link.</p>
-      </div>
+      <div><div class="included-item-label">Birth Chart First</div><p class="included-item-text">Every consultation requires a birth chart on file. If you don't have one yet, the booking link will guide you through creating it.</p></div>
+      <div><div class="included-item-label">Intake Before We Meet</div><p class="included-item-text">You complete the intake form online — saved by email so you can pause and resume. Symptoms, history, what you've already tried.</p></div>
+      <div><div class="included-item-label">Reviewed in Advance</div><p class="included-item-text">Lisa reviews your intake alongside your chart and constitutional analysis before the session. The 90 minutes is for what to do.</p></div>
+      <div><div class="included-item-label">Google Meet</div><p class="included-item-text">All consultations are video sessions. The booking confirmation includes the meeting link.</p></div>
     </div>
   </section>
 
   <section class="faq">
     <h2>Common <em>questions</em></h2>
-
-    <div class="faq-item">
-      <div class="faq-q">Which consultation is right for me?</div>
-      <p class="faq-a">If you're working with patterns in relationships, identity, work, or the inner life — <strong>Personal Growth</strong>. If you're working with physical patterns like fatigue, digestion, sleep, autoimmune symptoms, or hormonal cycles — <strong>Physical Health</strong>. If you suspect both are connected — the <strong>Bundle</strong> gives you both at a saving.</p>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">I don't have a birth chart yet. Can I still book?</div>
-      <p class="faq-a">Yes. The booking link takes you to the system that will guide you through creating your chart — birth date, birth time, and birth location are required. Once your chart is on file, you complete your intake form and book your session.</p>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">What if I need to pause the intake form?</div>
-      <p class="faq-a">The intake form is saved by your email. You can pause and resume at any time. We recommend completing it at least 48 hours before your session so Lisa has time to review it alongside your chart.</p>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Can I reschedule?</div>
-      <p class="faq-a">Yes — reschedule through the booking confirmation email. For bundles, sessions need to maintain the minimum spacing (7 days for the Growth + Health bundle, 14 days for the 3 Physical Health bundle).</p>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Is this covered by insurance or FSA?</div>
-      <p class="faq-a">No. Astrological consultations are not covered by insurance, and they are not FSA-eligible expenses. Payment is made directly at booking.</p>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">What if I'm not sure I'm ready for the deep work?</div>
-      <p class="faq-a">The <strong>Guided Onboarding Intake Call</strong> at $100 is the right starting place. We walk through filling out your intake form together — no prep needed, just bring yourself. You decide afterward whether to book a full consultation.</p>
-    </div>
+    <div class="faq-item"><div class="faq-q">Which consultation is right for me?</div><p class="faq-a">If you're working with patterns in relationships, identity, work, or the inner life — <strong>Personal Growth</strong>. If you're working with physical patterns like fatigue, digestion, sleep, autoimmune symptoms, or hormonal cycles — <strong>Physical Health</strong>. If you suspect both are connected — the <strong>Bundle</strong> gives you both at a saving.</p></div>
+    <div class="faq-item"><div class="faq-q">I don't have a birth chart yet. Can I still book?</div><p class="faq-a">Yes. The booking link takes you to the system that will guide you through creating your chart — birth date, birth time, and birth location are required. Once your chart is on file, you complete your intake form and book your session.</p></div>
+    <div class="faq-item"><div class="faq-q">What if I need to pause the intake form?</div><p class="faq-a">The intake form is saved by your email. You can pause and resume at any time. We recommend completing it at least 48 hours before your session so Lisa has time to review it alongside your chart.</p></div>
+    <div class="faq-item"><div class="faq-q">Can I reschedule?</div><p class="faq-a">Yes — reschedule through the booking confirmation email. For bundles, sessions need to maintain the minimum spacing (7 days for the Growth + Health bundle, 14 days for the 3 Physical Health bundle).</p></div>
+    <div class="faq-item"><div class="faq-q">Is this covered by insurance or FSA?</div><p class="faq-a">No. Astrological consultations are not covered by insurance, and they are not FSA-eligible expenses. Payment is made directly at booking.</p></div>
+    <div class="faq-item"><div class="faq-q">What if I'm not sure I'm ready for the deep work?</div><p class="faq-a">The <strong>Guided Onboarding Intake Call</strong> at $100 is the right starting place. We walk through filling out your intake form together — no prep needed, just bring yourself. You decide afterward whether to book a full consultation.</p></div>
   </section>
 
-  <p class="footer-note">
-    Questions before you book? <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a>
-  </p>
-
+  <p class="footer-note">Questions before you book? <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
 </div>
-
 </body>
 </html>
