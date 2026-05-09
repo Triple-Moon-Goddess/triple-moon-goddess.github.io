@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonials — Triple Moon Goddess</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #d4af6a;
+    --gold-bright: #e8c989;
+    --gold-deep: #b8945a;
+    --ink: #f5e8d0;
+    --ink-soft: #c9b896;
+    --bg: #0a0608;
+    --bg-deep: #050304;
+    --line: rgba(212, 175, 106, 0.18);
+    --line-strong: rgba(212, 175, 106, 0.4);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  html, body {
+    background: #0a0608 !important;
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, #0a0608 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent),
+      radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent),
+      radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent),
+      radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent);
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+    animation: twinkle 8s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.4; }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 100px 0 72px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 0.2s forwards;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '✦';
+    margin: 0 14px;
+    color: var(--gold-deep);
+    font-size: 10px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--gold-bright);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 1.1s ease-out 0.4s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .hero-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin: 0 auto;
+    font-weight: 400;
+    line-height: 1.65;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out 0.6s forwards;
+  }
+
+  .ornament {
+    margin: 56px auto;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 0.9s forwards;
+  }
+
+  .ornament::before {
+    content: '☾';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0a0608;
+    padding: 0 18px;
+    color: var(--gold);
+    font-size: 18px;
+  }
+
+  /* PULL QUOTE — large featured testimonial */
+  .pull-quote {
+    text-align: center;
+    padding: 64px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 80px;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 1s forwards;
+  }
+
+  .pull-quote blockquote {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1.55;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+    max-width: 680px;
+    margin: 0 auto 28px;
+  }
+
+  .pull-quote cite {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.06em;
+  }
+
+  /* TESTIMONIAL CARDS */
+  .testimonials {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-bottom: 80px;
+  }
+
+  .card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%);
+    border: 1px solid var(--line);
+    padding: 48px 44px 40px;
+    transition: border-color 0.5s ease;
+    opacity: 0;
+    animation: fadeUp 1s ease-out forwards;
+  }
+
+  .card:nth-child(1) { animation-delay: 1.1s; }
+  .card:nth-child(2) { animation-delay: 1.25s; }
+  .card:nth-child(3) { animation-delay: 1.4s; }
+  .card:nth-child(4) { animation-delay: 1.55s; }
+  .card:nth-child(5) { animation-delay: 1.7s; }
+
+  .card:hover { border-color: var(--line-strong); }
+
+  .card::before,
+  .card::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--gold-deep);
+    opacity: 0.4;
+  }
+  .card::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+  .card::after  { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+  .card-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--gold-deep);
+    margin-bottom: 20px;
+    opacity: 0.6;
+  }
+
+  .card blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+
+  .card-divider {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold-deep), transparent);
+    margin-bottom: 20px;
+  }
+
+  .card cite {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .card cite span {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.92rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+    text-transform: none;
+    margin-top: 4px;
+  }
+
+  /* CLOSING LINE */
+  .closing {
+    text-align: center;
+    padding: 56px 0 80px;
+    border-top: 1px solid var(--line);
+  }
+
+  .closing p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    line-height: 1.65;
+  }
+
+  .closing a {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-deep);
+    padding-bottom: 3px;
+    transition: color 0.3s ease;
+  }
+
+  .closing a:hover { color: var(--gold-bright); }
+
+  @media (max-width: 540px) {
+    .card { padding: 36px 24px 28px; }
+    .pull-quote { padding: 48px 0; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="hero-eyebrow">What Clients Say</div>
+    <h1>The work<br><em>speaks</em>.</h1>
+    <p class="hero-lead">
+      These are the words of people who came not knowing what to expect
+      and left with something they hadn't had a name for before.
+    </p>
+    <div class="ornament"></div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <blockquote>
+      "I firmly believe my natal chart is a blueprint and a message from my soul,
+      written specifically for me."
+    </blockquote>
+    <cite>— M.T., Portland</cite>
+  </div>
+
+  <!-- TESTIMONIAL CARDS -->
+  <section class="testimonials">
+
+    <div class="card">
+      <div class="card-mark">"</div>
+      <blockquote>
+        I wasn't expecting much. Four readings prior and no one had been able to
+        connect the dots for me. Lisa, though, was different. Within minutes she
+        offered explanations that not only made sense but hit home at a depth I
+        hadn't experienced before. It felt like she was both translating the
+        celestial language and speaking directly to my life's experiences — the
+        kind of guidance I'd been seeking but never quite found. With her, it was
+        all about depth, empathy, and realignment.
+      </blockquote>
+      <div class="card-divider"></div>
+      <cite>
+        D.R.
+        <span>Personal Growth Consultation</span>
+      </cite>
+    </div>
+
+    <div class="card">
+      <div class="card-mark">"</div>
+      <blockquote>
+        Lisa's reading was like opening a door I didn't realize had been closed.
+        I thought I'd heard it all before, but she brought a completely different
+        depth to my chart. There was no judgment, no past-life baggage, just a
+        straightforward look at my patterns and cycles. Her insights were like
+        seeds — that, if tended to, could grow and change everything. She has a
+        gift for clarity and compassion that makes the whole process feel sacred.
+      </blockquote>
+      <div class="card-divider"></div>
+      <cite>
+        K.W.
+        <span>Personal Growth Consultation</span>
+      </cite>
+    </div>
+
+    <div class="card">
+      <div class="card-mark">"</div>
+      <blockquote>
+        I came to Lisa because my body had been giving me signals for years that
+        no one could make sense of. She looked at my chart and within the first
+        twenty minutes named a constitutional pattern that explained almost
+        everything — the fatigue, the digestion, the way my energy moves in
+        seasons. The herbal and dietary protocol she put together has been the
+        first thing in a long time that actually fits. I feel like I finally have
+        a map.
+      </blockquote>
+      <div class="card-divider"></div>
+      <cite>
+        A.M.
+        <span>Physical Health Consultation</span>
+      </cite>
+    </div>
+
+    <div class="card">
+      <div class="card-mark">"</div>
+      <blockquote>
+        What I appreciated most was that Lisa never told me what I was. She showed
+        me what the chart suggested, explained why, and then asked me what I
+        recognized. That distinction mattered enormously. I didn't feel categorized —
+        I felt seen. The session moved fast and covered more ground than I expected.
+        I've been sitting with it for weeks and keep finding new layers.
+      </blockquote>
+      <div class="card-divider"></div>
+      <cite>
+        J.L.
+        <span>Personal Growth Consultation</span>
+      </cite>
+    </div>
+
+    <div class="card">
+      <div class="card-mark">"</div>
+      <blockquote>
+        I'm a therapist and I was skeptical. I expected to find a system that
+        flattened people into archetypes. Instead I found a framework that is more
+        nuanced about individual complexity than most of what I use in my own
+        practice. Lisa works with probability and pattern, not prescription. I've
+        referred two colleagues since my session. We're all using the intake tool
+        now and finding it opens conversations that would otherwise take months
+        to reach.
+      </blockquote>
+      <div class="card-divider"></div>
+      <cite>
+        S.B., LMFT
+        <span>Soul Pattern App · Licensed Therapist</span>
+      </cite>
+    </div>
+
+  </section>
+
+  <div class="closing">
+    <p>
+      Ready to find out what your chart has been trying to tell you?
+    </p>
+    <a href="mailto:Lisa@TripleMoonGoddess.com">Begin the conversation</a>
+  </div>
+
+</div>
+
+</body>
+</html>
