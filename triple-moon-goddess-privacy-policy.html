@@ -8,24 +8,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #d4af6a;
-    --gold-bright: #e8c989;
-    --gold-deep: #b8945a;
-    --ink: #f5e8d0;
-    --ink-soft: #c9b896;
-    --bg: #0a0608;
-    --bg-deep: #050304;
-    --bg-card: #110a0d;
-    --line: rgba(212, 175, 106, 0.18);
-    --line-strong: rgba(212, 175, 106, 0.4);
-  }
+  :root { --gold: #d4af6a; --gold-bright: #e8c989; --gold-deep: #b8945a; --ink: #f5e8d0; --ink-soft: #c9b896; --bg: #0a0608; --bg-deep: #050304; --bg-card: #110a0d; --line: rgba(212, 175, 106, 0.18); --line-strong: rgba(212, 175, 106, 0.4); }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; position: relative; min-height: 100vh; }
-  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%), radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, var(--bg) 70%); pointer-events: none; z-index: 0; }
-  body::after { content: ''; position: fixed; inset: 0; background-image: radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent), radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent), radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent), radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent), radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent), radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent), radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent), radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent), radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent), radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent); background-size: 100% 100%; pointer-events: none; z-index: 0; opacity: 0.7; animation: twinkle 8s ease-in-out infinite; }
-  @keyframes twinkle { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.4; } }
+  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 15% 20%, rgba(212,175,106,0.08) 0%, transparent 45%), radial-gradient(ellipse at 85% 75%, rgba(184,148,90,0.06) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(20,12,8,1) 0%, var(--bg) 70%); pointer-events: none; z-index: 0; }
+  body::after { content: ''; position: fixed; inset: 0; background-image: radial-gradient(1px 1px at 23% 17%, rgba(232,201,137,0.8), transparent), radial-gradient(1px 1px at 67% 83%, rgba(232,201,137,0.6), transparent), radial-gradient(1px 1px at 41% 52%, rgba(232,201,137,0.5), transparent), radial-gradient(1px 1px at 89% 11%, rgba(232,201,137,0.7), transparent), radial-gradient(1px 1px at 12% 73%, rgba(232,201,137,0.4), transparent), radial-gradient(1px 1px at 78% 41%, rgba(232,201,137,0.6), transparent), radial-gradient(2px 2px at 56% 29%, rgba(232,201,137,0.9), transparent), radial-gradient(1px 1px at 33% 88%, rgba(232,201,137,0.5), transparent), radial-gradient(1px 1px at 7% 38%, rgba(232,201,137,0.7), transparent), radial-gradient(2px 2px at 94% 62%, rgba(232,201,137,0.8), transparent); background-size: 100% 100%; pointer-events: none; z-index: 0; opacity: 0.7; animation: twinkle 8s ease-in-out infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0.7} 50%{opacity:0.4} }
   .container { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 32px; }
   .policy-header { text-align: center; padding: 32px 0 0; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); line-height: 2; }
   .policy-header a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); }
@@ -38,7 +27,7 @@
   .hero h1 em { font-style: italic; color: var(--ink); font-weight: 300; }
   .meta { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.2em; color: var(--ink-soft); text-transform: uppercase; margin-top: 32px; }
   .ornament { margin: 48px auto; width: 200px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); position: relative; }
-  .ornament::before { content: '☾'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--bg); padding: 0 18px; color: var(--gold); font-size: 18px; }
+  .ornament::before { content: '☾'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: var(--bg); padding: 0 18px; color: var(--gold); font-size: 18px; }
   section.policy { margin-bottom: 56px; padding: 0 8px; }
   section.policy h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 400; color: var(--gold-bright); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
   section.policy h2 .num { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.24em; color: var(--gold); margin-right: 14px; vertical-align: middle; }
@@ -47,26 +36,26 @@
   section.policy p strong { color: var(--gold-bright); font-weight: 500; }
   section.policy a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); transition: color 0.3s ease; }
   section.policy a:hover { color: var(--gold-bright); }
-  section.policy code { font-family: 'Courier New', monospace; font-size: 0.88em; background: rgba(212, 175, 106, 0.08); padding: 2px 8px; border-radius: 3px; color: var(--gold-bright); }
-  .callout { background: linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%); border: 1px solid var(--line); border-left: 3px solid var(--gold); padding: 18px 24px; margin: 20px 0; font-size: 0.94rem; color: var(--ink-soft); line-height: 1.65; }
+  section.policy code { font-family: 'Courier New', monospace; font-size: 0.88em; background: rgba(212,175,106,0.08); padding: 2px 8px; border-radius: 3px; color: var(--gold-bright); }
+  .callout { background: linear-gradient(180deg, rgba(20,12,8,0.7) 0%, rgba(10,6,8,0.95) 100%); border: 1px solid var(--line); border-left: 3px solid var(--gold); padding: 18px 24px; margin: 20px 0; font-size: 0.94rem; color: var(--ink-soft); line-height: 1.65; }
   .callout strong { color: var(--gold-bright); font-weight: 500; }
   .never-list { list-style: none; margin: 12px 0 16px 0; }
   .never-list li { padding: 8px 0 8px 32px; position: relative; color: var(--ink); font-size: 0.97rem; border-bottom: 1px solid var(--line); }
   .never-list li:last-child { border-bottom: none; }
   .never-list li::before { content: '✗'; position: absolute; left: 4px; top: 8px; color: var(--gold); font-weight: bold; font-size: 0.95rem; }
-  .processor-card { background: linear-gradient(180deg, rgba(20, 12, 8, 0.5) 0%, rgba(10, 6, 8, 0.85) 100%); border: 1px solid var(--line); padding: 22px 24px; margin-bottom: 16px; transition: border-color 0.4s ease; }
+  .processor-card { background: linear-gradient(180deg, rgba(20,12,8,0.5) 0%, rgba(10,6,8,0.85) 100%); border: 1px solid var(--line); padding: 22px 24px; margin-bottom: 16px; transition: border-color 0.4s ease; }
   .processor-card:hover { border-color: var(--line-strong); }
   .processor-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: var(--gold-bright); margin-bottom: 10px; font-style: italic; }
   .processor-card p { margin-bottom: 10px; font-size: 0.93rem; }
   .processor-card a { font-family: 'Courier New', monospace; font-size: 0.85rem; border-bottom: none; color: var(--gold); }
   .processor-card a:hover { color: var(--gold-bright); text-decoration: underline; }
   .data-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 16px 0 20px; }
-  .data-table th { background: rgba(20, 12, 8, 0.7); color: var(--gold-bright); padding: 12px 16px; text-align: left; border: 1px solid var(--line); font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; }
+  .data-table th { background: rgba(20,12,8,0.7); color: var(--gold-bright); padding: 12px 16px; text-align: left; border: 1px solid var(--line); font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; }
   .data-table td { padding: 12px 16px; border: 1px solid var(--line); vertical-align: top; color: var(--ink); }
-  .data-table tr:nth-child(even) td { background: rgba(20, 12, 8, 0.3); }
+  .data-table tr:nth-child(even) td { background: rgba(20,12,8,0.3); }
   .rights-grid { display: grid; grid-template-columns: 1fr 2fr; border: 1px solid var(--line); margin-bottom: 16px; font-size: 0.93rem; }
   .rights-grid .cell { padding: 12px 16px; border-bottom: 1px solid var(--line); }
-  .rights-grid .cell:nth-child(odd) { background: rgba(20, 12, 8, 0.5); color: var(--gold-bright); font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; border-right: 1px solid var(--line); }
+  .rights-grid .cell:nth-child(odd) { background: rgba(20,12,8,0.5); color: var(--gold-bright); font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; border-right: 1px solid var(--line); }
   .rights-grid .cell:nth-child(even) { color: var(--ink); }
   .rights-grid .cell:last-child, .rights-grid .cell:nth-last-child(2) { border-bottom: none; }
   @media (max-width: 540px) { .rights-grid { grid-template-columns: 1fr; } .rights-grid .cell:nth-child(odd) { border-right: none; } .rights-grid .cell:nth-child(even) { border-bottom: 1px solid var(--line); } }
@@ -77,15 +66,13 @@
 
   <div class="policy-header">
     <p>Triple Moon Goddess &nbsp;&middot;&nbsp; <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a> &nbsp;&middot;&nbsp; <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
-    <p class="version">Privacy Policy v2025-01 &nbsp;&middot;&nbsp; Last reviewed February 2026</p>
+    <p class="version">Privacy Policy v2025-01 &nbsp;&middot;&nbsp; Last reviewed May 2026</p>
   </div>
 
   <section class="hero">
     <div class="hero-eyebrow">Privacy Policy</div>
     <h1>How we hold<br>your <em>data</em>.</h1>
-    <div class="meta">
-      <span>Effective January 2025</span><span>·</span><span>Version 2025-01</span><span>·</span><span>Last reviewed February 2026</span>
-    </div>
+    <div class="meta"><span>Effective January 2025</span><span>·</span><span>Version 2025-01</span><span>·</span><span>Last reviewed May 2026</span></div>
     <div class="ornament"></div>
   </section>
 
@@ -148,7 +135,17 @@
 
   <section class="policy" id="security">
     <h2><span class="num">VIII</span>Security Measures</h2>
-    <p>All data transmitted over HTTPS (TLS 1.2+). Data encrypted at rest via Firebase/Firestore encryption. API keys stored in Google Cloud Secret Manager — never in code. Firebase Security Rules restrict database access to each authenticated user's own data. Admin portal restricted to a single authorised account. Health data and identity data are physically separated in distinct Firestore collections; no single record contains both.</p>
+
+    <h3>Client-Side Encryption</h3>
+    <p>The Integrative Practitioner and Soul Pattern apps use client-side encryption to protect sensitive practitioner data at rest in Firestore. Encryption and decryption happen entirely in the practitioner's browser. No plaintext ever leaves the device for encrypted fields, and no key material is ever sent to any server.</p>
+    <p>Encrypted data includes: practitioner clinical notes, psychological readings, and client email records. Client emails are encrypted and the plaintext email field is deleted from Firestore at the moment of client assignment. Even if the Firestore database were fully compromised, these records would be unreadable without the practitioner's passphrase.</p>
+    <p>The cryptographic stack uses XSalsa20-Poly1305 authenticated encryption (confidentiality and tamper detection) with scrypt key derivation. The practitioner's passphrase is never stored or transmitted — not in the browser, not in Firestore, not in any server log. The encryption key exists only in browser sessionStorage for the duration of the active tab and is cleared when the tab closes or the practitioner signs out.</p>
+    <p><strong>Passphrase recovery is not possible.</strong> There is no server-side escrow, no recovery key, and no reset flow. If a passphrase is lost, encrypted data cannot be recovered. This is intentional.</p>
+    <p>The following data is protected by Firestore security rules but not by client-side encryption: natal chart data, client intake answers, intake match results, journal entries, and Soul module session data.</p>
+
+    <h3>Infrastructure Security</h3>
+    <p>All data transmitted over HTTPS (TLS 1.2+). Data encrypted at rest via Firebase/Firestore encryption. API keys stored in Google Cloud Secret Manager — never in code. Firebase Security Rules restrict database access to each authenticated user's own data. Admin portal restricted to a single authorised account. Health data and identity data are physically separated in distinct Firestore collections — no single record contains both.</p>
+
     <div class="callout">No security system is 100% impenetrable. If you believe your data has been compromised, contact <strong>Lisa@TripleMoonGoddess.com</strong> immediately.</div>
   </section>
 
