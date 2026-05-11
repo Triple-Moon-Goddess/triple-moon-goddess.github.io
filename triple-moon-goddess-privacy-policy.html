@@ -78,7 +78,7 @@
 
   <section class="policy" id="who-we-are">
     <h2><span class="num">I</span>Who We Are</h2>
-    <p>Triple Moon Goddess is a wellness journaling and medical astrology application operated by <strong>Lisa</strong> ("we", "us", "our"). For all data protection enquiries, please contact:</p>
+    <p>Triple Moon Goddess is a wellness journaling and medical astrology application operated by <strong>Lisa Hagan</strong> ("we", "us", "our"). For all data protection enquiries, please contact:</p>
     <p>Email: <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a><br>Website: <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a></p>
     <div class="callout">We are a sole operator and do not currently have a designated Data Protection Officer (DPO). If you are in the EU/EEA and your enquiry is unresolved, you have the right to lodge a complaint with your local supervisory authority.</div>
   </section>
@@ -120,7 +120,7 @@
     <div class="processor-card"><div class="processor-name">Google Firebase (Alphabet Inc.)</div><p>Provides database, authentication, hosting, and cloud functions. Stores all Firestore data, authentication UIDs, and push tokens across US and EU data centres.</p><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></div>
     <div class="processor-card"><div class="processor-name">Anthropic, PBC</div><p>Provides the Claude AI API for optional daily journal summaries. Data sent: journal entry data for the day (health scores, food, symptoms, notes, astrology context). No name, email, or access code is included. API data is not used to train models without consent.</p><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a></div>
     <div class="processor-card"><div class="processor-name">Railway (Railway Corp.)</div><p>Hosts our Swiss Ephemeris calculation API for astrological positions. Data sent: birth date, time, and location — not linked to your identity.</p><a href="https://railway.app/legal/privacy" target="_blank" rel="noopener">railway.app/legal/privacy</a></div>
-    <div class="processor-card"><div class="processor-name">Google Workspace / Gmail &amp; Google Drive</div><p>Used for sending reminder emails and PDF delivery. If Practitioner Mode is enabled, you create and share a Google Drive folder with your practitioner. Google's standard privacy terms apply to that folder.</p></div>
+    <div class="processor-card"><div class="processor-name">Google Workspace / Gmail &amp; Google Drive</div><p>Used for sending reminder emails and PDF delivery. Google's standard privacy terms apply.</p></div>
   </section>
 
   <section class="policy" id="transfers">
@@ -173,9 +173,23 @@
   </section>
 
   <section class="policy" id="practitioner">
-    <h2><span class="num">XII</span>Practitioner Relationship</h2>
-    <p>If Practitioner Mode is enabled, Lisa can view your journal entries through a secure admin portal. No additional data is shared — the same access code links your data to practitioner access. You can see whether practitioner access is enabled in Settings. Your practitioner is bound by professional confidentiality obligations.</p>
-    <p>Shared Google Drive folders for tongue photos and consultation notes are governed by Google's privacy terms and the access you configure on that folder.</p>
+    <h2><span class="num">XII</span>Practitioner App Data</h2>
+    <p>The Integrative Practitioner, Soul Pattern, and Constitutional Health apps are separate paid-tier applications. Their data architecture differs from the individual seeker apps.</p>
+
+    <h3>What Practitioners Enter</h3>
+    <p>Practitioners enter client birth data (date, time, location) to generate a natal chart and derived outputs. The practitioner also enters a client email address as the client identifier within their account. That email is encrypted client-side at the moment of entry — the plaintext is immediately deleted from Firestore and never stored unencrypted on any server. Even if the database were compromised, client email records would be unreadable without the practitioner's passphrase.</p>
+
+    <h3>What Practitioners See</h3>
+    <p>The practitioner view surfaces chart-derived outputs: sign placements, house positions, constitutional profile, pattern group scores, and comparison signals. Practitioners do not see raw birth data displayed back to them after chart generation — the chart describes the person through derived outputs, it does not display the underlying date, time, and location as identifying fields.</p>
+
+    <h3>Client Birth Data</h3>
+    <p>Birth data entered by a practitioner is used solely to calculate the natal chart for that client record. It is stored in the practitioner's Firestore account under their authenticated UID, protected by Firebase Security Rules. It is not shared with other practitioners, not used for advertising, and not linked to any identity record in the research corpus.</p>
+
+    <h3>Research Data from Practitioner Sessions</h3>
+    <p>Soul module sessions, pattern scores, comparison signals, and practitioner follow-up feedback contribute to the TMG longitudinal research corpus under pseudonymization. The pseudonymized research record contains pattern-level data only — no name, email, or birth data is included. The link between a client record and its pseudonymized research entry is protected and stored separately from the research corpus.</p>
+
+    <h3>Encryption &amp; Passphrase</h3>
+    <p>Practitioner apps use client-side encryption for sensitive fields. See Section VIII for full technical detail. The passphrase is the practitioner's responsibility — TMG has no recovery mechanism and cannot access encrypted data under any circumstances.</p>
   </section>
 
   <section class="policy" id="changes">
