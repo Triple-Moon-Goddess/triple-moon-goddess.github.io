@@ -55,7 +55,7 @@
   .included h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--gold-bright); margin-bottom: 12px; }
   .included h2 em { font-style: italic; color: var(--ink); }
   .included-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ink-soft); margin-bottom: 48px; font-size: 1.05rem; }
-  .included-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: left; }
+  .included-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: left; }
   @media (max-width: 760px) { .included { padding: 40px 24px; } .included-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; } }
   .included-item-label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.24em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
   .included-item-text { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ink); line-height: 1.5; }
@@ -168,11 +168,13 @@
   </section>
   <section class="included">
     <h2>Privacy <em>by design</em></h2>
-    <p class="included-sub">Two layers of separation: the database, and your paper journal.</p>
+    <p class="included-sub">Three layers of separation: the database schema, the encryption key only you hold, and your paper journal.</p>
     <div class="included-grid">
       <div><div class="included-item-label">Schema-Level Pseudonymization</div><p class="included-item-text">Charts, journals, intake answers, and practitioner notes each live in their own table, joined only by access code. No clinical table contains a name or email.</p></div>
-      <div><div class="included-item-label">Email Lives Alone</div><p class="included-item-text">If a client provides an email, it lives in a single identity table apart from every clinical table. Remove that one record and the clinical data becomes fully anonymous.</p></div>
-      <div><div class="included-item-label">Your Paper Journal</div><p class="included-item-text">The link from access code to your client’s full identity — name, phone, address — lives in your paper journal, in your office, under your professional control. TMG never holds it.</p></div>
+      <div><div class="included-item-label">Client-Side Encryption</div><p class="included-item-text">Practitioner notes, psychological readings, and the client email you enter are encrypted in your browser with a passphrase only you know. TMG cannot decrypt this data — the key never leaves your device.</p></div>
+      <div><div class="included-item-label">No Backdoor, No Recovery</div><p class="included-item-text">Your encryption passphrase is never stored or transmitted. If you lose it, the encrypted data cannot be recovered — not by you, not by Lisa, not by anyone. Recovery mechanisms are attack surfaces. We don't have one.</p></div>
+      <div><div class="included-item-label">Email Lives Alone</div><p class="included-item-text">If a client provides an email, it lives in a single identity table apart from every clinical table — encrypted at rest with your passphrase. Remove that one record and the clinical data becomes fully anonymous.</p></div>
+      <div><div class="included-item-label">Your Paper Journal</div><p class="included-item-text">The link from access code to your client's full identity — name, phone, address — lives in your paper journal, in your office, under your professional control. TMG never holds it.</p></div>
       <div><div class="included-item-label">Practitioner Isolation</div><p class="included-item-text">Every clinical record is stamped with your practitioner ID. Other practitioners cannot read your notes, results, or exclusions — enforced at the database level.</p></div>
     </div>
   </section>
@@ -184,6 +186,7 @@
     <div class="faq-item"><div class="faq-q">How does the AI dialog feature work?</div><p class="faq-a">The AI dialog is optional in all three apps. You bring your own Anthropic API key — Anthropic bills you directly (~$5/mo). TMG never holds your AI billing. The onboarding hour walks you through setup.</p></div>
     <div class="faq-item"><div class="faq-q">Can I switch between monthly and annual later?</div><p class="faq-a">Yes. Both plans can be switched at any time from your account portal. Stripe prorates the difference automatically.</p></div>
     <div class="faq-item"><div class="faq-q">Does TMG see my clients’ names or contact information?</div><p class="faq-a">No names, no phone numbers, no addresses. The only identifying information TMG holds is an email address — and only if your client chooses to provide one. Email lives in its own identity table, completely separate from every clinical table.</p></div>
+    <div class="faq-item"><div class="faq-q">How does the encryption work?</div><p class="faq-a">When you log in, you enter a passphrase that derives a 256-bit encryption key in your browser. That key encrypts your practitioner notes, psychological readings, and the client email you enter — before they're ever written to the database. The key never leaves your device. TMG cannot decrypt your data, and there is no recovery mechanism if you lose the passphrase. The cryptography is XSalsa20-Poly1305 (authenticated encryption) with scrypt key derivation — the same standards used by NaCl/libsodium.</p></div>
     <div class="faq-item"><div class="faq-q">Can other practitioners see my client notes?</div><p class="faq-a">No. Every note, intake result, exclusion, and reading you write is stamped with your practitioner ID and visible only to you. Enforced at the database level — not a setting that can be turned off.</p></div>
     <div class="faq-item"><div class="faq-q">Is TMG an FSA-eligible expense?</div><p class="faq-a">No. TMG is a SaaS subscription for your practice — a deductible business expense, not a qualified medical expense.</p></div>
     <div class="faq-item"><div class="faq-q">Does my subscription include readings or sessions with Lisa?</div><p class="faq-a">No. Subscriptions give you access to the TMG platform. Lisa’s individual services are scheduled and paid separately on the main TMG website. The onboarding hour is a platform training session, not an astrological reading.</p></div>
