@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speaking & Expo Engagements — Triple Moon Goddess</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#0a0608;color:#c8b89a;font-family:"Cormorant Garamond",serif;min-height:100vh;overflow-x:hidden}
+canvas#stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.55}
+.wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:2rem 1.25rem 4rem}
+h1.title{font-family:"Cinzel",serif;font-size:clamp(1.3rem,4vw,1.8rem);font-weight:400;color:#e8c989;letter-spacing:0.12em;text-align:center;margin-bottom:0.2rem}
+.subtitle{font-family:"Cormorant Garamond",serif;font-size:0.95rem;color:#8a6f3a;text-align:center;letter-spacing:0.06em;font-style:italic;margin-bottom:0.5rem}
+.divider{width:180px;margin:0 auto 1.75rem;display:flex;align-items:center;gap:0.5rem}
+.divider::before,.divider::after{content:"";flex:1;height:0.5px;background:#8a6f3a;opacity:0.5}
+.divider-star{color:#d4af6a;font-size:0.7rem}
+
+/* Speaker card */
+.speaker-card{display:flex;align-items:center;gap:1.5rem;background:#13080e;border:0.5px solid #3a2518;border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:2rem;position:relative}
+.speaker-card .corner{position:absolute;width:12px;height:12px;border-color:#8a6f3a;border-style:solid;opacity:0.6}
+.corner.tl{top:7px;left:7px;border-width:1px 0 0 1px}
+.corner.tr{top:7px;right:7px;border-width:1px 1px 0 0}
+.corner.bl{bottom:7px;left:7px;border-width:0 0 1px 1px}
+.corner.br{bottom:7px;right:7px;border-width:0 1px 1px 0}
+.speaker-photo{width:90px;height:90px;border-radius:50%;object-fit:cover;object-position:top center;border:1.5px solid #8a6f3a;flex-shrink:0}
+.speaker-info h2{font-family:"Cinzel",serif;font-size:1.1rem;font-weight:400;color:#e8c989;margin-bottom:0.2rem}
+.speaker-info p{font-size:0.85rem;color:#8a6f3a;font-style:italic;line-height:1.5}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:1.5rem}
+.stat{background:#13080e;border:0.5px solid #3a2518;border-radius:8px;padding:0.75rem;text-align:center}
+.stat-n{font-family:"Cinzel",serif;font-size:1.5rem;color:#e8c989;font-weight:600}
+.stat-l{font-size:0.65rem;color:#8a6f3a;letter-spacing:0.08em;text-transform:uppercase;margin-top:0.2rem}
+
+/* Tabs */
+.tabs{display:flex;margin-bottom:1.1rem;border:0.5px solid #3a2518;border-radius:8px;overflow:hidden}
+.tab{flex:1;padding:0.6rem;font-family:"Cinzel",serif;font-size:0.62rem;letter-spacing:0.1em;text-align:center;cursor:pointer;background:#13080e;color:#8a6f3a;border:none;text-transform:uppercase;transition:all 0.2s}
+.tab.active{background:#1c0f18;color:#e8c989;border-bottom:1.5px solid #d4af6a}
+.tab:hover:not(.active){color:#d4af6a}
+
+/* Add button */
+.btn-add{display:block;width:100%;padding:0.6rem;font-family:"Cinzel",serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;background:transparent;color:#d4af6a;border:0.5px solid #8a6f3a;border-radius:6px;cursor:pointer;transition:all 0.2s;margin-bottom:1rem}
+.btn-add:hover{background:rgba(212,175,106,0.08);border-color:#d4af6a}
+
+/* Form */
+.form-panel{background:#13080e;border:0.5px solid #3a2518;border-radius:10px;padding:1.25rem;margin-bottom:1.25rem;display:none}
+.form-panel.open{display:block}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.form-grid .full{grid-column:1/-1}
+label{display:block;font-size:0.65rem;letter-spacing:0.08em;color:#8a6f3a;text-transform:uppercase;margin-bottom:0.25rem}
+input,select,textarea{width:100%;background:#0d0508;border:0.5px solid #3a2518;border-radius:5px;color:#f5ead8;font-family:"Cormorant Garamond",serif;font-size:0.95rem;padding:0.45rem 0.6rem;outline:none;transition:border 0.2s}
+input:focus,select:focus,textarea:focus{border-color:#8a6f3a}
+select option{background:#0d0508}
+textarea{resize:vertical;min-height:70px}
+.form-actions{display:flex;gap:0.5rem;margin-top:0.75rem;justify-content:flex-end}
+.btn-save{font-family:"Cinzel",serif;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.5rem 1.25rem;border-radius:5px;cursor:pointer;background:rgba(212,175,106,0.1);color:#d4af6a;border:0.5px solid #8a6f3a;transition:all 0.2s}
+.btn-save:hover{background:rgba(212,175,106,0.2)}
+.btn-cancel{font-family:"Cinzel",serif;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:5px;cursor:pointer;background:transparent;color:#8a6f3a;border:0.5px solid #3a2518;transition:all 0.2s}
+.btn-cancel:hover{color:#c8b89a}
+.form-section-label{font-family:"Cinzel",serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:#8a6f3a;margin-bottom:0.75rem;padding-bottom:0.35rem;border-bottom:0.5px solid #3a2518}
+
+/* Badges */
+.badge{display:inline-block;font-size:0.6rem;letter-spacing:0.07em;text-transform:uppercase;padding:2px 8px;border-radius:20px;font-family:"Cinzel",serif}
+.badge-upcoming{background:rgba(42,122,106,0.2);color:#5ecfb8;border:0.5px solid rgba(42,122,106,0.5)}
+.badge-past{background:rgba(122,79,138,0.2);color:#c89fd8;border:0.5px solid rgba(122,79,138,0.4)}
+.badge-confirmed{background:rgba(212,175,106,0.15);color:#d4af6a;border:0.5px solid rgba(212,175,106,0.3)}
+.badge-tentative{background:rgba(138,111,58,0.15);color:#c8a055;border:0.5px solid rgba(138,111,58,0.3)}
+.type-badge{display:inline-block;font-size:0.57rem;letter-spacing:0.06em;text-transform:uppercase;padding:1px 7px;border-radius:20px;font-family:"Cinzel",serif;margin-left:5px}
+.type-keynote{background:rgba(212,175,106,0.1);color:#8a6f3a}
+.type-workshop{background:rgba(42,122,106,0.1);color:#5ecfb8}
+.type-panel{background:rgba(122,79,138,0.1);color:#c89fd8}
+.type-expo{background:rgba(180,100,60,0.12);color:#e8956a}
+.type-podcast{background:rgba(60,100,180,0.12);color:#6a9ae8}
+.type-other{background:rgba(100,100,100,0.12);color:#aaa}
+
+/* Cards */
+.card{background:#13080e;border:0.5px solid #3a2518;border-radius:10px;padding:1rem 1.1rem;margin-bottom:0.75rem;position:relative;transition:border-color 0.2s}
+.card:hover{border-color:#8a6f3a}
+.card-corner{position:absolute;width:10px;height:10px;border-color:#8a6f3a;border-style:solid;opacity:0.45}
+.card-corner.tl{top:6px;left:6px;border-width:1px 0 0 1px}
+.card-corner.tr{top:6px;right:6px;border-width:1px 1px 0 0}
+.card-corner.bl{bottom:6px;left:6px;border-width:0 0 1px 1px}
+.card-corner.br{bottom:6px;right:6px;border-width:0 1px 1px 0}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;margin-bottom:0.5rem}
+.card-title{font-family:"Cinzel",serif;font-size:0.88rem;color:#e8c989;font-weight:400;line-height:1.3}
+.card-date{font-size:0.8rem;color:#8a6f3a;font-style:italic;white-space:nowrap;flex-shrink:0}
+.card-venue{font-size:0.85rem;color:#c8b89a;margin-bottom:0.3rem}
+.card-location{font-size:0.78rem;color:#8a6f3a;margin-bottom:0.35rem}
+.card-notes{font-size:0.8rem;color:#c8b89a;opacity:0.7;font-style:italic;margin-top:0.35rem;border-top:0.5px solid #3a2518;padding-top:0.35rem}
+.card-actions{display:flex;gap:0.4rem;margin-top:0.5rem;justify-content:flex-end}
+.btn-sm{font-family:"Cinzel",serif;font-size:0.55rem;letter-spacing:0.07em;text-transform:uppercase;padding:3px 10px;border-radius:4px;cursor:pointer;border:0.5px solid;transition:all 0.2s;background:transparent}
+.btn-edit{color:#8a6f3a;border-color:#3a2518}
+.btn-edit:hover{color:#d4af6a;border-color:#8a6f3a}
+.btn-del{color:#8a4040;border-color:#3a1818}
+.btn-del:hover{color:#e06060;border-color:#8a4040}
+
+.empty{text-align:center;padding:2.5rem 1rem;color:#8a6f3a;font-style:italic;font-size:0.95rem}
+
+@media(max-width:540px){
+  .speaker-card{flex-direction:column;text-align:center}
+  .form-grid{grid-template-columns:1fr}
+  .form-grid .full{grid-column:1}
+  .stats{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<div class="wrap">
+  <h1 class="title">Speaking &amp; Expo Engagements</h1>
+  <p class="subtitle">Triple Moon Goddess &mdash; Lisa Hagan</p>
+  <div class="divider"><span class="divider-star">&#10022;</span></div>
+
+  <div class="speaker-card">
+    <div class="corner tl"></div><div class="corner tr"></div>
+    <div class="corner bl"></div><div class="corner br"></div>
+    <img class="speaker-photo" src="lisa-hagan-speaker.jpg" alt="Lisa Hagan">
+    <div class="speaker-info">
+      <h2>Lisa Hagan</h2>
+      <p>Founder, Triple Moon Goddess<br>
+      Integrative Medical Astrology &mdash; Western Astrology &middot; TCM &middot; Ayurveda<br>
+      <span style="color:#d4af6a;font-style:normal">Lisa@TripleMoonGoddess.com</span></p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-n" id="s-upcoming">0</div><div class="stat-l">Upcoming</div></div>
+    <div class="stat"><div class="stat-n" id="s-total">0</div><div class="stat-l">Total</div></div>
+    <div class="stat"><div class="stat-n" id="s-past">0</div><div class="stat-l">Completed</div></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="setTab('upcoming')">Upcoming</button>
+    <button class="tab" onclick="setTab('past')">History</button>
+    <button class="tab" onclick="setTab('all')">All</button>
+  </div>
+
+  <button class="btn-add" onclick="toggleForm()">+ Add Engagement</button>
+
+  <div class="form-panel" id="form-panel">
+    <div class="form-section-label" id="form-title-label">New Engagement</div>
+    <div class="form-grid">
+      <div class="full">
+        <label>Talk / Event Title</label>
+        <input type="text" id="f-title" placeholder="e.g. Astrology Meets Medicine&hellip;">
+      </div>
+      <div><label>Date</label><input type="date" id="f-date"></div>
+      <div>
+        <label>Type</label>
+        <select id="f-type">
+          <option value="keynote">Keynote / Talk</option>
+          <option value="expo">Expo / Booth</option>
+          <option value="workshop">Workshop</option>
+          <option value="panel">Panel</option>
+          <option value="podcast">Podcast</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div><label>Venue / Event Name</label><input type="text" id="f-venue" placeholder="e.g. SoulSearch Concord Expo"></div>
+      <div><label>Location</label><input type="text" id="f-location" placeholder="e.g. Concord, CA"></div>
+      <div>
+        <label>Status</label>
+        <select id="f-status">
+          <option value="confirmed">Confirmed</option>
+          <option value="tentative">Tentative</option>
+        </select>
+      </div>
+      <div><label>Duration</label><input type="text" id="f-duration" placeholder="e.g. 50 min, Full day"></div>
+      <div class="full"><label>Notes</label><textarea id="f-notes" placeholder="Audience, prep notes, contact, outcomes&hellip;"></textarea></div>
+    </div>
+    <div class="form-actions">
+      <button class="btn-cancel" onclick="cancelForm()">Cancel</button>
+      <button class="btn-save" onclick="saveEngagement()">Save</button>
+    </div>
+  </div>
+
+  <div id="list-container"></div>
+</div>
+
+<script>
+const STORAGE_KEY='tmg_engagements_v1';
+let engagements=[];
+let currentTab='upcoming';
+let editingId=null;
+
+const SEED=[
+  {id:'seed1',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-05-16',type:'keynote',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot. Live demo of the TMG app — birth data in, constitution out. No readings.'},
+  {id:'seed2',title:'Cocktail Table Booth — Day 1',date:'2026-05-16',type:'expo',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'Full day',notes:''},
+  {id:'seed3',title:'Cocktail Table Booth — Day 2',date:'2026-05-17',type:'expo',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'Full day',notes:''},
+  {id:'seed4',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-06-20',type:'keynote',venue:'SoulSearch South San Francisco Enlightenment Expo',location:'South San Francisco, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
+  {id:'seed5',title:'Booth — Day 1',date:'2026-06-20',type:'expo',venue:'SoulSearch South San Francisco Enlightenment Expo',location:'South San Francisco, CA',status:'confirmed',duration:'Full day',notes:''},
+  {id:'seed6',title:'Booth — Day 2',date:'2026-06-21',type:'expo',venue:'SoulSearch South San Francisco Enlightenment Expo',location:'South San Francisco, CA',status:'confirmed',duration:'Full day',notes:''},
+  {id:'seed7',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-07-11',type:'keynote',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
+  {id:'seed8',title:'Booth — Day 1',date:'2026-07-11',type:'expo',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'Full day',notes:''},
+  {id:'seed9',title:'Booth — Day 2',date:'2026-07-12',type:'expo',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'Full day',notes:''},
+  {id:'seed10',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-08-08',type:'keynote',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
+  {id:'seed11',title:'Booth — Day 1',date:'2026-08-08',type:'expo',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'Full day',notes:''},
+  {id:'seed12',title:'Booth — Day 2',date:'2026-08-09',type:'expo',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'Full day',notes:''},
+  {id:'seed13',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-09-26',type:'keynote',venue:'SoulSearch Santa Cruz Enlightenment Expo',location:'Santa Cruz, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
+  {id:'seed14',title:'Booth — Day 1',date:'2026-09-26',type:'expo',venue:'SoulSearch Santa Cruz Enlightenment Expo',location:'Santa Cruz, CA',status:'confirmed',duration:'Full day',notes:''},
+  {id:'seed15',title:'Booth — Day 2',date:'2026-09-27',type:'expo',venue:'SoulSearch Santa Cruz Enlightenment Expo',location:'Santa Cruz, CA',status:'confirmed',duration:'Full day',notes:''},
+  {id:'seed16',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-11-07',type:'keynote',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
+  {id:'seed17',title:'Booth — Day 1',date:'2026-11-07',type:'expo',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'Full day',notes:''},
+  {id:'seed18',title:'Booth — Day 2',date:'2026-11-08',type:'expo',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'Full day',notes:''},
+  {id:'seed19',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-12-12',type:'keynote',venue:'SoulSearch Dublin Enlightenment Expo',location:'Dublin, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
+  {id:'seed20',title:'Booth — Day 1',date:'2026-12-12',type:'expo',venue:'SoulSearch Dublin Enlightenment Expo',location:'Dublin, CA',status:'confirmed',duration:'Full day',notes:''},
+  {id:'seed21',title:'Booth — Day 2',date:'2026-12-13',type:'expo',venue:'SoulSearch Dublin Enlightenment Expo',location:'Dublin, CA',status:'confirmed',duration:'Full day',notes:''}
+];
+
+function load(){
+  try{
+    const raw=localStorage.getItem(STORAGE_KEY);
+    if(raw){engagements=JSON.parse(raw);}
+    else{engagements=[...SEED];persist();}
+  }catch(e){engagements=[...SEED];}
+  render();
+}
+
+function persist(){
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(engagements));}catch(e){}
+}
+
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2);}
+
+function isPast(d){return new Date(d+"T23:59:59")<new Date();}
+
+function fmtDate(d){
+  const dt=new Date(d+"T12:00:00");
+  return dt.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
+}
+
+function typeBadge(t){
+  const labels={keynote:"Keynote",expo:"Expo / Booth",workshop:"Workshop",panel:"Panel",podcast:"Podcast",other:"Other"};
+  return'<span class="type-badge type-'+t+'">'+( labels[t]||t)+'</span>';
+}
+
+function render(){
+  let list=engagements.slice();
+  if(currentTab==="upcoming"){list=list.filter(e=>!isPast(e.date)).sort((a,b)=>a.date.localeCompare(b.date));}
+  else if(currentTab==="past"){list=list.filter(e=>isPast(e.date)).sort((a,b)=>b.date.localeCompare(a.date));}
+  else{list=list.sort((a,b)=>b.date.localeCompare(a.date));}
+  const up=engagements.filter(e=>!isPast(e.date)).length;
+  const past=engagements.filter(e=>isPast(e.date)).length;
+  document.getElementById("s-upcoming").textContent=up;
+  document.getElementById("s-total").textContent=engagements.length;
+  document.getElementById("s-past").textContent=past;
+  const c=document.getElementById("list-container");
+  if(!list.length){c.innerHTML='<div class="empty">No engagements here yet.<br>Add your first above.</div>';return;}
+  c.innerHTML=list.map(e=>{
+    const past=isPast(e.date);
+    const sb=e.status==="confirmed"?"badge-confirmed":"badge-tentative";
+    return'<div class="card">'+
+      '<div class="card-corner tl"></div><div class="card-corner tr"></div>'+
+      '<div class="card-corner bl"></div><div class="card-corner br"></div>'+
+      '<div class="card-header">'+
+        '<div><span class="badge '+( past?"badge-past":"badge-upcoming")+'">'+( past?"Completed":"Upcoming")+'</span> '+
+        '<span class="badge '+sb+'">'+e.status+'</span>'+typeBadge(e.type)+'</div>'+
+        '<div class="card-date">'+fmtDate(e.date)+(e.duration?" &middot; "+e.duration:"")+'</div>'+
+      '</div>'+
+      '<div class="card-title">'+( e.title||"Untitled")+'</div>'+
+      (e.venue?'<div class="card-venue">'+e.venue+'</div>':"" )+
+      (e.location?'<div class="card-location">&#128205; '+e.location+'</div>':"" )+
+      (e.notes?'<div class="card-notes">'+e.notes+'</div>':"" )+
+      '<div class="card-actions">'+
+        '<button class="btn-sm btn-edit" onclick="editEng(\"'+e.id+'\")">Edit</button> '+
+        '<button class="btn-sm btn-del" onclick="delEng(\"'+e.id+'\")">Delete</button>'+
+      '</div></div>';
+  }).join("");
+}
+
+function setTab(t){
+  currentTab=t;
+  document.querySelectorAll(".tab").forEach((el,i)=>el.classList.toggle("active",["upcoming","past","all"][i]===t));
+  render();
+}
+
+function toggleForm(){
+  const p=document.getElementById("form-panel");
+  if(p.classList.contains("open")){cancelForm();}
+  else{editingId=null;document.getElementById("form-title-label").textContent="New Engagement";clearForm();p.classList.add("open");}
+}
+
+function cancelForm(){document.getElementById("form-panel").classList.remove("open");editingId=null;clearForm();}
+
+function clearForm(){
+  ["f-title","f-date","f-venue","f-location","f-duration","f-notes"].forEach(id=>document.getElementById(id).value="");
+  document.getElementById("f-type").value="keynote";document.getElementById("f-status").value="confirmed";
+}
+
+function editEng(id){
+  const e=engagements.find(x=>x.id===id);if(!e)return;
+  editingId=id;
+  document.getElementById("f-title").value=e.title||"";
+  document.getElementById("f-date").value=e.date||"";
+  document.getElementById("f-type").value=e.type||"keynote";
+  document.getElementById("f-venue").value=e.venue||"";
+  document.getElementById("f-location").value=e.location||"";
+  document.getElementById("f-status").value=e.status||"confirmed";
+  document.getElementById("f-duration").value=e.duration||"";
+  document.getElementById("f-notes").value=e.notes||"";
+  document.getElementById("form-title-label").textContent="Edit Engagement";
+  document.getElementById("form-panel").classList.add("open");
+  document.getElementById("form-panel").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function saveEngagement(){
+  const title=document.getElementById("f-title").value.trim();
+  const date=document.getElementById("f-date").value;
+  if(!title||!date){alert("Title and date are required.");return;}
+  const obj={id:editingId||uid(),title,date,
+    type:document.getElementById("f-type").value,
+    venue:document.getElementById("f-venue").value.trim(),
+    location:document.getElementById("f-location").value.trim(),
+    status:document.getElementById("f-status").value,
+    duration:document.getElementById("f-duration").value.trim(),
+    notes:document.getElementById("f-notes").value.trim()};
+  if(editingId){const idx=engagements.findIndex(x=>x.id===editingId);if(idx>-1)engagements[idx]=obj;}
+  else{engagements.push(obj);}
+  persist();cancelForm();render();
+}
+
+function delEng(id){
+  if(!confirm("Remove this engagement?"))return;
+  engagements=engagements.filter(x=>x.id!==id);persist();render();
+}
+
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+let stars=[];
+function initStars(){
+  canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+  stars=Array.from({length:130},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.2+0.2,o:Math.random()*0.6+0.2,s:Math.random()*0.003+0.001}));
+}
+function drawStars(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  stars.forEach(s=>{s.o+=s.s;if(s.o>0.8||s.o<0.1)s.s*=-1;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle="rgba(212,175,106,"+s.o+")";ctx.fill();});
+  requestAnimationFrame(drawStars);
+}
+initStars();drawStars();
+window.addEventListener("resize",initStars);
+load();
+</script>
+</body>
+</html>
