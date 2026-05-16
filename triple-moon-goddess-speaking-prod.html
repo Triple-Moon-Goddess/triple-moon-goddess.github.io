@@ -15,8 +15,6 @@ h1.title{font-family:"Cinzel",serif;font-size:clamp(1.3rem,4vw,1.8rem);font-weig
 .divider{width:180px;margin:0 auto 1.75rem;display:flex;align-items:center;gap:0.5rem}
 .divider::before,.divider::after{content:"";flex:1;height:0.5px;background:#8a6f3a;opacity:0.5}
 .divider-star{color:#d4af6a;font-size:0.7rem}
-
-/* Speaker card */
 .speaker-card{display:flex;align-items:center;gap:1.5rem;background:#13080e;border:0.5px solid #3a2518;border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:2rem;position:relative}
 .speaker-card .corner{position:absolute;width:12px;height:12px;border-color:#8a6f3a;border-style:solid;opacity:0.6}
 .corner.tl{top:7px;left:7px;border-width:1px 0 0 1px}
@@ -26,24 +24,16 @@ h1.title{font-family:"Cinzel",serif;font-size:clamp(1.3rem,4vw,1.8rem);font-weig
 .speaker-photo{width:90px;height:90px;border-radius:50%;object-fit:cover;object-position:top center;border:1.5px solid #8a6f3a;flex-shrink:0}
 .speaker-info h2{font-family:"Cinzel",serif;font-size:1.1rem;font-weight:400;color:#e8c989;margin-bottom:0.2rem}
 .speaker-info p{font-size:0.85rem;color:#8a6f3a;font-style:italic;line-height:1.5}
-
-/* Stats */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:1.5rem}
 .stat{background:#13080e;border:0.5px solid #3a2518;border-radius:8px;padding:0.75rem;text-align:center}
 .stat-n{font-family:"Cinzel",serif;font-size:1.5rem;color:#e8c989;font-weight:600}
 .stat-l{font-size:0.65rem;color:#8a6f3a;letter-spacing:0.08em;text-transform:uppercase;margin-top:0.2rem}
-
-/* Tabs */
 .tabs{display:flex;margin-bottom:1.1rem;border:0.5px solid #3a2518;border-radius:8px;overflow:hidden}
 .tab{flex:1;padding:0.6rem;font-family:"Cinzel",serif;font-size:0.62rem;letter-spacing:0.1em;text-align:center;cursor:pointer;background:#13080e;color:#8a6f3a;border:none;text-transform:uppercase;transition:all 0.2s}
 .tab.active{background:#1c0f18;color:#e8c989;border-bottom:1.5px solid #d4af6a}
 .tab:hover:not(.active){color:#d4af6a}
-
-/* Add button */
 .btn-add{display:block;width:100%;padding:0.6rem;font-family:"Cinzel",serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;background:transparent;color:#d4af6a;border:0.5px solid #8a6f3a;border-radius:6px;cursor:pointer;transition:all 0.2s;margin-bottom:1rem}
 .btn-add:hover{background:rgba(212,175,106,0.08);border-color:#d4af6a}
-
-/* Form */
 .form-panel{background:#13080e;border:0.5px solid #3a2518;border-radius:10px;padding:1.25rem;margin-bottom:1.25rem;display:none}
 .form-panel.open{display:block}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
@@ -59,8 +49,6 @@ textarea{resize:vertical;min-height:70px}
 .btn-cancel{font-family:"Cinzel",serif;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:5px;cursor:pointer;background:transparent;color:#8a6f3a;border:0.5px solid #3a2518;transition:all 0.2s}
 .btn-cancel:hover{color:#c8b89a}
 .form-section-label{font-family:"Cinzel",serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:#8a6f3a;margin-bottom:0.75rem;padding-bottom:0.35rem;border-bottom:0.5px solid #3a2518}
-
-/* Badges */
 .badge{display:inline-block;font-size:0.6rem;letter-spacing:0.07em;text-transform:uppercase;padding:2px 8px;border-radius:20px;font-family:"Cinzel",serif}
 .badge-upcoming{background:rgba(42,122,106,0.2);color:#5ecfb8;border:0.5px solid rgba(42,122,106,0.5)}
 .badge-past{background:rgba(122,79,138,0.2);color:#c89fd8;border:0.5px solid rgba(122,79,138,0.4)}
@@ -73,8 +61,6 @@ textarea{resize:vertical;min-height:70px}
 .type-expo{background:rgba(180,100,60,0.12);color:#e8956a}
 .type-podcast{background:rgba(60,100,180,0.12);color:#6a9ae8}
 .type-other{background:rgba(100,100,100,0.12);color:#aaa}
-
-/* Cards */
 .card{background:#13080e;border:0.5px solid #3a2518;border-radius:10px;padding:1rem 1.1rem;margin-bottom:0.75rem;position:relative;transition:border-color 0.2s}
 .card:hover{border-color:#8a6f3a}
 .card-corner{position:absolute;width:10px;height:10px;border-color:#8a6f3a;border-style:solid;opacity:0.45}
@@ -94,9 +80,7 @@ textarea{resize:vertical;min-height:70px}
 .btn-edit:hover{color:#d4af6a;border-color:#8a6f3a}
 .btn-del{color:#8a4040;border-color:#3a1818}
 .btn-del:hover{color:#e06060;border-color:#8a4040}
-
 .empty{text-align:center;padding:2.5rem 1rem;color:#8a6f3a;font-style:italic;font-size:0.95rem}
-
 @media(max-width:540px){
   .speaker-card{flex-direction:column;text-align:center}
   .form-grid{grid-template-columns:1fr}
@@ -187,25 +171,25 @@ let currentTab='upcoming';
 let editingId=null;
 
 const SEED=[
-  {id:'seed1',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-05-16',type:'keynote',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot. Live demo of the TMG app — birth data in, constitution out. No readings.'},
+  {id:'seed1',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-05-16',type:'keynote',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'50 min',notes:'Saturday 4 PM speaker slot. Live demo of the TMG app — birth data in, constitution out. No readings.'},
   {id:'seed2',title:'Cocktail Table Booth — Day 1',date:'2026-05-16',type:'expo',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'Full day',notes:''},
   {id:'seed3',title:'Cocktail Table Booth — Day 2',date:'2026-05-17',type:'expo',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'Full day',notes:''},
-  {id:'seed4',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-06-20',type:'keynote',venue:'SoulSearch South San Francisco Enlightenment Expo',location:'South San Francisco, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
+  {id:'seed4',title:'Your Chart, Your Constitution: Astrology as a Health Framework',date:'2026-06-20',type:'keynote',venue:'SoulSearch South San Francisco Enlightenment Expo',location:'South San Francisco, CA',status:'confirmed',duration:'50 min',notes:'Saturday 4 PM speaker slot.'},
   {id:'seed5',title:'Booth — Day 1',date:'2026-06-20',type:'expo',venue:'SoulSearch South San Francisco Enlightenment Expo',location:'South San Francisco, CA',status:'confirmed',duration:'Full day',notes:''},
   {id:'seed6',title:'Booth — Day 2',date:'2026-06-21',type:'expo',venue:'SoulSearch South San Francisco Enlightenment Expo',location:'South San Francisco, CA',status:'confirmed',duration:'Full day',notes:''},
-  {id:'seed7',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-07-11',type:'keynote',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
+  {id:'seed7',title:'Your Chart, Your Constitution: Astrology as a Health Framework',date:'2026-07-11',type:'keynote',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'50 min',notes:'Saturday 4 PM speaker slot.'},
   {id:'seed8',title:'Booth — Day 1',date:'2026-07-11',type:'expo',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'Full day',notes:''},
   {id:'seed9',title:'Booth — Day 2',date:'2026-07-12',type:'expo',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'Full day',notes:''},
-  {id:'seed10',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-08-08',type:'keynote',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
+  {id:'seed10',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-08-08',type:'keynote',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'50 min',notes:'Saturday 4 PM speaker slot.'},
   {id:'seed11',title:'Booth — Day 1',date:'2026-08-08',type:'expo',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'Full day',notes:''},
   {id:'seed12',title:'Booth — Day 2',date:'2026-08-09',type:'expo',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'Full day',notes:''},
-  {id:'seed13',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-09-26',type:'keynote',venue:'SoulSearch Santa Cruz Enlightenment Expo',location:'Santa Cruz, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
+  {id:'seed13',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-09-26',type:'keynote',venue:'SoulSearch Santa Cruz Enlightenment Expo',location:'Santa Cruz, CA',status:'confirmed',duration:'50 min',notes:'Saturday 4 PM speaker slot.'},
   {id:'seed14',title:'Booth — Day 1',date:'2026-09-26',type:'expo',venue:'SoulSearch Santa Cruz Enlightenment Expo',location:'Santa Cruz, CA',status:'confirmed',duration:'Full day',notes:''},
   {id:'seed15',title:'Booth — Day 2',date:'2026-09-27',type:'expo',venue:'SoulSearch Santa Cruz Enlightenment Expo',location:'Santa Cruz, CA',status:'confirmed',duration:'Full day',notes:''},
-  {id:'seed16',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-11-07',type:'keynote',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
+  {id:'seed16',title:'Your Chart, Your Constitution: Astrology as a Health Framework',date:'2026-11-07',type:'keynote',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'50 min',notes:'Saturday 4 PM speaker slot.'},
   {id:'seed17',title:'Booth — Day 1',date:'2026-11-07',type:'expo',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'Full day',notes:''},
   {id:'seed18',title:'Booth — Day 2',date:'2026-11-08',type:'expo',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'Full day',notes:''},
-  {id:'seed19',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-12-12',type:'keynote',venue:'SoulSearch Dublin Enlightenment Expo',location:'Dublin, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
+  {id:'seed19',title:'Astrology Meets Medicine: How Your Chart Predicts Your Constitution',date:'2026-12-12',type:'keynote',venue:'SoulSearch Dublin Enlightenment Expo',location:'Dublin, CA',status:'confirmed',duration:'50 min',notes:'Saturday 4 PM speaker slot.'},
   {id:'seed20',title:'Booth — Day 1',date:'2026-12-12',type:'expo',venue:'SoulSearch Dublin Enlightenment Expo',location:'Dublin, CA',status:'confirmed',duration:'Full day',notes:''},
   {id:'seed21',title:'Booth — Day 2',date:'2026-12-13',type:'expo',venue:'SoulSearch Dublin Enlightenment Expo',location:'Dublin, CA',status:'confirmed',duration:'Full day',notes:''}
 ];
@@ -234,7 +218,7 @@ function fmtDate(d){
 
 function typeBadge(t){
   const labels={keynote:"Keynote",expo:"Expo / Booth",workshop:"Workshop",panel:"Panel",podcast:"Podcast",other:"Other"};
-  return'<span class="type-badge type-'+t+'">'+( labels[t]||t)+'</span>';
+  return'<span class="type-badge type-'+t+'">'+(labels[t]||t)+'</span>';
 }
 
 function render(){
@@ -256,11 +240,11 @@ function render(){
       '<div class="card-corner tl"></div><div class="card-corner tr"></div>'+
       '<div class="card-corner bl"></div><div class="card-corner br"></div>'+
       '<div class="card-header">'+
-        '<div><span class="badge '+( past?"badge-past":"badge-upcoming")+'">'+( past?"Completed":"Upcoming")+'</span> '+
+        '<div><span class="badge '+(past?"badge-past":"badge-upcoming")+'">'+(past?"Completed":"Upcoming")+'</span> '+
         '<span class="badge '+sb+'">'+e.status+'</span>'+typeBadge(e.type)+'</div>'+
         '<div class="card-date">'+fmtDate(e.date)+(e.duration?" &middot; "+e.duration:"")+'</div>'+
       '</div>'+
-      '<div class="card-title">'+( e.title||"Untitled")+'</div>'+
+      '<div class="card-title">'+(e.title||"Untitled")+'</div>'+
       (e.venue?'<div class="card-venue">'+e.venue+'</div>':"" )+
       (e.location?'<div class="card-location">&#128205; '+e.location+'</div>':"" )+
       (e.notes?'<div class="card-notes">'+e.notes+'</div>':"" )+
