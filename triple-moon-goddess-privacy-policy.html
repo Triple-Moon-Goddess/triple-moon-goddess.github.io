@@ -66,13 +66,13 @@
 
   <div class="policy-header">
     <p>Triple Moon Goddess &nbsp;&middot;&nbsp; <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a> &nbsp;&middot;&nbsp; <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
-    <p class="version">Privacy Policy v2025-01 &nbsp;&middot;&nbsp; Last reviewed May 2026</p>
+    <p class="version">Privacy Policy v2026-05 &nbsp;&middot;&nbsp; Last reviewed May 2026</p>
   </div>
 
   <section class="hero">
     <div class="hero-eyebrow">Privacy Policy</div>
     <h1>How we hold<br>your <em>data</em>.</h1>
-    <div class="meta"><span>Effective January 2025</span><span>·</span><span>Version 2025-01</span><span>·</span><span>Last reviewed May 2026</span></div>
+    <div class="meta"><span>Effective January 2025</span><span>·</span><span>Version 2026-05</span><span>·</span><span>Last reviewed May 2026</span></div>
     <div class="ornament"></div>
   </section>
 
@@ -119,7 +119,7 @@
     <h2><span class="num">V</span>Third-Party Processors</h2>
     <div class="processor-card"><div class="processor-name">Google Firebase (Alphabet Inc.)</div><p>Provides database, authentication, hosting, and cloud functions. Stores all Firestore data, authentication UIDs, and push tokens across US and EU data centres.</p><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></div>
     <div class="processor-card"><div class="processor-name">Anthropic, PBC</div><p>Provides the Claude AI API for optional daily journal summaries. Data sent: journal entry data for the day (health scores, food, symptoms, notes, astrology context). No name, email, or access code is included. API data is not used to train models without consent.</p><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a></div>
-    <div class="processor-card"><div class="processor-name">Railway (Railway Corp.)</div><p>Hosts our Swiss Ephemeris calculation API for astrological positions. Data sent: birth date, time, and location — not linked to your identity.</p><a href="https://railway.app/legal/privacy" target="_blank" rel="noopener">railway.app/legal/privacy</a></div>
+    <div class="processor-card"><div class="processor-name">Google Cloud Run (Alphabet Inc.)</div><p>Hosts our Swiss Ephemeris calculation API for astrological positions. Data sent: birth date, time, and location — not linked to your identity. Migrated from Railway to Google Cloud Run in May 2026.</p><a href="https://cloud.google.com/terms/cloud-privacy-notice" target="_blank" rel="noopener">cloud.google.com/terms/cloud-privacy-notice</a></div>
     <div class="processor-card"><div class="processor-name">Google Workspace / Gmail &amp; Google Drive</div><p>Used for sending reminder emails and PDF delivery. Google's standard privacy terms apply.</p></div>
   </section>
 
@@ -152,11 +152,15 @@
   <section class="policy" id="cookies">
     <h2><span class="num">IX</span>Cookies and Local Storage</h2>
     <p>We do not use advertising cookies or tracking pixels. We use browser local storage only for: storing your access code (session continuity), recording your consent decision and timestamp, caching your Firebase authentication session, and storing widget email preference (phone widget only). These are strictly necessary for app function. No third-party tracking cookies are used.</p>
+    <p>For users aged 13–17, the main chart app additionally stores the natal chart locally under the key <code>tmg_minor_chart</code>. This is device-local only — no data is written to any server for minor users. See Section X for details.</p>
   </section>
 
   <section class="policy" id="children">
     <h2><span class="num">X</span>Children's Privacy</h2>
-    <p>This application is intended for adults aged 18 and over. We do not knowingly collect personal data from children under 13 (or under 16 in the EU/EEA). If you believe a child has submitted data to us, please contact <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a> and we will delete it immediately.</p>
+    <p>The full TMG platform — Health Journal, Tea Moon, Health Blueprint, and practitioner apps — is intended for adults aged 18 and over. We do not knowingly collect personal data from children under 13 (or under 16 in the EU/EEA). If you believe a child under 13 has submitted data to us, please contact <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a> and we will delete it immediately.</p>
+    <h3>Age-Appropriate Chart Experience for 13–17</h3>
+    <p>The main natal chart app offers a limited, age-appropriate experience for users aged 13–17, with parental consent required before any chart is generated. This experience is designed with privacy as the default: <strong>no account is created, no email is collected, and no data is written to any server</strong>. The natal chart is calculated using the Swiss Ephemeris API (birth date, time, and location are transmitted for computation only and not stored by TMG) and stored locally on the user's device under the key <code>tmg_minor_chart</code>. The chart can be cleared at any time by tapping "New Chart." Secondary apps — Health Journal, Tea Moon, Health Blueprint, and the practitioner apps — are not available to users under 18.</p>
+    <p>Parental or guardian consent is collected within the app before chart generation for any user whose birth date indicates they are between 13 and 17. By providing consent, the parent or guardian confirms they have reviewed and agreed to this privacy policy on behalf of the minor.</p>
   </section>
 
   <section class="policy" id="rights">
