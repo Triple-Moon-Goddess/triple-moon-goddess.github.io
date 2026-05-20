@@ -19,8 +19,8 @@
     --gold-dim: rgba(212,175,106,0.5);
     --gold-faint: rgba(212,175,106,0.15);
     --cream: rgba(232,201,137,0.85);
-    --text-body: rgba(224,210,180,0.88);
-    --text-muted: rgba(201,184,150,0.6);
+    --text-body: #e8c989;
+    --text-muted: rgba(232,201,137,0.7);
   }
 
   html { background: var(--black); }
@@ -60,7 +60,7 @@
     display: block;
   }
   .site-name a { color: inherit; text-decoration: none; transition: color 0.3s; }
-  .site-name a:hover { color: #d4af6a; }
+  .site-name a:hover { color: #e8c989; }
 
   .divider { display: flex; align-items: center; gap: 16px; margin: 28px 0; }
   .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(212,175,106,0.5), transparent); }
@@ -91,14 +91,14 @@
     font-style: italic;
     font-size: clamp(16px, 3vw, 22px);
     font-weight: 300;
-    color: rgba(201,184,150,0.6);
+    color: rgba(232,201,137,0.7);
     letter-spacing: 0.04em;
     margin-bottom: 36px;
   }
   .hero-desc {
     font-size: clamp(16px, 2.5vw, 20px);
     line-height: 1.75;
-    color: rgba(224,210,180,0.88);
+    color: #e8c989;
     max-width: 580px;
     margin: 0 auto;
   }
@@ -151,20 +151,7 @@
     color: #d4af6a;
     margin-bottom: 10px;
   }
-  .card-desc { font-size: 15px; line-height: 1.65; color: rgba(201,184,150,0.6); font-style: italic; }
-
-  .personal-note {
-    background: rgba(212,175,106,0.05);
-    border: 1px solid rgba(212,175,106,0.15);
-    border-left: 3px solid rgba(212,175,106,0.5);
-    padding: 24px 28px;
-    margin-bottom: 56px;
-    font-size: 15px;
-    line-height: 1.75;
-    color: rgba(201,184,150,0.6);
-    font-style: italic;
-  }
-  .personal-note strong { color: #d4af6a; font-style: normal; font-weight: 400; }
+  .card-desc { font-size: 15px; line-height: 1.65; color: #e8c989; font-style: italic; }
 
   .form-section { text-align: center; margin-bottom: 48px; }
   .form-headline {
@@ -175,19 +162,18 @@
     letter-spacing: 0.08em;
     margin-bottom: 12px;
   }
-  .form-sub { font-size: 15px; color: rgba(201,184,150,0.6); font-style: italic; margin-bottom: 32px; }
+  .form-sub { font-size: 15px; color: rgba(232,201,137,0.7); font-style: italic; margin-bottom: 32px; }
 
   .ml-form-wrapper { max-width: 480px; margin: 0 auto; }
 
   .privacy-note {
     font-size: 12px;
-    color: rgba(201,184,150,0.6);
+    color: rgba(232,201,137,0.5);
     font-style: italic;
     margin-top: 20px;
-    opacity: 0.7;
   }
-  .privacy-note a { color: rgba(212,175,106,0.5); text-decoration: none; border-bottom: 1px solid rgba(212,175,106,0.2); }
-  .privacy-note a:hover { color: #d4af6a; }
+  .privacy-note a { color: rgba(212,175,106,0.6); text-decoration: none; border-bottom: 1px solid rgba(212,175,106,0.2); }
+  .privacy-note a:hover { color: #e8c989; }
 
   .page-footer {
     text-align: center;
@@ -196,11 +182,10 @@
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(201,184,150,0.6);
-    opacity: 0.6;
+    color: rgba(212,175,106,0.5);
   }
   .page-footer a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(212,175,106,0.2); padding-bottom: 1px; }
-  .page-footer a:hover { color: #d4af6a; opacity: 1; }
+  .page-footer a:hover { color: #e8c989; }
   .page-footer .sep { margin: 0 12px; opacity: 0.4; }
   .patent-line {
     font-family: 'Cormorant Garamond', serif;
@@ -208,7 +193,7 @@
     font-size: 11px;
     letter-spacing: 0.06em;
     text-transform: none;
-    color: rgba(201,184,150,0.4);
+    color: rgba(212,175,106,0.35);
     margin-top: 10px;
     display: block;
   }
@@ -280,10 +265,6 @@
     </div>
   </section>
 
-  <div class="personal-note fade-in">
-    <strong>A note on personalization:</strong> TMG Times uses your birth data &mdash; date, time, and location &mdash; to calculate your constitutional profile and upcoming transits. This is the same data the TMG apps use. Your birth data is used only to personalize your forecast and is never shared with third parties. Each issue is generated individually for your natal chart.
-  </div>
-
   <section class="form-section fade-in">
     <h2 class="form-headline">Receive Your First Issue</h2>
     <p class="form-sub">Monthly. Personalized. Free.</p>
@@ -300,12 +281,11 @@
            to get closest to TMG aesthetic before the page CSS overrides kick in. -->
       <div style="border:1px solid rgba(212,175,106,0.2); padding:40px 32px; text-align:center;">
         <p style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(212,175,106,0.5); margin-bottom:12px;">Form Setup Pending</p>
-        <p style="font-style:italic; color:rgba(201,184,150,0.5); font-size:14px;">Configure the form in MailerLite dashboard, then paste the embed snippet here.</p>
+        <p style="font-style:italic; color:rgba(232,201,137,0.5); font-size:14px;">Configure the form in MailerLite dashboard, then paste the embed snippet here.</p>
       </div>
     </div>
 
     <p class="privacy-note">
-      Your information is held securely and never sold or shared.
       <a href="https://triple-moon-goddess.github.io/triple-moon-goddess-privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>
     </p>
   </section>
