@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Summary — Triple Moon Goddess</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --gold: #d4af6a; --gold-bright: #e8c989; --gold-deep: #b8945a; --ink: #f5e8d0; --ink-soft: #c9b896; --bg: #0a0608; --bg-deep: #050304; --line: rgba(212, 175, 106, 0.18); --line-strong: rgba(212, 175, 106, 0.4); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; position: relative; min-height: 100vh; }
+  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 15% 20%, rgba(212,175,106,0.08) 0%, transparent 45%), radial-gradient(ellipse at 85% 75%, rgba(184,148,90,0.06) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(20,12,8,1) 0%, var(--bg) 70%); pointer-events: none; z-index: 0; }
+  body::after { content: ''; position: fixed; inset: 0; background-image: radial-gradient(1px 1px at 23% 17%, rgba(232,201,137,0.8), transparent), radial-gradient(1px 1px at 67% 83%, rgba(232,201,137,0.6), transparent), radial-gradient(2px 2px at 56% 29%, rgba(232,201,137,0.9), transparent), radial-gradient(1px 1px at 89% 11%, rgba(232,201,137,0.7), transparent), radial-gradient(2px 2px at 94% 62%, rgba(232,201,137,0.8), transparent); background-size: 100% 100%; pointer-events: none; z-index: 0; opacity: 0.7; animation: twinkle 8s ease-in-out infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0.7} 50%{opacity:0.4} }
+  .container { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; padding: 0 24px 64px; }
+  .policy-header { text-align: center; padding: 28px 0 0; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); line-height: 2; }
+  .policy-header a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); }
+  .hero { padding: 56px 0 40px; text-align: center; }
+  .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
+  .hero-eyebrow::before, .hero-eyebrow::after { content: '✦'; margin: 0 12px; color: var(--gold-deep); font-size: 9px; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(1.8rem, 5vw, 2.8rem); line-height: 1.15; color: var(--gold-bright); margin-bottom: 16px; }
+  .hero p { font-size: 0.9rem; color: var(--ink-soft); max-width: 440px; margin: 0 auto; }
+  .ornament { margin: 36px auto; width: 160px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); position: relative; }
+  .ornament::before { content: '☾'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: var(--bg); padding: 0 14px; color: var(--gold); font-size: 16px; }
+  .card { background: linear-gradient(180deg, rgba(20,12,8,0.6) 0%, rgba(10,6,8,0.95) 100%); border: 1px solid var(--line); padding: 20px 22px; margin-bottom: 14px; }
+  .card-title { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .card ul { list-style: none; }
+  .card ul li { font-size: 0.88rem; color: var(--ink); padding: 5px 0 5px 20px; position: relative; border-bottom: 1px solid var(--line); }
+  .card ul li:last-child { border-bottom: none; }
+  .card ul li::before { content: '·'; position: absolute; left: 6px; color: var(--gold); }
+  .card p { font-size: 0.88rem; color: var(--ink); }
+  .card a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); font-size: 0.88rem; }
+  .never { background: linear-gradient(180deg, rgba(20,12,8,0.6) 0%, rgba(10,6,8,0.95) 100%); border: 1px solid var(--line); border-left: 3px solid var(--gold); padding: 16px 20px; margin-bottom: 14px; }
+  .never .card-title { margin-bottom: 8px; }
+  .never ul li { color: var(--ink-soft); }
+  .upn-link { display: block; text-align: center; margin: 32px 0 8px; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid var(--line); padding: 14px 20px; transition: border-color 0.3s; }
+  .upn-link:hover { border-color: var(--line-strong); }
+  .contact { text-align: center; margin-top: 28px; font-size: 0.85rem; color: var(--ink-soft); }
+  .contact a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); }
+  .age-note { font-size: 0.82rem; color: var(--ink-soft); background: rgba(212,175,106,0.05); border: 1px solid var(--line); padding: 12px 16px; margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="policy-header">
+    <p>Triple Moon Goddess &nbsp;&middot;&nbsp; <a href="https://triplemoongoddess.com">triplemoongoddess.com</a> &nbsp;&middot;&nbsp; <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
+  </div>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Privacy Summary</div>
+    <h1>Your data,<br>simply explained.</h1>
+    <p>This is a plain-language summary of how Triple Moon Goddess handles your information. For the full picture, see our <a href="https://triple-moon-goddess.github.io/triple-moon-goddess-privacy-policy.html" style="color:var(--gold);border-bottom:1px solid var(--gold-deep);">Privacy Policy</a>.</p>
+    <div class="ornament"></div>
+  </section>
+
+  <div class="card">
+    <div class="card-title">What we collect</div>
+    <ul>
+      <li>Birth date, time &amp; location — to generate your natal chart</li>
+      <li>First name or nickname — stored separately from your health data</li>
+      <li>Email address — for account access, chart delivery, and reminders only</li>
+      <li>Daily health journal entries — mood, energy, sleep, symptoms, food, notes</li>
+      <li>App preferences — reminder times, house system, food plan, tab config</li>
+    </ul>
+    <div class="age-note">Users aged 13–17: a limited natal chart experience is available with parental consent. No account is created, no email is collected, and no data is written to any server. The chart is stored on your device only. All other TMG apps require users to be 18 or over.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">How we use it</div>
+    <ul>
+      <li>To generate and display your natal chart and astrological insights</li>
+      <li>To power your health journal and track patterns over time</li>
+      <li>To send reminders and deliver PDF exports you request</li>
+      <li>To provide optional AI-generated summaries and conversation (requires your own API token after 5 free uses — you control this)</li>
+    </ul>
+    <p style="margin-top:10px;font-size:0.82rem;color:var(--ink-soft);">We do not use your data for advertising. We do not sell your data. Ever.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Who we share it with</div>
+    <ul>
+      <li><strong style="color:var(--gold-bright);">Google Firebase</strong> — our database, authentication, and hosting infrastructure</li>
+      <li><strong style="color:var(--gold-bright);">Google Cloud Run</strong> — hosts our astrological calculation API (birth data only, not linked to your identity)</li>
+      <li><strong style="color:var(--gold-bright);">Anthropic</strong> — only when you use AI features; receives journal context only, never your name, email, or birth data</li>
+      <li><strong style="color:var(--gold-bright);">Google Workspace</strong> — used to send reminder emails and PDF exports</li>
+      <li><strong style="color:var(--gold-bright);">Law enforcement</strong> — only if required by law or valid legal process</li>
+    </ul>
+    <p style="margin-top:10px;font-size:0.82rem;color:var(--ink-soft);">We do not share your data with third parties for their own marketing purposes. All service providers are contractually bound to process your data only on our instruction.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">How we protect it</div>
+    <ul>
+      <li>All data transmitted over HTTPS (TLS 1.2+)</li>
+      <li>Your health data and identity are stored in separate database collections — no single record contains both</li>
+      <li>Practitioner apps use client-side encryption for clinical notes and client emails — unreadable without the practitioner's passphrase, even to us</li>
+      <li>API keys stored in Google Cloud Secret Manager, never in code</li>
+      <li>Firebase Security Rules restrict every user to their own data only</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Your controls</div>
+    <ul>
+      <li>Delete all your data at any time — Settings → Danger Zone</li>
+      <li>Disable AI features at any time — remove your API token in Settings → AI</li>
+      <li>Request a copy of your data, correction, or deletion by emailing us</li>
+      <li>EU/EEA/UK users have full GDPR rights (access, erasure, portability, restriction, objection)</li>
+      <li>California users have full CCPA/CPRA rights</li>
+    </ul>
+  </div>
+
+  <div class="never">
+    <div class="card-title">We never</div>
+    <ul>
+      <li>Sell your personal data</li>
+      <li>Share your data with advertisers</li>
+      <li>Use your health data to train AI models</li>
+      <li>Combine your identity with your health records in a single database document</li>
+      <li>Send client names, emails, or birth data to any AI processor</li>
+      <li>Access device contacts, calendar, camera, or location</li>
+    </ul>
+  </div>
+
+  <a class="upn-link" href="https://triple-moon-goddess.github.io/triple-moon-goddess-privacy-policy.html">
+    Read the full Privacy Policy →
+  </a>
+
+  <div class="contact">
+    <p>Questions? Contact us at <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
+    <p style="margin-top:6px;">Triple Moon Goddess · Lisa Hagan · 3654 Thornton Ave, Unit #748 · Fremont, CA 94536</p>
+    <p style="margin-top:6px;font-size:0.8rem;color:rgba(201,184,150,0.4);">We will respond to all privacy requests within 30 days.</p>
+  </div>
+
+</div>
+</body>
+</html>
