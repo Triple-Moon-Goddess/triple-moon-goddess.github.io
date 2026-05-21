@@ -72,14 +72,22 @@
   <section class="hero">
     <div class="hero-eyebrow">Privacy Policy</div>
     <h1>How we hold<br>your <em>data</em>.</h1>
-    <div class="meta"><span>Effective January 2025</span><span>·</span><span>Version 2026-05</span><span>·</span><span>Last reviewed May 2026</span></div>
+    <div class="meta"><span>Effective January 2025</span><span>·</span><span>Version 2026-05</span><span>·</span><span>Last reviewed May 20, 2026</span></div>
     <div class="ornament"></div>
   </section>
 
   <section class="policy" id="who-we-are">
     <h2><span class="num">I</span>Who We Are</h2>
     <p>Triple Moon Goddess is a wellness journaling and medical astrology application operated by <strong>Lisa Hagan</strong> ("we", "us", "our"). For all data protection enquiries, please contact:</p>
-    <p>Email: <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a><br>Website: <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a></p>
+    <p>
+      <strong>Triple Moon Goddess</strong><br>
+      Lisa Hagan<br>
+      3654 Thornton Ave, Unit #748<br>
+      Fremont, CA 94536<br>
+      United States<br>
+      Email: <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a><br>
+      Website: <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a>
+    </p>
     <div class="callout">We are a sole operator and do not currently have a designated Data Protection Officer (DPO). If you are in the EU/EEA and your enquiry is unresolved, you have the right to lodge a complaint with your local supervisory authority.</div>
   </section>
 
@@ -110,7 +118,10 @@
     <h3>Health Data Processing</h3>
     <p>Legal basis: Explicit consent (GDPR Art 9(2)(a)) — storing/displaying journal entries, generating PDF exports, enabling Practitioner Mode. You may withdraw consent at any time via <strong>Settings → Danger Zone</strong>.</p>
     <h3>AI Summary Processing</h3>
-    <p>Legal basis: Explicit consent (GDPR Art 6(1)(a) and Art 9(2)(a)). When you choose to generate a daily AI summary, your journal data for that day is sent to Anthropic's API. This is entirely optional — you choose each time you tap the button. Declining does not affect any other functionality.</p>
+    <p>Legal basis: Explicit consent (GDPR Art 6(1)(a) and Art 9(2)(a)). AI summaries are an entirely optional feature that requires deliberate setup. Here is how it works:</p>
+    <p>New users receive <strong>5 complimentary AI summary uses</strong> to experience the feature. After those are used, AI summaries are only available if you choose to add your own Anthropic API token in <strong>Settings → AI</strong>. The feature cannot be triggered accidentally — it requires both the presence of a token and an intentional tap of the summary button for that day. You can disable AI summaries at any time by removing your API token from Settings; doing so immediately and permanently disables all AI processing. No token means no data is ever sent to Anthropic.</p>
+    <p>When an AI summary is generated, only that day's journal data (health scores, food log, symptoms, notes, and astrology context) is sent to Anthropic's API. No name, email, or access code is included in the request.</p>
+    <div class="callout"><strong>Notice before each summary:</strong> The AI summary screen displays a clear disclosure of what data will be sent to Anthropic before each summary is generated. You may decline at any point without affecting any other app functionality.</div>
     <h3>What We Never Do</h3>
     <ul class="never-list"><li>Sell your personal data</li><li>Share your data with advertisers</li><li>Use your health data to train AI models</li><li>Combine your identity with your health records in a single document</li></ul>
   </section>
@@ -118,7 +129,7 @@
   <section class="policy" id="processors">
     <h2><span class="num">V</span>Third-Party Processors</h2>
     <div class="processor-card"><div class="processor-name">Google Firebase (Alphabet Inc.)</div><p>Provides database, authentication, hosting, and cloud functions. Stores all Firestore data, authentication UIDs, and push tokens across US and EU data centres.</p><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></div>
-    <div class="processor-card"><div class="processor-name">Anthropic, PBC</div><p>Provides the Claude AI API for optional daily journal summaries. Data sent: journal entry data for the day (health scores, food, symptoms, notes, astrology context). No name, email, or access code is included. API data is not used to train models without consent.</p><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a></div>
+    <div class="processor-card"><div class="processor-name">Anthropic, PBC</div><p>Provides the Claude AI API for optional daily journal summaries. Data sent: journal entry data for the day (health scores, food, symptoms, notes, astrology context). No name, email, or access code is included. Anthropic API data is not used to train models. This processor is only engaged if you choose to use the AI summary feature — see Section IV for the full opt-in model.</p><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a></div>
     <div class="processor-card"><div class="processor-name">Google Cloud Run (Alphabet Inc.)</div><p>Hosts our Swiss Ephemeris calculation API for astrological positions. Data sent: birth date, time, and location — not linked to your identity. Migrated from Railway to Google Cloud Run in May 2026.</p><a href="https://cloud.google.com/terms/cloud-privacy-notice" target="_blank" rel="noopener">cloud.google.com/terms/cloud-privacy-notice</a></div>
     <div class="processor-card"><div class="processor-name">Google Workspace / Gmail &amp; Google Drive</div><p>Used for sending reminder emails and PDF delivery. Google's standard privacy terms apply.</p></div>
   </section>
@@ -135,31 +146,35 @@
 
   <section class="policy" id="security">
     <h2><span class="num">VIII</span>Security Measures</h2>
-
     <h3>Client-Side Encryption</h3>
     <p>The Integrative Practitioner and Soul Pattern apps use client-side encryption to protect sensitive practitioner data at rest in Firestore. Encryption and decryption happen entirely in the practitioner's browser. No plaintext ever leaves the device for encrypted fields, and no key material is ever sent to any server.</p>
     <p>Encrypted data includes: practitioner clinical notes, psychological readings, and client email records. Client emails are encrypted and the plaintext email field is deleted from Firestore at the moment of client assignment. Even if the Firestore database were fully compromised, these records would be unreadable without the practitioner's passphrase.</p>
     <p>The cryptographic stack uses XSalsa20-Poly1305 authenticated encryption (confidentiality and tamper detection) with scrypt key derivation. The practitioner's passphrase is never stored or transmitted — not in the browser, not in Firestore, not in any server log. The encryption key exists only in browser sessionStorage for the duration of the active tab and is cleared when the tab closes or the practitioner signs out.</p>
     <p><strong>Passphrase recovery is not possible.</strong> There is no server-side escrow, no recovery key, and no reset flow. If a passphrase is lost, encrypted data cannot be recovered. This is intentional.</p>
     <p>The following data is protected by Firestore security rules but not by client-side encryption: natal chart data, client intake answers, intake match results, journal entries, and Soul module session data.</p>
-
     <h3>Infrastructure Security</h3>
     <p>All data transmitted over HTTPS (TLS 1.2+). Data encrypted at rest via Firebase/Firestore encryption. API keys stored in Google Cloud Secret Manager — never in code. Firebase Security Rules restrict database access to each authenticated user's own data. Admin portal restricted to a single authorised account. Health data and identity data are physically separated in distinct Firestore collections — no single record contains both.</p>
-
     <div class="callout">No security system is 100% impenetrable. If you believe your data has been compromised, contact <strong>Lisa@TripleMoonGoddess.com</strong> immediately.</div>
   </section>
 
   <section class="policy" id="cookies">
     <h2><span class="num">IX</span>Cookies and Local Storage</h2>
-    <p>We do not use advertising cookies or tracking pixels. We use browser local storage only for: storing your access code (session continuity), recording your consent decision and timestamp, caching your Firebase authentication session, and storing widget email preference (phone widget only). These are strictly necessary for app function. No third-party tracking cookies are used.</p>
-    <p>For users aged 13–17, the main chart app additionally stores the natal chart locally under the key <code>tmg_minor_chart</code>. This is device-local only — no data is written to any server for minor users. See Section X for details.</p>
+    <p>We do not use advertising cookies or tracking pixels. We use browser local storage only for strictly necessary app functions:</p>
+    <table class="data-table"><thead><tr><th>Key / Purpose</th><th>Who it applies to</th></tr></thead><tbody>
+      <tr><td>Access code (session continuity)</td><td>All users</td></tr>
+      <tr><td>Consent decision and timestamp</td><td>All users</td></tr>
+      <tr><td>Firebase authentication session cache</td><td>All users</td></tr>
+      <tr><td>Widget email preference (phone widget only)</td><td>Widget users</td></tr>
+      <tr><td><code>tmg_minor_chart</code> — natal chart data stored locally for the age-appropriate 13–17 experience. Device-local only; no data is written to any TMG server for minor users.</td><td>Users aged 13–17 only</td></tr>
+    </tbody></table>
+    <p>No third-party tracking cookies are used. None of the above local storage keys are shared with any third party.</p>
   </section>
 
   <section class="policy" id="children">
     <h2><span class="num">X</span>Children's Privacy</h2>
     <p>The full TMG platform — Health Journal, Tea Moon, Health Blueprint, and practitioner apps — is intended for adults aged 18 and over. We do not knowingly collect personal data from children under 13 (or under 16 in the EU/EEA). If you believe a child under 13 has submitted data to us, please contact <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a> and we will delete it immediately.</p>
     <h3>Age-Appropriate Chart Experience for 13–17</h3>
-    <p>The main natal chart app offers a limited, age-appropriate experience for users aged 13–17, with parental consent required before any chart is generated. This experience is designed with privacy as the default: <strong>no account is created, no email is collected, and no data is written to any server</strong>. The natal chart is calculated using the Swiss Ephemeris API (birth date, time, and location are transmitted for computation only and not stored by TMG) and stored locally on the user's device under the key <code>tmg_minor_chart</code>. The chart can be cleared at any time by tapping "New Chart." Secondary apps — Health Journal, Tea Moon, Health Blueprint, and the practitioner apps — are not available to users under 18.</p>
+    <p>The main natal chart app offers a limited, age-appropriate experience for users aged 13–17, with parental consent required before any chart is generated. This experience is designed with privacy as the default: <strong>no account is created, no email is collected, and no data is written to any server</strong>. The natal chart is calculated using the Swiss Ephemeris API (birth date, time, and location are transmitted for computation only and not stored by TMG) and stored locally on the user's device under the key <code>tmg_minor_chart</code> (see Section IX). The chart can be cleared at any time by tapping "New Chart." Secondary apps — Health Journal, Tea Moon, Health Blueprint, and the practitioner apps — are not available to users under 18.</p>
     <p>Parental or guardian consent is collected within the app before chart generation for any user whose birth date indicates they are between 13 and 17. By providing consent, the parent or guardian confirms they have reviewed and agreed to this privacy policy on behalf of the minor.</p>
   </section>
 
@@ -173,25 +188,20 @@
     <p>Right to know, right to delete, right to opt out of sale (we do not sell data), right to non-discrimination, and right to correct inaccurate personal information. Categories collected: identifiers, health/medical information, internet/electronic activity (Firebase analytics). Sold/shared: No.</p>
     <h3>Brazil (LGPD), Canada (PIPEDA), Australia (Privacy Act)</h3>
     <p>Users in these jurisdictions have equivalent rights to access, correction, anonymisation, portability, and deletion. Contact <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a>. Australian users may also escalate to the OAIC.</p>
-    <div class="callout">To exercise any of these rights, email <strong>Lisa@TripleMoonGoddess.com</strong>. We will respond within 30 days.</div>
+    <div class="callout">To exercise any of these rights, email <strong>Lisa@TripleMoonGoddess.com</strong>. We will respond within 30 days. Our response will confirm whether your request has been granted or, if denied, explain the reason for denial.</div>
   </section>
 
   <section class="policy" id="practitioner">
     <h2><span class="num">XII</span>Practitioner App Data</h2>
     <p>The Integrative Practitioner, Soul Pattern, and Constitutional Health apps are separate paid-tier applications. Their data architecture differs from the individual seeker apps.</p>
-
     <h3>What Practitioners Enter</h3>
     <p>Practitioners enter client birth data (date, time, location) to generate a natal chart and derived outputs. The practitioner also enters a client email address as the client identifier within their account. That email is encrypted client-side at the moment of entry — the plaintext is immediately deleted from Firestore and never stored unencrypted on any server. Even if the database were compromised, client email records would be unreadable without the practitioner's passphrase.</p>
-
     <h3>What Practitioners See</h3>
     <p>The practitioner view surfaces chart-derived outputs: sign placements, house positions, constitutional profile, pattern group scores, and comparison signals. Practitioners do not see raw birth data displayed back to them after chart generation — the chart describes the person through derived outputs, it does not display the underlying date, time, and location as identifying fields.</p>
-
     <h3>Client Birth Data</h3>
     <p>Birth data entered by a practitioner is used solely to calculate the natal chart for that client record. It is stored in the practitioner's Firestore account under their authenticated UID, protected by Firebase Security Rules. It is not shared with other practitioners, not used for advertising, and not linked to any identity record in the research corpus.</p>
-
     <h3>Research Data from Practitioner Sessions</h3>
-    <p>Soul module sessions, pattern scores, comparison signals, and practitioner follow-up feedback contribute to the TMG longitudinal research corpus under pseudonymization. The pseudonymized research record contains pattern-level data only — no name, email, or birth data is included. The link between a client record and its pseudonymized research entry is protected and stored separately from the research corpus.</p>
-
+    <p>Soul module sessions, pattern scores, comparison signals, and practitioner follow-up feedback may contribute to the TMG longitudinal research corpus. All research records are pseudonymized before inclusion. The pseudonymized record contains pattern-level and astrological signal data only — for example, whether a particular planetary aspect correlates with a reported pattern across a population. No name, email, birth date, birth time, or birth location is included in any published or shared research output. The link between a client record and its pseudonymized research entry is stored separately from the research corpus and is never published.</p>
     <h3>Encryption &amp; Passphrase</h3>
     <p>Practitioner apps use client-side encryption for sensitive fields. See Section VIII for full technical detail. The passphrase is the practitioner's responsibility — TMG has no recovery mechanism and cannot access encrypted data under any circumstances.</p>
   </section>
@@ -204,8 +214,16 @@
   <section class="policy" id="contact">
     <h2><span class="num">XIV</span>Contact &amp; Complaints</h2>
     <p>For any privacy-related question, data request, or complaint:</p>
-    <p><strong>Email:</strong> <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
-    <p>We will respond within 30 days. If you are not satisfied with our response, you have the right to escalate to your local data protection authority:</p>
+    <p>
+      <strong>Triple Moon Goddess</strong><br>
+      Lisa Hagan<br>
+      3654 Thornton Ave, Unit #748<br>
+      Fremont, CA 94536<br>
+      United States<br>
+      Email: <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a>
+    </p>
+    <div class="callout">We will respond to all privacy requests within <strong>30 days</strong>. Our response will confirm whether your request has been granted or, if denied, will explain the reason for denial and provide contact information for further escalation.</div>
+    <p>If you are not satisfied with our response, you have the right to escalate to your local data protection authority:</p>
     <p>EU/EEA: your national supervisory authority (ICO in UK, CNIL in France, BfDI in Germany) · California: California Privacy Protection Agency (CPPA) · Australia: Office of the Australian Information Commissioner (OAIC)</p>
   </section>
 
