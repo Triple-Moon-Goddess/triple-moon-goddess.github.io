@@ -66,13 +66,13 @@
 
   <div class="policy-header">
     <p>Triple Moon Goddess &nbsp;&middot;&nbsp; <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a> &nbsp;&middot;&nbsp; <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
-    <p class="version">Privacy Policy v2026-05 &nbsp;&middot;&nbsp; Last reviewed May 20, 2026</p>
+    <p class="version">Privacy Policy v2026-05b &nbsp;&middot;&nbsp; Last reviewed May 20, 2026</p>
   </div>
 
   <section class="hero">
     <div class="hero-eyebrow">Privacy Policy</div>
     <h1>How we hold<br>your <em>data</em>.</h1>
-    <div class="meta"><span>Effective January 1, 2025</span><span>·</span><span>Version 2026-05</span><span>·</span><span>Last reviewed May 20, 2026</span></div>
+    <div class="meta"><span>Effective January 1, 2025</span><span>·</span><span>Version 2026-05b</span><span>·</span><span>Last reviewed May 20, 2026</span></div>
     <div class="ornament"></div>
   </section>
 
@@ -117,19 +117,23 @@
     <p>Legal basis: Legitimate interests / Contract (GDPR Art 6(1)(b) and (f)) — providing app functionality, authentication, push notifications, email reminders, and rate limiting.</p>
     <h3>Health Data Processing</h3>
     <p>Legal basis: Explicit consent (GDPR Art 9(2)(a)) — storing/displaying journal entries, generating PDF exports, enabling Practitioner Mode. You may withdraw consent at any time via <strong>Settings → Danger Zone</strong>.</p>
-    <h3>AI Summary Processing</h3>
-    <p>Legal basis: Explicit consent (GDPR Art 6(1)(a) and Art 9(2)(a)). AI summaries are an entirely optional feature that requires deliberate setup. Here is how it works:</p>
-    <p>New users receive <strong>5 complimentary AI summary uses</strong> to experience the feature. After those are used, AI summaries are only available if you choose to add your own Anthropic API token in <strong>Settings → AI</strong>. The feature cannot be triggered accidentally — it requires both the presence of a token and an intentional tap of the summary button for that day. You can disable AI summaries at any time by removing your API token from Settings; doing so immediately and permanently disables all AI processing. No token means no data is ever sent to Anthropic.</p>
-    <p>When an AI summary is generated, only that day's journal data (health scores, food log, symptoms, notes, and astrology context) is sent to Anthropic's API. No name, email, or access code is included in the request.</p>
-    <div class="callout"><strong>Notice before each summary:</strong> The AI summary screen displays a clear disclosure of what data will be sent to Anthropic before each summary is generated. You may decline at any point without affecting any other app functionality.</div>
+    <h3>AI Processing</h3>
+    <p>Legal basis: Explicit consent (GDPR Art 6(1)(a) and Art 9(2)(a)). AI features are entirely optional and require deliberate setup. New users receive <strong>5 complimentary AI uses</strong>; after that, AI is only available if you choose to add your own Anthropic API token in <strong>Settings → AI</strong>. Removing your token immediately and permanently disables all AI processing — no token means no data is ever sent to Anthropic.</p>
+    <p>When any AI feature is used, only the data relevant to that interaction is sent to Anthropic's API. No name, email, or access code is ever included. Anthropic does not use this data to train models. There are three AI touchpoints across the apps, each with a just-in-time privacy notice displayed before data is sent:</p>
+    <table class="data-table"><thead><tr><th>Location</th><th>Trigger</th><th>Data sent to Anthropic</th><th>Notice type</th></tr></thead><tbody>
+      <tr><td><strong>Journal — AI Dialog</strong> (<code>SummaryTab.tsx</code>)</td><td>First message send per session (including starter chips)</td><td>Message text plus today’s journal context: health scores, symptoms, notes, astrology data</td><td>Modal on first send; sessionStorage key <code>tmg_ai_dialog_noticed</code> suppresses on subsequent messages</td></tr>
+      <tr><td><strong>Practitioner — AI Summary</strong> (<code>JournalTab.tsx</code>)</td><td>Tab load when AI summaries are present</td><td>Client session data: pattern scores, comparison signals, practitioner notes, astrological context. No client name, email, or birth data.</td><td>Inline notice card above entry list; summaries hidden until acknowledged. SessionStorage key <code>tmg_practitioner_summary_noticed</code>.</td></tr>
+      <tr><td><strong>Practitioner — AI Dialog</strong> (<code>AITab.tsx</code>)</td><td>First message send per session (Send button or Enter key)</td><td>Message text plus session context: pattern scores, comparison signals, practitioner notes, astrological outputs. No client name, email, or birth data.</td><td>Modal on first send; sessionStorage key <code>tmg_practitioner_dialog_noticed</code> suppresses on subsequent messages</td></tr>
+    </tbody></table>
+    <div class="callout">All three sessionStorage notice keys expire naturally when the browser tab closes, so the notice reappears each new session. This keeps disclosure fresh without requiring repeated acknowledgement within a single working session.</div>
     <h3>What We Never Do</h3>
-    <ul class="never-list"><li>Sell your personal data</li><li>Share your data with advertisers</li><li>Use your health data to train AI models</li><li>Combine your identity with your health records in a single document</li></ul>
+    <ul class="never-list"><li>Sell your personal data</li><li>Share your data with advertisers</li><li>Use your health data to train AI models</li><li>Combine your identity with your health records in a single document</li><li>Send client names, emails, or birth data to any AI processor</li></ul>
   </section>
 
   <section class="policy" id="processors">
     <h2><span class="num">V</span>Third-Party Processors</h2>
     <div class="processor-card"><div class="processor-name">Google Firebase (Alphabet Inc.)</div><p>Provides database, authentication, hosting, and cloud functions. Stores all Firestore data, authentication UIDs, and push tokens across US and EU data centres.</p><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></div>
-    <div class="processor-card"><div class="processor-name">Anthropic, PBC</div><p>Provides the Claude AI API for optional daily journal summaries. Data sent: journal entry data for the day (health scores, food, symptoms, notes, astrology context). No name, email, or access code is included. Anthropic API data is not used to train models. This processor is only engaged if you choose to use the AI summary feature — see Section IV for the full opt-in model.</p><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a></div>
+    <div class="processor-card"><div class="processor-name">Anthropic, PBC</div><p>Provides the Claude AI API for optional AI summaries and AI dialog features. Data sent varies by touchpoint — see Section IV for the full breakdown. No name, email, or access code is ever included. Anthropic does not use this data to train models. This processor is only engaged when an AI feature is actively used by a user who has completed the opt-in setup.</p><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a></div>
     <div class="processor-card"><div class="processor-name">Google Cloud Run (Alphabet Inc.)</div><p>Hosts our Swiss Ephemeris calculation API for astrological positions. Data sent: birth date, time, and location — not linked to your identity. Migrated from Railway to Google Cloud Run in May 2026.</p><a href="https://cloud.google.com/terms/cloud-privacy-notice" target="_blank" rel="noopener">cloud.google.com/terms/cloud-privacy-notice</a></div>
     <div class="processor-card"><div class="processor-name">Google Workspace / Gmail &amp; Google Drive</div><p>Used for sending reminder emails and PDF delivery. Google's standard privacy terms apply.</p></div>
   </section>
@@ -159,15 +163,18 @@
 
   <section class="policy" id="cookies">
     <h2><span class="num">IX</span>Cookies and Local Storage</h2>
-    <p>We do not use advertising cookies or tracking pixels. We use browser local storage only for strictly necessary app functions:</p>
-    <table class="data-table"><thead><tr><th>Key / Purpose</th><th>Who it applies to</th></tr></thead><tbody>
-      <tr><td>Access code (session continuity)</td><td>All users</td></tr>
-      <tr><td>Consent decision and timestamp</td><td>All users</td></tr>
-      <tr><td>Firebase authentication session cache</td><td>All users</td></tr>
-      <tr><td>Widget email preference (phone widget only)</td><td>Widget users</td></tr>
-      <tr><td><code>tmg_minor_chart</code> — natal chart data stored locally for the age-appropriate 13–17 experience. Device-local only; no data is written to any TMG server for minor users.</td><td>Users aged 13–17 only</td></tr>
+    <p>We do not use advertising cookies or tracking pixels. We use browser local storage and sessionStorage only for strictly necessary app functions:</p>
+    <table class="data-table"><thead><tr><th>Key / Purpose</th><th>Storage type</th><th>Who it applies to</th></tr></thead><tbody>
+      <tr><td>Access code (session continuity)</td><td>localStorage</td><td>All users</td></tr>
+      <tr><td>Consent decision and timestamp</td><td>localStorage</td><td>All users</td></tr>
+      <tr><td>Firebase authentication session cache</td><td>localStorage</td><td>All users</td></tr>
+      <tr><td>Widget email preference (phone widget only)</td><td>localStorage</td><td>Widget users</td></tr>
+      <tr><td><code>tmg_minor_chart</code> — natal chart data for the age-appropriate 13–17 experience. Device-local only; no data written to any TMG server.</td><td>localStorage</td><td>Users aged 13–17 only</td></tr>
+      <tr><td><code>tmg_ai_dialog_noticed</code> — records that the Journal AI Dialog privacy notice has been shown this session.</td><td>sessionStorage</td><td>Journal users who use AI Dialog</td></tr>
+      <tr><td><code>tmg_practitioner_summary_noticed</code> — records that the Practitioner AI Summary privacy notice has been acknowledged this session.</td><td>sessionStorage</td><td>Practitioners with AI summaries enabled</td></tr>
+      <tr><td><code>tmg_practitioner_dialog_noticed</code> — records that the Practitioner AI Dialog privacy notice has been shown this session.</td><td>sessionStorage</td><td>Practitioners who use AI Dialog</td></tr>
     </tbody></table>
-    <p>No third-party tracking cookies are used. None of the above local storage keys are shared with any third party.</p>
+    <p>No third-party tracking cookies are used. None of the above keys are shared with any third party. SessionStorage keys expire automatically when the browser tab closes.</p>
   </section>
 
   <section class="policy" id="children">
