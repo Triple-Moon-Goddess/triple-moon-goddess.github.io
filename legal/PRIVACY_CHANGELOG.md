@@ -4,6 +4,36 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 ---
 
+## v2026-06 — June 8, 2026
+
+**Reviewed:** June 8, 2026
+**Reviewed by:** Lisa Hagan + Claude (Anthropic)
+**Context:** Privacy review triggered by newly bound business liability + CyberShield PLUS+ cyber insurance (Alternative Balance® / Lio Specialty Insurance Co., policy WIN 3000000001-03-AL227588, period 06/08/2026–06/08/2027)
+
+### Changes
+
+**Section II — Scope (material)**
+- Scope sentence expanded to enumerate the full ecosystem: natal chart generator, Health Journal (PWA), Health Blueprint, Tea Moon, phone widget, and the paid practitioner apps (Integrative Practitioner, Soul Pattern, Constitutional Health). Previously listed only the journal PWA, natal chart, and phone widget — though Sections X and XII already referenced the others.
+
+**Section III — Technical & Device Data (material)**
+- Added explicit disclosure that TMG does not collect precise device geo-location (GPS); the only location processed is the birth location the user enters for chart calculation, supplied by the user rather than derived from device location services.
+
+**Section VIII — Security: Data Breach Notification (material)**
+- Added a breach-notification commitment: GDPR Art. 33 (72-hour supervisory-authority notice) and Art. 34 (notice to affected users where high risk), plus US state-law notification (California Civil Code §§ 1798.29 / 1798.82). Notes that identity/health data separation limits cross-exposure. Aligns the policy with the incident-response capability now backed by CyberShield PLUS+ cyber coverage (breach notification, forensics, regulatory defense).
+
+**Version label + review date (housekeeping)**
+- Policy version bumped 2026-05b → 2026-06; "Last reviewed" updated to June 8, 2026. (Versions 05c/05d touched only the retired SFN file, so the main policy carried the 05b label until this revision.)
+
+**Changelog location note (housekeeping)**
+- Corrected the maintenance note: this changelog lives in the `triple-moon-goddess.github.io` repo at `legal/PRIVACY_CHANGELOG.md`, co-located with the policy HTML it tracks and updated in the same commit. The prior note stating it lives in `TMG-Library` did not match where the file actually resides.
+
+### Insurance review — items routed outside the privacy policy
+- **AI-output liability:** Carrier confirmed on the record that AI / auto-generated output is not covered by professional liability — advice must come from Lisa personally (see `business/legal/insurance/carrier-support-transcript-ai-output-exclusion.md` in tmg-library). The privacy policy describes the AI only in data-handling terms and makes no advice representation, so no privacy-policy change. The fix lands in the ToS and the three in-app AI notices (this commit set).
+- **Scope of practice (CA §2068 posted-notice format):** Not applicable — no clients are received at a physical business premises (in-person work is at expos / on screen). Educator / not-medical-provider posture is carried by the ToS and intake disclosures.
+- **Business address:** Fremont mailing address is the correct public contact; the Union City home / insured address is intentionally kept off all public documents. No change to Sections I or XIV.
+
+---
+
 ## v2026-05d — May 20, 2026
 
 **Reviewed:** May 20, 2026  
@@ -96,7 +126,7 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 ## Changelog Maintenance Notes
 
-- This file lives in `TMG-Library` at `legal/PRIVACY_CHANGELOG.md`
+- This file lives in the `triple-moon-goddess.github.io` repo at `legal/PRIVACY_CHANGELOG.md`, co-located with the policy HTML it tracks
 - Maintained by Claude (Anthropic) on behalf of Triple Moon Goddess
 - **Rule:** The privacy policy HTML and this changelog are always updated in the same session — never one without the other
 - **Material changes** = changes that affect how user data is collected, used, shared, or retained
