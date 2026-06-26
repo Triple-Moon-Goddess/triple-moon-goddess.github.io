@@ -50,13 +50,27 @@ So I didn't fight it. **Coding happens in parallel; testing happens one at a tim
 
 1. A new session spins up its **own** workspace — a fresh worktree on a uniquely named branch.
 2. It develops there, fully walled off from the others.
-3. Before testing, it **asks me** — the test environment is shared, one session at a time.
+3. Before testing, it **claims a shared dev lock** — if another session already holds it, the claim is refused and names which session has dev. One session tests at a time, enforced, not just agreed.
 4. I give the go-ahead; it deploys to dev; I verify the fix actually works.
 5. Only my-approved work merges to `main` — and the push is verified to contain *only* that session's commits.
 6. The session **destroys** its workspace.
 
+## Update (June 26): "take turns" needed to be a lock, not a request
+
+Two weeks in, the take-turns rule failed anyway — and the failure was the same shape as the first one. Several sessions were running. The rule said *ask before you deploy to dev*. But that rule lived in each session's instructions, not in anything that could actually stop one. So when things got busy, two sessions each deployed to the shared dev environment believing it was free, and overwrote each other's tests. Both then told me, in complete good faith, that "the other session caused the problem." They were both right.
+
+Same lesson as the swept-in commit: a rule a worker has to *remember* is a rule that eventually gets skipped. If sharing is the danger, the guardrail can't be a line in the instructions — it has to be something the worker physically runs into.
+
+So "take turns" is now a **lock** that every session on the machine can see:
+
+- **Dev is free?** The session claims it, deploys, and **holds the claim through testing** — the shared environment is occupied the whole time it's being tested, not just during the deploy.
+- **Dev is taken?** The claim is **refused**, and it names the exact branch and workspace that own dev right now. That's a stop sign, not a suggestion.
+- **Done testing?** The session **releases** it and the next one goes. A claim held too long is flagged stale, so a genuinely abandoned one can be reclaimed.
+
+The philosophy didn't change — write in parallel, test one at a time. What changed is that "one at a time" is now enforced by the machine instead of by everyone's good intentions. It's the same move as the *only-my-own-commits* check on every push: the safest behavior is the one the tooling makes automatic, so no one has to be trusted to recall it.
+
 ## The short version
 
-Parallel AI sessions are a real force multiplier — right up until two of them share a branch, and one quietly ships the other's unreviewed work. The fix wasn't fancier tooling. It was three boring rules: give each session a private, disposable workspace; let them all *write* at once but *test* one at a time; and never let a push carry a commit nobody reviewed.
+Parallel AI sessions are a real force multiplier — right up until two of them share a branch, and one quietly ships the other's unreviewed work. The fix was three boring rules: give each session a private, disposable workspace; let them all *write* at once but *test* one at a time; and never let a push carry a commit nobody reviewed. And the rules only hold once the tooling enforces them — a lock for the shared test lane, a commit check on every push — because a rule a session has to *remember* is one it will eventually skip.
 
-The isolation is what makes the parallelism safe.
+The isolation is what makes the parallelism safe. The enforcement is what keeps it safe when no one's watching.
