@@ -74,3 +74,7 @@ The philosophy didn't change — write in parallel, test one at a time. What cha
 Parallel AI sessions are a real force multiplier — right up until two of them share a branch, and one quietly ships the other's unreviewed work. The fix was three boring rules: give each session a private, disposable workspace; let them all *write* at once but *test* one at a time; and never let a push carry a commit nobody reviewed. And the rules only hold once the tooling enforces them — a lock for the shared test lane, a commit check on every push — because a rule a session has to *remember* is one it will eventually skip.
 
 The isolation is what makes the parallelism safe. The enforcement is what keeps it safe when no one's watching.
+
+---
+
+*Related: [It Works in Dev: Chasing a Permissions Drift Between Environments]({% post_url 2026-06-26-it-works-in-dev-permissions-drift %}) — the same lesson (enforce it, don't trust anyone to remember) applied to keeping dev and prod permissions honest.*

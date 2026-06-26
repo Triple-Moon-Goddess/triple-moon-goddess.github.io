@@ -48,3 +48,7 @@ If a future session — me or one of my Claude sessions — re-introduces an ove
 "It works in dev" is only reassuring if dev is configured like prod. A too-generous dev environment doesn't prevent production bugs — it hides them until a customer finds them. The fix has three parts: give each environment the *narrowest* permission the code actually needs; write down every place they're allowed to differ, with the reason; and make a check enforce that parity so they can't silently drift again.
 
 Least privilege isn't a one-time cleanup. It's a property you have to keep — and the only way to keep it is to stop trusting anyone to remember.
+
+---
+
+*Related: [Many Claudes, One Codebase]({% post_url 2026-06-13-many-claudes-one-codebase %}) — the same enforce-it-don't-remember idea applied to parallel AI sessions sharing one repo.*
