@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birth Chart Video — Triple Moon Goddess</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #d4af6a;
+    --gold-bright: #e8c989;
+    --gold-deep: #b8945a;
+    --ink: #f5e8d0;
+    --ink-soft: #c9b896;
+    --bg: #0a0608;
+    --bg-deep: #050304;
+    --bg-card: #110a0d;
+    --line: rgba(212, 175, 106, 0.18);
+    --line-strong: rgba(212, 175, 106, 0.4);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; position: relative; min-height: 100vh; }
+  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%), radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, var(--bg) 70%); pointer-events: none; z-index: 0; }
+  body::after { content: ''; position: fixed; inset: 0; background-image: radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent), radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent), radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent), radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent), radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent), radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent), radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent), radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent), radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent), radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent); background-size: 100% 100%; pointer-events: none; z-index: 0; opacity: 0.7; animation: twinkle 8s ease-in-out infinite; }
+  @keyframes twinkle { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.4; } }
+  .container { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  .hero { padding: 100px 0 56px; text-align: center; }
+  .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; margin-bottom: 28px; opacity: 0; animation: fadeUp 1s ease-out 0.2s forwards; }
+  .hero-eyebrow::before, .hero-eyebrow::after { content: '✦'; margin: 0 14px; color: var(--gold-deep); font-size: 10px; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2.6rem, 5.5vw, 4.5rem); line-height: 1.1; letter-spacing: -0.01em; color: var(--gold-bright); margin-bottom: 28px; opacity: 0; animation: fadeUp 1.1s ease-out 0.4s forwards; }
+  .hero h1 em { font-style: italic; color: var(--ink); font-weight: 300; }
+  .hero-lead { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 1.6vw, 1.3rem); color: var(--ink-soft); max-width: 640px; margin: 0 auto; font-weight: 400; line-height: 1.55; opacity: 0; animation: fadeUp 1.2s ease-out 0.6s forwards; }
+  .ornament { margin: 56px auto; width: 200px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); position: relative; opacity: 0; animation: fadeIn 1.5s ease-out 0.9s forwards; }
+  .ornament::before { content: '☾'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--bg); padding: 0 18px; color: var(--gold); font-size: 18px; }
+
+  /* sample video — same visual language as .tier (corner brackets, dark card) */
+  .sample { max-width: 880px; margin: 0 auto; padding: 0 0 8px; text-align: center; }
+  .sample-eyebrow { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; margin-bottom: 22px; }
+  .sample-eyebrow::before, .sample-eyebrow::after { content: '✦'; margin: 0 12px; color: var(--gold-deep); font-size: 9px; }
+  .video-frame { position: relative; aspect-ratio: 16 / 9; background: linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%); border: 1px solid var(--line); backdrop-filter: blur(8px); overflow: hidden; }
+  .video-frame::before, .video-frame::after { content: ''; position: absolute; width: 24px; height: 24px; border: 1px solid var(--gold-deep); opacity: 0.5; z-index: 2; }
+  .video-frame::before { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+  .video-frame::after { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+  .video-frame video, .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; color: var(--ink-soft); }
+  .play { width: 64px; height: 64px; border-radius: 50%; border: 1px solid var(--gold); display: grid; place-items: center; color: var(--gold-bright); }
+  .play span { display: block; width: 0; height: 0; margin-left: 5px; border-left: 17px solid currentColor; border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+  .video-placeholder small { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; }
+  .sample-cap { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--ink-soft); margin-top: 18px; }
+
+  /* offer — single featured tier */
+  .offer { padding: 64px 0 16px; display: flex; justify-content: center; }
+  .tier { position: relative; background: linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%); border: 1px solid var(--line); padding: 48px 44px 40px; backdrop-filter: blur(8px); transition: border-color 0.5s ease, transform 0.5s ease; display: flex; flex-direction: column; text-align: center; max-width: 620px; width: 100%; }
+  .tier:hover { border-color: var(--line-strong); transform: translateY(-4px); }
+  .tier::before, .tier::after { content: ''; position: absolute; width: 24px; height: 24px; border: 1px solid var(--gold-deep); opacity: 0.5; }
+  .tier::before { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+  .tier::after { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+  .tier-glyph { font-family: 'Cinzel', serif; font-size: 2.6rem; color: var(--gold); line-height: 1; margin-bottom: 16px; }
+  .tier-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; margin-bottom: 18px; }
+  .tier-name { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 500; color: var(--gold-bright); line-height: 1.15; margin-bottom: 6px; }
+  .tier-name em { font-style: italic; font-weight: 400; color: var(--ink); }
+  .tier-sub { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
+  .tier-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--ink-soft); margin-bottom: 28px; line-height: 1.5; }
+  .price-block { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 24px 0; margin-bottom: 24px; display: flex; flex-direction: column; gap: 14px; }
+  .price-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  .price-row-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em; color: var(--ink-soft); text-transform: uppercase; }
+  .price-row-value { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--gold-bright); font-weight: 400; }
+  .credit-note { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.98rem; color: var(--gold); text-align: center; margin-bottom: 28px; line-height: 1.5; }
+  .cta-group { display: flex; flex-direction: column; gap: 12px; margin-top: auto; }
+  .cta { display: block; text-align: center; padding: 16px 28px; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: none; transition: all 0.4s ease; }
+  .cta-primary { background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-bright) 100%); color: var(--bg-deep); font-weight: 500; }
+  .cta-primary:hover { background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%); box-shadow: 0 0 32px rgba(212, 175, 106, 0.35); }
+
+  .included { margin: 64px 0; padding: 56px 48px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
+  .included h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--gold-bright); margin-bottom: 12px; }
+  .included h2 em { font-style: italic; color: var(--ink); }
+  .included-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ink-soft); margin-bottom: 48px; font-size: 1.05rem; }
+  .included-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: left; }
+  @media (max-width: 760px) { .included { padding: 40px 24px; } .included-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; } }
+  .included-item-label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.24em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+  .included-item-text { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ink); line-height: 1.5; }
+  .faq { padding: 32px 0 80px; max-width: 760px; margin: 0 auto; }
+  .faq h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--gold-bright); text-align: center; margin-bottom: 48px; }
+  .faq h2 em { font-style: italic; color: var(--ink); }
+  .faq-item { border-bottom: 1px solid var(--line); padding: 24px 0; }
+  .faq-q { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 500; color: var(--gold-bright); margin-bottom: 10px; }
+  .faq-a { color: var(--ink-soft); font-size: 0.98rem; line-height: 1.65; }
+  .footer-note { text-align: center; padding: 40px 0 80px; color: var(--ink-soft); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; }
+  .footer-note a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); padding-bottom: 1px; }
+  .footer-note a:hover { color: var(--gold-bright); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { to { opacity: 1; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <section class="hero">
+    <div class="hero-eyebrow">Custom Video Reading</div>
+    <h1>Your birth chart,<br><em>brought to life</em>.</h1>
+    <p class="hero-lead">A custom video that walks your entire natal chart — every planet in its sign and house, in its light and its shadow, narrated just for you. The whole blueprint of who you are, start to finish.</p>
+    <div class="ornament"></div>
+  </section>
+
+  <section class="sample">
+    <div class="sample-eyebrow">See exactly what you get</div>
+    <div class="video-frame">
+      <!-- CLAUDE CODE: replace .video-placeholder with the sample embed
+           (e.g. <video controls poster="..."><source src="sample.mp4" type="video/mp4"></video>) -->
+      <div class="video-placeholder">
+        <div class="play" aria-hidden="true"><span></span></div>
+        <small>Sample video</small>
+      </div>
+    </div>
+    <p class="sample-cap">This is Lisa&rsquo;s own chart. Yours is built the same way, from your birth data.</p>
+  </section>
+
+  <section class="offer" id="order">
+    <div class="tier">
+      <div class="tier-glyph">&#10022;</div>
+      <div class="tier-label">The Birth Chart Video</div>
+      <h2 class="tier-name">Your Whole <em>Chart</em></h2>
+      <div class="tier-sub">Every Planet · Every House · Light &amp; Shadow</div>
+      <p class="tier-tagline">Your complete natal chart, narrated house by house — the deep blueprint, made easy to follow.</p>
+      <div class="price-block">
+        <div class="price-row"><span class="price-row-label">Investment</span><span class="price-row-value">$50</span></div>
+        <div class="price-row"><span class="price-row-label">Delivery</span><span class="price-row-value">Video</span></div>
+      </div>
+      <p class="credit-note">$50 session credit included</p>
+      <div class="cta-group">
+        <!-- CLAUDE CODE: wire to the birth-data form + Stripe Checkout -->
+        <a href="https://triple-moon-goddess.web.app/reading-checkout?type=chart_video" target="_blank" rel="noopener" class="cta cta-primary">Begin</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="included">
+    <h2>What&rsquo;s <em>inside your video</em></h2>
+    <p class="included-sub">Generated from your exact birth data.</p>
+    <div class="included-grid">
+      <div><div class="included-item-label">Every Planet</div><p class="included-item-text">Each planet introduces itself — what it is in you, the sign it wears, and the area of life where it lives.</p></div>
+      <div><div class="included-item-label">Light &amp; Shadow</div><p class="included-item-text">You meet each placement first in its gift, then in its shadow — because every part of you carries both.</p></div>
+      <div><div class="included-item-label">House by House</div><p class="included-item-text">Nothing skipped. Where a house stands empty, the sign on its door speaks for it and colors that part of life.</p></div>
+      <div><div class="included-item-label">Plain-Language</div><p class="included-item-text">After every placement, a single card sums it up in a few clear words — the whole reading made easy to follow.</p></div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2>Common <em>questions</em></h2>
+    <div class="faq-item"><div class="faq-q">Do I need a birth chart already?</div><p class="faq-a">No. The checkout link guides you through entering your birth date, time, and location. Your video is built from that exact data.</p></div>
+    <div class="faq-item"><div class="faq-q">How is the video delivered?</div><p class="faq-a">You&rsquo;ll get your own link to download your video and keep it.</p></div>
+    <div class="faq-item"><div class="faq-q">How is the session credit applied?</div><p class="faq-a">Your $50 applies toward a 90-minute consultation with Lisa — automatically, no code needed.</p></div>
+    <div class="faq-item"><div class="faq-q">What&rsquo;s the difference between the video and a consultation?</div><p class="faq-a">The video walks your whole chart in plain language, on your own time. A consultation is a live 90-minute session with Lisa for the deeper work — and your video credit carries forward to it.</p></div>
+  </section>
+
+  <p class="footer-note">Questions before you order? <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
+</div>
+</body>
+</html>
