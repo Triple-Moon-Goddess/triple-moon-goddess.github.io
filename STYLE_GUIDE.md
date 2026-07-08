@@ -38,8 +38,11 @@ Dark body with two fixed layers:
 - **Ornament divider**: 200px gold gradient line with a centered `☾` glyph on the bg.
 - **Cards / frames**: dark translucent gradient, 1px `--line` border, `backdrop-filter: blur(8px)`, and decorative corner brackets via ::before/::after (top-left + bottom-right, gold-deep, opacity 0.5).
 - **Primary CTA**: Cinzel uppercase 0.24em, gradient `gold-deep → gold-bright` on `--bg-deep` text; hover brightens + gold glow box-shadow.
-- **Glyphs**: astrological/unicode — `☾ ♀ ♂ ⚹ ✦ ✧ ⚴` etc.
+- **Glyphs**: astrological/celestial unicode — `☾ ☽ ✦ ✧ ⚹ ⚴` etc.
 - **Animations**: `fadeUp` (20px rise + fade) staggered by delay; `fadeIn` for the ornament.
+
+## Inclusive imagery (non-negotiable)
+- **Never use ♀/♂ (Venus/Mars) or any default male–female pairing to represent a couple or relationship.** Lisa and TMG are queer; the site must not assume heterosexual pairings. For couples/synastry, name the people directly and/or use neutral celestial motifs (e.g. two moons `☾ ☽`, stars, interlocking rings). This applies to icons, glyphs, illustrations, and stock imagery alike.
 
 ## Content conventions
 - Reading offers are **$25**, delivered instantly online, **"$25 session credit included"** toward a 90-minute consultation with Lisa (the charter's Taurus-step → Scorpio-descent staircase).
@@ -49,4 +52,4 @@ Dark body with two fixed layers:
 
 ## Checkout / links
 - Live reading checkout pattern: `.../reading-checkout?type=<reading_key>` (e.g. `romantic_reading`, `archetype_reading`).
-- The Relationship Reading promo page points its buttons to `https://www.triplemoongoddess.com/readings` per Lisa's instruction.
+- The Relationship Reading promo page (`triple-moon-goddess-relationship-reading.html`) points its buttons to `https://www.triplemoongoddess.com/relationship`.
