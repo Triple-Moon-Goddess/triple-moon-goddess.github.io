@@ -59,6 +59,13 @@
   .rights-grid .cell:nth-child(even) { color: var(--ink); }
   .rights-grid .cell:last-child, .rights-grid .cell:nth-last-child(2) { border-bottom: none; }
   @media (max-width: 540px) { .rights-grid { grid-template-columns: 1fr; } .rights-grid .cell:nth-child(odd) { border-right: none; } .rights-grid .cell:nth-child(even) { border-bottom: 1px solid var(--line); } }
+  section.policy.summary { background: linear-gradient(180deg, rgba(20,12,8,0.6) 0%, rgba(10,6,8,0.9) 100%); border: 1px solid var(--line); border-left: 3px solid var(--gold); padding: 28px 32px; margin-bottom: 56px; }
+  section.policy.summary h2 { border-bottom: 1px solid var(--line); }
+  section.policy ul.data-list { list-style: none; margin: 10px 0 18px; }
+  section.policy ul.data-list li { position: relative; padding: 9px 0 9px 26px; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 0.97rem; }
+  section.policy ul.data-list li:last-child { border-bottom: none; }
+  section.policy ul.data-list li strong { color: var(--gold-bright); font-weight: 500; }
+  section.policy ul.data-list li::before { content: '☾'; position: absolute; left: 2px; top: 9px; color: var(--gold); font-size: 0.9rem; }
 </style>
 </head>
 <body>
@@ -66,14 +73,36 @@
 
   <div class="policy-header">
     <p>Triple Moon Goddess &nbsp;&middot;&nbsp; <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a> &nbsp;&middot;&nbsp; <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
-    <p class="version">Privacy Policy v2026-06 &nbsp;&middot;&nbsp; Last reviewed June 8, 2026</p>
+    <p class="version">Privacy Policy v2026-07 &nbsp;&middot;&nbsp; Last reviewed July 16, 2026</p>
   </div>
 
   <section class="hero">
     <div class="hero-eyebrow">Privacy Policy</div>
     <h1>How we hold<br>your <em>data</em>.</h1>
-    <div class="meta"><span>Effective January 1, 2025</span><span>·</span><span>Version 2026-06</span><span>·</span><span>Last reviewed June 8, 2026</span></div>
+    <div class="meta"><span>Effective January 1, 2025</span><span>·</span><span>Version 2026-07</span><span>·</span><span>Last reviewed July 16, 2026</span></div>
     <div class="ornament"></div>
+  </section>
+
+  <section class="policy summary" id="your-data">
+    <h2>Your Data: What We Store and How It's Protected</h2>
+    <p>Triple Moon Goddess is built so your identity and your data are kept apart. No single record holds both.</p>
+    <h3>What we store, and where</h3>
+    <ul class="data-list">
+      <li><strong>Your email</strong> is stored once, on its own, in an encrypted vault. It is looked up only through a one-way code, never searched as plain text, and is never copied into your other records.</li>
+      <li><strong>Your birth data</strong> (date, time, and place) is stored once, on its own, in a separate encrypted vault, used only to generate your chart, transits, and readings.</li>
+      <li><strong>We do not store your name.</strong> The only time a name is held is if you sign a legal waiver — and then only as an encrypted signature tied to that consent.</li>
+      <li>Everything else in the app is linked together only by an anonymous access code — never by your name, email, or birth data.</li>
+    </ul>
+    <h3>Encryption</h3>
+    <p>Your email and birth data are encrypted at rest (Google Cloud KMS) and in transit (HTTPS). We never sell your data.</p>
+    <h3>Your birth data stays in the vault</h3>
+    <p>Your birth data never leaves its encrypted vault to be shown in the apps — not to other users, and not to practitioners. The calculations that use it run on our secure servers, not in your browser. The one exception: Lisa, the site owner, can view your birth data through an internal admin tool solely to correct a data-entry error, such as a mistyped birth date. You remain the owner of your data.</p>
+    <h3>Research</h3>
+    <p>Your birth data is never used for research. Any anonymous signals we keep for research contain no name, no email, and no birth data.</p>
+    <h3>Deleting your data</h3>
+    <p>You can delete your data at any time. After you delete, anything retained for research is anonymous — no name, email, or birth data remains, so nothing links back to you.</p>
+    <h3>Built-in enforcement</h3>
+    <p>These rules are enforced automatically in our software: an internal privacy check blocks any change that would store a client's name, search an email in plain text, or move birth data outside its vault.</p>
   </section>
 
   <section class="policy" id="who-we-are">
@@ -101,8 +130,8 @@
     <h2><span class="num">III</span>What Data We Collect</h2>
     <h3>Identity &amp; Contact Data</h3>
     <p>Collected only if you voluntarily provide it:</p>
-    <table class="data-table"><thead><tr><th>Data</th><th>Purpose</th></tr></thead><tbody><tr><td>First name or nickname</td><td>Stored separately from health data</td></tr><tr><td>Email address</td><td>Account lookup, chart delivery, reminders only</td></tr><tr><td>Birth date, time &amp; location</td><td>Natal chart generation</td></tr></tbody></table>
-    <div class="callout"><strong>Separation guarantee:</strong> Your name/email are stored in a separate Firestore collection (<code>user_identities</code>) from your health records. No single database document contains both your identity and your health data.</div>
+    <table class="data-table"><thead><tr><th>Data</th><th>Purpose</th></tr></thead><tbody><tr><td>Email address</td><td>Account lookup, chart delivery, reminders only</td></tr><tr><td>Birth date, time &amp; location</td><td>Natal chart generation</td></tr></tbody></table>
+    <div class="callout"><strong>We do not store your name.</strong> Your email and your birth data are each stored once, on their own, in separate encrypted vaults (Google Cloud KMS), reachable only by our secure server functions — your email through a one-way lookup code, never as searchable plain text. Everything else in the app is linked only by an anonymous access code, so no single record holds both your identity and your health data.</div>
     <h3>Health &amp; Wellness Data (Special Category)</h3>
     <p>This is health data under GDPR Article 9. It includes daily body scores (mood, energy, optimism, physical/mental stamina), sleep data, symptoms, medication and supplement logs, food and beverage log, tongue observations (Traditional Chinese Medicine), personal notes and reflections, and astrology transit journal responses.</p>
     <h3>Technical &amp; Device Data</h3>
@@ -146,19 +175,19 @@
 
   <section class="policy" id="retention">
     <h2><span class="num">VII</span>Data Retention</h2>
-    <table class="data-table"><thead><tr><th>Data Type</th><th>Retention Period</th></tr></thead><tbody><tr><td>Journal entries &amp; health data</td><td>Indefinitely until you delete via Settings → Danger Zone</td></tr><tr><td>Identity data (name/email)</td><td>Until deletion request or chart deletion</td></tr><tr><td>Notification log</td><td>Auto-deleted after 3 days</td></tr><tr><td>AI rate limit counters</td><td>Expire naturally as new days begin (keyed by date)</td></tr><tr><td>FCM push tokens</td><td>Until push disabled or token becomes invalid</td></tr><tr><td>Email queue</td><td>Processed immediately; not retained after delivery</td></tr></tbody></table>
+    <table class="data-table"><thead><tr><th>Data Type</th><th>Retention Period</th></tr></thead><tbody><tr><td>Journal entries &amp; health data</td><td>Indefinitely until you delete via Settings → Danger Zone</td></tr><tr><td>Email (identity vault)</td><td>Until deletion request or chart deletion</td></tr><tr><td>Notification log</td><td>Auto-deleted after 3 days</td></tr><tr><td>AI rate limit counters</td><td>Expire naturally as new days begin (keyed by date)</td></tr><tr><td>FCM push tokens</td><td>Until push disabled or token becomes invalid</td></tr><tr><td>Email queue</td><td>Processed immediately; not retained after delivery</td></tr></tbody></table>
   </section>
 
   <section class="policy" id="security">
     <h2><span class="num">VIII</span>Security Measures</h2>
-    <h3>Client-Side Encryption</h3>
-    <p>The Integrative Practitioner and Soul Pattern apps use client-side encryption to protect sensitive practitioner data at rest in Firestore. Encryption and decryption happen entirely in the practitioner's browser. No plaintext ever leaves the device for encrypted fields, and no key material is ever sent to any server.</p>
-    <p>Encrypted data includes: practitioner clinical notes, psychological readings, and client email records. Client emails are encrypted and the plaintext email field is deleted from Firestore at the moment of client assignment. Even if the Firestore database were fully compromised, these records would be unreadable without the practitioner's passphrase.</p>
-    <p>The cryptographic stack uses XSalsa20-Poly1305 authenticated encryption (confidentiality and tamper detection) with scrypt key derivation. The practitioner's passphrase is never stored or transmitted — not in the browser, not in Firestore, not in any server log. The encryption key exists only in browser sessionStorage for the duration of the active tab and is cleared when the tab closes or the practitioner signs out.</p>
-    <p><strong>Passphrase recovery is not possible.</strong> There is no server-side escrow, no recovery key, and no reset flow. If a passphrase is lost, encrypted data cannot be recovered. This is intentional.</p>
-    <p>The following data is protected by Firestore security rules but not by client-side encryption: natal chart data, client intake answers, intake match results, journal entries, and Soul module session data.</p>
+    <h3>Encryption of Sensitive Data (Managed-Key Cloud KMS)</h3>
+    <p>Your most sensitive data — your email, your birth data, and, for practitioner accounts, client clinical notes and psychological readings — is encrypted at rest with a dedicated Google Cloud Key Management Service (KMS) key. The key lives server-side only. Encryption and decryption happen inside our Cloud Functions; the key is never sent to, or held by, any browser.</p>
+    <p><strong>Your email and your birth data are each stored once, in their own access-controlled vault.</strong> Email is encrypted in one vault and located only through a one-way lookup code (a SHA-256 hash of your email) — it is never stored or searched as plain text. Birth data is encrypted in a separate vault, keyed only by your anonymous access code. Neither vault is readable by the apps or by other users; only our server functions can decrypt, and only for a permitted purpose such as sending your chart by email.</p>
+    <p><strong>Practitioner-entered client data</strong> — client email, clinical notes, and psychological readings — is encrypted with the same managed key on the server at the moment it is saved, and the plaintext is removed. Even if the database were fully compromised, these records would be unreadable, because the key is not in the database and never leaves the server. A practitioner can decrypt only the specific clients assigned to them: every decryption is gated server-side by the practitioner's authenticated account plus proof they own that client assignment (or by an authorised admin).</p>
+    <p><strong>The earlier passphrase-based, in-browser encryption scheme has been retired.</strong> All sensitive data written today uses the managed-key model above. A small amount of data sealed under the old passphrase scheme before migration is not recoverable and is clearly marked as such where it appears.</p>
+    <p>The following data is protected by Firebase Security Rules rather than field-level encryption: natal chart outputs, client intake answers, intake match results, journal entries, and Soul module session data.</p>
     <h3>Infrastructure Security</h3>
-    <p>All data transmitted over HTTPS (TLS 1.2+). Data encrypted at rest via Firebase/Firestore encryption. API keys stored in Google Cloud Secret Manager — never in code. Firebase Security Rules restrict database access to each authenticated user's own data. Admin portal restricted to a single authorised account. Health data and identity data are physically separated in distinct Firestore collections — no single record contains both.</p>
+    <p>All data transmitted over HTTPS (TLS 1.2+). Data is encrypted at rest by default (Firebase/Firestore), with the sensitive fields above additionally encrypted under our own Cloud KMS key. Your birth data is write-only from the browser — it can be sent in to be stored, but no app or user can read raw birth data back; all chart, transit, and reading calculations run on our secure servers. API keys are stored in Google Cloud Secret Manager — never in code. Firebase Security Rules restrict database access to each authenticated user's own data. The admin portal is restricted to a single authorised account, and admin access to raw birth data (used only to correct a data-entry error) is audit-logged. Identity data and health data are held in separate collections — no single record contains both.</p>
     <div class="callout">No security system is 100% impenetrable. If you believe your data has been compromised, contact <strong>Lisa@TripleMoonGoddess.com</strong> immediately.</div>
     <h3>Data Breach Notification</h3>
     <p>If a personal data breach occurs, we will act without undue delay to investigate and contain it. Where the breach is likely to result in a risk to your rights and freedoms, we will notify the relevant supervisory authority within 72 hours of becoming aware of it, in line with GDPR Article 33. Where the breach is likely to result in a high risk to you, we will also notify you directly without undue delay, in line with GDPR Article 34. For users in the United States, we will provide notification as required by applicable state breach-notification laws, including California Civil Code §§ 1798.29 and 1798.82. Because your identity data and your health data are held in physically separate Firestore collections, a breach affecting one does not necessarily expose the other.</p>
@@ -205,15 +234,15 @@
     <h2><span class="num">XII</span>Practitioner App Data</h2>
     <p>The Integrative Practitioner, Soul Pattern, and Constitutional Health apps are separate paid-tier applications. Their data architecture differs from the individual seeker apps.</p>
     <h3>What Practitioners Enter</h3>
-    <p>Practitioners enter client birth data (date, time, location) to generate a natal chart and derived outputs. The practitioner also enters a client email address as the client identifier within their account. That email is encrypted client-side at the moment of entry — the plaintext is immediately deleted from Firestore and never stored unencrypted on any server. Even if the database were compromised, client email records would be unreadable without the practitioner's passphrase.</p>
+    <p>Practitioners enter client birth data (date, time, location) to generate a natal chart and derived outputs. The practitioner also enters a client email address as the client identifier within their account. That email is encrypted on our server with our managed Cloud KMS key at the moment it is saved — the plaintext is removed and never stored unencrypted anywhere. Even if the database were compromised, client email records would be unreadable, because the key is held server-side and never leaves it.</p>
     <h3>What Practitioners See</h3>
     <p>The practitioner view surfaces chart-derived outputs: sign placements, house positions, constitutional profile, pattern group scores, and comparison signals. Practitioners do not see raw birth data displayed back to them after chart generation — the chart describes the person through derived outputs, it does not display the underlying date, time, and location as identifying fields.</p>
     <h3>Client Birth Data</h3>
-    <p>Birth data entered by a practitioner is used solely to calculate the natal chart for that client record. It is stored in the practitioner's Firestore account under their authenticated UID, protected by Firebase Security Rules. It is not shared with other practitioners, not used for advertising, and not linked to any identity record in the research corpus.</p>
+    <p>Birth data entered by a practitioner is used solely to calculate the natal chart for that client record. It is encrypted with our managed Cloud KMS key and held in a dedicated, access-controlled vault keyed by the client's anonymous access code — never exposed to the apps and never readable back as raw birth data. A practitioner can reach only the clients assigned to them, enforced server-side. It is not shared with other practitioners, not used for advertising, and not linked to any identity record in the research corpus.</p>
     <h3>Research Data from Practitioner Sessions</h3>
     <p>Soul module sessions, pattern scores, comparison signals, and practitioner follow-up feedback may contribute to the TMG longitudinal research corpus. All research records are pseudonymized before inclusion. The pseudonymized record contains pattern-level and astrological signal data only — for example, whether a particular planetary aspect correlates with a reported pattern across a population. No name, email, birth date, birth time, or birth location is included in any published or shared research output. The link between a client record and its pseudonymized research entry is stored separately from the research corpus and is never published.</p>
-    <h3>Encryption &amp; Passphrase</h3>
-    <p>Practitioner apps use client-side encryption for sensitive fields. See Section VIII for full technical detail. The passphrase is the practitioner's responsibility — TMG has no recovery mechanism and cannot access encrypted data under any circumstances.</p>
+    <h3>Encryption</h3>
+    <p>Practitioner client data — client email, clinical notes, and psychological readings — is encrypted at rest with our managed Google Cloud KMS key. Encryption and decryption happen server-side; the key is never held in the practitioner's browser. Access is gated by the practitioner's authenticated account plus ownership of the specific client assignment. See Section VIII for full technical detail. (The earlier passphrase-based scheme has been retired; a small amount of data sealed under it before migration is not recoverable.)</p>
   </section>
 
   <section class="policy" id="changes">

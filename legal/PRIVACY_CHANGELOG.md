@@ -4,6 +4,41 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 ---
 
+## v2026-07 — July 16, 2026
+
+**Reviewed:** July 16, 2026
+**Reviewed by:** Lisa Hagan + Claude (Anthropic)
+**Context:** Reflects the privacy-architecture changes shipped since the June review — the PII vault migration (email and birth data moved to server-side, KMS-encrypted vaults keyed by a one-way email hash / anonymous access code), the retirement of the passphrase-based in-browser encryption scheme in favour of managed-key Cloud KMS, the no-names data model, write-only/server-side-only birth data, and the automated privacy gate now enforced in the codebase. Summary content approved by Lisa 2026-07-16; the security-section rewrites are code-verified against the live functions (`emailCrypto.js`, `contentCrypto.js`, `secureVault.js`, `clientCrypto.ts`, `adminCharts.js`). Aligned with SOP-5 and the consent register.
+
+### Changes
+
+**New "Your Data" summary section (material)**
+- Added a plain-language, layered-notice summary at the top of the policy ("Your Data: What We Store and How It's Protected"). States that identity and data are kept apart (no single record holds both); email and birth data are each stored once in separate encrypted vaults (Cloud KMS); the name is not stored (only an encrypted signature if a legal waiver is signed); everything else is linked by an anonymous access code; birth data stays server-side and is never shown in the apps (single admin exception for correcting a data-entry error); birth data is never used for research and any retained research signals carry no name/email/birth data; deletion leaves nothing that links back; and an internal privacy check blocks any change that would store a name, search an email in plain text, or move birth data out of its vault.
+
+**Section III — Identity & Contact Data (material)**
+- Removed the "First name or nickname — stored separately from health data" row. TMG does not store client names; the row was inaccurate under the current no-names architecture.
+- Rewrote the "Separation guarantee" callout to the current vault model: email and birth data each held in a separate KMS-encrypted vault reachable only by secure server functions, email located via a one-way lookup code (never searchable plain text), everything else linked by an anonymous access code. (Note: the `user_identities` collection still exists but was repurposed — it now holds only the one-way email hash + access code, no plaintext email and no name. The public callout no longer names internal collections.)
+
+**Section VIII — Security Measures (material, code-verified)**
+- Replaced the "Client-Side Encryption" subsection (which described the retired passphrase scheme: XSalsa20-Poly1305 / scrypt, key in browser sessionStorage, "passphrase recovery is not possible") with "Encryption of Sensitive Data (Managed-Key Cloud KMS)." New text, verified against `functions/emailCrypto.js`, `functions/contentCrypto.js`, `functions/secureVault.js`, `packages/shared/src/clientCrypto.ts`: email, birth data, and practitioner clinical notes/psych readings are encrypted at rest with a dedicated Google Cloud KMS key that lives server-side only; encryption/decryption happen in Cloud Functions and the key never enters any browser; email vault located by a one-way SHA-256 hash, birth vault keyed by anonymous access code; practitioner decryption gated by authenticated claim + client-assignment ownership (or admin); the passphrase scheme is retired and legacy-sealed data is unrecoverable and marked as such.
+- Updated "Infrastructure Security" to note field-level KMS on top of default at-rest encryption, birth data being write-only from the browser (no raw read-back; all calculation server-side), and audit-logged admin access to raw birth data for data-entry correction.
+
+**Section XII — Practitioner App Data (material, code-verified)**
+- "What Practitioners Enter": client email now KMS-encrypted server-side at save time (was "encrypted client-side ... unreadable without the practitioner's passphrase").
+- "Client Birth Data": now KMS-encrypted in a dedicated access-code-keyed vault, never read back as raw birth data, practitioner scoped to assigned clients (was "stored in the practitioner's Firestore account under their authenticated UID").
+- "Encryption & Passphrase" renamed "Encryption" and rewritten to the managed-key KMS model; removed the passphrase-responsibility / no-recovery language.
+
+**Section VII — Data Retention (housekeeping)**
+- Retention row relabeled from "Identity data (name/email)" to "Email (identity vault)" to match the no-names model.
+
+**Version label + review date (housekeeping)**
+- Policy version bumped 2026-06 → 2026-07; "Last reviewed" updated to July 16, 2026.
+
+### Open item routed outside the privacy policy
+- **In-app copy — `apps/client/src/components/SubscribePage.tsx` (practitioner subscribe screen):** still tells practitioners their notes/readings/client-email are "encrypted in my browser with a passphrase I set" with "no recovery mechanism." This describes the retired scheme and now contradicts the shipped KMS architecture and this policy. It is app UI copy, not the privacy policy — routed to the app repo for a separate fix.
+
+---
+
 ## v2026-06 — June 8, 2026
 
 **Reviewed:** June 8, 2026
