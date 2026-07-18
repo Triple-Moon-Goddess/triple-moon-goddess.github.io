@@ -42,6 +42,8 @@
   .tier:nth-child(3) { animation-delay: 1.3s; }
   .tier:nth-child(4) { animation-delay: 1.45s; }
   .tier:nth-child(5) { animation-delay: 1.6s; }
+  .tier:nth-child(6) { animation-delay: 1.75s; }
+  .tier:nth-child(7) { animation-delay: 1.9s; }
   .tier:hover { border-color: var(--line-strong); transform: translateY(-4px); }
   .tier::before, .tier::after { content: ''; position: absolute; width: 24px; height: 24px; border: 1px solid var(--gold-deep); opacity: 0.5; }
   .tier::before { top: 12px; left: 12px; border-right: none; border-bottom: none; }
@@ -65,6 +67,8 @@
   .cta { display: block; text-align: center; padding: 16px 28px; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: none; transition: all 0.4s ease; }
   .cta-primary { background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-bright) 100%); color: var(--bg-deep); font-weight: 500; }
   .cta-primary:hover { background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%); box-shadow: 0 0 32px rgba(212, 175, 106, 0.35); }
+  .cta-secondary { background: transparent; color: var(--gold); border: 1px solid var(--gold-deep); }
+  .cta-secondary:hover { background: rgba(212, 175, 106, 0.08); color: var(--gold-bright); border-color: var(--gold); }
   .included { margin: 64px 0; padding: 56px 48px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
   .included h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--gold-bright); margin-bottom: 12px; }
   .included h2 em { font-style: italic; color: var(--ink); }
@@ -99,6 +103,46 @@
   </section>
 
   <section class="pricing" id="offerings">
+
+    <div class="tier">
+      <div class="tier-label">Learn Your Natal Chart</div>
+      <h2 class="tier-name">Learn Your <em>Natal Chart</em></h2>
+      <p class="tier-tagline">Start here. A guided tour of your whole chart — the planets, houses, and patterns that shape you — drawn straight from your birth data and taught so you can read yourself long after we finish.</p>
+      <div class="price-block">
+        <div class="price-row"><span class="price-row-label">Investment</span><span class="price-row-value">$150</span></div>
+        <div class="price-row"><span class="price-row-label">Length</span><span class="price-row-value">90<span class="unit">&nbsp;minutes</span></span></div>
+      </div>
+      <ul class="features">
+        <li>One 90-minute session via Google Meet</li>
+        <li>Birth data only — date, time, and place of birth (no intake form to complete)</li>
+        <li>A guided tour of your whole natal chart — planets, houses, and the patterns they make</li>
+        <li>Your chart reviewed before we meet, so the time is spent teaching you to read it</li>
+        <li>The natural first step before any focused consultation</li>
+      </ul>
+      <div class="cta-group">
+        <a href="https://triple-moon-goddess-dev.web.app/?page=checkout&product=general_session" target="_blank" rel="noopener" class="cta cta-primary">Schedule &amp; Pay</a>
+      </div>
+    </div>
+
+    <div class="tier">
+      <div class="tier-label">Relationship Consultation</div>
+      <h2 class="tier-name">Relationship <em>Reading</em></h2>
+      <p class="tier-tagline">A reading of two natal charts side by side — where your core needs meet, where they pull, and the work you share. For couples, or any two people who want to understand what runs between them.</p>
+      <div class="price-block">
+        <div class="price-row"><span class="price-row-label">Investment</span><span class="price-row-value">$150</span></div>
+        <div class="price-row"><span class="price-row-label">Length</span><span class="price-row-value">90<span class="unit">&nbsp;minutes</span></span></div>
+      </div>
+      <ul class="features">
+        <li>One 90-minute session via Google Meet</li>
+        <li>Two natal charts — each person creates their own chart with their own email and consent</li>
+        <li>Enter both at checkout — your chart, then the other person's by their email</li>
+        <li>No intake form — the two charts are the material</li>
+        <li>Both charts reviewed before we meet</li>
+      </ul>
+      <div class="cta-group">
+        <a href="https://triple-moon-goddess-dev.web.app/?page=checkout&product=relationship_session" target="_blank" rel="noopener" class="cta cta-primary">Schedule &amp; Pay</a>
+      </div>
+    </div>
 
     <div class="tier">
       <div class="tier-label">Personal Growth Consultation</div>
@@ -172,7 +216,8 @@
       <ul class="features">
         <li>Three 90-minute sessions via Google Meet</li>
         <li>Sessions scheduled at least 14 days apart for integration time</li>
-        <li>Intake forms completed at least 48 hours before each session</li>
+        <li>One intake form before your first consultation</li>
+        <li>Daily journal entries between sessions — how your constitution responds is what we work from next time</li>
         <li>Chart and constitutional analysis reviewed before each session</li>
         <li>$100 savings vs booking the consultations separately</li>
       </ul>
@@ -216,9 +261,11 @@
 
   <section class="faq">
     <h2>Common <em>questions</em></h2>
-    <div class="faq-item"><div class="faq-q">Which consultation is right for me?</div><p class="faq-a">If you're working with patterns in relationships, identity, work, or the inner life — <strong>Personal Growth</strong>. If you're working with physical patterns like fatigue, digestion, sleep, autoimmune symptoms, or hormonal cycles — <strong>Physical Health</strong>. If you suspect both are connected — the <strong>Bundle</strong> gives you both at a saving.</p></div>
+    <div class="faq-item"><div class="faq-q">Which consultation is right for me?</div><p class="faq-a">New to this work, or just want to understand your chart? Start with <strong>Learn Your Natal Chart</strong>. For a partnership — romantic or otherwise — the <strong>Relationship Reading</strong> compares two charts side by side. If you're working with patterns in identity, work, or the inner life — <strong>Personal Growth</strong>. If you're working with physical patterns like fatigue, digestion, sleep, autoimmune symptoms, or hormonal cycles — <strong>Physical Health</strong>. If you suspect Growth and Health are connected — the <strong>Bundle</strong> gives you both at a saving.</p></div>
     <div class="faq-item"><div class="faq-q">I don't have a birth chart yet. Can I still book?</div><p class="faq-a">Yes. The booking link takes you to the system that will guide you through creating your chart — birth date, birth time, and birth location are required. Once your chart is on file, you complete your intake form and book your session.</p></div>
+    <div class="faq-item"><div class="faq-q">How does the Relationship Reading work with two people?</div><p class="faq-a">Each person creates their own birth chart with their own email and consent. At checkout you look up your chart, then the other person's by their email, so both are on the order before the call. No intake form is needed — the two charts are the material we work from.</p></div>
     <div class="faq-item"><div class="faq-q">What if I need to pause the intake form?</div><p class="faq-a">The intake form is saved by your email. You can pause and resume at any time. We recommend completing it at least 48 hours before your session so Lisa has time to review it alongside your chart.</p></div>
+    <div class="faq-item"><div class="faq-q">How does the 3 Physical Health bundle work?</div><p class="faq-a">You complete one intake form before your first consultation. After that, your daily entries in the Health Journal are what prepare the second and third sessions — how your constitution is actually responding between visits tells us more than filling the same form in again. Daily journaling is expected, because the follow-up sessions are built on it.</p></div>
     <div class="faq-item"><div class="faq-q">Can I reschedule?</div><p class="faq-a">Yes — reschedule through the booking confirmation email. For bundles, sessions need to maintain the minimum spacing (7 days for the Growth + Health bundle, 14 days for the 3 Physical Health bundle).</p></div>
     <div class="faq-item"><div class="faq-q">Is this covered by insurance or FSA?</div><p class="faq-a">No. Astrological consultations are not covered by insurance, and they are not FSA-eligible expenses. Payment is made directly at booking.</p></div>
     <div class="faq-item"><div class="faq-q">What if I'm not sure I'm ready for the deep work?</div><p class="faq-a">The <strong>Guided Onboarding Intake Call</strong> at $100 is the right starting place. We walk through filling out your intake form together — no prep needed, just bring yourself. You decide afterward whether to book a full consultation.</p></div>
