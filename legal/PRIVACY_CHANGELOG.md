@@ -172,7 +172,17 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 This section is the single home for the privacy review cadence and any open privacy item. If something is being watched, it is listed here — not only inside a version entry above.
 
-- **Annual review — next due July 2027.** One year from the v2026-07 review of July 16, 2026. **Rule:** at each review, advance this date one year from the review just completed and record it here in the same commit. (Corrected 2026-07-19: this line still read "May 2027," carried over from the v2026-06 review and never advanced after the July review.)
+- **Annual review — next due July 2027.** One year from the v2026-07 review of July 16, 2026. **Rule:** at each review, advance this date one year from the review just completed and record it here in the same commit. (Corrected 2026-07-19: this line still read "May 2027," carried over from the v2026-06 review and never advanced after the July review.) Calendar reminder set 2026-07-19 on the TMG calendar, yearly, 2027-07-16.
 - **Research corpus publication** — review Section XII of the full privacy policy before any research output is published or shared.
 - **New app added to ecosystem** — triggers a policy update at that point.
-- **Open — in-app copy contradicts the shipped architecture.** `apps/client/src/components/SubscribePage.tsx` in `Triple-Moon-Goddess/astrology-app-private` (practitioner subscribe screen) still describes the retired passphrase encryption scheme — "encrypted in my browser with a passphrase I set," "no recovery mechanism." The shipped architecture and the live policy (Sections VIII and XII, v2026-07) are managed-key Cloud KMS, server-side only. Opened 2026-07-16 with the v2026-07 review; promoted to a tracked item 2026-07-19. Clear this item when the corrected copy is committed **and** the PWA rebuild/deploy is confirmed live.
+- **Open — in-app copy contradicts the shipped architecture.** `apps/client/src/components/SubscribePage.tsx` in `Triple-Moon-Goddess/astrology-app-private` (practitioner subscribe screen) still describes the retired passphrase encryption scheme — "encrypted in my browser with a passphrase I set," "no recovery mechanism." The shipped architecture and the live policy (Sections VIII and XII, v2026-07) are managed-key Cloud KMS, server-side only. Opened 2026-07-16 with the v2026-07 review; promoted to a tracked item 2026-07-19.
+
+  **Scope confirmed with Lisa 2026-07-19:**
+  - The defect is confined to **Section 4, items 1 and 2** of the signed Practitioner Subscription Agreement text (the passphrase claims). Retitle the section to drop "Passphrase Responsibility."
+  - **No practitioner holds passphrase-sealed legacy data.** No transitional or legacy-recovery language is needed — the passphrase model is described as gone, not as migrating.
+  - **Section 4 item 3 is accurate as written.** Practitioners do not enter client birth data. Birth data is collected through a single client-facing form into a single collection, carrying a collection ID used to link it to the other collections.
+  - Changing signed agreement text requires updating `business/legal/consent-register.md` in tmg-library **first** (it is canonical; the apps implement from it), then bumping `WAIVER_VERSION` from `2.0` to `2.1` so existing signatures do not validate against retired text. The version gate is checked only at subscribe time, so active subscribers are not interrupted.
+  - Also stale in the same file: the `PractitionerWaiverStep` header comment still says it writes to `practitioner_waivers/{email}`; it now goes through the `signPractitionerWaiver` callable, keyed by email hash. Fix in the same commit.
+  - Multi-file, two-repo, legal text — run through Claude Code, not MCP.
+
+  Clear this item when the corrected copy is committed **and** the PWA rebuild/deploy is confirmed live.
