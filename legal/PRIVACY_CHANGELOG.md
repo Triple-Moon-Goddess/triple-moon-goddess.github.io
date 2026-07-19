@@ -35,7 +35,7 @@ This changelog records all material and non-material changes to the Triple Moon 
 - Policy version bumped 2026-06 → 2026-07; "Last reviewed" updated to July 16, 2026.
 
 ### Open item routed outside the privacy policy
-- **In-app copy — `apps/client/src/components/SubscribePage.tsx` (practitioner subscribe screen):** still tells practitioners their notes/readings/client-email are "encrypted in my browser with a passphrase I set" with "no recovery mechanism." This describes the retired scheme and now contradicts the shipped KMS architecture and this policy. It is app UI copy, not the privacy policy — routed to the app repo for a separate fix.
+- **In-app copy — `apps/client/src/components/SubscribePage.tsx` (practitioner subscribe screen):** still tells practitioners their notes/readings/client-email are "encrypted in my browser with a passphrase I set" with "no recovery mechanism." This describes the retired scheme and now contradicts the shipped KMS architecture and this policy. It is app UI copy, not the privacy policy — routed to the app repo for a separate fix. *Now tracked in Standing Watch Items below (added 2026-07-19).*
 
 ---
 
@@ -170,6 +170,9 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 ## Standing Watch Items
 
-- **Research corpus publication** — review Section XII of the full privacy policy before any research output is published or shared
-- **Annual review** — next due May 2027
-- **New app added to ecosystem** — triggers policy update at that point
+This section is the single home for the privacy review cadence and any open privacy item. If something is being watched, it is listed here — not only inside a version entry above.
+
+- **Annual review — next due July 2027.** One year from the v2026-07 review of July 16, 2026. **Rule:** at each review, advance this date one year from the review just completed and record it here in the same commit. (Corrected 2026-07-19: this line still read "May 2027," carried over from the v2026-06 review and never advanced after the July review.)
+- **Research corpus publication** — review Section XII of the full privacy policy before any research output is published or shared.
+- **New app added to ecosystem** — triggers a policy update at that point.
+- **Open — in-app copy contradicts the shipped architecture.** `apps/client/src/components/SubscribePage.tsx` in `Triple-Moon-Goddess/astrology-app-private` (practitioner subscribe screen) still describes the retired passphrase encryption scheme — "encrypted in my browser with a passphrase I set," "no recovery mechanism." The shipped architecture and the live policy (Sections VIII and XII, v2026-07) are managed-key Cloud KMS, server-side only. Opened 2026-07-16 with the v2026-07 review; promoted to a tracked item 2026-07-19. Clear this item when the corrected copy is committed **and** the PWA rebuild/deploy is confirmed live.
