@@ -172,7 +172,11 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 This section is the single home for the privacy review cadence and any open privacy item. If something is being watched, it is listed here — not only inside a version entry above.
 
-- **Annual review — next due July 2027.** One year from the v2026-07 review of July 16, 2026. **Rule:** at each review, advance this date one year from the review just completed and record it here in the same commit. (Corrected 2026-07-19: this line still read "May 2027," carried over from the v2026-06 review and never advanced after the July review.) Calendar reminder set 2026-07-19 on the TMG calendar, yearly, 2027-07-16.
+- **Quarterly review — next due October 1, 2026.** Cadence changed from annual to quarterly by Lisa on 2026-07-19. Deliberately aligned with the security-audit quarterly cadence in `security-audit/README.md` (tmg-library) — same dates, so one sitting covers both: advance any `Not Assessed` audit rows that now have evidence, then review the policy. Schedule: **2026-10-01 · 2027-01-01 · 2027-04-01 · 2027-07-01.**
+  - **Rule:** at each review, advance this date one quarter and record it here in the same commit.
+  - **A quarter with no changes is a valid outcome.** Record it as reviewed with no changes rather than skipping it — a skipped quarter and an unchanged quarter must not look the same in the history.
+  - Superseded the prior annual cadence (last stated as "next due July 2027," itself stale — it had been carried from the v2026-06 review and never advanced after the v2026-07 review).
+  - Calendar reminder set 2026-07-19 on the TMG calendar, first occurrence 2026-10-01.
 - **Research corpus publication** — review Section XII of the full privacy policy before any research output is published or shared.
 - **New app added to ecosystem** — triggers a policy update at that point.
 - **Open — in-app copy contradicts the shipped architecture.** `apps/client/src/components/SubscribePage.tsx` in `Triple-Moon-Goddess/astrology-app-private` (practitioner subscribe screen) still describes the retired passphrase encryption scheme — "encrypted in my browser with a passphrase I set," "no recovery mechanism." The shipped architecture and the live policy (Sections VIII and XII, v2026-07) are managed-key Cloud KMS, server-side only. Opened 2026-07-16 with the v2026-07 review; promoted to a tracked item 2026-07-19.
@@ -186,3 +190,5 @@ This section is the single home for the privacy review cadence and any open priv
   - Multi-file, two-repo, legal text — run through Claude Code, not MCP.
 
   Clear this item when the corrected copy is committed **and** the PWA rebuild/deploy is confirmed live.
+
+- **Candidate for deletion at a future review (not urgent).** Section VIII states that legacy passphrase-sealed data is unrecoverable and marked as such. Lisa confirmed 2026-07-19 that no practitioner ever held passphrase-sealed data, so the clause describes a condition that does not exist. Not inaccurate, just dead weight — remove it whenever Section VIII is next opened for another reason. Does not justify a version bump on its own.
