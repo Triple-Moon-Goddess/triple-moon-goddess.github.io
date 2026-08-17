@@ -49,11 +49,17 @@ PAGES = [
     "about.html",
     "contact.html",
     "blog.html",
+    "privacy.html",
+    "terms.html",
 ]
 
+# The legal documents are the only pages allowed to carry the business postal
+# address; every other page must not.
+ADDRESS_EXEMPT = {"privacy.html", "terms.html"}
+
 EMAIL = "Lisa@TripleMoonGoddess.com"
-PRIVACY_URL = "https://legal.triplemoongoddess.com/privacy.html"
-TERMS_URL = "https://legal.triplemoongoddess.com/terms.html"
+PRIVACY_URL = "/privacy.html"
+TERMS_URL = "/terms.html"
 
 FONTS_LINK = (
     '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
@@ -309,7 +315,7 @@ def ensure_fonts(html):
     Google Sites shell) need the Google Fonts link so the chrome renders right."""
     head_end = html.find("</head>")
     head = html[:head_end] if head_end != -1 else html
-    if "Cinzel" in head or head_end == -1:
+    if head_end == -1 or ("Cinzel" in head and "Cormorant" in head):
         return html
     return html[:head_end] + FONTS_LINK + "\n" + html[head_end:]
 
