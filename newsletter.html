@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TMG Times — Personalized Monthly Newsletter | Triple Moon Goddess</title>
+<meta name="description" content="A personalized monthly newsletter from Triple Moon Goddess. Your upcoming transits, your constitution, your archetype. Delivered once a month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2363455');
+</script>
+<!-- End MailerLite Universal -->
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0608;
+    --gold: #d4af6a;
+    --gold-bright: #e8c989;
+    --gold-dim: rgba(212,175,106,0.5);
+    --gold-faint: rgba(212,175,106,0.15);
+    --text-body: #ffffff;
+    --text-muted: rgba(255,255,255,0.7);
+  }
+
+  html { background: var(--black); }
+
+  body {
+    background: var(--black);
+    color: var(--text-body);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: normal;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 32px 80px;
+  }
+
+  .site-header { text-align: center; margin-bottom: 16px; }
+  .site-name {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(212,175,106,0.5);
+    margin-bottom: 32px;
+    display: block;
+  }
+  .site-name a { color: inherit; text-decoration: none; transition: color 0.3s; }
+  .site-name a:hover { color: #e8c989; }
+
+  .divider { display: flex; align-items: center; gap: 16px; margin: 28px 0; }
+  .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(212,175,106,0.5), transparent); }
+  .divider-glyph { color: #d4af6a; font-size: 16px; opacity: 0.6; }
+
+  .hero { text-align: center; margin-bottom: 56px; }
+  .newsletter-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(212,175,106,0.5);
+    display: block;
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(42px, 8vw, 72px);
+    font-weight: 400;
+    color: #e8c989;
+    line-height: 1.1;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+    text-shadow: 0 0 60px rgba(212,175,106,0.25);
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: normal;
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.04em;
+    margin-bottom: 36px;
+  }
+  .hero-desc {
+    font-size: clamp(20px, 2.5vw, 24px);
+    line-height: 1.75;
+    color: #ffffff;
+    max-width: 580px;
+    margin: 0 auto;
+    font-style: normal;
+  }
+
+  .inside-section { margin-bottom: 56px; }
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(212,175,106,0.5);
+    text-align: center;
+    display: block;
+    margin-bottom: 32px;
+  }
+  .inside-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 540px) { .inside-grid { grid-template-columns: 1fr; } }
+
+  .inside-card {
+    border: 1px solid rgba(212,175,106,0.15);
+    padding: 28px 24px;
+    position: relative;
+    background: rgba(212,175,106,0.03);
+    transition: border-color 0.4s, background 0.4s;
+  }
+  .inside-card::before, .inside-card::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: rgba(212,175,106,0.5);
+    border-style: solid;
+    transition: border-color 0.4s;
+  }
+  .inside-card::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+  .inside-card::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+  .inside-card:hover { border-color: rgba(212,175,106,0.3); background: rgba(212,175,106,0.06); }
+  .inside-card:hover::before, .inside-card:hover::after { border-color: #d4af6a; }
+
+  .card-glyph { font-size: 24px; margin-bottom: 12px; display: block; opacity: 0.8; }
+  .card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #d4af6a;
+    margin-bottom: 12px;
+  }
+  .card-desc {
+    font-size: 18px;
+    line-height: 1.65;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .form-section { text-align: center; margin-bottom: 48px; }
+  .form-headline {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(20px, 3.5vw, 28px);
+    font-weight: 400;
+    color: #e8c989;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  .form-sub {
+    font-size: 20px;
+    color: rgba(255,255,255,0.7);
+    font-style: normal;
+    margin-bottom: 32px;
+  }
+
+  .ml-form-wrapper { max-width: 480px; margin: 0 auto; }
+
+  .privacy-note {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    font-style: normal;
+    margin-top: 20px;
+  }
+  .privacy-note a { color: rgba(212,175,106,0.6); text-decoration: none; border-bottom: 1px solid rgba(212,175,106,0.2); }
+  .privacy-note a:hover { color: #e8c989; }
+
+  .page-footer {
+    text-align: center;
+    padding-top: 48px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(212,175,106,0.5);
+  }
+  .page-footer a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(212,175,106,0.2); padding-bottom: 1px; }
+  .page-footer a:hover { color: #e8c989; }
+  .page-footer .sep { margin: 0 12px; opacity: 0.4; }
+  .patent-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    color: rgba(212,175,106,0.35);
+    margin-top: 10px;
+    display: block;
+  }
+
+  .fade-in { opacity: 0; transform: translateY(18px); animation: fadeUp 0.9s ease forwards; }
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.25s; }
+  .fade-in:nth-child(3) { animation-delay: 0.4s; }
+  .fade-in:nth-child(4) { animation-delay: 0.55s; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+</style>
+
+<style id="tmg-chrome">
+  :root { --tmgc-gold:#d4af6a; --tmgc-gold-bright:#e8c989; --tmgc-ink-soft:#c9b896; --tmgc-line:rgba(212,175,106,.2); }
+  body { padding-top:0 !important; }
+  .tmg-nav { position:sticky; top:0; z-index:9999; background:rgba(8,5,7,.94); backdrop-filter:blur(12px);
+             border-bottom:1px solid var(--tmgc-line); }
+  .tmg-nav-inner { max-width:1080px; margin:0 auto; padding:0 22px; display:flex; align-items:center;
+                   justify-content:space-between; gap:18px; min-height:60px; flex-wrap:wrap; }
+  .tmg-brand { font-family:'Cinzel',Georgia,serif; font-size:.82rem; letter-spacing:.22em; text-transform:uppercase;
+               color:var(--tmgc-gold-bright); text-decoration:none; white-space:nowrap; padding:14px 0; border:none; }
+  .tmg-brand:hover { color:#fff; }
+  .tmg-links { display:flex; align-items:center; gap:2px; flex-wrap:wrap; padding-bottom:6px; }
+  .tmg-links a { font-family:'Inter',system-ui,sans-serif; font-size:.74rem; font-weight:300; letter-spacing:.09em;
+                 text-transform:uppercase; color:var(--tmgc-ink-soft); text-decoration:none; padding:7px 11px;
+                 border:none; border-radius:2px; transition:color .25s, background .25s; white-space:nowrap; }
+  .tmg-links a:hover { color:var(--tmgc-gold-bright); background:rgba(212,175,106,.09); }
+  .tmg-links a.is-here { color:var(--tmgc-gold); box-shadow:inset 0 -1px 0 var(--tmgc-gold); }
+  .tmg-book { color:#0a0608 !important; background:var(--tmgc-gold); padding:8px 16px !important; }
+  .tmg-book:hover { background:var(--tmgc-gold-bright); color:#0a0608 !important; }
+  .tmg-foot { position:relative; z-index:5; border-top:1px solid var(--tmgc-line); margin-top:70px;
+              padding:34px 22px 40px; text-align:center; font-family:'Inter',system-ui,sans-serif;
+              font-size:.84rem; font-weight:300; color:var(--tmgc-ink-soft); background:rgba(8,5,7,.6); }
+  .tmg-foot a { color:var(--tmgc-gold); text-decoration:none; border:none; }
+  .tmg-foot a:hover { color:var(--tmgc-gold-bright); text-decoration:underline; }
+  .tmg-foot-links { font-family:'Cinzel',Georgia,serif; font-size:.68rem; letter-spacing:.16em;
+                    text-transform:uppercase; margin-bottom:16px; }
+  .tmg-foot-links a { margin:0 9px; display:inline-block; padding:3px 0; }
+  .tmg-fine { font-size:.72rem; color:rgba(201,184,150,.5); margin-top:14px; line-height:1.9; }
+  @media (max-width:760px) {
+    .tmg-nav-inner { min-height:0; padding:10px 16px; justify-content:center; }
+    .tmg-brand { padding:6px 0; }
+    .tmg-links { justify-content:center; gap:0; }
+    .tmg-links a { font-size:.68rem; padding:6px 8px; }
+  }
+</style>
+</head>
+<body>
+<nav class="tmg-nav"><div class="tmg-nav-inner"><a class="tmg-brand" href="/">&#9790;&nbsp; Triple Moon Goddess</a><div class="tmg-links"><a href="/">Home</a><a href="/schedule.html">Sessions</a><a href="/video.html">Chart Video</a><a href="/readings.html">Readings</a><a href="/apps.html">Free Apps</a><a href="/practitioners.html">Practitioners</a><a href="/ipa.html">IPA</a><a href="/testimonials.html">Testimonials</a><a href="/events.html">Speaking</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a class="tmg-book" href="/schedule.html">Book</a></div></div></nav>
+
+
+<canvas class="stars" id="stars"></canvas>
+
+<div class="page">
+
+  <header class="site-header fade-in">
+    <span class="site-name">
+      <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">Triple Moon Goddess</a>
+    </span>
+  </header>
+
+  <section class="hero fade-in">
+    <span class="newsletter-label">A Personalized Monthly Newsletter</span>
+    <h1 class="hero-title">TMG Times</h1>
+    <p class="hero-subtitle">Your constitution. Your archetype. Your month ahead.</p>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-glyph">&#9789; &#9675; &#9790;</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <p class="hero-desc">
+      Once a month, TMG Times arrives in your inbox &mdash; personalized to your constitution and your archetype, with the transits moving through your medical and psychological natal charts right now.
+    </p>
+  </section>
+
+  <section class="inside-section fade-in">
+    <span class="section-label">What's Inside Each Issue</span>
+    <div class="inside-grid">
+
+      <div class="inside-card">
+        <span class="card-glyph">&#8853;</span>
+        <div class="card-title">Constitutional Transit</div>
+        <p class="card-desc">An upcoming Whole Sign transit read through the lens of your primary constitution &mdash; how this energy may move through your physical body and vitality.</p>
+      </div>
+
+      <div class="inside-card">
+        <span class="card-glyph">&#9789;</span>
+        <div class="card-title">Personal Growth Transit</div>
+        <p class="card-desc">An upcoming Placidus transit in conversation with your archetype &mdash; the signature energy moving through your psychological natal chart &mdash; and what it may be stirring in your growth pattern.</p>
+      </div>
+
+      <div class="inside-card">
+        <span class="card-glyph">&#10022;</span>
+        <div class="card-title">Events &amp; Appearances</div>
+        <p class="card-desc">Where Lisa is speaking, what expos TMG is attending, and how to find us in person or online this month.</p>
+      </div>
+
+      <div class="inside-card">
+        <span class="card-glyph">&#9711;</span>
+        <div class="card-title">Ways to Work Together</div>
+        <p class="card-desc">Current offerings for individual sessions, and how integrative practitioners, therapists, and health professionals can access the full TMG platform.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="form-section fade-in">
+    <h2 class="form-headline">Receive Your First Issue</h2>
+    <p class="form-sub">Monthly. Personalized. Free.</p>
+
+    <div class="ml-form-wrapper">
+      <div class="ml-embedded" data-form="IhPiFR"></div>
+    </div>
+
+    <p class="privacy-note">
+      <a href="https://legal.triplemoongoddess.com/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+    </p>
+  </section>
+
+  <footer class="page-footer">
+    <div>
+      <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a>
+      <span class="sep">&middot;</span>
+      <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">TripleMoonGoddess.com</a>
+      <span class="sep">&middot;</span>
+      <span>&copy; 2026 Lisa Hagan. All rights reserved.</span>
+    </div>
+    <span class="patent-line">Integrative Pattern Astrology (IPA) &mdash; Patent Pending &mdash; Application #63/998,305</span>
+  </footer>
+
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = Math.max(window.innerHeight, document.body.scrollHeight);
+  }
+
+  function createStars(n) {
+    stars = [];
+    for (let i = 0; i < n; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.2 + 0.2,
+        alpha: Math.random(),
+        speed: Math.random() * 0.004 + 0.001,
+        phase: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const s of stars) {
+      const a = 0.15 + 0.55 * (0.5 + 0.5 * Math.sin(t * s.speed + s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,' + a + ')';
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  createStars(220);
+  window.addEventListener('resize', function() { resize(); createStars(220); });
+  requestAnimationFrame(draw);
+})();
+</script>
+
+
+<footer class="tmg-foot">
+  <div class="tmg-foot-links">
+    <a href="/">Home</a><a href="/schedule.html">Sessions</a><a href="/apps.html">Free Apps</a><a href="/practitioners.html">Practitioners</a><a href="/newsletter.html">Newsletter</a><a href="/contact.html">Contact</a>
+  </div>
+  <p><a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a> &nbsp;&middot;&nbsp; Lisa Hagan &nbsp;&middot;&nbsp; Fremont, California</p>
+  <div class="tmg-foot-links" style="margin-top:16px;margin-bottom:0;">
+    <a href="https://legal.triplemoongoddess.com/privacy.html">Privacy Policy</a><a href="https://legal.triplemoongoddess.com/terms.html">Terms of Service</a>
+  </div>
+  <p class="tmg-fine">&copy; 2026 Lisa Hagan. All rights reserved.<br>
+  Integrative Pattern Astrology &mdash; Patent Pending &mdash; Application #63/998,305<br>
+  Not medical advice and not a diagnosis. Consult a licensed professional for clinical care.</p>
+</footer>
+
+</body>
+</html>
