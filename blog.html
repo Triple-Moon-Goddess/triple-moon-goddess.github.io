@@ -293,8 +293,45 @@
   }
   @keyframes fadeIn { to { opacity: 1; } }
 </style>
+
+<style id="tmg-chrome">
+  :root { --tmgc-gold:#d4af6a; --tmgc-gold-bright:#e8c989; --tmgc-ink-soft:#c9b896; --tmgc-line:rgba(212,175,106,.2); }
+  body { padding-top:0 !important; }
+  .tmg-nav { position:sticky; top:0; z-index:9999; background:rgba(8,5,7,.94); backdrop-filter:blur(12px);
+             border-bottom:1px solid var(--tmgc-line); }
+  .tmg-nav-inner { max-width:1080px; margin:0 auto; padding:0 22px; display:flex; align-items:center;
+                   justify-content:space-between; gap:18px; min-height:60px; flex-wrap:wrap; }
+  .tmg-brand { font-family:'Cinzel',Georgia,serif; font-size:.82rem; letter-spacing:.22em; text-transform:uppercase;
+               color:var(--tmgc-gold-bright); text-decoration:none; white-space:nowrap; padding:14px 0; border:none; }
+  .tmg-brand:hover { color:#fff; }
+  .tmg-links { display:flex; align-items:center; gap:2px; flex-wrap:wrap; padding-bottom:6px; }
+  .tmg-links a { font-family:'Inter',system-ui,sans-serif; font-size:.74rem; font-weight:300; letter-spacing:.09em;
+                 text-transform:uppercase; color:var(--tmgc-ink-soft); text-decoration:none; padding:7px 11px;
+                 border:none; border-radius:2px; transition:color .25s, background .25s; white-space:nowrap; }
+  .tmg-links a:hover { color:var(--tmgc-gold-bright); background:rgba(212,175,106,.09); }
+  .tmg-links a.is-here { color:var(--tmgc-gold); box-shadow:inset 0 -1px 0 var(--tmgc-gold); }
+  .tmg-book { color:#0a0608 !important; background:var(--tmgc-gold); padding:8px 16px !important; }
+  .tmg-book:hover { background:var(--tmgc-gold-bright); color:#0a0608 !important; }
+  .tmg-foot { position:relative; z-index:5; border-top:1px solid var(--tmgc-line); margin-top:70px;
+              padding:34px 22px 40px; text-align:center; font-family:'Inter',system-ui,sans-serif;
+              font-size:.84rem; font-weight:300; color:var(--tmgc-ink-soft); background:rgba(8,5,7,.6); }
+  .tmg-foot a { color:var(--tmgc-gold); text-decoration:none; border:none; }
+  .tmg-foot a:hover { color:var(--tmgc-gold-bright); text-decoration:underline; }
+  .tmg-foot-links { font-family:'Cinzel',Georgia,serif; font-size:.68rem; letter-spacing:.16em;
+                    text-transform:uppercase; margin-bottom:16px; }
+  .tmg-foot-links a { margin:0 9px; display:inline-block; padding:3px 0; }
+  .tmg-fine { font-size:.72rem; color:rgba(201,184,150,.5); margin-top:14px; line-height:1.9; }
+  @media (max-width:760px) {
+    .tmg-nav-inner { min-height:0; padding:10px 16px; justify-content:center; }
+    .tmg-brand { padding:6px 0; }
+    .tmg-links { justify-content:center; gap:0; }
+    .tmg-links a { font-size:.68rem; padding:6px 8px; }
+  }
+</style>
 </head>
 <body>
+<nav class="tmg-nav"><div class="tmg-nav-inner"><a class="tmg-brand" href="/">&#9790;&nbsp; Triple Moon Goddess</a><div class="tmg-links"><a href="/">Home</a><a href="/schedule.html">Sessions</a><a href="/video.html">Chart Video</a><a href="/readings.html">Readings</a><a href="/apps.html">Free Apps</a><a href="/practitioners.html">Practitioners</a><a href="/ipa.html">IPA</a><a href="/testimonials.html">Testimonials</a><a href="/events.html">Speaking</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a class="tmg-book" href="/schedule.html">Book</a></div></div></nav>
+
 
 <div class="container">
 
@@ -328,6 +365,20 @@
   </footer>
 
 </div>
+
+
+<footer class="tmg-foot">
+  <div class="tmg-foot-links">
+    <a href="/">Home</a><a href="/schedule.html">Sessions</a><a href="/apps.html">Free Apps</a><a href="/practitioners.html">Practitioners</a><a href="/newsletter.html">Newsletter</a><a href="/contact.html">Contact</a>
+  </div>
+  <p><a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a> &nbsp;&middot;&nbsp; Lisa Hagan &nbsp;&middot;&nbsp; Fremont, California</p>
+  <div class="tmg-foot-links" style="margin-top:16px;margin-bottom:0;">
+    <a href="https://legal.triplemoongoddess.com/privacy.html">Privacy Policy</a><a href="https://legal.triplemoongoddess.com/terms.html">Terms of Service</a>
+  </div>
+  <p class="tmg-fine">&copy; 2026 Lisa Hagan. All rights reserved.<br>
+  Integrative Pattern Astrology &mdash; Patent Pending &mdash; Application #63/998,305<br>
+  Not medical advice and not a diagnosis. Consult a licensed professional for clinical care.</p>
+</footer>
 
 </body>
 </html>
