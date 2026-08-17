@@ -14,6 +14,11 @@ Asserts, for every page in PAGES:
   * no "Fremont, CA" (belongs only in the privacy/terms documents)
   * no newsletter page or link
   * every root-relative internal link resolves to a file in the repo
+  * the shared nav is the page's only <nav>, and the shared footer appears once
+
+And across the whole site:
+  * every page carries a byte-identical nav block (bar the current-page marker)
+    and a byte-identical footer block, so the menu cannot drift page to page
 """
 
 import importlib.util
@@ -33,6 +38,16 @@ PAGES = site_chrome.PAGES
 NAV = site_chrome.NAV
 
 failures = []
+
+# nav/footer block -> pages carrying that exact block. The menu is only
+# "consistent across all pages" if every page carries a byte-identical block
+# (the current-page marker is the one allowed difference), so these must each
+# end up with exactly one entry.
+nav_blocks = {}
+footer_blocks = {}
+
+NAV_BLOCK_RE = re.compile(r"<!-- TMG-CHROME:NAV:START.*?<!-- TMG-CHROME:NAV:END -->", re.S)
+FOOTER_BLOCK_RE = re.compile(r"<!-- TMG-CHROME:FOOTER:START.*?<!-- TMG-CHROME:FOOTER:END -->", re.S)
 
 
 def fail(page, msg):
@@ -112,6 +127,31 @@ for page in PAGES:
     for target in internal_targets(html):
         if not os.path.exists(os.path.join(REPO, target.lstrip("/"))):
             fail(page, "dead internal link: %s" % target)
+
+    # the shared chrome is the page's only nav, and any other <footer> on the
+    # page belongs to the page's own content, not to a second copy of the chrome
+    navs = re.findall(r"<nav\b[^>]*>", html)
+    if navs != ['<nav class="tmg-nav" aria-label="Main">']:
+        fail(page, "expected exactly one nav (the shared one), found: %s" % navs)
+    if html.count('class="tmg-footer"') != 1:
+        fail(page, "expected exactly one shared footer")
+
+    # collect the blocks so cross-page identity can be asserted below
+    nav = NAV_BLOCK_RE.search(html)
+    footer = FOOTER_BLOCK_RE.search(html)
+    if nav:
+        nav_blocks.setdefault(nav.group(0).replace(' aria-current="page"', ""), []).append(page)
+    if footer:
+        footer_blocks.setdefault(footer.group(0), []).append(page)
+
+# every page must carry the same nav and the same footer, byte for byte
+for label, blocks in (("nav", nav_blocks), ("footer", footer_blocks)):
+    if len(blocks) > 1:
+        groups = sorted(blocks.values(), key=len, reverse=True)
+        failures.append(
+            "%s differs between pages — %d variants: %s"
+            % (label, len(groups), " | ".join(", ".join(g) for g in groups))
+        )
 
 if failures:
     print("FAIL (%d)" % len(failures))
