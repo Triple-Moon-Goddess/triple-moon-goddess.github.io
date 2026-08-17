@@ -308,10 +308,10 @@
     z-index: 9999;
     margin: 0 0 0 0;
     padding: 0;
-    background: rgba(10, 6, 8, 0.94);
+    /* Solid, not translucent: a see-through bar picks up each page's own
+       background and the menu looks different from page to page. */
+    background: #0a0608;
     border-bottom: 1px solid rgba(212, 175, 106, 0.18);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     font-family: 'Cinzel', Georgia, serif;
     line-height: 1.2;
   }
@@ -400,7 +400,7 @@
       align-items: stretch;
       gap: 0;
       padding: 4px 16px 16px;
-      background: rgba(10, 6, 8, 0.98);
+      background: #0a0608;
       border-bottom: 1px solid rgba(212, 175, 106, 0.18);
       max-height: 78vh;
       overflow-y: auto;
@@ -482,6 +482,7 @@
   </div>
 </nav>
 <!-- TMG-CHROME:NAV:END -->
+
 
 
 
