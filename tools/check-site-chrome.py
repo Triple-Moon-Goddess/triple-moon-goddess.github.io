@@ -80,17 +80,18 @@ for page in PAGES:
         if ">%s</a>" % label not in html:
             fail(page, "nav label missing: %s" % label)
 
-    # current page marked
+    # current page marked (pages that are in the nav; blog and the legal
+    # documents are reachable from the footer / posts, not the nav)
     want = "/" if page == "index.html" else "/" + page
-    if page in [p for p in PAGES if p != "blog.html"]:
+    if want in [href for href, _ in NAV]:
         if 'href="%s" aria-current="page"' % want not in html:
             fail(page, "current nav item not marked for %s" % want)
 
     # footer content
     for needle in (
         "mailto:Lisa@TripleMoonGoddess.com",
-        "https://legal.triplemoongoddess.com/privacy.html",
-        "https://legal.triplemoongoddess.com/terms.html",
+        'href="/privacy.html"',
+        'href="/terms.html"',
         "&copy; 2026 Lisa Hagan. All rights reserved.",
         "Patent Pending &mdash; Application #63/998,305",
     ):
@@ -102,7 +103,7 @@ for page in PAGES:
         fail(page, "Cinzel font not loaded")
 
     # content rules
-    if re.search(r"Fremont", html, re.I):
+    if page not in site_chrome.ADDRESS_EXEMPT and re.search(r"Fremont", html, re.I):
         fail(page, 'contains "Fremont" (allowed only in privacy/terms docs)')
     if re.search(r"newsletter", html, re.I):
         fail(page, "contains a newsletter reference")

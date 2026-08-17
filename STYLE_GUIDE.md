@@ -13,8 +13,13 @@ nav and shared footer. Both are generated — never hand-edit them in a page:
   re-run. Page markup and page CSS are never touched.
 - Nav order (fixed): Home · Video · Readings · Schedule · Practitioner · IPA ·
   Apps · Testimonials · Events · About · Contact. All links root-relative.
-- Footer: `Lisa@TripleMoonGoddess.com`, Privacy Policy and Terms of Service on
-  `legal.triplemoongoddess.com`, copyright, and the IPA patent-pending line.
+- Footer: `Lisa@TripleMoonGoddess.com`, `/privacy.html`, `/terms.html`,
+  copyright, and the IPA patent-pending line.
+- The legal documents live in this repo and nowhere else — `privacy.html` and
+  `terms.html` are the canonical copies (moved out of the `tmg-legal` repo so
+  there is exactly one version of every page). They are the only pages allowed
+  to carry the business postal address; `ADDRESS_EXEMPT` in the injector encodes
+  that, and the checker enforces it everywhere else.
 - After adding a page, add it to `PAGES` in the script, run it, then run
   `python3 tools/check-site-chrome.py` — it verifies the chrome, the nav order,
   the footer lines, that internal links resolve, and the content rules (no
