@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Lisa — Triple Moon Goddess</title>
+<meta name="description" content="Triple Moon Goddess is the synthesis of 15 years of astrological practice, built by Lisa Hagan to map a complex, multi-system constitution.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#d4af6a; --gold-bright:#e8c989; --gold-deep:#b8945a; --ink:#f5e8d0; --ink-soft:#c9b896; --bg:#0a0608; --line:rgba(212,175,106,.18); --line-strong:rgba(212,175,106,.4); }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--ink); font-family:'Inter',system-ui,sans-serif; font-weight:300; line-height:1.72; position:relative; min-height:100vh; overflow-x:hidden; }
+  body::before { content:''; position:fixed; inset:0; background:radial-gradient(ellipse at 15% 20%,rgba(212,175,106,.09) 0%,transparent 45%),radial-gradient(ellipse at 85% 75%,rgba(184,148,90,.06) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(20,12,8,1) 0%,var(--bg) 70%); pointer-events:none; z-index:0; }
+  body::after { content:''; position:fixed; inset:0; background-image:radial-gradient(1px 1px at 23% 17%,rgba(232,201,137,.8),transparent),radial-gradient(1px 1px at 67% 83%,rgba(232,201,137,.6),transparent),radial-gradient(1px 1px at 41% 52%,rgba(232,201,137,.45),transparent),radial-gradient(1px 1px at 89% 11%,rgba(232,201,137,.7),transparent),radial-gradient(1px 1px at 12% 73%,rgba(232,201,137,.4),transparent),radial-gradient(2px 2px at 56% 29%,rgba(232,201,137,.85),transparent),radial-gradient(1px 1px at 7% 38%,rgba(232,201,137,.6),transparent),radial-gradient(2px 2px at 94% 62%,rgba(232,201,137,.75),transparent); pointer-events:none; z-index:0; opacity:.6; animation:tw 9s ease-in-out infinite; }
+  @keyframes tw { 0%,100%{opacity:.6} 50%{opacity:.32} }
+  .container { position:relative; z-index:1; max-width:900px; margin:0 auto; padding:0 30px 40px; }
+
+  .hero { text-align:center; padding:76px 0 0; }
+  .hero-eyebrow { font-family:'Cinzel',serif; font-size:11px; letter-spacing:.32em; color:var(--gold); text-transform:uppercase; margin-bottom:24px; }
+  .hero-eyebrow::before,.hero-eyebrow::after { content:'\2726'; margin:0 13px; color:var(--gold-deep); font-size:9px; }
+  h1 { font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(2.4rem,5.4vw,3.9rem); line-height:1.06; color:var(--gold-bright); margin-bottom:20px; }
+  h1 em { font-style:italic; color:var(--ink); font-weight:300; }
+  .hero-lead { font-size:1.08rem; color:var(--ink-soft); max-width:620px; margin:0 auto; }
+  .ornament { margin:46px auto; width:190px; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); position:relative; }
+  .ornament::before { content:'\263D\2009\263E'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:var(--bg); padding:0 16px; color:var(--gold); font-size:15px; letter-spacing:.1em; }
+
+  section.block { margin-bottom:56px; }
+  h2 { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:400; color:var(--gold-bright); margin-bottom:18px; padding-bottom:12px; border-bottom:1px solid var(--line); }
+  p { margin-bottom:16px; font-size:1rem; }
+  p strong { color:var(--gold-bright); font-weight:500; }
+  .pull { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.42rem; line-height:1.4; color:var(--gold-bright); margin:26px 0; text-align:center; }
+  .pull span { display:block; }
+
+  .about-grid { display:grid; grid-template-columns:300px 1fr; gap:38px; align-items:start; }
+  @media (max-width:720px){ .about-grid { grid-template-columns:1fr; gap:26px; } }
+  .portrait { width:100%; border:1px solid var(--line-strong); padding:8px; background:rgba(20,12,8,.5); }
+  .portrait img { width:100%; display:block; filter:sepia(.35) saturate(.85) contrast(1.03); }
+  .portrait figcaption { font-family:'Cinzel',serif; font-size:.64rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); text-align:center; padding:12px 4px 4px; }
+
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:22px 0 18px; }
+  .card { border:1px solid var(--line); padding:22px 20px; text-align:center; background:linear-gradient(180deg,rgba(20,12,8,.55) 0%,rgba(10,6,8,.85) 100%); transition:border-color .35s; }
+  .card:hover { border-color:var(--line-strong); }
+  .card h3 { font-family:'Cormorant Garamond',serif; font-size:1.22rem; font-weight:500; color:var(--gold-bright); margin-bottom:8px; }
+  .card p { font-size:.92rem; color:var(--ink-soft); margin:0; }
+  .audiences { text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:var(--ink-soft); margin-top:6px; }
+  .audiences span { white-space:nowrap; }
+
+  .teachers { list-style:none; margin:18px 0 8px; }
+  .teachers li { position:relative; padding:14px 0 14px 30px; border-bottom:1px solid var(--line); font-size:1rem; }
+  .teachers li:last-child { border-bottom:none; }
+  .teachers li::before { content:'\263E'; position:absolute; left:2px; top:14px; color:var(--gold); font-size:.9rem; }
+  .teachers .who { font-family:'Cormorant Garamond',serif; font-size:1.14rem; font-style:italic; font-weight:500; color:var(--gold-bright); display:block; }
+  .teachers .what { color:var(--ink-soft); font-size:.94rem; }
+
+  .callout { background:linear-gradient(180deg,rgba(20,12,8,.7) 0%,rgba(10,6,8,.95) 100%); border:1px solid var(--line); border-left:3px solid var(--gold); padding:20px 24px; margin:24px 0; color:var(--ink-soft); font-size:.97rem; }
+  .callout strong { color:var(--gold-bright); font-weight:500; }
+
+  .cta { text-align:center; margin-top:36px; }
+  .cta a { font-family:'Cinzel',serif; font-size:.74rem; letter-spacing:.2em; text-transform:uppercase; color:#0a0608; background:var(--gold); text-decoration:none; padding:14px 34px; display:inline-block; transition:.3s; }
+  .cta a:hover { background:var(--gold-bright); }
+</style>
+
+<style id="tmg-chrome">
+  :root { --tmgc-gold:#d4af6a; --tmgc-gold-bright:#e8c989; --tmgc-ink-soft:#c9b896; --tmgc-line:rgba(212,175,106,.2); }
+  body { padding-top:0 !important; }
+  .tmg-nav { position:sticky; top:0; z-index:9999; background:rgba(8,5,7,.94); backdrop-filter:blur(12px);
+             border-bottom:1px solid var(--tmgc-line); }
+  .tmg-nav-inner { max-width:1080px; margin:0 auto; padding:0 22px; display:flex; align-items:center;
+                   justify-content:space-between; gap:18px; min-height:60px; flex-wrap:wrap; }
+  .tmg-brand { font-family:'Cinzel',Georgia,serif; font-size:.82rem; letter-spacing:.22em; text-transform:uppercase;
+               color:var(--tmgc-gold-bright); text-decoration:none; white-space:nowrap; padding:14px 0; border:none; }
+  .tmg-brand:hover { color:#fff; }
+  .tmg-links { display:flex; align-items:center; gap:2px; flex-wrap:wrap; padding-bottom:6px; }
+  .tmg-links a { font-family:'Inter',system-ui,sans-serif; font-size:.74rem; font-weight:300; letter-spacing:.09em;
+                 text-transform:uppercase; color:var(--tmgc-ink-soft); text-decoration:none; padding:7px 11px;
+                 border:none; border-radius:2px; transition:color .25s, background .25s; white-space:nowrap; }
+  .tmg-links a:hover { color:var(--tmgc-gold-bright); background:rgba(212,175,106,.09); }
+  .tmg-links a.is-here { color:var(--tmgc-gold); box-shadow:inset 0 -1px 0 var(--tmgc-gold); }
+  .tmg-book { color:#0a0608 !important; background:var(--tmgc-gold); padding:8px 16px !important; }
+  .tmg-book:hover { background:var(--tmgc-gold-bright); color:#0a0608 !important; }
+  .tmg-foot { position:relative; z-index:5; border-top:1px solid var(--tmgc-line); margin-top:70px;
+              padding:34px 22px 40px; text-align:center; font-family:'Inter',system-ui,sans-serif;
+              font-size:.84rem; font-weight:300; color:var(--tmgc-ink-soft); background:rgba(8,5,7,.6); }
+  .tmg-foot a { color:var(--tmgc-gold); text-decoration:none; border:none; }
+  .tmg-foot a:hover { color:var(--tmgc-gold-bright); text-decoration:underline; }
+  .tmg-foot-links { font-family:'Cinzel',Georgia,serif; font-size:.68rem; letter-spacing:.16em;
+                    text-transform:uppercase; margin-bottom:16px; }
+  .tmg-foot-links a { margin:0 9px; display:inline-block; padding:3px 0; }
+  .tmg-fine { font-size:.72rem; color:rgba(201,184,150,.5); margin-top:14px; line-height:1.9; }
+  @media (max-width:760px) {
+    .tmg-nav-inner { min-height:0; padding:10px 16px; justify-content:center; }
+    .tmg-brand { padding:6px 0; }
+    .tmg-links { justify-content:center; gap:0; }
+    .tmg-links a { font-size:.68rem; padding:6px 8px; }
+  }
+</style>
+</head>
+<body>
+<nav class="tmg-nav"><div class="tmg-nav-inner"><a class="tmg-brand" href="/">&#9790;&nbsp; Triple Moon Goddess</a><div class="tmg-links"><a href="/">Home</a><a href="/schedule.html">Sessions</a><a href="/video.html">Chart Video</a><a href="/readings.html">Readings</a><a href="/apps.html">Free Apps</a><a href="/practitioners.html">Practitioners</a><a href="/ipa.html">IPA</a><a href="/testimonials.html">Testimonials</a><a href="/events.html">Speaking</a><a href="/about.html" class="is-here">About</a><a href="/contact.html">Contact</a><a class="tmg-book" href="/schedule.html">Book</a></div></div></nav>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="hero-eyebrow">Integrative Medical Astrology</div>
+    <h1>A pattern to explore,<br>with a <em>correlating solution</em>.</h1>
+    <p class="hero-lead">Triple Moon Goddess maps your constitution from your birth data and pairs it with practical protocols grounded in physical health, diet, herbal solutions, and personal growth insight. Every output is a pattern to explore &mdash; in your own self-reflection, or alongside the practitioners supporting your care.</p>
+    <div class="ornament"></div>
+  </section>
+
+  <section class="block">
+    <div class="cards">
+      <div class="card"><h3>Natal Chart</h3><p>Constitutional blueprint from birth data</p></div>
+      <div class="card"><h3>Integrative Health</h3><p>Overall wellness through diet, herbs, acupressure and personal insights</p></div>
+      <div class="card"><h3>Personal Growth</h3><p>Pattern-based profiles for healing and growth</p></div>
+    </div>
+    <p class="audiences"><span>For individuals seeking self-understanding</span> &nbsp;&middot;&nbsp; <span>For integrative practitioners</span> &nbsp;&middot;&nbsp; <span>For therapists and psychologists</span></p>
+  </section>
+
+  <div class="ornament"></div>
+
+  <section class="block" id="about-lisa">
+    <h2>About Lisa</h2>
+    <div class="about-grid">
+      <figure class="portrait">
+        <img src="lisa-profile-pic.png" alt="Lisa Hagan">
+        <figcaption>Lisa Hagan</figcaption>
+      </figure>
+      <div>
+        <p>For years I managed anxiety, PTSD, MCAS, Hashimoto's, and severe post-menopausal symptoms with partial answers at best.</p>
+        <p>Herbs didn't work for my body. Diets helped some things but never the whole picture. Standard approaches &mdash; conventional and alternative &mdash; kept giving me pieces.</p>
+        <p class="pull"><span>Nobody was going to hand me the answer.</span><span>So I built it myself.</span></p>
+        <p>Triple Moon Goddess is the synthesis of 15 years of astrological practice. I attended the Academy of AstroPsychology, the School of Evolutionary Herbalism, and studied Traditional Chinese Medicine &mdash; all applied personally to understand a complex, multi-system constitution.</p>
+        <p>I take Western medication and HRT. <strong>TMG fills the gaps modern medicine can't fill. It works alongside, not instead of.</strong></p>
+      </div>
+    </div>
+    <div class="callout">Every output in TMG is a pattern to explore &mdash; in your own self-reflection, or alongside the practitioners supporting your care.</div>
+  </section>
+
+  <div class="ornament"></div>
+
+  <section class="block" id="methodology">
+    <h2>Methodology &amp; Training</h2>
+    <p>TMG's methodology integrates training from three foundational teachers:</p>
+    <ul class="teachers">
+      <li><span class="who">Glenn Perry, Ph.D.</span><span class="what">Academy of AstroPsychology &mdash; psychological astrology</span></li>
+      <li><span class="who">Sajah Popham</span><span class="what">School of Evolutionary Herbalism &mdash; Western herbalism, medical astrology, Ayurveda, and spagyric alchemy</span></li>
+      <li><span class="who">Judith Hill</span><span class="what">Traditional medical astrology</span></li>
+    </ul>
+    <p class="pull"><span>I am grateful for their education.</span></p>
+    <p style="text-align:center;">The IPA Gap Analysis and the TMG platform are my own contribution.</p>
+    <div class="cta"><a href="/schedule.html">Book a Session</a></div>
+  </section>
+
+</div>
+
+<footer class="tmg-foot">
+  <div class="tmg-foot-links">
+    <a href="/">Home</a><a href="/schedule.html">Sessions</a><a href="/apps.html">Free Apps</a><a href="/practitioners.html">Practitioners</a><a href="/newsletter.html">Newsletter</a><a href="/contact.html">Contact</a>
+  </div>
+  <p><a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a> &nbsp;&middot;&nbsp; Lisa Hagan &nbsp;&middot;&nbsp; Fremont, California</p>
+  <div class="tmg-foot-links" style="margin-top:16px;margin-bottom:0;">
+    <a href="https://legal.triplemoongoddess.com/privacy.html">Privacy Policy</a><a href="https://legal.triplemoongoddess.com/terms.html">Terms of Service</a>
+  </div>
+  <p class="tmg-fine">&copy; 2026 Lisa Hagan. All rights reserved.<br>
+  Integrative Pattern Astrology &mdash; Patent Pending &mdash; Application #63/998,305<br>
+  Not medical advice and not a diagnosis. Consult a licensed professional for clinical care.</p>
+</footer>
+
+</body>
+</html>
