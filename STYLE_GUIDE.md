@@ -1,6 +1,27 @@
 # Triple Moon Goddess — Web Style Guide
 
-Design system used across `triple-moon-goddess.github.io`. Any new page should match this so it drops into the existing site seamlessly. (Source of truth: `triple-moon-goddess-readings.html`.)
+Design system used across `triple-moon-goddess.github.io`. Any new page should match this so it drops into the existing site seamlessly. (Source of truth: `readings.html`.)
+
+## Site chrome (nav + footer)
+
+The site no longer runs under Google Sites, so every page carries its own sticky
+nav and shared footer. Both are generated — never hand-edit them in a page:
+
+- `tools/inject-site-chrome.py` is the single source of truth. It injects a
+  self-scoped `.tmg-nav` right after `<body>` and a `.tmg-footer` right before
+  `</body>`, fenced with `TMG-CHROME` markers, and replaces those blocks on
+  re-run. Page markup and page CSS are never touched.
+- Nav order (fixed): Home · Video · Readings · Schedule · Practitioner · IPA ·
+  Apps · Testimonials · Events · About · Contact. All links root-relative.
+- Footer: `Lisa@TripleMoonGoddess.com`, Privacy Policy and Terms of Service on
+  `legal.triplemoongoddess.com`, copyright, and the IPA patent-pending line.
+- After adding a page, add it to `PAGES` in the script, run it, then run
+  `python3 tools/check-site-chrome.py` — it verifies the chrome, the nav order,
+  the footer lines, that internal links resolve, and the content rules (no
+  "Fremont, CA" outside the legal documents, no newsletter page or link).
+
+Page filenames are the public URLs (`/schedule.html`, `/video.html`, …); the old
+`triple-moon-goddess-*-prod.html` names are retired.
 
 ## Fonts (Google Fonts)
 - **Cormorant Garamond** — display headings, leads, taglines, body-serif. Weights 300–600 + italic. Italic `<em>` in headings renders in cream ink, not gold.
@@ -48,8 +69,8 @@ Dark body with two fixed layers:
 - Reading offers are **$25**, delivered instantly online, **"$25 session credit included"** toward a 90-minute consultation with Lisa (the charter's Taurus-step → Scorpio-descent staircase).
 - Voice: plain, unhurried, "a map rather than a verdict." No manufactured urgency, no FOMO. Stated once.
 - Footer contact line: *Questions before you order?* → `Lisa@TripleMoonGoddess.com`.
-- Prod pages omit the red `test-banner`; `*-prod.html` variants exist per page and use live checkout URLs.
+- Pages carry no red `test-banner` and use live checkout URLs; the separate dev/test page variants are retired.
 
 ## Checkout / links
 - Live reading checkout pattern: `.../reading-checkout?type=<reading_key>` (e.g. `romantic_reading`, `archetype_reading`).
-- The Relationship Reading promo page (`triple-moon-goddess-relationship-reading.html`) points its buttons to `https://www.triplemoongoddess.com/relationship`.
+- The Relationship Reading promo page (`readings.html`) points its buttons to `https://www.triplemoongoddess.com/relationship`.
