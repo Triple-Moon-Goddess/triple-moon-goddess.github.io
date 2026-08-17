@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Triple Moon Goddess &mdash; 90-Minute Astrology Consultations with Lisa Hagan</title>
-<meta name="description" content="Ninety minutes on your chart, your constitution, and what to do about both. Live one-to-one consultations with Lisa Hagan &mdash; psychological and medical astrology, read closely before you arrive.">
+<title>Triple Moon Goddess &mdash; Integrative Astrology Web Application</title>
+<meta name="description" content="Triple Moon Goddess is an integrative astrology web application. It maps your constitution from your birth data and returns health and growth profiles — free chart apps for individuals, a subscription platform for practitioners, and booking for 90-minute sessions with Lisa Hagan.">
 <meta name="theme-color" content="#07050f">
 <meta property="og:title" content="Triple Moon Goddess &mdash; Ninety minutes that go all the way down">
 <meta property="og:description" content="Live 90-minute astrology consultations. Your chart and constitution read in advance, so the whole session goes to what to do about it.">
@@ -125,14 +125,14 @@
   .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal);animation:pulse 2.4s ease-in-out infinite;}
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
 
-  h1{
+  h1, .bigline{
     font-family:'Instrument Serif',Georgia,serif;
     font-weight:400;
     font-size:clamp(3rem,8.2vw,6.4rem);
     line-height:.98;letter-spacing:-.02em;
     margin-bottom:24px;
   }
-  h1 .grad{
+  h1 .grad, .bigline .grad{
     font-style:italic;
     background:linear-gradient(104deg,var(--gold-bright) 4%,var(--magenta) 46%,var(--violet) 78%,var(--teal) 104%);
     -webkit-background-clip:text;background-clip:text;
@@ -142,6 +142,20 @@
   }
   @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
   .lede{font-size:clamp(1.02rem,1.9vw,1.22rem);color:var(--ink-soft);max-width:640px;margin:0 auto;}
+  .appname{
+    font-family:'Cinzel',serif;font-weight:600;
+    font-size:clamp(1.5rem,3.4vw,2.4rem);letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold-bright);margin:0 0 14px;line-height:1.2;
+  }
+  .apptag{
+    font-family:'Inter Tight',system-ui,sans-serif;font-size:clamp(.95rem,1.5vw,1.08rem);
+    color:var(--ink);max-width:760px;margin:0 auto 12px;font-weight:400;
+  }
+  .apppurpose{
+    font-size:clamp(.92rem,1.4vw,1.02rem);color:var(--ink-soft);
+    max-width:760px;margin:0 auto 34px;
+  }
+  .apppurpose a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(240,199,110,.4);}
   .lede strong{color:var(--ink);font-weight:500;}
   .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:36px;}
   .hero-cta .btn{padding:15px 32px;font-size:.92rem;}
@@ -576,8 +590,11 @@
 
   <!-- ================= HERO ================= -->
   <header class="hero">
+    <h1 class="appname">Triple Moon Goddess</h1>
+    <p class="apptag">An integrative astrology web application &mdash; your constitution, health patterns, and growth patterns, mapped from your birth data.</p>
+    <p class="apppurpose">You give Triple Moon Goddess your birth data; it calculates your natal chart, derives your constitutional and growth profile, and returns practical guidance drawn from that pattern. Individuals use the free chart apps with no account and no Google sign-in. Practitioners subscribe and sign in with Google to use the same engine inside their own practice. Booking a 90-minute session with Lisa Hagan creates the appointment on her business calendar through the Google Calendar API. See <a href="#google-data">how the app uses Google data</a> and the <a href="/privacy.html">privacy policy</a>.</p>
     <div class="pill"><span class="dot"></span> 90-minute consultations &middot; live &middot; one to one</div>
-    <h1>Ninety minutes<br>that go <span class="grad">all the way down</span>.</h1>
+    <div class="bigline">Ninety minutes<br>that go <span class="grad">all the way down</span>.</div>
     <p class="lede">Most readings hand you a description of yourself. This one hands you the <strong>pattern underneath it</strong> &mdash; your chart, your constitution, and what to actually do about both. I read all of it before you arrive, so the whole ninety belongs to you.</p>
     <div class="hero-cta">
       <a class="btn" href="/schedule.html">Book your ninety &mdash; $150</a>
