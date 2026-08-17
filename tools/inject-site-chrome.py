@@ -61,6 +61,15 @@ EMAIL = "Lisa@TripleMoonGoddess.com"
 PRIVACY_URL = "/privacy.html"
 TERMS_URL = "/terms.html"
 
+# Google Search Console ownership token. OAuth verification requires the app's
+# home-page domain to be verified in Search Console by the account that owns the
+# Cloud project, and these pages are standalone HTML, so Jekyll never renders the
+# tag from _config.yml. Injecting it puts it on every page.
+SITE_VERIFICATION = (
+    '<meta name="google-site-verification" '
+    'content="Pxp5d1q4ePJSaqNyb6G4s8HM-1x2eN4UP_nGd7xyEh4">'
+)
+
 FONTS_LINK = (
     '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
     '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
@@ -323,6 +332,16 @@ def active_href(filename):
     return "/" if filename == "index.html" else "/" + filename
 
 
+def ensure_site_verification(html):
+    """Put the Search Console ownership tag in <head> on every page."""
+    if "google-site-verification" in html:
+        return html
+    head_end = html.find("</head>")
+    if head_end == -1:
+        return html
+    return html[:head_end] + SITE_VERIFICATION + "\n" + html[head_end:]
+
+
 def ensure_fonts(html):
     """Pages that never loaded the display fonts (they inherited them from the
     Google Sites shell) need the Google Fonts link so the chrome renders right."""
@@ -348,6 +367,7 @@ def inject(path):
     if "</body>" not in html:
         raise SystemExit("%s: no </body> tag" % filename)
 
+    html = ensure_site_verification(html)
     html = ensure_fonts(html)
     body = BODY_OPEN_RE.search(html)  # offsets moved if fonts were added
 
