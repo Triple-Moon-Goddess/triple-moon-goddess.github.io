@@ -1,0 +1,29 @@
+<!-- TMG-CHROME:FOOTER:START (shared Jekyll include: _includes/footer.html) -->
+<footer class="tmg-footer">
+  <div class="tmg-footer-inner">
+    <div class="tmg-footer-links">
+      <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a>
+      <span class="tmg-footer-sep">&middot;</span>
+      <a href="/privacy.html">Privacy Policy</a>
+      <span class="tmg-footer-sep">&middot;</span>
+      <a href="/terms.html">Terms of Service</a>
+    </div>
+    <p>&copy; 2026 Lisa Hagan. All rights reserved.</p>
+    <p class="tmg-footer-patent">Integrative Pattern Astrology (IPA) &mdash; Patent Pending &mdash; Application #63/998,305</p>
+  </div>
+</footer>
+<script id="tmg-chrome-js">
+/* Some pages pad <body> themselves. Pull the chrome out to the page edges
+   so the bar is full-bleed, without editing that page's own CSS. */
+(function () {
+  var cs = getComputedStyle(document.body);
+  var px = function (v) { return parseFloat(v) || 0; };
+  var t = px(cs.paddingTop), r = px(cs.paddingRight),
+      b = px(cs.paddingBottom), l = px(cs.paddingLeft);
+  var nav = document.querySelector('.tmg-nav');
+  var foot = document.querySelector('.tmg-footer');
+  if (nav && (t || r || l)) { nav.style.margin = -t + 'px ' + -r + 'px 0 ' + -l + 'px'; }
+  if (foot && (r || b || l)) { foot.style.margin = '0 ' + -r + 'px ' + -b + 'px ' + -l + 'px'; }
+})();
+</script>
+<!-- TMG-CHROME:FOOTER:END -->

@@ -1,0 +1,257 @@
+<!-- TMG-CHROME:NAV:START (shared Jekyll include: _includes/nav.html) -->
+<script id="tmg-https-upgrade">
+/* Never let a page sit on http: — the browser shows "Not Secure" and visitors
+   are right to distrust it. Runs before anything else on the page. */
+(function () {
+  var h = location.hostname;
+  if (location.protocol === 'http:' && h !== 'localhost' && h !== '127.0.0.1' && h !== '[::1]') {
+    location.replace('https://' + location.host + location.pathname + location.search + location.hash);
+  }
+})();
+</script>
+<style id="tmg-chrome-css">
+  /* Shared TMG site chrome — self-scoped, must not depend on or affect page CSS. */
+  .tmg-nav, .tmg-nav *, .tmg-footer, .tmg-footer * { box-sizing: border-box; }
+
+  .tmg-nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    margin: 0 0 0 0;
+    padding: 0;
+    /* Solid, not translucent: a see-through bar picks up each page's own
+       background and the menu looks different from page to page. */
+    background: #0a0608;
+    border-bottom: 1px solid rgba(212, 175, 106, 0.18);
+    font-family: 'Cinzel', Georgia, serif;
+    line-height: 1.2;
+  }
+
+  .tmg-nav-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .tmg-nav-brand {
+    display: inline-block;
+    padding: 6px 0;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #e8c989;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .tmg-nav-brand:hover { color: #f5e8d0; }
+
+  .tmg-nav-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 2px 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .tmg-nav-links li { margin: 0; padding: 0; list-style: none; }
+
+  .tmg-nav-link {
+    display: inline-block;
+    padding: 18px 0;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(201, 184, 150, 0.78);
+    text-decoration: none;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    background: none;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .tmg-nav-link:hover { color: #e8c989; border-bottom-color: rgba(212, 175, 106, 0.5); }
+  .tmg-nav-link[aria-current="page"] { color: #d4af6a; border-bottom-color: #b8945a; }
+
+  /* Dropdown (About) */
+  .tmg-nav-drop { position: relative; }
+
+  .tmg-nav-drop-btn {
+    display: inline-block;
+    padding: 18px 0;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(201, 184, 150, 0.78);
+    background: none;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .tmg-nav-drop-btn::after {
+    content: '▾';
+    margin-left: 6px;
+    font-size: 8px;
+    color: rgba(212, 175, 106, 0.6);
+  }
+  .tmg-nav-drop:hover .tmg-nav-drop-btn,
+  .tmg-nav-drop.open .tmg-nav-drop-btn { color: #e8c989; border-bottom-color: rgba(212, 175, 106, 0.5); }
+  .tmg-nav-drop-btn.tmg-nav-drop-current { color: #d4af6a; border-bottom-color: #b8945a; }
+
+  .tmg-nav-sub {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 172px;
+    margin: 0;
+    padding: 6px 0;
+    list-style: none;
+    background: #0a0608;
+    border: 1px solid rgba(212, 175, 106, 0.28);
+    border-top: none;
+  }
+  .tmg-nav-drop:hover .tmg-nav-sub,
+  .tmg-nav-drop:focus-within .tmg-nav-sub,
+  .tmg-nav-drop.open .tmg-nav-sub { display: block; }
+
+  .tmg-nav-sub li { margin: 0; padding: 0; list-style: none; }
+  .tmg-nav-sub .tmg-nav-link {
+    display: block;
+    padding: 10px 18px;
+    border-bottom: 0;
+  }
+  .tmg-nav-sub .tmg-nav-link:hover { background: rgba(212, 175, 106, 0.08); }
+  .tmg-nav-sub .tmg-nav-link[aria-current="page"] { color: #d4af6a; }
+
+  .tmg-nav-toggle { display: none; }
+  .tmg-nav-burger {
+    display: none;
+    padding: 10px 12px;
+    margin: 0;
+    cursor: pointer;
+    color: #d4af6a;
+    font-size: 16px;
+    line-height: 1;
+    border: 1px solid rgba(212, 175, 106, 0.28);
+    border-radius: 2px;
+    background: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  @media (max-width: 900px) {
+    .tmg-nav-inner { padding: 0 16px; min-height: 52px; }
+    .tmg-nav-burger { display: inline-block; }
+    .tmg-nav-links {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 4px 16px 16px;
+      background: #0a0608;
+      border-bottom: 1px solid rgba(212, 175, 106, 0.18);
+      max-height: 78vh;
+      overflow-y: auto;
+    }
+    .tmg-nav-toggle:checked ~ .tmg-nav-links { display: flex; }
+    .tmg-nav-link {
+      padding: 12px 0;
+      font-size: 11px;
+      border-bottom: 1px solid rgba(212, 175, 106, 0.1);
+    }
+
+    /* Mobile: dropdown becomes a labeled group with indented sub-links. */
+    .tmg-nav-drop { position: static; }
+    .tmg-nav-drop-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 12px 0 4px;
+      font-size: 11px;
+      color: rgba(212, 175, 106, 0.6);
+      cursor: default;
+      border-bottom: 0;
+    }
+    .tmg-nav-drop-btn::after { content: ''; margin: 0; }
+    .tmg-nav-sub {
+      display: block;
+      position: static;
+      min-width: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+    }
+    .tmg-nav-sub .tmg-nav-link {
+      padding: 12px 0 12px 18px;
+      font-size: 11px;
+      border-bottom: 1px solid rgba(212, 175, 106, 0.1);
+    }
+    .tmg-nav-sub .tmg-nav-link:hover { background: none; }
+  }
+</style>
+{% assign about_pages = "/about.html|/training.html|/mission.html" | split: "|" %}
+<nav class="tmg-nav" aria-label="Main">
+  <div class="tmg-nav-inner">
+    <a class="tmg-nav-brand" href="/">Triple Moon Goddess</a>
+    <input class="tmg-nav-toggle" type="checkbox" id="tmg-nav-toggle" hidden>
+    <label class="tmg-nav-burger" for="tmg-nav-toggle" aria-label="Menu">&#9776;</label>
+    <ul class="tmg-nav-links">
+      <li><a class="tmg-nav-link" href="/"{% if include.active == "/" %} aria-current="page"{% endif %}>Home</a></li>
+      <li><a class="tmg-nav-link" href="/video.html"{% if include.active == "/video.html" %} aria-current="page"{% endif %}>Video</a></li>
+      <li><a class="tmg-nav-link" href="/readings.html"{% if include.active == "/readings.html" %} aria-current="page"{% endif %}>Readings</a></li>
+      <li><a class="tmg-nav-link" href="/schedule.html"{% if include.active == "/schedule.html" %} aria-current="page"{% endif %}>Schedule</a></li>
+      <li><a class="tmg-nav-link" href="/practitioners.html"{% if include.active == "/practitioners.html" %} aria-current="page"{% endif %}>Practitioner</a></li>
+      <li><a class="tmg-nav-link" href="/ipa.html"{% if include.active == "/ipa.html" %} aria-current="page"{% endif %}>IPA</a></li>
+      <li><a class="tmg-nav-link" href="/apps.html"{% if include.active == "/apps.html" %} aria-current="page"{% endif %}>Apps</a></li>
+      <li><a class="tmg-nav-link" href="/testimonials.html"{% if include.active == "/testimonials.html" %} aria-current="page"{% endif %}>Testimonials</a></li>
+      <li><a class="tmg-nav-link" href="/events.html"{% if include.active == "/events.html" %} aria-current="page"{% endif %}>Events</a></li>
+      <li class="tmg-nav-drop">
+        <button type="button" class="tmg-nav-drop-btn{% if about_pages contains include.active %} tmg-nav-drop-current{% endif %}" aria-haspopup="true" aria-expanded="false">About</button>
+        <ul class="tmg-nav-sub">
+          <li><a class="tmg-nav-link" href="/about.html"{% if include.active == "/about.html" %} aria-current="page"{% endif %}>About Lisa</a></li>
+          <li><a class="tmg-nav-link" href="/training.html"{% if include.active == "/training.html" %} aria-current="page"{% endif %}>Training</a></li>
+          <li><a class="tmg-nav-link" href="/mission.html"{% if include.active == "/mission.html" %} aria-current="page"{% endif %}>Mission</a></li>
+        </ul>
+      </li>
+      <li><a class="tmg-nav-link" href="/contact.html"{% if include.active == "/contact.html" %} aria-current="page"{% endif %}>Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<script id="tmg-nav-drop-js">
+/* Click/tap toggles the About dropdown on desktop widths; hover also opens it
+   via CSS. Clicking anywhere else closes it. */
+(function () {
+  var drop = document.querySelector('.tmg-nav-drop');
+  var btn = document.querySelector('.tmg-nav-drop-btn');
+  if (!drop || !btn) return;
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = drop.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', function () {
+    drop.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  });
+})();
+</script>
+<!-- TMG-CHROME:NAV:END -->
