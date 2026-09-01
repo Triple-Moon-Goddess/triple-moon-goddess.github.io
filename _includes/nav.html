@@ -208,7 +208,7 @@
     .tmg-nav-sub .tmg-nav-link:hover { background: none; }
   }
 </style>
-{% assign about_pages = "/about.html|/training.html|/mission.html" | split: "|" %}
+{% assign about_pages = "/about.html|/training.html|/mission.html|/faq.html" | split: "|" %}
 <nav class="tmg-nav" aria-label="Main">
   <div class="tmg-nav-inner">
     <a class="tmg-nav-brand" href="/">Triple Moon Goddess</a>
@@ -230,6 +230,7 @@
           <li><a class="tmg-nav-link" href="/about.html"{% if include.active == "/about.html" %} aria-current="page"{% endif %}>About Lisa</a></li>
           <li><a class="tmg-nav-link" href="/training.html"{% if include.active == "/training.html" %} aria-current="page"{% endif %}>Training</a></li>
           <li><a class="tmg-nav-link" href="/mission.html"{% if include.active == "/mission.html" %} aria-current="page"{% endif %}>Mission</a></li>
+          <li><a class="tmg-nav-link" href="/faq.html"{% if include.active == "/faq.html" %} aria-current="page"{% endif %}>Questions</a></li>
         </ul>
       </li>
       <li><a class="tmg-nav-link" href="/contact.html"{% if include.active == "/contact.html" %} aria-current="page"{% endif %}>Contact</a></li>
