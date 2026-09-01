@@ -276,6 +276,16 @@
     margin-top: 4px;
   }
 
+  .card cite a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(212, 175, 106, 0.4);
+    padding-bottom: 2px;
+    transition: color 0.3s ease;
+  }
+
+  .card cite a:hover { color: var(--gold-bright); }
+
   /* CLOSING LINE */
   .closing {
     text-align: center;
@@ -322,13 +332,6 @@
 <body>
 {% include nav.html active="/testimonials.html" %}
 
-
-
-
-
-
-
-
 <div class="container">
 
   <section class="hero">
@@ -352,6 +355,24 @@
 
   <!-- TESTIMONIAL CARDS -->
   <section class="testimonials">
+
+    <div class="card">
+      <div class="card-mark">"</div>
+      <blockquote>
+        Lisa was at SoulSearch Expo. I went for a reading and boy was it accurate
+        to the point of being eerie! She truly enjoyed doing the reading and her
+        joy, passion and enthusiasm for what she was doing was both inspiring and
+        uplifting! I was also very impressed that the reading also had an
+        intuitive, spirit-led aspect to it! Lisa is the real deal, a real talent!
+        i&rsquo;m actually gifting a reading with her to some folks. If
+        you&rsquo;re thinking twice, don&rsquo;t&mdash;it&rsquo;s worth it ❤️
+      </blockquote>
+      <div class="card-divider"></div>
+      <cite>
+        <a href="https://www.google.com/maps/contrib/111835073142394089716/reviews" target="_blank" rel="noopener">Happy Golf</a>
+        <span>Google Review &middot; Soul Search Expo</span>
+      </cite>
+    </div>
 
     <div class="card">
       <div class="card-mark">"</div>
