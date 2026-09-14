@@ -1,0 +1,19 @@
+{%- assign p_title = include.title -%}
+{%- assign p_desc = include.description -%}
+{%- assign p_url = include.url -%}
+{%- assign p_image = include.image | default: "/tmg-banner.png" -%}
+<link rel="canonical" href="https://triplemoongoddess.com{{ p_url }}">
+<meta name="description" content="{{ p_desc }}">
+<meta name="author" content="Lisa Hagan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Triple Moon Goddess">
+<meta property="og:title" content="{{ p_title }}">
+<meta property="og:description" content="{{ p_desc }}">
+<meta property="og:url" content="https://triplemoongoddess.com{{ p_url }}">
+<meta property="og:image" content="https://triplemoongoddess.com{{ p_image }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ p_title }}">
+<meta name="twitter:description" content="{{ p_desc }}">
+<meta name="twitter:image" content="https://triplemoongoddess.com{{ p_image }}">
+<meta name="google-site-verification" content="Pxp5d1q4ePJSaqNyb6G4s8HM-1x2eN4UP_nGd7xyEh4">

@@ -1,0 +1,25 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+{%- for e in site.data.events %}
+    {
+      "@type": "Event",
+      "name": {{ e.title | jsonify }},
+      "startDate": {{ e.date | jsonify }},
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": {{ e.venue | jsonify }},
+        "address": {{ e.location | jsonify }}
+      },
+      "performer": { "@id": "https://triplemoongoddess.com/#lisa" },
+      "organizer": { "@id": "https://triplemoongoddess.com/#org" },
+      "url": "https://triplemoongoddess.com/events.html"{% if e.notes and e.notes != "" %},
+      "description": {{ e.notes | jsonify }}{% endif %}
+    }{% unless forloop.last %},{% endunless %}
+{%- endfor %}
+  ]
+}
+</script>
