@@ -1,0 +1,36 @@
+# Triple Moon Goddess
+
+> Triple Moon Goddess is an integrative astrology web application built by Lisa Hagan. It maps your constitution from your birth data and returns health and growth profiles — free chart apps for individuals, a subscription platform for practitioners, and booking for 90-minute sessions with Lisa Hagan.
+
+Triple Moon Goddess is the practice of Lisa Hagan, a psychological astrologer with 15 years of astrological practice. The methodology, Integrative Pattern Astrology, integrates training in psychological astrology, evolutionary herbalism, and traditional medical astrology. Consultations are 90 minutes.
+
+## Sessions and readings
+
+- [Schedule a Consultation](https://triplemoongoddess.com/schedule.html): Booking for 90-minute sessions with Lisa Hagan.
+- [Relationship Reading](https://triplemoongoddess.com/readings.html): Relationship reading offering.
+- [Birth Chart Video](https://triplemoongoddess.com/video.html): Birth chart video offering.
+
+## The application
+
+- [Free Apps](https://triplemoongoddess.com/apps.html): Free chart applications for individuals.
+- [Practitioner Subscriptions](https://triplemoongoddess.com/practitioners.html): Subscription platform for practitioners.
+- [Integrative Pattern Astrology](https://triplemoongoddess.com/ipa.html): The IPA methodology behind the application.
+
+## About the practice
+
+- [About Lisa](https://triplemoongoddess.com/about.html): Triple Moon Goddess is the synthesis of 15 years of astrological practice — built by Lisa Hagan to map a complex, multi-system constitution.
+- [Qualifications](https://triplemoongoddess.com/training.html): TMG's methodology integrates training from three foundational teachers in psychological astrology, evolutionary herbalism, and traditional medical astrology.
+- [Mission](https://triplemoongoddess.com/mission.html): Triple Moon Goddess is a lifelong devotion — deepening the work, reaching the people it's meant for, and continuous growth in craft and spirit.
+- [Questions](https://triplemoongoddess.com/faq.html): What a natal chart is, why an exact birth time and place are required, whether Lisa predicts the future, and how a session works.
+- [Testimonials](https://triplemoongoddess.com/testimonials.html): Client testimonials.
+- [Speaking & Events](https://triplemoongoddess.com/events.html): Speaking engagements and event appearances.
+
+## Contact
+
+- [Contact](https://triplemoongoddess.com/contact.html): How to reach Triple Moon Goddess.
+
+## Optional
+
+- [Dev Blog](https://triplemoongoddess.com/blog.html): Astrology infrastructure, Python, and AI-augmented engineering.
+- [Privacy Policy](https://triplemoongoddess.com/privacy.html)
+- [Terms of Service](https://triplemoongoddess.com/terms.html)

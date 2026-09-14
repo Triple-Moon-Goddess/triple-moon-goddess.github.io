@@ -1,5 +1,6 @@
 title: Triple Moon Goddess — Dev Blog
 description: Astrology infrastructure, Python, and AI-augmented engineering
+url: https://triplemoongoddess.com
 theme: minima
 plugins:
   - jekyll-feed
