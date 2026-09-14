@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Speaking &amp; Events — Triple Moon Goddess</title>
+{% include head-meta.html title="Speaking &amp; Events — Triple Moon Goddess" description="Lisa Hagan speaks on using your natal chart for personal growth and health - the framework behind integrative astrology, with a live platform demonstration." url="/events.html" %}
+{% include schema-org.html %}
+{% include schema-events.html %}
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
@@ -74,7 +77,6 @@ h1.title{font-family:"Cinzel",serif;font-size:clamp(1.3rem,4vw,1.8rem);font-weig
   .stats{grid-template-columns:repeat(3,1fr)}
 }
 </style>
-<meta name="google-site-verification" content="Pxp5d1q4ePJSaqNyb6G4s8HM-1x2eN4UP_nGd7xyEh4">
 </head>
 <body>
 {% include nav.html active="/events.html" %}
@@ -129,44 +131,15 @@ h1.title{font-family:"Cinzel",serif;font-size:clamp(1.3rem,4vw,1.8rem);font-weig
 /*
  * Triple Moon Goddess — Speaking & Events
  *
- * SOURCE OF TRUTH: the ENGAGEMENTS array below IS the published event list.
- * The page renders directly from it — no browser storage, no drift.
- * To add / change / remove an event, edit this array and commit the file.
+ * SOURCE OF TRUTH: _data/events.yml. This page renders the visible list and
+ * the Event structured data from that one file, so they cannot drift apart.
+ * To add / change / remove an event, edit _data/events.yml and commit it.
  * Required fields: title, date (YYYY-MM-DD). Optional: type, venue, location,
  * status ("confirmed"|"tentative"), duration, notes.
  * type is one of: keynote | expo | workshop | panel | podcast | other
  * Upcoming vs. History is computed automatically from each date.
  */
-const ENGAGEMENTS=[
-  {title:'How to Use Your Natal Chart for Personal Growth and Health Improvement',date:'2026-05-16',type:'keynote',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'50 min',notes:'Saturday 4 PM speaker slot. Live demo of the TMG app — birth data in, constitution out. No readings.'},
-  {title:'Cocktail Table Booth — Day 1',date:'2026-05-16',type:'expo',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'Cocktail Table Booth — Day 2',date:'2026-05-17',type:'expo',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'Sip & Shop — Featured Astrologer (Mini Readings)',date:'2026-06-12',type:'other',venue:'Psychic Medium Witch — 2nd Friday Sip & Shop, Le Jardin Salon',location:'Pleasant Hill, CA',status:'confirmed',duration:'5:30–8:00 PM',notes:'$25 mini astrology readings; the $25 applies as credit toward a full 90-minute online session. Guest featured astrologer.'},
-  {title:'How to Use Your Natal Chart for Personal Growth and Health Improvement',date:'2026-06-20',type:'keynote',venue:'SoulSearch South San Francisco Enlightenment Expo',location:'South San Francisco, CA',status:'confirmed',duration:'50 min',notes:'Saturday 4 PM speaker slot.'},
-  {title:'Booth — Day 1',date:'2026-06-20',type:'expo',venue:'SoulSearch South San Francisco Enlightenment Expo',location:'South San Francisco, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'Booth — Day 2',date:'2026-06-21',type:'expo',venue:'SoulSearch South San Francisco Enlightenment Expo',location:'South San Francisco, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'How to Use Your Natal Chart for Personal Growth and Health Improvement',date:'2026-07-11',type:'keynote',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'50 min',notes:'Saturday 4 PM speaker slot.'},
-  {title:'Booth — Day 1',date:'2026-07-11',type:'expo',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'Booth — Day 2',date:'2026-07-12',type:'expo',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'How to Use Your Natal Chart for Personal Growth and Health Improvement',date:'2026-08-08',type:'keynote',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'50 min',notes:'Saturday 3 PM speaker slot.'},
-  {title:'Booth — Day 1',date:'2026-08-08',type:'expo',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'Booth — Day 2',date:'2026-08-09',type:'expo',venue:'SoulSearch Concord Enlightenment Expo',location:'Concord, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'How to Use Your Natal Chart for Personal Growth and Health Improvement',date:'2026-09-19',type:'keynote',venue:'SoulSearch Rohnert Park Enlightenment Expo',location:'Rohnert Park, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
-  {title:'Booth — Day 1',date:'2026-09-19',type:'expo',venue:'SoulSearch Rohnert Park Enlightenment Expo',location:'Rohnert Park, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'Booth — Day 2',date:'2026-09-20',type:'expo',venue:'SoulSearch Rohnert Park Enlightenment Expo',location:'Rohnert Park, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'How to Use Your Natal Chart for Personal Growth and Health Improvement',date:'2026-09-26',type:'keynote',venue:'SoulSearch Santa Cruz Enlightenment Expo',location:'Santa Cruz, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
-  {title:'Booth — Day 1',date:'2026-09-26',type:'expo',venue:'SoulSearch Santa Cruz Enlightenment Expo',location:'Santa Cruz, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'Booth — Day 2',date:'2026-09-27',type:'expo',venue:'SoulSearch Santa Cruz Enlightenment Expo',location:'Santa Cruz, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'How to Use Your Natal Chart for Personal Growth and Health Improvement',date:'2026-10-24',type:'keynote',venue:'SoulSearch Santa Clara Enlightenment Expo',location:'Santa Clara, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
-  {title:'Booth — Day 1',date:'2026-10-24',type:'expo',venue:'SoulSearch Santa Clara Enlightenment Expo',location:'Santa Clara, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'Booth — Day 2',date:'2026-10-25',type:'expo',venue:'SoulSearch Santa Clara Enlightenment Expo',location:'Santa Clara, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'How to Use Your Natal Chart for Personal Growth and Health Improvement',date:'2026-11-07',type:'keynote',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'50 min',notes:'Saturday 2 PM speaker slot.'},
-  {title:'Booth — Day 1',date:'2026-11-07',type:'expo',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'Booth — Day 2',date:'2026-11-08',type:'expo',venue:'SoulSearch Palo Alto Enlightenment Expo',location:'Palo Alto, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'How to Use Your Natal Chart for Personal Growth and Health Improvement',date:'2026-12-12',type:'keynote',venue:'SoulSearch Dublin Enlightenment Expo',location:'Dublin, CA',status:'confirmed',duration:'50 min',notes:'Saturday 11 AM speaker slot.'},
-  {title:'Booth — Day 1',date:'2026-12-12',type:'expo',venue:'SoulSearch Dublin Enlightenment Expo',location:'Dublin, CA',status:'confirmed',duration:'Full day',notes:''},
-  {title:'Booth — Day 2',date:'2026-12-13',type:'expo',venue:'SoulSearch Dublin Enlightenment Expo',location:'Dublin, CA',status:'confirmed',duration:'Full day',notes:''}
-];
+const ENGAGEMENTS={{ site.data.events | jsonify }};
 
 let currentTab='upcoming';
 
