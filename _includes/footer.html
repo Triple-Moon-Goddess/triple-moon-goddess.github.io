@@ -1,4 +1,60 @@
 <!-- TMG-CHROME:FOOTER:START (shared Jekyll include: _includes/footer.html) -->
+<style id="tmg-footer-css">
+  /* Footer styles live with the footer so every page that includes it gets them.
+     Solid background + full-strength colors so the text stays bright on every page. */
+  .tmg-footer, .tmg-footer * { box-sizing: border-box; }
+  .tmg-footer {
+    position: relative;
+    z-index: 10;
+    clear: both;
+    display: block;
+    margin: 0;
+    padding: 44px 20px 40px;
+    background: #0a0608;
+    border-top: 1px solid rgba(212, 175, 106, 0.35);
+    text-align: center;
+  }
+  .tmg-footer-inner { max-width: 900px; margin: 0 auto; padding: 0; }
+  .tmg-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px 16px;
+    margin: 0 0 18px;
+    padding: 0;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 2;
+  }
+  .tmg-footer-links a,
+  .tmg-footer-links a:visited {
+    color: #f0d49a;
+    text-decoration: none;
+    border: 0;
+    border-bottom: 1px solid rgba(240, 212, 154, 0.55);
+    padding-bottom: 1px;
+    background: none;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .tmg-footer-links a:hover,
+  .tmg-footer-links a:focus { color: #ffffff; border-bottom-color: #ffffff; }
+  .tmg-footer-sep { color: #d4af6a; }
+  .tmg-footer p {
+    margin: 0 0 8px;
+    padding: 0;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    color: #f5e8d0;
+    opacity: 1;
+  }
+  .tmg-footer p:last-child { margin-bottom: 0; }
+  .tmg-footer .tmg-footer-patent { font-style: italic; }
+</style>
 <footer class="tmg-footer">
   <div class="tmg-footer-inner">
     <div class="tmg-footer-links">
