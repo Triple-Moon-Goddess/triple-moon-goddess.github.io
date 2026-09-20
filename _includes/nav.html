@@ -59,7 +59,7 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: flex-end;
-    gap: 2px 18px;
+    gap: 2px 14px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -84,7 +84,7 @@
   .tmg-nav-link:hover { color: #e8c989; border-bottom-color: rgba(212, 175, 106, 0.5); }
   .tmg-nav-link[aria-current="page"] { color: #d4af6a; border-bottom-color: #b8945a; }
 
-  /* Dropdown (About) */
+  /* Dropdowns (About, Contact) */
   .tmg-nav-drop { position: relative; }
 
   .tmg-nav-drop-btn {
@@ -209,6 +209,7 @@
   }
 </style>
 {% assign about_pages = "/about.html|/training.html|/mission.html|/faq.html" | split: "|" %}
+{% assign contact_pages = "/contact.html|/rectification.html" | split: "|" %}
 <nav class="tmg-nav" aria-label="Main">
   <div class="tmg-nav-inner">
     <a class="tmg-nav-brand" href="/">Triple Moon Goddess</a>
@@ -233,25 +234,44 @@
           <li><a class="tmg-nav-link" href="/faq.html"{% if include.active == "/faq.html" %} aria-current="page"{% endif %}>Questions</a></li>
         </ul>
       </li>
-      <li><a class="tmg-nav-link" href="/contact.html"{% if include.active == "/contact.html" %} aria-current="page"{% endif %}>Contact</a></li>
+      <li class="tmg-nav-drop">
+        <button type="button" class="tmg-nav-drop-btn{% if contact_pages contains include.active %} tmg-nav-drop-current{% endif %}" aria-haspopup="true" aria-expanded="false">Contact</button>
+        <ul class="tmg-nav-sub">
+          <li><a class="tmg-nav-link" href="/contact.html"{% if include.active == "/contact.html" %} aria-current="page"{% endif %}>Contact Lisa</a></li>
+          <li><a class="tmg-nav-link" href="/rectification.html"{% if include.active == "/rectification.html" %} aria-current="page"{% endif %}>Birth Time Rectification</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </nav>
 <script id="tmg-nav-drop-js">
-/* Click/tap toggles the About dropdown on desktop widths; hover also opens it
-   via CSS. Clicking anywhere else closes it. */
+/* Click/tap toggles a dropdown (About, Contact) on desktop widths; hover also
+   opens it via CSS. Opening one closes the others; clicking anywhere else
+   closes them all. */
 (function () {
-  var drop = document.querySelector('.tmg-nav-drop');
-  var btn = document.querySelector('.tmg-nav-drop-btn');
-  if (!drop || !btn) return;
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    var open = drop.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  var drops = document.querySelectorAll('.tmg-nav-drop');
+  if (!drops.length) return;
+  Array.prototype.forEach.call(drops, function (drop) {
+    var btn = drop.querySelector('.tmg-nav-drop-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      Array.prototype.forEach.call(drops, function (other) {
+        if (other === drop) return;
+        other.classList.remove('open');
+        var ob = other.querySelector('.tmg-nav-drop-btn');
+        if (ob) ob.setAttribute('aria-expanded', 'false');
+      });
+      var open = drop.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
   });
   document.addEventListener('click', function () {
-    drop.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
+    Array.prototype.forEach.call(drops, function (drop) {
+      drop.classList.remove('open');
+      var btn = drop.querySelector('.tmg-nav-drop-btn');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
   });
 })();
 </script>
