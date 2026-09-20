@@ -2,6 +2,7 @@
 
 Design system used across `triple-moon-goddess.github.io`. Any new page should match this so it drops into the existing site seamlessly. (Source of truth: `readings.html`.)
 
+{% raw %}
 ## Site chrome (nav + footer)
 
 The site is built by GitHub Pages (Jekyll). Every page carries the same sticky
@@ -51,6 +52,7 @@ chrome inside a page:
 
 Page filenames are the public URLs (`/schedule.html`, `/video.html`, …); the old
 `triple-moon-goddess-*-prod.html` names are retired.
+{% endraw %}
 
 ## Fonts (Google Fonts)
 - **Cormorant Garamond** — display headings, leads, taglines, body-serif. Weights 300–600 + italic. Italic `<em>` in headings renders in cream ink, not gold.
