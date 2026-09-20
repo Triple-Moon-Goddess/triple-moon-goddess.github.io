@@ -3,12 +3,22 @@
   "@context": "https://schema.org",
   "@graph": [
 {%- for e in site.data.events %}
+{%- capture e_desc -%}
+{%- if e.notes and e.notes != "" -%}
+{{ e.notes }}
+{%- else -%}
+{{ e.title }} at {{ e.venue }}, {{ e.location }}.
+{%- endif -%}
+{%- endcapture %}
     {
       "@type": "Event",
       "name": {{ e.title | jsonify }},
+      "description": {{ e_desc | jsonify }},
       "startDate": {{ e.date | jsonify }},
+      "endDate": {{ e.date | jsonify }},
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "eventStatus": "https://schema.org/EventScheduled",
+      "image": "https://triplemoongoddess.com/tmg-banner.png",
       "location": {
         "@type": "Place",
         "name": {{ e.venue | jsonify }},
@@ -16,8 +26,7 @@
       },
       "performer": { "@id": "https://triplemoongoddess.com/#lisa" },
       "organizer": { "@id": "https://triplemoongoddess.com/#org" },
-      "url": "https://triplemoongoddess.com/events.html"{% if e.notes and e.notes != "" %},
-      "description": {{ e.notes | jsonify }}{% endif %}
+      "url": "https://triplemoongoddess.com/events.html"
     }{% unless forloop.last %},{% endunless %}
 {%- endfor %}
   ]
