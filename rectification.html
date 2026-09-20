@@ -1,0 +1,569 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birth Time Rectification — Triple Moon Goddess</title>
+{% include head-meta.html title="Birth Time Rectification — Triple Moon Goddess" description="An accurate birth time is what makes a comprehensive reading possible. What rectification is, how the process works, and the two astrologers Lisa refers people to." url="/rectification.html" %}
+{% include schema-org.html %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #d4af6a;
+    --gold-bright: #e8c989;
+    --gold-deep: #b8945a;
+    --ink: #f5e8d0;
+    --ink-soft: #c9b896;
+    --bg: #0a0608;
+    --bg-deep: #050304;
+    --bg-card: #110a0d;
+    --line: rgba(212, 175, 106, 0.18);
+    --line-strong: rgba(212, 175, 106, 0.4);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  html, body {
+    background: #0a0608 !important;
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, #0a0608 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 23% 17%, rgba(232, 201, 137, 0.8), transparent),
+      radial-gradient(1px 1px at 67% 83%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(1px 1px at 41% 52%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 89% 11%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(1px 1px at 12% 73%, rgba(232, 201, 137, 0.4), transparent),
+      radial-gradient(1px 1px at 78% 41%, rgba(232, 201, 137, 0.6), transparent),
+      radial-gradient(2px 2px at 56% 29%, rgba(232, 201, 137, 0.9), transparent),
+      radial-gradient(1px 1px at 33% 88%, rgba(232, 201, 137, 0.5), transparent),
+      radial-gradient(1px 1px at 7% 38%, rgba(232, 201, 137, 0.7), transparent),
+      radial-gradient(2px 2px at 94% 62%, rgba(232, 201, 137, 0.8), transparent);
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+    animation: twinkle 8s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.4; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 80px 0 8px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 26px;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 0.2s forwards;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '✦';
+    margin: 0 14px;
+    color: var(--gold-deep);
+    font-size: 10px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--gold-bright);
+    opacity: 0;
+    animation: fadeUp 1.1s ease-out 0.4s forwards;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--ink); }
+
+  .ornament {
+    margin: 40px auto 0;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 0.9s forwards;
+  }
+
+  .ornament::before {
+    content: '☾';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0a0608;
+    padding: 0 18px;
+    color: var(--gold);
+    font-size: 18px;
+  }
+
+  /* LEAD */
+  .lead {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 0 8px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 1.1s ease-out 0.7s forwards;
+  }
+
+  .lead p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .lead p:last-child { margin-bottom: 0; color: var(--ink-soft); }
+  .lead em { font-style: italic; color: var(--gold-bright); }
+
+  /* SECTIONS */
+  .section { padding: 72px 0 0; }
+
+  .section-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    line-height: 1.2;
+    color: var(--gold-bright);
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .prose {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .prose p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.08rem, 1.7vw, 1.3rem);
+    line-height: 1.8;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { font-weight: 600; color: var(--ink); }
+  .prose em { font-style: italic; color: var(--gold-bright); }
+
+  /* STEPS */
+  .steps {
+    max-width: 780px;
+    margin: 0 auto;
+    list-style: none;
+    counter-reset: step;
+  }
+
+  .steps li {
+    position: relative;
+    counter-increment: step;
+    padding: 0 0 0 66px;
+    margin-bottom: 32px;
+  }
+
+  .steps li:last-child { margin-bottom: 0; }
+
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    color: var(--gold);
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    background: var(--bg-card);
+  }
+
+  .steps h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .steps p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+
+  /* CARDS */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .card {
+    position: relative;
+    padding: 38px 32px 34px;
+    background: linear-gradient(160deg, rgba(25, 16, 20, 0.86), rgba(10, 6, 8, 0.86));
+    border: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+  }
+
+  .card::before,
+  .card::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: var(--gold-deep);
+    opacity: 0.5;
+  }
+
+  .card::before {
+    top: 10px;
+    left: 10px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+
+  .card::after {
+    bottom: 10px;
+    right: 10px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
+
+  .card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--gold-bright);
+    margin-bottom: 6px;
+  }
+
+  .card-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.12rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+
+  .card-link {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 4px;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .card-link:hover { color: var(--gold-bright); border-bottom-color: var(--gold); }
+
+  /* NOTE */
+  .note {
+    max-width: 720px;
+    margin: 40px auto 0;
+    padding: 28px 32px;
+    border-left: 1px solid var(--line-strong);
+    background: rgba(17, 10, 13, 0.6);
+  }
+
+  .note p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+    line-height: 1.8;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  /* CTA */
+  .cta {
+    text-align: center;
+    padding: 76px 0 104px;
+  }
+
+  .cta p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 1.8vw, 1.32rem);
+    line-height: 1.8;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto 32px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--bg-deep);
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--gold-deep), var(--gold-bright));
+    transition: filter 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .cta-btn:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 0 26px rgba(212, 175, 106, 0.35);
+  }
+
+  @media (max-width: 860px) {
+    .container { padding: 0 20px; }
+    .hero { padding: 56px 0 8px; }
+    .lead { padding: 48px 0 8px; }
+    .section { padding: 56px 0 0; }
+    .cards { grid-template-columns: 1fr; }
+    .steps li { padding-left: 56px; }
+    .cta { padding: 60px 0 80px; }
+  }
+</style>
+</head>
+<body>
+{% include nav.html active="/rectification.html" %}
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Triple Moon Goddess</div>
+    <h1>Birth Time <em>Rectification</em></h1>
+    <div class="ornament"></div>
+  </section>
+
+  <!-- LEAD -->
+  <section class="lead">
+    <p>
+      Your birth time sets the angles of your chart &mdash; the Ascendant, the
+      house cusps, the frame every planet is read inside. A comprehensive
+      reading rests on an accurate birth time.
+    </p>
+    <p>
+      <em>Everyone deserves a comprehensive reading.</em> When the time is
+      missing or uncertain, rectification is how you get one back.
+    </p>
+  </section>
+
+  <!-- WHAT IT IS -->
+  <section class="section">
+    <div class="section-eyebrow">What It Is</div>
+    <h2>Recovering the time from the life</h2>
+    <div class="prose">
+      <p>
+        Rectification is the work of finding your birth time inside the life you
+        have already lived. An astrologer takes the events you can date &mdash;
+        moves, marriages, births, deaths, the year everything turned over
+        &mdash; and tests candidate birth times against them until one time
+        accounts for the whole timeline.
+      </p>
+      <p>
+        The result is a birth time with the chart&rsquo;s own evidence behind
+        it: angles and house cusps that line up with what actually happened to
+        you, and when.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section">
+    <div class="section-eyebrow">The Process</div>
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li>
+        <h3>You gather your history</h3>
+        <p>
+          Dated life events, as precise as you can make them. The turning
+          points, the relocations, the losses, the beginnings. The richer and
+          more exact your timeline, the sharper the result.
+        </p>
+      </li>
+      <li>
+        <h3>The range gets narrowed</h3>
+        <p>
+          Your astrologer starts from whatever is known &mdash; a hospital
+          record, a family memory, the part of the day you were told about
+          &mdash; and establishes the window the true time lives inside.
+        </p>
+      </li>
+      <li>
+        <h3>Candidate times are tested</h3>
+        <p>
+          Every candidate time moves the angles. Each one is run against your
+          dated events to see which timing techniques land and which do not.
+          Times that fail the timeline are ruled out, one at a time.
+        </p>
+      </li>
+      <li>
+        <h3>The time is confirmed</h3>
+        <p>
+          One time holds across the whole history. Your chart is rebuilt on it,
+          and the houses, angles and timing settle into place for good.
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- WORTH IT -->
+  <section class="section">
+    <div class="section-eyebrow">The Investment</div>
+    <h2>Why it costs what it costs</h2>
+    <div class="prose">
+      <p>
+        Rectification is slow, patient work. It is hours of testing rather than
+        minutes of calculation &mdash; every candidate time checked against
+        every event you supplied, and the ones that fail set aside one by one
+        until a single time is left standing. That time is what you are paying
+        for.
+      </p>
+      <p>
+        <strong>And you only pay for it once.</strong> An accurate birth time is
+        yours for the rest of your life. Every reading you ever have after it
+        &mdash; mine or anyone else&rsquo;s &mdash; stands on solid ground.
+      </p>
+    </div>
+  </section>
+
+  <!-- REFERRALS -->
+  <section class="section">
+    <div class="section-eyebrow">Who I Refer To</div>
+    <h2>Two astrologers I send people to</h2>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-name">Erik Roth</div>
+        <div class="card-tag">InSpiral Nexus</div>
+        <p>
+          Erik works the Soul Search expos, where I have spent time around him
+          and around his work. I trust what I see there.
+        </p>
+        <a class="card-link" href="https://inspiralnexus.com" target="_blank" rel="noopener">inspiralnexus.com</a>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Patrick Watson</div>
+        <div class="card-tag">Professional Astrologer &middot; CAP ISAR</div>
+        <p>
+          I found Patrick&rsquo;s work online. He holds the CAP certification
+          from ISAR, and that credential tells me he knows the material.
+        </p>
+        <a class="card-link" href="https://patrickwatsonastrology.com" target="_blank" rel="noopener">patrickwatsonastrology.com</a>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <p>
+        In fairness to you: I have not had a rectification done by either of
+        them myself. I trust their credentials, and I am telling you exactly
+        what I know so you can decide from the same place I would.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <p>
+      If you have a rectification done, I would love to hear how it went &mdash;
+      what the process was like, and what the recovered time opened up for you.
+    </p>
+    <a class="cta-btn" href="mailto:Lisa@TripleMoonGoddess.com?subject=My%20rectification%20experience">Tell me about it</a>
+  </section>
+
+</div>
+
+{% include footer.html %}
+</body>
+</html>
