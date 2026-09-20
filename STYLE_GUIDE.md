@@ -4,26 +4,50 @@ Design system used across `triple-moon-goddess.github.io`. Any new page should m
 
 ## Site chrome (nav + footer)
 
-The site no longer runs under Google Sites, so every page carries its own sticky
-nav and shared footer. Both are generated — never hand-edit them in a page:
+The site is built by GitHub Pages (Jekyll). Every page carries the same sticky
+nav and footer, sourced from single-file Jekyll includes — never hand-edit the
+chrome inside a page:
 
-- `tools/inject-site-chrome.py` is the single source of truth. It injects a
-  self-scoped `.tmg-nav` right after `<body>` and a `.tmg-footer` right before
-  `</body>`, fenced with `TMG-CHROME` markers, and replaces those blocks on
-  re-run. Page markup and page CSS are never touched.
-- Nav order (fixed): Home · Video · Readings · Schedule · Practitioner · IPA ·
-  Apps · Testimonials · Events · About · Contact. All links root-relative.
+- `_includes/nav.html` — nav markup, the self-scoped chrome CSS, the https
+  upgrade script, and the dropdown JS. `_includes/footer.html` — footer markup,
+  footer CSS, and the full-bleed margin script. Edit the include; every page
+  picks it up on the next Pages build.
+- `tools/inject-site-chrome.py` and `tools/check-site-chrome.py` are **retired**
+  and exit immediately. Do not run them — re-injecting the old baked chrome
+  would double the menu on every page.
+- Nav order (fixed): Home · Video · Relationship Reading · Schedule ·
+  Practitioner · IPA · Apps · Testimonials · Events · About ▾ · Contact ▾.
+  About holds About Lisa · Qualifications · Mission · Questions. Contact holds
+  Contact Lisa · Birth Time Rectification. All links root-relative.
+- Current-page state: `{% include nav.html active="/<page>.html" %}` marks the
+  matching link `aria-current="page"`. A dropdown lights up as the current
+  section when its `about_pages` / `contact_pages` list (assigned at the top of
+  `nav.html`) contains `active` — add a new sub-page to that list.
+- **The desktop nav row is width-critical.** It caps at 1180px and has only a
+  few pixels of headroom. Before adding a label, a caret, or a link, load a page
+  at ≥1230px wide and confirm `.tmg-nav-inner` is still one row (58px tall).
 - Footer: `Lisa@TripleMoonGoddess.com`, `/privacy.html`, `/terms.html`,
   copyright, and the IPA patent-pending line.
 - The legal documents live in this repo and nowhere else — `privacy.html` and
   `terms.html` are the canonical copies (moved out of the `tmg-legal` repo so
   there is exactly one version of every page). They are the only pages allowed
-  to carry the business postal address; `ADDRESS_EXEMPT` in the injector encodes
-  that, and the checker enforces it everywhere else.
-- After adding a page, add it to `PAGES` in the script, run it, then run
-  `python3 tools/check-site-chrome.py` — it verifies the chrome, the nav order,
-  the footer lines, that internal links resolve, and the content rules (no
-  "Fremont, CA" outside the legal documents, no newsletter page or link).
+  to carry the business postal address. Nothing enforces this automatically any
+  more — `grep -rl "Fremont" *.html` should return only the legal pages.
+
+### Adding a page
+
+1. Start the file with empty front matter (`---` / `---`) so Liquid runs.
+2. In `<head>`: `{% include head-meta.html title="…" description="…" url="/<page>.html" %}`
+   (canonical, OG, Twitter; optional `image=`) and `{% include schema-org.html %}`.
+   Add a page-specific `schema-*.html` include only if one exists for it.
+3. First thing in `<body>`: `{% include nav.html active="/<page>.html" %}`.
+   Last thing before `</body>`: `{% include footer.html %}`.
+4. Register it: a `<url>` entry in `sitemap.xml` (static, not generated) and a
+   line in `llms.txt`. Add it to the nav include if it belongs in the menu.
+5. There is no local Jekyll on the Mac. Check statically (front matter present,
+   every `{% include %}` target exists in `_includes/`), then after pushing poll
+   `gh api repos/Triple-Moon-Goddess/triple-moon-goddess.github.io/pages/builds/latest --jq .status`
+   until `built` and look at the live page.
 
 Page filenames are the public URLs (`/schedule.html`, `/video.html`, …); the old
 `triple-moon-goddess-*-prod.html` names are retired.
