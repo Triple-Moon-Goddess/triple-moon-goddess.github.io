@@ -209,6 +209,7 @@
   }
 </style>
 {% assign about_pages = "/about.html|/training.html|/mission.html|/faq.html" | split: "|" %}
+{% assign readings_pages = "/online-readings.html|/readings.html" | split: "|" %}
 {% assign contact_pages = "/contact.html|/rectification.html" | split: "|" %}
 <nav class="tmg-nav" aria-label="Main">
   <div class="tmg-nav-inner">
@@ -218,7 +219,13 @@
     <ul class="tmg-nav-links">
       <li><a class="tmg-nav-link" href="/"{% if include.active == "/" %} aria-current="page"{% endif %}>Home</a></li>
       <li><a class="tmg-nav-link" href="/video.html"{% if include.active == "/video.html" %} aria-current="page"{% endif %}>Video</a></li>
-      <li><a class="tmg-nav-link" href="/readings.html"{% if include.active == "/readings.html" %} aria-current="page"{% endif %}>Relationship Reading</a></li>
+      <li class="tmg-nav-drop">
+        <button type="button" class="tmg-nav-drop-btn{% if readings_pages contains include.active %} tmg-nav-drop-current{% endif %}" aria-haspopup="true" aria-expanded="false">Readings</button>
+        <ul class="tmg-nav-sub">
+          <li><a class="tmg-nav-link" href="/online-readings.html"{% if include.active == "/online-readings.html" %} aria-current="page"{% endif %}>All Online Readings</a></li>
+          <li><a class="tmg-nav-link" href="/readings.html"{% if include.active == "/readings.html" %} aria-current="page"{% endif %}>Relationship Reading</a></li>
+        </ul>
+      </li>
       <li><a class="tmg-nav-link" href="/schedule.html"{% if include.active == "/schedule.html" %} aria-current="page"{% endif %}>Schedule</a></li>
       <li><a class="tmg-nav-link" href="/practitioners.html"{% if include.active == "/practitioners.html" %} aria-current="page"{% endif %}>Practitioner</a></li>
       <li><a class="tmg-nav-link" href="/ipa.html"{% if include.active == "/ipa.html" %} aria-current="page"{% endif %}>IPA</a></li>
