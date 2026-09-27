@@ -1,0 +1,20 @@
+# Triple Moon Goddess — recorded talks and interviews (Events ▾ Recorded).
+#
+# SOURCE OF TRUTH for the Recorded page. recorded.html renders the visible
+# video list AND the VideoObject structured data from this file, so adding a
+# video here updates both. Add / change / remove entries here and commit.
+#
+# Required: title, youtube_id, date (YYYY-MM-DD), location.
+# Optional: time (free text, e.g. "2 PM"). Leave it out when there is none.
+# Newest first. Videos never autoplay.
+
+- title: "Sisters Enchanted Podcast Interview with Sara"
+  youtube_id: "-J-drJ8-L0w"
+  date: "2026-08-27"
+  location: "Sisters Enchanted Podcast"
+
+- title: "Santa Cruz Talk"
+  youtube_id: "oqAp2wH9_Kc"
+  date: "2026-09-26"
+  time: "2 PM"
+  location: "Soul Search Santa Cruz Expo"
