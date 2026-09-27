@@ -1,0 +1,119 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recorded Talks &amp; Interviews — Triple Moon Goddess</title>
+{% include head-meta.html title="Recorded Talks &amp; Interviews — Triple Moon Goddess" description="Watch Lisa Hagan's recorded talks and podcast interviews on using your natal chart for personal growth and health." url="/recorded.html" %}
+{% include schema-org.html %}
+{% include schema-recorded.html %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#0a0608;color:#c8b89a;font-family:"Cormorant Garamond",serif;min-height:100vh;overflow-x:hidden}
+canvas#stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.55}
+.wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:2rem 1.25rem 4rem}
+h1.title{font-family:"Cinzel",serif;font-size:clamp(1.3rem,4vw,1.8rem);font-weight:400;color:#e8c989;letter-spacing:0.12em;text-align:center;margin-bottom:0.2rem}
+.subtitle{font-family:"Cormorant Garamond",serif;font-size:0.95rem;color:#8a6f3a;text-align:center;letter-spacing:0.06em;font-style:italic;margin-bottom:0.5rem}
+.divider{width:180px;margin:0 auto 1.75rem;display:flex;align-items:center;gap:0.5rem}
+.divider::before,.divider::after{content:"";flex:1;height:0.5px;background:#8a6f3a;opacity:0.5}
+.divider-star{color:#d4af6a;font-size:0.7rem}
+.card{background:#13080e;border:0.5px solid #3a2518;border-radius:12px;padding:1.25rem 1.4rem 1.4rem;margin-bottom:1.75rem;position:relative;transition:border-color 0.2s}
+.card:hover{border-color:#8a6f3a}
+.card-corner{position:absolute;width:12px;height:12px;border-color:#8a6f3a;border-style:solid;opacity:0.6}
+.card-corner.tl{top:7px;left:7px;border-width:1px 0 0 1px}
+.card-corner.tr{top:7px;right:7px;border-width:1px 1px 0 0}
+.card-corner.bl{bottom:7px;left:7px;border-width:0 0 1px 1px}
+.card-corner.br{bottom:7px;right:7px;border-width:0 1px 1px 0}
+.card-title{font-family:"Cinzel",serif;font-size:1.05rem;color:#e8c989;font-weight:400;line-height:1.35;margin-bottom:0.45rem}
+.card-meta{display:flex;flex-wrap:wrap;gap:0.35rem 1.25rem;font-size:0.9rem;margin-bottom:0.95rem}
+.card-when{color:#8a6f3a;font-style:italic}
+.card-where{color:#c8b89a}
+.card-where::before{content:"\1F4CD";margin-right:0.35rem;font-style:normal}
+.video-frame{position:relative;aspect-ratio:16/9;background:#0a0608;border:0.5px solid #3a2518;border-radius:8px;overflow:hidden}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.empty{text-align:center;padding:2.5rem 1rem;color:#8a6f3a;font-style:italic;font-size:0.95rem}
+.book-cta{background:#13080e;border:0.5px solid #3a2518;border-radius:12px;padding:1.6rem;margin-top:2.5rem;text-align:center}
+.book-cta-label{font-family:"Cinzel",serif;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:#8a6f3a;margin-bottom:0.7rem}
+.book-cta-label::before{content:"\2726";margin-right:0.5rem;color:#d4af6a}
+.book-cta p{font-size:0.95rem;color:#c8b89a;line-height:1.65;margin-bottom:1.15rem}
+.book-btn{display:inline-block;font-family:"Cinzel",serif;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:#e8c989;text-decoration:none;border:0.5px solid #8a6f3a;border-radius:8px;padding:0.8rem 1.8rem;transition:border-color .3s ease,background .3s ease,color .3s ease}
+.book-btn:hover{border-color:#d4af6a;background:rgba(212,175,106,0.07);color:#f0dcb0}
+.footer-note{text-align:center;margin-top:2rem;color:#8a6f3a;font-style:italic;font-size:0.82rem;opacity:0.7}
+.footer-note a{color:#d4af6a;text-decoration:none}
+@media(max-width:540px){
+  .card{padding:1rem 0.9rem 1rem}
+  .card-meta{flex-direction:column;gap:0.2rem}
+}
+</style>
+</head>
+<body>
+{% include nav.html active="/recorded.html" %}
+
+<canvas id="stars"></canvas>
+
+<div class="wrap">
+  <h1 class="title">Recorded Talks &amp; Interviews</h1>
+  <p class="subtitle">Triple Moon Goddess &mdash; Lisa Hagan</p>
+  <div class="divider"><span class="divider-star">&#10022;</span></div>
+
+  {%- comment -%}
+  SOURCE OF TRUTH: _data/recorded.yml. Each entry renders one card below and one
+  VideoObject in _includes/schema-recorded.html. Embeds use youtube-nocookie with
+  no autoplay parameter — videos only play when the visitor presses play.
+  {%- endcomment %}
+  {%- assign videos = site.data.recorded | sort: "date" | reverse %}
+  {%- if videos.size == 0 %}
+  <div class="empty">No recordings yet.</div>
+  {%- endif %}
+  {%- for v in videos %}
+  <div class="card">
+    <div class="card-corner tl"></div><div class="card-corner tr"></div>
+    <div class="card-corner bl"></div><div class="card-corner br"></div>
+    <h2 class="card-title">{{ v.title }}</h2>
+    <div class="card-meta">
+      <span class="card-when">{{ v.date | date: "%B %-d, %Y" }}{% if v.time %} &middot; {{ v.time }}{% endif %}</span>
+      <span class="card-where">{{ v.location }}</span>
+    </div>
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/{{ v.youtube_id }}?rel=0&modestbranding=1"
+        title="{{ v.title }} — Triple Moon Goddess"
+        loading="lazy"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+  {%- endfor %}
+
+  <div class="book-cta">
+    <div class="book-cta-label">In Person</div>
+    <p>Lisa speaks and reads at expos across the Bay Area. See where she is next.</p>
+    <a class="book-btn" href="/events.html">Scheduled Events</a>
+  </div>
+
+  <p class="footer-note">Booking or collaboration inquiries &mdash; <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
+</div>
+
+<script>
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+let stars=[];
+function initStars(){
+  canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+  stars=Array.from({length:130},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.2+0.2,o:Math.random()*0.6+0.2,s:Math.random()*0.003+0.001}));
+}
+function drawStars(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  stars.forEach(s=>{s.o+=s.s;if(s.o>0.8||s.o<0.1)s.s*=-1;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle="rgba(212,175,106,"+s.o+")";ctx.fill();});
+  requestAnimationFrame(drawStars);
+}
+initStars();drawStars();
+window.addEventListener("resize",initStars);
+</script>
+{% include footer.html %}
+</body>
+</html>
