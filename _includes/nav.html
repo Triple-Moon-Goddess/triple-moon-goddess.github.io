@@ -164,6 +164,12 @@
       right: 0;
       top: 100%;
       flex-direction: column;
+      /* nowrap: with a max-height, a wrapping column flex spills extra links
+         into a second column instead of scrolling. */
+      flex-wrap: nowrap;
+      /* flex-start: the desktop row is flex-end; in a scrolling column that
+         pushes the first links above the top edge where they cannot be reached. */
+      justify-content: flex-start;
       align-items: stretch;
       gap: 0;
       padding: 4px 16px 16px;
@@ -211,6 +217,7 @@
 {% assign about_pages = "/about.html|/training.html|/mission.html|/faq.html" | split: "|" %}
 {% assign readings_pages = "/online-readings.html|/readings.html" | split: "|" %}
 {% assign contact_pages = "/contact.html|/rectification.html" | split: "|" %}
+{% assign events_pages = "/events.html|/recorded.html" | split: "|" %}
 <nav class="tmg-nav" aria-label="Main">
   <div class="tmg-nav-inner">
     <a class="tmg-nav-brand" href="/">Triple Moon Goddess</a>
@@ -231,7 +238,13 @@
       <li><a class="tmg-nav-link" href="/ipa.html"{% if include.active == "/ipa.html" %} aria-current="page"{% endif %}>IPA</a></li>
       <li><a class="tmg-nav-link" href="/apps.html"{% if include.active == "/apps.html" %} aria-current="page"{% endif %}>Apps</a></li>
       <li><a class="tmg-nav-link" href="/testimonials.html"{% if include.active == "/testimonials.html" %} aria-current="page"{% endif %}>Testimonials</a></li>
-      <li><a class="tmg-nav-link" href="/events.html"{% if include.active == "/events.html" %} aria-current="page"{% endif %}>Events</a></li>
+      <li class="tmg-nav-drop">
+        <button type="button" class="tmg-nav-drop-btn{% if events_pages contains include.active %} tmg-nav-drop-current{% endif %}" aria-haspopup="true" aria-expanded="false">Events</button>
+        <ul class="tmg-nav-sub">
+          <li><a class="tmg-nav-link" href="/events.html"{% if include.active == "/events.html" %} aria-current="page"{% endif %}>Scheduled</a></li>
+          <li><a class="tmg-nav-link" href="/recorded.html"{% if include.active == "/recorded.html" %} aria-current="page"{% endif %}>Recorded</a></li>
+        </ul>
+      </li>
       <li class="tmg-nav-drop">
         <button type="button" class="tmg-nav-drop-btn{% if about_pages contains include.active %} tmg-nav-drop-current{% endif %}" aria-haspopup="true" aria-expanded="false">About</button>
         <ul class="tmg-nav-sub">
@@ -252,7 +265,7 @@
   </div>
 </nav>
 <script id="tmg-nav-drop-js">
-/* Click/tap toggles a dropdown (About, Contact) on desktop widths; hover also
+/* Click/tap toggles a dropdown (Readings, Events, About, Contact) on desktop widths; hover also
    opens it via CSS. Opening one closes the others; clicking anywhere else
    closes them all. */
 (function () {

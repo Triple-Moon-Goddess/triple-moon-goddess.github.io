@@ -16,13 +16,15 @@ chrome inside a page:
 - `tools/inject-site-chrome.py` and `tools/check-site-chrome.py` are **retired**
   and exit immediately. Do not run them — re-injecting the old baked chrome
   would double the menu on every page.
-- Nav order (fixed): Home · Video · Relationship Reading · Schedule ·
-  Practitioner · IPA · Apps · Testimonials · Events · About ▾ · Contact ▾.
-  About holds About Lisa · Qualifications · Mission · Questions. Contact holds
+- Nav order (fixed): Home · Video · Readings ▾ · Schedule ·
+  Practitioner · IPA · Apps · Testimonials · Events ▾ · About ▾ · Contact ▾.
+  Readings holds All Online Readings · Relationship Reading. Events holds
+  Scheduled (`/events.html`) · Recorded (`/recorded.html`). About holds
+  About Lisa · Qualifications · Mission · Questions. Contact holds
   Contact Lisa · Birth Time Rectification. All links root-relative.
 - Current-page state: `{% include nav.html active="/<page>.html" %}` marks the
   matching link `aria-current="page"`. A dropdown lights up as the current
-  section when its `about_pages` / `contact_pages` list (assigned at the top of
+  section when its `readings_pages` / `events_pages` / `about_pages` / `contact_pages` list (assigned at the top of
   `nav.html`) contains `active` — add a new sub-page to that list.
 - **The desktop nav row is width-critical.** It caps at 1180px and has only a
   few pixels of headroom. Before adding a label, a caret, or a link, load a page
