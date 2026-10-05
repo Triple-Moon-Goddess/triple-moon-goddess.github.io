@@ -13,17 +13,17 @@ This changelog records all material and non-material changes to the Triple Moon 
 ### Changes
 
 **Section IV — AI Processing (material)**
-- Touchpoint table grows from three to seven. Added: Journal — Tongue Analysis (`TongueTab.tsx`; the photo, plus the top-photo findings for the underside; photos not stored), Practitioner — Soul Pattern AI (`SoulAIPanel.tsx`), Practitioner — Synastry AI (`SynastryAIPanel.tsx`; Partner A / Partner B placements only), Practitioner — Remedy AI (Recommendations tab; runs automatically on opening the tab). Practitioner AI Dialog row now notes attached files/images. The intro no longer claims every touchpoint shows a just-in-time notice — the Soul, Synastry and Remedy features currently show none, and the tongue tab shows only an inline note (flagged for Lisa).
+- Touchpoint table grows from three to seven. Added: Journal — Tongue Analysis (`TongueTab.tsx`; the photo, plus the top-photo findings for the underside; photos not stored), Practitioner — Soul Pattern AI (`SoulAIPanel.tsx`), Practitioner — Synastry AI (`SynastryAIPanel.tsx`; Partner A / Partner B placements only), Practitioner — Remedy AI (Recommendations tab; runs automatically on opening the tab). Practitioner AI Dialog row now notes attached files/images. Every touchpoint now shows a just-in-time notice (app v1.146+: new notices for Synastry and tongue analysis; the Remedy AI now waits for its notice before sending; Soul already had one). Four sessionStorage keys added to Section X.
 
 **Section III — Identity & Contact Data (material)**
 - New "Website Contact Form" subsection (Formspree; text from the unmerged 2026-08-17 draft branch).
-- New "Session Recordings" subsection: recording is optional, live-session only, consent by checkbox or verbal (recorded by Lisa), consent stored against the one-way email code. Storage location and retention left for Lisa to fill.
+- New "Session Recordings" subsection: recording is optional, live-session only, consent by checkbox or verbal (recorded by Lisa), consent stored against the one-way email code; recordings kept locally on Lisa's computer and deleted within one month (Lisa, 2026-10-04).
 
 **Section V — Third-Party Processors (material)**
-- Added Stripe, MailerLite and Formspree. **Blocking for Stripe:** the app currently sends the client's access code (and partner access code) to Stripe in PaymentIntent metadata (`functions-commerce/stripe.js`); the drafted card describes the state after that is removed.
+- Added Stripe, MailerLite and Formspree. The Stripe card lists every metadata field the code sends (checked 2026-10-04 across `functions-commerce/stripe.js` and `functions-booking/`). It is accurate only once app v1.146+ is in prod: before that, `createPaymentIntent` also sent the access code and email (finding F14, fixed on `main` f0b46f76). Formspree wording follows Formspree's own published terms (SOC 2 Type II, AWS US, SCCs); no DPA is claimed — Formspree publishes none, and its Terms treat customers as independent controllers.
 
 **Section VIII — Data Retention (material)**
-- Added rows: database backups (98-day daily + weekly, 7-day point-in-time recovery, isolated copy ~30 days under a locked retention policy; erasure is immediate in the live system and ages out of backups), website contact-form submissions, session recordings (retention to fill).
+- Added rows: database backups (98-day daily + weekly, 7-day point-in-time recovery, isolated copy ~30 days under a locked retention policy; erasure is immediate in the live system and ages out of backups), website contact-form submissions, session recordings (local, deleted within one month).
 
 **Version label + review date (housekeeping)**
 - 2026-08 → 2026-10; "Last reviewed" → October 4, 2026.
