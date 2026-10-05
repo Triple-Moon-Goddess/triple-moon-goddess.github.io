@@ -17,7 +17,7 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 **Section III — Identity & Contact Data (material)**
 - New "Website Contact Form" subsection (Formspree; text from the unmerged 2026-08-17 draft branch).
-- New "Session Recordings" subsection: recording is optional, live-session only, consent by checkbox or verbal (recorded by Lisa), consent stored against the one-way email code; recordings kept locally on Lisa's computer and deleted within one month (Lisa, 2026-10-04).
+- New "Session Recordings" subsection: recording is optional, live-session only, consent by checkbox or verbal (recorded by Lisa), consent stored against the one-way email code; recordings kept locally on Lisa's computer and deleted within one month; a copy sent to the client goes to their email address (Lisa, 2026-10-04).
 
 **Section V — Third-Party Processors (material)**
 - Added Stripe, MailerLite and Formspree. The Stripe card lists every metadata field the code sends (checked 2026-10-04 across `functions-commerce/stripe.js` and `functions-booking/`). It is accurate only once app v1.146+ is in prod: before that, `createPaymentIntent` also sent the access code and email (finding F14, fixed on `main` f0b46f76). Formspree wording follows Formspree's own published terms (SOC 2 Type II, AWS US, SCCs); no DPA is claimed — Formspree publishes none, and its Terms treat customers as independent controllers.
