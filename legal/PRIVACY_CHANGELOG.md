@@ -4,6 +4,32 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 ---
 
+## v2026-10 — DRAFT (not yet published) — October 4, 2026
+
+**Reviewed:** October 4, 2026 (Q4 2026 quarterly review)
+**Reviewed by:** Lisa Hagan + Claude (Anthropic)
+**Status:** DRAFT on branch `privacy/q4-2026-policy-draft` — items marked `[DRAFT — Lisa confirm]` in the policy must be resolved before merge. Every factual claim below was checked against `astrology-app-private` main (`45fa0cc1`) and the live GCP configuration on 2026-10-04.
+
+### Changes
+
+**Section IV — AI Processing (material)**
+- Touchpoint table grows from three to seven. Added: Journal — Tongue Analysis (`TongueTab.tsx`; the photo, plus the top-photo findings for the underside; photos not stored), Practitioner — Soul Pattern AI (`SoulAIPanel.tsx`), Practitioner — Synastry AI (`SynastryAIPanel.tsx`; Partner A / Partner B placements only), Practitioner — Remedy AI (Recommendations tab; runs automatically on opening the tab). Practitioner AI Dialog row now notes attached files/images. The intro no longer claims every touchpoint shows a just-in-time notice — the Soul, Synastry and Remedy features currently show none, and the tongue tab shows only an inline note (flagged for Lisa).
+
+**Section III — Identity & Contact Data (material)**
+- New "Website Contact Form" subsection (Formspree; text from the unmerged 2026-08-17 draft branch).
+- New "Session Recordings" subsection: recording is optional, live-session only, consent by checkbox or verbal (recorded by Lisa), consent stored against the one-way email code. Storage location and retention left for Lisa to fill.
+
+**Section V — Third-Party Processors (material)**
+- Added Stripe, MailerLite and Formspree. **Blocking for Stripe:** the app currently sends the client's access code (and partner access code) to Stripe in PaymentIntent metadata (`functions-commerce/stripe.js`); the drafted card describes the state after that is removed.
+
+**Section VIII — Data Retention (material)**
+- Added rows: database backups (98-day daily + weekly, 7-day point-in-time recovery, isolated copy ~30 days under a locked retention policy; erasure is immediate in the live system and ages out of backups), website contact-form submissions, session recordings (retention to fill).
+
+**Version label + review date (housekeeping)**
+- 2026-08 → 2026-10; "Last reviewed" → October 4, 2026.
+
+---
+
 ## v2026-07 — July 16, 2026
 
 **Reviewed:** July 16, 2026
