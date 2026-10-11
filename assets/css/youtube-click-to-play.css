@@ -1,0 +1,9 @@
+/* Click-to-play YouTube video — see _includes/youtube-click-to-play.html */
+.yt-ctp{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:#0a0608;cursor:pointer;display:block}
+.yt-ctp img{width:100%;height:100%;object-fit:cover;display:block;opacity:0.85;transition:opacity .2s}
+.yt-ctp:hover img,.yt-ctp:focus-visible img{opacity:1}
+.yt-ctp:focus-visible{outline:2px solid #d4af6a;outline-offset:-2px}
+.yt-ctp-play{position:absolute;left:50%;top:50%;width:68px;height:48px;margin:-24px 0 0 -34px;border-radius:12px;background:rgba(10,6,8,.78);border:1px solid #d4af6a}
+.yt-ctp-play::after{content:"";position:absolute;left:27px;top:14px;border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent #e8c989}
+.yt-ctp-note{position:absolute;right:10px;bottom:8px;font-size:.7rem;color:#c8b89a;background:rgba(10,6,8,.7);padding:2px 6px;border-radius:4px}
+.yt-ctp-link{display:block;padding:1rem;text-align:center;color:#e8c989}
