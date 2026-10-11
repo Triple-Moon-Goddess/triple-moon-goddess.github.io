@@ -60,8 +60,9 @@ h1.title{font-family:"Cinzel",serif;font-size:clamp(1.3rem,4vw,1.8rem);font-weig
 
   {%- comment -%}
   SOURCE OF TRUTH: _data/recorded.yml. Each entry renders one card below and one
-  VideoObject in _includes/schema-recorded.html. Embeds use youtube-nocookie with
-  no autoplay parameter — videos only play when the visitor presses play.
+  VideoObject in _includes/schema-recorded.html. Videos are click-to-play
+  (_includes/youtube-click-to-play.html): nothing loads from Google until the
+  visitor presses play. Each video needs assets/video-thumbs/<youtube_id>.jpg.
   {%- endcomment %}
   {%- assign videos = site.data.recorded | sort: "date" | reverse %}
   {%- if videos.size == 0 %}
@@ -77,13 +78,7 @@ h1.title{font-family:"Cinzel",serif;font-size:clamp(1.3rem,4vw,1.8rem);font-weig
       <span class="card-where">{{ v.location }}</span>
     </div>
     <div class="video-frame">
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/{{ v.youtube_id }}?rel=0&modestbranding=1"
-        title="{{ v.title }} — Triple Moon Goddess"
-        loading="lazy"
-        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen></iframe>
+      {% include youtube-click-to-play.html id=v.youtube_id title=v.title %}
     </div>
   </div>
   {%- endfor %}

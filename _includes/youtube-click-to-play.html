@@ -1,0 +1,19 @@
+{%- comment -%}
+Click-to-play YouTube video (BAA item 7, Lisa 2026-10-11): no request goes to
+Google until the visitor presses play. Shows a thumbnail stored on this site
+(assets/video-thumbs/<id>.jpg); assets/js/youtube-click-to-play.js swaps in the
+youtube-nocookie player on click. Use: include youtube-click-to-play.html with id and title.
+Place it inside a .video-frame. Adding a video: save its thumbnail as
+assets/video-thumbs/<id>.jpg (https://i.ytimg.com/vi/<id>/maxresdefault.jpg).
+{%- endcomment -%}
+{%- unless yt_ctp_loaded %}
+<link rel="stylesheet" href="/assets/css/youtube-click-to-play.css">
+<script src="/assets/js/youtube-click-to-play.js" defer></script>
+{%- assign yt_ctp_loaded = true %}
+{%- endunless %}
+<button type="button" class="yt-ctp" data-yt-id="{{ include.id }}" data-yt-title="{{ include.title | escape }}" aria-label="Play video: {{ include.title | escape }}">
+  <img src="/assets/video-thumbs/{{ include.id }}.jpg" alt="" loading="lazy">
+  <span class="yt-ctp-play" aria-hidden="true"></span>
+  <span class="yt-ctp-note">Plays from YouTube</span>
+</button>
+<noscript><a class="yt-ctp-link" href="https://www.youtube.com/watch?v={{ include.id }}">Watch on YouTube</a></noscript>
