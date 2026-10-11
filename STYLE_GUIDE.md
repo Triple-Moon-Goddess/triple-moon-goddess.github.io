@@ -56,15 +56,20 @@ Page filenames are the public URLs (`/schedule.html`, `/video.html`, …); the o
 `triple-moon-goddess-*-prod.html` names are retired.
 {% endraw %}
 
-## Fonts (Google Fonts)
+## Fonts (self-hosted — never link Google Fonts)
+Fonts are served from this site, not from Google (BAA item 7: no visitor request may go to `fonts.googleapis.com` / `fonts.gstatic.com`). `_includes/head-meta.html` links `/assets/css/fonts.css`, so any page that includes `head-meta.html` already has them; a page without it (e.g. `404.html`) links `/assets/css/fonts.css` itself. Do not add a Google Fonts `<link>`, preconnect or `@import`. To add a weight, download its latin + latin-ext woff2 into `assets/fonts/` and add `@font-face` rules to `assets/css/fonts.css`. Licences (SIL OFL 1.1) are in `assets/fonts/LICENSES/`.
+
 - **Cormorant Garamond** — display headings, leads, taglines, body-serif. Weights 300–600 + italic. Italic `<em>` in headings renders in cream ink, not gold.
 - **Cinzel** — eyebrows, labels, tags, buttons, price rows. Always UPPERCASE, wide letter-spacing (0.16em–0.32em).
 - **Inter** — base UI body font, weight 300.
 
+Families and weights in `assets/css/fonts.css`:
 ```
-Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400
-Cinzel:wght@400;500;600
-Inter:wght@300;400;500
+Cormorant Garamond  300 400 500 600, italic 400
+Cinzel              400 500 600
+Inter               300 400 500
+Instrument Serif    400, italic 400   (home page)
+Inter Tight         300 400 500 600   (home page)
 ```
 
 ## Color palette (CSS variables)
