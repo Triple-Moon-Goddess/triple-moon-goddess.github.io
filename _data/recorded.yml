@@ -6,7 +6,9 @@
 #
 # Required: title, youtube_id, date (YYYY-MM-DD), location.
 # Optional: time (free text, e.g. "2 PM"). Leave it out when there is none.
-# Newest first. Videos never autoplay.
+# Newest first. Videos are click-to-play: nothing loads from YouTube/Google until
+# the visitor presses play. Each video needs its thumbnail saved as
+# assets/video-thumbs/<youtube_id>.jpg (from https://i.ytimg.com/vi/<id>/maxresdefault.jpg).
 
 - title: "Sisters Enchanted Podcast Interview with Sara"
   youtube_id: "-J-drJ8-L0w"
