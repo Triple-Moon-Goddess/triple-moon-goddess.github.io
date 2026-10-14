@@ -1,0 +1,16 @@
+[
+  {
+    "pluginid": "90004",
+    "name": "Cross-Origin-Embedder-Policy Header Missing or Invalid",
+    "kind": "Accepted",
+    "decided": "Lisa, 2026-10-14",
+    "note": "Accepted. Tested on the dev copy 2026-10-14: COEP stops the click-to-play YouTube player loading in Chrome and Firefox (YouTube does not send the cross-origin headers COEP requires). COEP only matters for pages that use cross-origin isolation features; this site uses none. The Content-Security-Policy, COOP and CORP stay enforced."
+  },
+  {
+    "pluginid": "40025",
+    "name": "Proxy Disclosure",
+    "kind": "Accepted",
+    "decided": "Lisa, 2026-10-14",
+    "note": "Accepted. Firebase Hosting's CDN (Fastly/Varnish) adds x-served-by, x-cache and x-timer to every response; tested 2026-10-14 that the hosting config cannot remove them. They reveal only that the site is on Firebase's CDN. The only fix is a second CDN vendor that would see all traffic; Lisa chose not to add one."
+  }
+]
