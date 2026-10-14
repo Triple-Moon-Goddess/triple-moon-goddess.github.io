@@ -12,6 +12,9 @@
 //     on*= event handler, a javascript: URL) or on an outside host that is not
 //     in ALLOWED below — the page would break under the policy;
 //   - serves /about as /about.html for every top-level page, as GitHub Pages did.
+//
+// No Cross-Origin-Embedder-Policy: tested 2026-10-14, COEP credentialless stops the
+// click-to-play YouTube player loading in Chromium and Firefox (~/tmg-hq/dev-e2e/zap/video-trial.cjs).
 'use strict';
 
 const fs = require('fs');
@@ -107,8 +110,8 @@ function buildConfig(siteDir) {
   const config = {
     hosting: {
       public: path.relative(path.dirname(path.resolve(process.argv[3] || '.hosting/firebase.json')), path.resolve(siteDir)),
+      ignore: ['CNAME', '**/.*'],
       cleanUrls: false,
-      trailingSlash: false,
       rewrites: topPages.map((f) => ({ source: `/${f.replace(/\.html$/, '')}`, destination: `/${f}` })),
       headers: [
         {
@@ -120,7 +123,6 @@ function buildConfig(siteDir) {
             { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
             { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), usb=(), payment=()' },
             { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
-            { key: 'Cross-Origin-Embedder-Policy', value: 'credentialless' },
             { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
           ],
         },

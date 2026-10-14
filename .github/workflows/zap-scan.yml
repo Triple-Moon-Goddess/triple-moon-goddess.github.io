@@ -16,6 +16,13 @@ on:
   schedule:
     - cron: '27 9 * * 1'
   workflow_dispatch:
+    inputs:
+      site:
+        description: 'prod = triplemoongoddess.com; dev = the dev copy on Firebase (triplemoongoddess-site-dev.web.app)'
+        required: true
+        default: prod
+        type: choice
+        options: [prod, dev]
 
 permissions:
   contents: read
@@ -26,7 +33,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  TARGET: https://triplemoongoddess.com/
+  TARGET: ${{ inputs.site == 'dev' && 'https://triplemoongoddess-site-dev.web.app/' || 'https://triplemoongoddess.com/' }}
 
 jobs:
   baseline:
@@ -61,7 +68,7 @@ jobs:
         name: Alert counts and findings
         if: always()
         run: |
-          title="ZAP baseline (passive) scan — triplemoongoddess.com"
+          title="ZAP baseline (passive) scan — ${TARGET}"
           if [ ! -f report_json.json ]; then
             echo "No ZAP report was produced — the scan itself failed. See the run log." > zap-summary.md
             echo "subject=🚨 FAILED — $title produced no report" >> "$GITHUB_OUTPUT"
