@@ -4,14 +4,20 @@ name: ZAP Scan
 # (BAA readiness; Lisa, 2026-10-14). Passive only: GETs of the site's pages, no
 # forms, no attacks.
 #
-# Runs after every publish (page_build: a push to main rebuilds the site; the
-# scan waits for that build to finish), Mondays 09:27 UTC, and by hand.
+# Runs after every publish (called by deploy-firebase.yml after its Firebase
+# deploy; page_build while the site is still on GitHub Pages), Mondays 09:27 UTC,
+# and by hand.
 # The report is kept as an artifact, the findings are emailed to Lisa on every
 # run, and a finding of Low risk or higher fails the run (Informational findings
 # are listed, not failed) — the same rules as the app repo's zap-scan.yml.
 # ZAP never files GitHub issues.
 
 on:
+  workflow_call:
+    inputs:
+      site:
+        type: string
+        default: prod
   page_build:
   schedule:
     - cron: '27 9 * * 1'
