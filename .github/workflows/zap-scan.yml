@@ -1,0 +1,123 @@
+name: ZAP Scan
+
+# OWASP ZAP baseline (passive) scan of the live website, triplemoongoddess.com
+# (BAA readiness; Lisa, 2026-10-14). Passive only: GETs of the site's pages, no
+# forms, no attacks.
+#
+# Runs after every publish (page_build: a push to main rebuilds the site; the
+# scan waits for that build to finish), Mondays 09:27 UTC, and by hand.
+# The report is kept as an artifact, the findings are emailed to Lisa on every
+# run, and a finding of Low risk or higher fails the run (Informational findings
+# are listed, not failed) — the same rules as the app repo's zap-scan.yml.
+# ZAP never files GitHub issues.
+
+on:
+  page_build:
+  schedule:
+    - cron: '27 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: read
+
+concurrency:
+  group: zap-site
+  cancel-in-progress: false
+
+env:
+  TARGET: https://triplemoongoddess.com/
+
+jobs:
+  baseline:
+    name: Baseline (passive) triplemoongoddess.com
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Wait for the published build
+        if: github.event_name == 'page_build'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 40); do
+            status=$(gh api "repos/${{ github.repository }}/pages/builds/latest" --jq .status)
+            echo "pages build: $status"
+            [ "$status" = "built" ] && exit 0
+            [ "$status" = "errored" ] && { echo "The site build errored — scanning what is live."; exit 0; }
+            sleep 15
+          done
+          echo "The site build did not finish in 10 minutes — scanning what is live."
+
+      - name: ZAP baseline scan
+        uses: zaproxy/action-baseline@de8ad967d3548d44ef623df22cf95c3b0baf8b25 # v0.15.0
+        with:
+          target: ${{ env.TARGET }}
+          cmd_options: '-a'
+          allow_issue_writing: false
+          fail_action: false
+          artifact_name: zap-baseline-site
+
+      - id: sum
+        name: Alert counts and findings
+        if: always()
+        run: |
+          title="ZAP baseline (passive) scan — triplemoongoddess.com"
+          if [ ! -f report_json.json ]; then
+            echo "No ZAP report was produced — the scan itself failed. See the run log." > zap-summary.md
+            echo "subject=🚨 FAILED — $title produced no report" >> "$GITHUB_OUTPUT"
+            echo "rc=1" >> "$GITHUB_OUTPUT"
+            cat zap-summary.md >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          # Risk codes: 3 High, 2 Medium, 1 Low, 0 Informational.
+          count() { jq "[.site[].alerts[] | select(.riskcode == \"$1\")] | length" report_json.json; }
+          high=$(count 3); medium=$(count 2); low=$(count 1); info=$(count 0)
+          {
+            echo "# $title"
+            echo ""
+            echo "| High | Medium | Low | Informational |"
+            echo "|---:|---:|---:|---:|"
+            echo "| $high | $medium | $low | $info |"
+            echo ""
+            echo "## Findings"
+            echo ""
+            jq -r '[.site[].alerts[]] | sort_by(-(.riskcode | tonumber), .name) | .[] |
+              ({"3":"High","2":"Medium","1":"Low","0":"Informational"}[.riskcode]) as $risk |
+              "- **\($risk)** — \(.name) (plugin \(.pluginid)\(if .cweid != "-1" then ", CWE-\(.cweid)" else "" end))",
+              ([.instances[] | "  - \(.method // "GET") \(.uri)"] | unique | .[])' report_json.json
+          } > zap-summary.md
+          counts="High $high, Medium $medium, Low $low, Informational $info"
+          if [ $((high + medium + low)) -gt 0 ]; then
+            printf '\n**FAIL: %s finding(s) at Low risk or higher.**\n' $((high + medium + low)) >> zap-summary.md
+            echo "subject=🚨 FAILED — $title: $counts" >> "$GITHUB_OUTPUT"
+            echo "rc=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "subject=passed — $title: $counts" >> "$GITHUB_OUTPUT"
+            echo "rc=0" >> "$GITHUB_OUTPUT"
+          fi
+          cat zap-summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Email the findings to Lisa
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.LISA_CONTACT_EMAIL }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          to: ${{ secrets.LISA_CONTACT_EMAIL }}
+          from: "TMG Security Bot <${{ secrets.LISA_CONTACT_EMAIL }}>"
+          subject: ${{ steps.sum.outputs.subject }}
+          convert_markdown: true
+          html_body: file://zap-summary.md
+          body: |
+            ${{ steps.sum.outputs.subject }}
+            Trigger: ${{ github.event_name }} (commit ${{ github.sha }})
+            Run (the report is its artifact):
+            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          attachments: zap-summary.md
+
+      - name: A finding fails the run
+        if: always()
+        run: exit "${{ steps.sum.outputs.rc || 1 }}"
