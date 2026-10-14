@@ -1,0 +1,15 @@
+# Plugins GitHub Pages always turns on (https://pages.github.com/versions/ and
+# https://docs.github.com/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#plugins).
+# Passed only to the Firebase build (deploy-firebase.yml) so it renders the same
+# pages GitHub Pages did, e.g. Markdown files without front matter.
+plugins:
+  - jekyll-feed
+  - jekyll-coffeescript
+  - jekyll-default-layout
+  - jekyll-gist
+  - jekyll-github-metadata
+  - jekyll-optional-front-matter
+  - jekyll-paginate
+  - jekyll-readme-index
+  - jekyll-titles-from-headings
+  - jekyll-relative-links
