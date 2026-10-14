@@ -1,0 +1,35 @@
+name: Build and deploy (Firebase Hosting)
+
+# Builds the Jekyll site with the GitHub Pages gem set (.hosting/Gemfile), writes
+# the hosting config with its security headers from the built pages
+# (.hosting/build-config.cjs), and keeps the result as an artifact.
+
+on:
+  push:
+    branches: [firebase-hosting]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_GEMFILE: ${{ github.workspace }}/.hosting/Gemfile
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - name: Build the site
+        run: bundle exec jekyll build --destination _site
+        env:
+          JEKYLL_ENV: production
+          PAGES_REPO_NWO: ${{ github.repository }}
+          JEKYLL_GITHUB_TOKEN: ${{ github.token }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site-build
+          path: _site
