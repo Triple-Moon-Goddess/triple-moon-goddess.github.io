@@ -265,7 +265,12 @@
       .vocab-grid .cell:nth-child(odd) { border-right: none; border-bottom: 0; }
       .vocab-grid .cell:nth-child(even) { border-bottom: 1px solid var(--border); }
     }
-  </style>
+  /* Former inline style attributes: classes so the Content-Security-Policy can forbid inline styles; !important keeps the precedence the inline style had. */
+.center-block{text-align:center !important;margin-bottom: 2rem !important}
+.accent-soft-text{color:var(--accent-soft) !important}
+.accent-link{color:var(--accent) !important}
+.mt-half{margin-top:0.5rem !important}
+</style>
 </head>
 <body>
 {% include nav.html active="/ipa.html" %}
@@ -293,7 +298,7 @@
     <img src="IPA_Infographic.png" alt="Decoding the Human Pattern — Integrative Pattern Astrology infographic showing the three dimensions of assessment: Nature (Blueprint), Nurture (Adaptation), and Agency (The Gap), with four ancient traditions feeding into a unified clinical engine." />
   </div>
 
-  <div style="text-align:center; margin-bottom: 2rem;">
+  <div class="center-block">
     <span class="patent-badge">Patent Pending — Application #63/998,305 — Filed March 6, 2026</span>
   </div>
 
@@ -344,9 +349,9 @@
   <section>
     <h2>The Zygote and the Journey</h2>
     <p>Here is the simplest way I know to explain what IPA does:</p>
-    <p><strong style="color:var(--accent-soft);">The zygote</strong> is who you were at conception — before environment, before experience, before anyone got to you. Complete. Encoded. Fully yourself before the world had a chance to respond to you.</p>
-    <p><strong style="color:var(--accent-soft);">The journey</strong> is everything that happened after — the family you were born into, the experiences that shaped you, the adaptations you made to survive and belong and be loved.</p>
-    <p><strong style="color:var(--accent-soft);">The gap</strong> between the zygote and the journey is where you exercised free will — consciously or not. It is the most clinically rich territory in any assessment. It is where change is possible. It is where the work lives.</p>
+    <p><strong class="accent-soft-text">The zygote</strong> is who you were at conception — before environment, before experience, before anyone got to you. Complete. Encoded. Fully yourself before the world had a chance to respond to you.</p>
+    <p><strong class="accent-soft-text">The journey</strong> is everything that happened after — the family you were born into, the experiences that shaped you, the adaptations you made to survive and belong and be loved.</p>
+    <p><strong class="accent-soft-text">The gap</strong> between the zygote and the journey is where you exercised free will — consciously or not. It is the most clinically rich territory in any assessment. It is where change is possible. It is where the work lives.</p>
     <div class="callout">
       <strong>IPA makes all three readable simultaneously</strong> — in a single individual, from a single assessment.
     </div>
@@ -467,7 +472,7 @@
   <!-- What's Next -->
   <section>
     <h2>What's Next</h2>
-    <p>IPA is currently under development at <a href="https://triplemoongoddess.com" target="_blank" rel="noopener" style="color:var(--accent);">triplemoongoddess.com</a>. The platform is designed to serve people carrying complex, chronic, and frequently dismissed conditions — fibromyalgia, PTSD, chronic fatigue, autoimmune conditions, and other presentations where current tools have left the person without adequate explanation or support.</p>
+    <p>IPA is currently under development at <a href="https://triplemoongoddess.com" target="_blank" rel="noopener" class="accent-link">triplemoongoddess.com</a>. The platform is designed to serve people carrying complex, chronic, and frequently dismissed conditions — fibromyalgia, PTSD, chronic fatigue, autoimmune conditions, and other presentations where current tools have left the person without adequate explanation or support.</p>
     <p>The broader vision is a practitioner platform available to naturopaths, integrative medicine physicians, therapists, and wellness practitioners across multiple disciplines — each accessing the same calculation engine in the vocabulary of their own tradition.</p>
     <div class="pull-quote">
       Every tradition contains truth. IPA brings them together.
@@ -476,7 +481,7 @@
 
   <footer class="policy-footer">
     <p>Triple Moon Goddess &bull; <a href="https://triplemoongoddess.com" target="_blank" rel="noopener">triplemoongoddess.com</a> &bull; <a href="mailto:lisa@triplemoongoddess.com">lisa@triplemoongoddess.com</a></p>
-    <p style="margin-top:0.5rem;">&copy; 2026 Lisa Hagan. All rights reserved. &bull; Patent Pending — Application #63/998,305</p>
+    <p class="mt-half">&copy; 2026 Lisa Hagan. All rights reserved. &bull; Patent Pending — Application #63/998,305</p>
   </footer>
 
 </div>

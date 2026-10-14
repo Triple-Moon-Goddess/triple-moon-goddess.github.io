@@ -373,6 +373,13 @@
     .rv{opacity:1;transform:none;}
     html{scroll-behavior:auto;}
   }
+/* Former inline style attributes: classes so the Content-Security-Policy can forbid inline styles; !important keeps the precedence the inline style had. */
+.accent-violet{--accent:var(--violet) !important}
+.accent-teal{--accent:var(--teal) !important}
+.accent-magenta{--accent:var(--magenta) !important}
+.accent-gold{--accent:var(--gold) !important}
+.text-teal{color:var(--teal) !important}
+.fine-centered{text-align:center !important;max-width:760px !important;margin:26px auto 0 !important}
 </style>
 <script type="application/ld+json">
 {
@@ -512,7 +519,7 @@
     </div>
 
     <div class="cards">
-      <article class="card feature" style="--accent:var(--violet)">
+      <article class="card feature accent-violet">
         <span class="tag">Start here</span>
         <div class="name">Learn Your Natal Chart</div>
         <div class="meta">90 minutes &middot; guided tour</div>
@@ -520,35 +527,35 @@
         <div class="price"><b>$150</b><small>90 minutes</small></div>
       </article>
 
-      <article class="card" style="--accent:var(--teal)">
+      <article class="card accent-teal">
         <div class="name">Physical Health</div>
         <div class="meta">90 minutes &middot; constitutional</div>
         <p>Fatigue, digestion, sleep, cycles, autoimmune patterns. Your constitution read closely, then translated into diet, herbs, and protocols built for the body you actually have.</p>
         <div class="price"><b>$150</b><small>90 minutes</small></div>
       </article>
 
-      <article class="card" style="--accent:var(--magenta)">
+      <article class="card accent-magenta">
         <div class="name">Personal Growth</div>
         <div class="meta">90 minutes &middot; shadow work</div>
         <p>The patterns in work, identity, and relationship that keep coming back after the circumstances change. We go to the root, not the symptom.</p>
         <div class="price"><b>$150</b><small>90 minutes</small></div>
       </article>
 
-      <article class="card" style="--accent:var(--gold)">
+      <article class="card accent-gold">
         <div class="name">Relationship</div>
         <div class="meta">90 minutes &middot; two charts</div>
         <p>Two charts read side by side &mdash; where your needs meet, where they pull against each other, and the specific work the two of you share.</p>
         <div class="price"><b>$150</b><small>90 minutes</small></div>
       </article>
 
-      <article class="card" style="--accent:var(--violet)">
+      <article class="card accent-violet">
         <div class="name">Growth &amp; Health Bundle</div>
         <div class="meta">Two sessions &middot; save $50</div>
         <p>For anyone who suspects the body and the inner life have been talking to each other. They usually have been, and usually for years.</p>
         <div class="price"><b>$250</b><small>two 90-minute sessions</small></div>
       </article>
 
-      <article class="card" style="--accent:var(--teal)">
+      <article class="card accent-teal">
         <div class="name">Three Health Sessions</div>
         <div class="meta">Three sessions &middot; save $100</div>
         <p>The protocol refined as your constitution answers back. What you notice between sessions becomes the material for the next one.</p>
@@ -663,7 +670,7 @@
 
   <!-- ================= FINAL CTA ================= -->
   <section class="final rv">
-    <div class="kicker" style="color:var(--teal)">The door is open</div>
+    <div class="kicker text-teal">The door is open</div>
     <h2>Ready to go <em>all the way down</em>?</h2>
     <p class="sub">Ninety minutes, live, on your chart and your body and the pattern you've been circling for years. $150. Booked whenever you're ready &mdash; not a minute before.</p>
     <div class="hero-cta">
@@ -672,7 +679,7 @@
     </div>
   </section>
 
-  <p class="fine" style="text-align:center;max-width:760px;margin:26px auto 0;">Not medical advice. Not a diagnosis. Consult a licensed professional for clinical care.<br>Astrological interpretation is probabilistic, not predictive.</p>
+  <p class="fine fine-centered">Not medical advice. Not a diagnosis. Consult a licensed professional for clinical care.<br>Astrological interpretation is probabilistic, not predictive.</p>
 
 </div>
 
