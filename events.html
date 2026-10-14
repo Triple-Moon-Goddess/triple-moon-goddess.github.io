@@ -81,6 +81,8 @@ h1.title{font-family:"Cinzel",serif;font-size:clamp(1.3rem,4vw,1.8rem);font-weig
   .speaker-card{flex-direction:column;text-align:center}
   .stats{grid-template-columns:repeat(3,1fr)}
 }
+/* Former inline style attributes: classes so the Content-Security-Policy can forbid inline styles; !important keeps the precedence the inline style had. */
+.contact-email{color:#d4af6a !important;font-style:normal !important}
 </style>
 </head>
 <body>
@@ -101,7 +103,7 @@ h1.title{font-family:"Cinzel",serif;font-size:clamp(1.3rem,4vw,1.8rem);font-weig
       <h2>Lisa Hagan</h2>
       <p>Founder, Triple Moon Goddess<br>
       Integrative Medical Astrology &mdash; Western Astrology &middot; TCM &middot; Ayurveda<br>
-      <span style="color:#d4af6a;font-style:normal">Lisa@TripleMoonGoddess.com</span></p>
+      <span class="contact-email">Lisa@TripleMoonGoddess.com</span></p>
     </div>
   </div>
 
@@ -122,9 +124,9 @@ h1.title{font-family:"Cinzel",serif;font-size:clamp(1.3rem,4vw,1.8rem);font-weig
   </div>
 
   <div class="tabs">
-    <button class="tab active" onclick="setTab('upcoming')">Upcoming</button>
-    <button class="tab" onclick="setTab('past')">History</button>
-    <button class="tab" onclick="setTab('all')">All</button>
+    <button class="tab active" data-tab="upcoming">Upcoming</button>
+    <button class="tab" data-tab="past">History</button>
+    <button class="tab" data-tab="all">All</button>
   </div>
 
   <div id="list-container"></div>
@@ -218,6 +220,7 @@ function drawStars(){
 }
 initStars();drawStars();
 window.addEventListener("resize",initStars);
+document.querySelectorAll(".tab[data-tab]").forEach(el=>el.addEventListener("click",()=>setTab(el.dataset.tab)));
 render();
 </script>
 {% include footer.html %}

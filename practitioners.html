@@ -71,6 +71,8 @@
   .footer-note a:hover { color: var(--gold-bright); }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeIn { to { opacity: 1; } }
+/* Former inline style attribute: a class so the Content-Security-Policy can forbid inline styles; !important keeps the precedence the inline style had. */
+.gold-link{color:var(--gold) !important}
 </style>
 </head>
 <body>
@@ -190,7 +192,7 @@
     <h2>Common <em>questions</em></h2>
     <div class="faq-item"><div class="faq-q">Which app is right for me?</div><p class="faq-a">If you’re an astrologer or integrative practitioner who wants the full TMG methodology with editable libraries and astrology surfaced — the <strong>Integrative Practitioner App</strong>. If you’re a licensed therapist or psychologist working with personal growth patterns — the <strong>Personal Growth App</strong>. If you’re a health practitioner or medical doctor working with constitutional health and remedies — the <strong>Physical Health App</strong>. The two clinical apps don’t surface astrology language at all.</p></div>
     <div class="faq-item"><div class="faq-q">What if I want both Personal Growth and Physical Health?</div><p class="faq-a">The Integrative Practitioner App at $100/mo includes both modules along with the full astrological framework, editable libraries, and orb settings. Subscribing to both clinical apps separately would cost $300/mo. Practitioners who want the full picture choose the Integrative app.</p></div>
-    <div class="faq-item"><div class="faq-q">Can I try the platform before subscribing?</div><p class="faq-a">Yes — schedule a free 1-hour video call with Lisa to walk through the platform together. No card required, no commitment. Email <a href="mailto:Lisa@TripleMoonGoddess.com" style="color:var(--gold);">Lisa@TripleMoonGoddess.com</a> to schedule.</p></div>
+    <div class="faq-item"><div class="faq-q">Can I try the platform before subscribing?</div><p class="faq-a">Yes — schedule a free 1-hour video call with Lisa to walk through the platform together. No card required, no commitment. Email <a href="mailto:Lisa@TripleMoonGoddess.com" class="gold-link">Lisa@TripleMoonGoddess.com</a> to schedule.</p></div>
     <div class="faq-item"><div class="faq-q">How does the AI dialog feature work?</div><p class="faq-a">The AI dialog is optional in all three apps. You bring your own Anthropic API key — Anthropic bills you directly (~$5/mo). TMG never holds your AI billing. The onboarding hour walks you through setup.</p></div>
     <div class="faq-item"><div class="faq-q">Can I switch between monthly and annual later?</div><p class="faq-a">Yes. Both plans can be switched at any time from your account portal. Stripe prorates the difference automatically.</p></div>
     <div class="faq-item"><div class="faq-q">Does TMG see my clients’ names or contact information?</div><p class="faq-a">No names, no phone numbers, no addresses. The only identifying information TMG holds is an email address — and only if your client chooses to provide one. Email lives in its own identity table, completely separate from every clinical table.</p></div>
