@@ -1,16 +1,27 @@
 name: Build and deploy (Firebase Hosting)
 
-# Builds the Jekyll site with the GitHub Pages gem set (.hosting/Gemfile), writes
-# the hosting config with its security headers from the built pages
-# (.hosting/build-config.cjs), and keeps the result as an artifact.
+# triplemoongoddess.com on Firebase Hosting (Lisa, 2026-10-14: moved off GitHub
+# Pages so the site can send security headers). On every push to main:
+#   build   Jekyll with the GitHub Pages gem set and its default plugins
+#           (.hosting/Gemfile, .hosting/_config.pages-defaults.yml), then the
+#           hosting config with its security headers from the built pages
+#           (.hosting/build-config.cjs refuses anything the CSP would block)
+#   deploy  to the prod site triplemoongoddess-site, keyless (Workload Identity
+#           Federation; this repo's main branch only)
+#   scan    the OWASP ZAP baseline of the live site (zap-scan.yml): report kept,
+#           findings emailed to Lisa, a Low-or-higher finding fails the run
 
 on:
   push:
-    branches: [firebase-hosting]
+    branches: [main, firebase-hosting]
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: deploy-firebase-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -29,7 +40,39 @@ jobs:
           JEKYLL_ENV: production
           PAGES_REPO_NWO: ${{ github.repository }}
           JEKYLL_GITHUB_TOKEN: ${{ github.token }}
+      - name: Hosting config + security headers from the built pages
+        run: node .hosting/build-config.cjs _site .hosting/firebase.json
       - uses: actions/upload-artifact@v4
         with:
           name: site-build
-          path: _site
+          include-hidden-files: true
+          path: |
+            _site
+            .hosting/firebase.json
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site-build
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/493236722299/locations/global/workloadIdentityPools/github-pool/providers/github-website
+          service_account: gh-website-deploy@triple-moon-goddess.iam.gserviceaccount.com
+      - name: Deploy to Firebase Hosting (triplemoongoddess-site)
+        run: |
+          jq '.hosting.site = "triplemoongoddess-site" | .hosting.public = "_site"' .hosting/firebase.json > firebase.json
+          npx -y firebase-tools@15.22.3 deploy --only hosting --project triple-moon-goddess --non-interactive
+
+  scan:
+    needs: deploy
+    uses: ./.github/workflows/zap-scan.yml
+    with:
+      site: prod
+    secrets: inherit
