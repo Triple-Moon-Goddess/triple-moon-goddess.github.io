@@ -1,0 +1,5 @@
+source "https://rubygems.org"
+
+# Same Jekyll + plugins GitHub Pages used, so the Firebase build matches the old site.
+gem "github-pages", "~> 232", group: :jekyll_plugins
+gem "webrick"
