@@ -24,7 +24,7 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
       - name: Build the site
-        run: bundle exec jekyll build --destination _site
+        run: bundle exec jekyll build --config _config.yml,.hosting/_config.pages-defaults.yml --destination _site
         env:
           JEKYLL_ENV: production
           PAGES_REPO_NWO: ${{ github.repository }}
