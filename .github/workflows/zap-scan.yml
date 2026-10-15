@@ -80,7 +80,7 @@ jobs:
         name: Alert counts and findings (decided findings listed, not counted)
         if: always()
         run: |
-          bash repo/.hosting/zap-summary.sh report_json.json "ZAP baseline (passive) scan — ${TARGET}" zap-summary.md >> "$GITHUB_OUTPUT"
+          node repo/.hosting/zap-summary.cjs report_json.json "ZAP baseline (passive) scan — ${TARGET}" zap-summary.md >> "$GITHUB_OUTPUT"
           cat zap-summary.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Email the findings to Lisa
