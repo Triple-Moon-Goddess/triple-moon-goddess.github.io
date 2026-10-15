@@ -81,5 +81,12 @@
     "decided": "Lisa, 2026-10-15",
     "urlPattern": "^https://[^/]+/(assets/|[^?]*\\.(png|jpe?g|gif|svg|ico|webp)$)",
     "note": "Intended: only public files are cached (scripts, styles, fonts and images under /assets/, and images). Every page is sent no-store, so a finding on any other URL stays open."
+  },
+  {
+    "pluginid": "10049",
+    "name": "Non-Storable Content",
+    "kind": "not-applicable",
+    "decided": "Lisa, 2026-10-15",
+    "note": "Intended: this is the result of the cache fix Lisa approved: every page is sent Cache-Control: no-cache, no-store, must-revalidate, so no browser or proxy keeps a copy."
   }
 ]
