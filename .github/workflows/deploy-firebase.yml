@@ -6,14 +6,15 @@ name: Build and deploy (Firebase Hosting)
 #           (.hosting/Gemfile, .hosting/_config.pages-defaults.yml), then the
 #           hosting config with its security headers from the built pages
 #           (.hosting/build-config.cjs refuses anything the CSP would block)
-#   deploy  to the prod site triplemoongoddess-site, keyless (Workload Identity
+#   deploy  to Firebase project triplemoongoddess-website (its own project, so this
+#           repo can never touch the apps), keyless (Workload Identity
 #           Federation; this repo's main branch only)
-#   scan    the OWASP ZAP baseline of the live site (zap-scan.yml): report kept,
+#   scan    the OWASP ZAP baseline of the deployed Firebase site (zap-scan.yml): report kept,
 #           findings emailed to Lisa, a Low-or-higher finding fails the run
 
 on:
   push:
-    branches: [main, firebase-hosting]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -63,16 +64,16 @@ jobs:
           name: site-build
       - uses: google-github-actions/auth@v2
         with:
-          workload_identity_provider: projects/493236722299/locations/global/workloadIdentityPools/github-pool/providers/github-website
-          service_account: gh-website-deploy@triple-moon-goddess.iam.gserviceaccount.com
-      - name: Deploy to Firebase Hosting (triplemoongoddess-site)
+          workload_identity_provider: projects/770432131793/locations/global/workloadIdentityPools/github-pool/providers/github-website
+          service_account: gh-website-deploy@triplemoongoddess-website.iam.gserviceaccount.com
+      - name: Deploy to Firebase Hosting (triplemoongoddess-website)
         run: |
-          jq '.hosting.site = "triplemoongoddess-site" | .hosting.public = "_site"' .hosting/firebase.json > firebase.json
-          npx -y firebase-tools@15.22.3 deploy --only hosting --project triple-moon-goddess --non-interactive
+          jq '.hosting.site = "triplemoongoddess-website" | .hosting.public = "_site"' .hosting/firebase.json > firebase.json
+          npx -y firebase-tools@15.22.3 deploy --only hosting --project triplemoongoddess-website --non-interactive
 
   scan:
     needs: deploy
     uses: ./.github/workflows/zap-scan.yml
     with:
-      site: prod
+      site: firebase
     secrets: inherit
