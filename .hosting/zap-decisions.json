@@ -88,5 +88,13 @@
     "kind": "not-applicable",
     "decided": "Lisa, 2026-10-15",
     "note": "Intended: this is the result of the cache fix Lisa approved: every page is sent Cache-Control: no-cache, no-store, must-revalidate, so no browser or proxy keeps a copy."
+  },
+  {
+    "pluginid": "10202",
+    "name": "Absence of Anti-CSRF Tokens",
+    "kind": "not-applicable",
+    "decided": "Lisa, 2026-10-15",
+    "urlPattern": "^https://[^/]+/contact(\\.html)?$",
+    "note": "Not applicable, checked 2026-10-15: forged-request (CSRF) attacks ride on a signed-in visitor's session, and this site sets no cookies and has no sign-in. The contact form posts to Formspree, a public endpoint anyone can already post to directly. Covers the contact page only; a form anywhere else stays open."
   }
 ]
