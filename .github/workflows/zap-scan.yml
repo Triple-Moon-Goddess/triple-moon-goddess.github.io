@@ -26,11 +26,11 @@ on:
   workflow_dispatch:
     inputs:
       site:
-        description: 'prod = triplemoongoddess.com; dev = the dev copy on Firebase (triplemoongoddess-site-dev.web.app)'
+        description: 'prod = triplemoongoddess.com; firebase = the deployed Firebase site (triplemoongoddess-website.web.app); dev = the dev copy'
         required: true
         default: prod
         type: choice
-        options: [prod, dev]
+        options: [prod, firebase, dev]
 
 permissions:
   contents: read
@@ -41,7 +41,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  TARGET: ${{ inputs.site == 'dev' && 'https://triplemoongoddess-site-dev.web.app/' || 'https://triplemoongoddess.com/' }}
+  TARGET: ${{ inputs.site == 'dev' && 'https://triplemoongoddess-site-dev.web.app/' || inputs.site == 'firebase' && 'https://triplemoongoddess-website.web.app/' || 'https://triplemoongoddess.com/' }}
 
 jobs:
   baseline:

@@ -8,7 +8,7 @@
 set -euo pipefail
 REPORT="$1"; TITLE="$2"; OUT="$3"
 DECISIONS="$(dirname "${BASH_SOURCE[0]}")/zap-decisions.json"
-HOSTS='["triplemoongoddess.com","www.triplemoongoddess.com","triplemoongoddess-site.web.app","triplemoongoddess-site-dev.web.app"]'
+HOSTS='["triplemoongoddess.com","www.triplemoongoddess.com","triplemoongoddess-website.web.app","triplemoongoddess-site-dev.web.app"]'
 if [ ! -f "$REPORT" ]; then
   echo "No ZAP report was produced — the scan itself failed. See the run log." > "$OUT"
   echo "subject=🚨 FAILED — $TITLE produced no report"; echo "rc=1"; exit 0
