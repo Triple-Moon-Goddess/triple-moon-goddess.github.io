@@ -1,0 +1,5 @@
+{
+  "private": true,
+  "description": "Build tools for the Firebase Hosting build (.hosting/build-config.cjs). Not part of the site.",
+  "dependencies": { "esbuild": "0.28.1" }
+}

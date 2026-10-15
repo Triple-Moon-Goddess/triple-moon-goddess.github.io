@@ -72,6 +72,36 @@ function inspect(html) {
   return { scripts, styles, problems, hosts };
 }
 
+/**
+ * Minify every script the site serves — assets/js/*.js and each page's inline
+ * <script> — so no developer comment is shipped (ZAP 10027). Runs before the
+ * hashes are taken, so the CSP allows exactly what is served. Needs esbuild
+ * (.hosting/package.json; the workflow installs it).
+ */
+function minifyScripts(siteDir) {
+  const esbuild = require(require.resolve('esbuild', { paths: [__dirname] }));
+  const min = (code) => esbuild.transformSync(code, { loader: 'js', minify: true, legalComments: 'none' }).code.trim();
+  let count = 0;
+  for (const file of pages(siteDir)) {
+    const html = fs.readFileSync(file, 'utf8');
+    const out = html.replace(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi, (all, attrs, code) => {
+      if (/\bsrc\s*=/.test(attrs) || /application\/(ld\+)?json/i.test(attrs) || !code.trim()) return all;
+      count += 1;
+      return `<script${attrs}>${min(code)}</script>`;
+    });
+    if (out !== html) fs.writeFileSync(file, out);
+  }
+  const jsDir = path.join(siteDir, 'assets', 'js');
+  if (fs.existsSync(jsDir)) {
+    for (const f of fs.readdirSync(jsDir).filter((x) => x.endsWith('.js'))) {
+      const p = path.join(jsDir, f);
+      fs.writeFileSync(p, min(fs.readFileSync(p, 'utf8')) + '\n');
+      count += 1;
+    }
+  }
+  return count;
+}
+
 function buildConfig(siteDir) {
   const scriptHashes = new Set();
   const styleHashes = new Set();
@@ -124,9 +154,13 @@ function buildConfig(siteDir) {
             { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), usb=(), payment=()' },
             { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
             { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
+            // Pages are never stored, so a change reaches every visitor at once (ZAP 10015/10050).
+            { key: 'Cache-Control', value: 'no-cache, no-store, must-revalidate' },
           ],
         },
-        { source: '**/*.html', headers: [{ key: 'Cache-Control', value: 'no-cache' }] },
+        // Public files only; names are not content-hashed, so a day, never immutable.
+        { source: '/assets/**', headers: [{ key: 'Cache-Control', value: 'public, max-age=86400' }] },
+        { source: '**/*.@(png|jpg|jpeg|gif|svg|ico|webp)', headers: [{ key: 'Cache-Control', value: 'public, max-age=86400' }] },
       ],
     },
   };
@@ -136,16 +170,17 @@ function buildConfig(siteDir) {
 function main(argv) {
   const [siteDir, out] = argv;
   if (!siteDir || !out) { console.error('usage: build-config.cjs <built site dir> <out firebase.json>'); return 2; }
+  const minified = minifyScripts(siteDir);
   const { config, errors, counts } = buildConfig(siteDir);
   if (errors.length) {
     console.error(`REFUSED: ${errors.length} problem(s) the security headers would break:\n  ${errors.join('\n  ')}`);
     return 1;
   }
   fs.writeFileSync(out, JSON.stringify(config, null, 2) + '\n');
-  console.log(`wrote ${out}: ${counts.pages} pages, ${counts.scripts} inline script hash(es), ${counts.styles} inline style hash(es), ${counts.rewrites} extensionless rewrites`);
+  console.log(`minified ${minified} script(s); wrote ${out}: ${counts.pages} pages, ${counts.scripts} inline script hash(es), ${counts.styles} inline style hash(es), ${counts.rewrites} extensionless rewrites`);
   return 0;
 }
 
 if (require.main === module) process.exit(main(process.argv.slice(2)));
 
-module.exports = { inspect, buildConfig, sha, ALLOWED };
+module.exports = { inspect, buildConfig, minifyScripts, sha, ALLOWED };
