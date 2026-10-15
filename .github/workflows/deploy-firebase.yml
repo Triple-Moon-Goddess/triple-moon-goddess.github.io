@@ -75,6 +75,11 @@ jobs:
 
   scan:
     needs: deploy
+    # The called workflow reads Pages build status; a called workflow can only use
+    # permissions its caller grants (without this, GitHub refuses to start the run).
+    permissions:
+      contents: read
+      pages: read
     uses: ./.github/workflows/zap-scan.yml
     with:
       site: firebase
