@@ -10,7 +10,7 @@ name: Build and deploy (Firebase Hosting)
 #           repo can never touch the apps), keyless (Workload Identity
 #           Federation; this repo's main branch only)
 #   scan    the OWASP ZAP baseline of the deployed Firebase site (zap-scan.yml): report kept,
-#           findings emailed to Lisa, a Low-or-higher finding fails the run
+#           findings emailed to Lisa, any finding (Informational included) fails the run
 
 on:
   push:
@@ -44,6 +44,8 @@ jobs:
       - name: Hosting config + security headers from the built pages (scripts minified first)
         run: |
           npm ci --prefix .hosting --no-audit --no-fund
+          node .hosting/zap-summary.test.cjs
+          node .hosting/point-app-links.test.cjs
           node .hosting/build-config.cjs _site .hosting/firebase.json
       - uses: actions/upload-artifact@v4
         with:
