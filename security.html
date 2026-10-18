@@ -1,0 +1,362 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Brief — Triple Moon Goddess</title>
+{% include head-meta.html title="Security Brief — Triple Moon Goddess" description="How the Triple Moon Goddess practitioner subscriptions protect client records: who can reach them, how they are stored, and how every release is tested. For IT and security reviewers." url="/security.html" %}
+{% include schema-org.html %}
+<style>
+  :root {
+    --gold: #d4af6a;
+    --gold-bright: #e8c989;
+    --gold-deep: #b8945a;
+    --ink: #f5e8d0;
+    --ink-soft: #c9b896;
+    --bg: #0a0608;
+    --bg-card: #110a0d;
+    --line: rgba(212, 175, 106, 0.18);
+    --line-strong: rgba(212, 175, 106, 0.4);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  html, body {
+    background: #0a0608 !important;
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(20, 12, 8, 1) 0%, #0a0608 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* HERO */
+  .hero { padding: 72px 0 8px; text-align: center; }
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '✦';
+    margin: 0 14px;
+    color: var(--gold-deep);
+    font-size: 10px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.15;
+    color: var(--gold-bright);
+  }
+  .hero .tiers {
+    margin-top: 14px;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+  }
+  .hero .tagline {
+    margin: 34px auto 0;
+    max-width: 720px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    color: var(--ink);
+  }
+  .hero .lede {
+    margin: 12px auto 0;
+    max-width: 680px;
+    color: var(--ink-soft);
+  }
+  .hero .verified {
+    margin-top: 18px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(201, 184, 150, 0.6);
+  }
+
+  .ornament {
+    margin: 40px auto 0;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position: relative;
+  }
+  .ornament::before {
+    content: '☾';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0a0608;
+    padding: 0 18px;
+    color: var(--gold);
+    font-size: 18px;
+  }
+
+  /* SECTIONS */
+  .part { padding: 56px 0 8px; }
+  .part-title {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .part-lede {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2vw, 1.45rem);
+    color: var(--ink);
+  }
+  .platform {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--ink-soft);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 26px 26px 22px;
+  }
+  .card h3 {
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 14px;
+  }
+  .card ul { list-style: none; }
+  .card li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 11px;
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
+  .card li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: var(--gold-deep);
+    font-size: 11px;
+  }
+  .card li strong { color: var(--ink); font-weight: 500; }
+
+  .standard {
+    max-width: 760px;
+    margin: 0 auto 26px;
+    padding: 22px 26px;
+    border: 1px solid var(--line-strong);
+    text-align: center;
+    color: var(--ink-soft);
+  }
+  .standard strong {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 8px;
+  }
+
+  .signoff {
+    padding: 56px 0 88px;
+    text-align: center;
+    color: var(--ink-soft);
+  }
+  .signoff .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--gold-bright);
+  }
+  .signoff a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); }
+  .signoff a:hover { color: var(--gold-bright); }
+  .signoff .links { margin-top: 18px; font-size: 14px; }
+
+  @media (max-width: 760px) {
+    .container { padding: 0 16px; }
+    .grid { grid-template-columns: 1fr; }
+    .card { padding: 22px 18px 16px; }
+  }
+</style>
+</head>
+<body>
+{% include nav.html active="/security.html" %}
+
+<div class="container">
+
+  <section class="hero">
+    <div class="hero-eyebrow">For your IT &amp; security reviewer</div>
+    <h1>Security Brief</h1>
+    <p class="tiers">Soul Pattern · Constitutional Health · Relationship Advice · Integrative Practitioner</p>
+    <p class="tagline">Built to Business Associate Agreement standards. Tested the way an attacker would.</p>
+    <p class="lede">How the practitioner subscriptions protect client records: who can reach them, how they are stored, and how releases are tested before and after they ship.</p>
+    {% include doc-version.html doc="security" name="Security Brief" %}
+    <p class="verified">Checked against the live system October 18, 2026</p>
+    <div class="ornament"></div>
+  </section>
+
+  <section class="part">
+    <h2 class="part-title">Platform</h2>
+    <p class="platform">Google Cloud and Firebase: Firestore, Cloud Functions, Cloud Run, Cloud Storage and Hosting. Triple Moon Goddess signs a Business Associate Agreement with a practice only after its own Business Associate Agreements with Google Cloud and Google Workspace are in place.</p>
+  </section>
+
+  <section class="part">
+    <div class="grid">
+      <div class="card">
+        <h3>Access control</h3>
+        <ul>
+          <li>A practitioner sees a client only after the client accepts the practitioner's invitation. One consent check guards every practitioner action on client records, in the database rules and on the server.</li>
+          <li>Clients who work with a practitioner sign in with an emailed single-use link. Free-app users need no account; a single-use link that expires in 15 minutes restores their records on a new device. Password sign-in is off.</li>
+          <li>Practitioners and the administrator sign in with Google plus two-step sign-in (an authenticator app), and must have signed in within the last hour.</li>
+          <li>Practitioners, the administrator and signed-in clients are signed out after 30 minutes idle.</li>
+          <li>Access codes are issued by the server. An email address or a code alone opens no records. The sign-in step does say whether an email already has a chart, so it can send the link.</li>
+          <li>The Triple Moon Goddess administrator account is the one account not limited by client consent. Its reads of birth data are audit-logged.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Encryption &amp; data handling</h3>
+        <ul>
+          <li>Encrypted in transit (HTTPS) and at rest.</li>
+          <li>In our database, email addresses, birth data, practitioner notes and readings are encrypted with a managed Cloud KMS key that only server functions use. The key rotates every 90 days.</li>
+          <li>Records are keyed by pseudonymous access codes. Email lookups use keyed fingerprints (HMAC-SHA256) with the key held in Secret Manager.</li>
+          <li>Application logs carry no email addresses, access codes or AI text. Data-access audit logs record which records were read and by which signed-in account.</li>
+          <li>Email addresses also go to the services that need them: Stripe for receipts, Google Calendar for booking invitations, MailerLite for the opt-in newsletter, and Google Workspace for mail.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>AI</h3>
+        <ul>
+          <li>Practitioner AI runs on the practitioner's own Anthropic API key, sent directly from their browser to Anthropic under the practitioner's own Anthropic account. That traffic is outside Triple Moon Goddess's systems and agreements.</li>
+          <li>It receives the client's chart placements, scores, intake answers, journal entries and the practitioner's notes, labelled only “CLIENT”. Name, email, and birth date, time and place are never sent. Anything the practitioner types or attaches is sent.</li>
+          <li>Lisa's own practitioner use runs through our server on the Triple Moon Goddess Anthropic account.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Backups &amp; recovery</h3>
+        <ul>
+          <li>Daily and weekly backups are kept 98 days, with point-in-time recovery for 7 days.</li>
+          <li>A separate export vault in its own project is kept 30 days under a locked retention policy.</li>
+          <li>Delete protection is on for the production database.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="part">
+    <h2 class="part-title">Testing &amp; monitoring</h2>
+    <p class="part-lede">Access rules are proven by running them, not by reading them.</p>
+    <div class="standard">
+      <strong>The standard</strong>
+      Every database and storage rule is exercised against an emulator, and the live system is attacked over the network. Some supporting checks are code scans.
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h3>On release</h3>
+        <ul>
+          <li>A release that changes database or storage rules ships only if every rule path, tried as each kind of user, answers exactly as expected. The same full test runs weekly.</li>
+          <li>Every server function must have a written expected-access rule, and the attacker test suites must pass, before it can deploy.</li>
+          <li>Right after a release through the standard deploy pipeline, a stranger attacks every live function, endpoint and storage bucket. An unexpected answer emails an alert at once, and the release is not recorded as complete until it is fixed.</li>
+          <li>OWASP ZAP scans the apps and the website after release. Any finding fails the scan.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Continuous monitoring</h3>
+        <ul>
+          <li>A stranger attacks production every day.</li>
+          <li>A weekly audit checks least-privilege access, key and secret rotation, credentials in code and critical or high dependency vulnerabilities, and runs a mutation test proving the tests catch an opened database rule. The report is sent every week, pass or fail.</li>
+          <li>9 breach and backup alerts, 5 of them with 24-hour checks for slow attacks, plus 3 application-error alerts.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Retention &amp; deletion</h3>
+        <ul>
+          <li>Clients can delete their data at any time. Their records, files and email sign-in account are removed. Payment records keep only amounts and status. Practitioner notes stay until the practitioner deletes them. Backups age out within 98 days.</li>
+          <li>When a paid practitioner subscription is cancelled, that practitioner's records are deleted automatically. A suspended account keeps its records until it is restored or cancelled.</li>
+          <li>Sign-in links work once and expire after 15 minutes. Return links expire 72 hours after the most recent email that carried them. Expired links are then deleted automatically.</li>
+          <li>Automated emails carrying client data are sent from a dedicated address and deleted from our mailbox after 30 days. Replies and calendar invitations are kept in our Google Workspace.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Audit logs</h3>
+        <ul>
+          <li>Data-access audit logs are kept 6 years. The archived copy is held under a retention policy and is readable only by the account owner.</li>
+          <li>Application logs are kept 30 days.</li>
+        </ul>
+        <h3>Available on request</h3>
+        <ul>
+          <li>Data map: where client data lives and for how long</li>
+          <li>Recent security test results and weekly audit reports</li>
+          <li>OWASP ZAP scan reports</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="signoff">
+    <p class="name">Lisa Hagan</p>
+    <p>Founder, with a background in cybersecurity and third-party risk.</p>
+    <p class="links"><a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a></p>
+  </section>
+
+  {% include version-history.html doc="security" %}
+
+</div>
+
+{% include footer.html %}
+</body>
+</html>
