@@ -11,10 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const { pages } = require('./build-config.cjs');
-
-const PROD_APP = 'https://triple-moon-goddess.web.app';
-const APP_ORIGINS = [PROD_APP, 'https://triple-moon-goddess-dev.web.app'];
+const { pages, PROD_APP, APP_ORIGINS } = require('./build-config.cjs');
 
 /** Returns the page text with every prod app link pointed at `origin`. */
 function pointAppLinks(html, origin) {

@@ -11,7 +11,8 @@
 //   - FAILS the build on what a hash cannot cover (a style="" attribute, an
 //     on*= event handler, a javascript: URL) or on an outside host that is not
 //     in ALLOWED below — the page would break under the policy;
-//   - serves /about as /about.html for every top-level page, as GitHub Pages did.
+//   - serves /about as /about.html for every top-level page, as GitHub Pages did;
+//   - lets the one app origin (--app-origin, default the prod app) read events.html.
 //
 // No Cross-Origin-Embedder-Policy: tested 2026-10-14, COEP credentialless stops the
 // click-to-play YouTube player loading in Chromium and Firefox (~/tmg-hq/dev-e2e/zap/video-trial.cjs).
@@ -20,6 +21,15 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+
+// The TMG apps whose pages link here; the prod app is what the live site serves.
+const PROD_APP = 'https://triple-moon-goddess.web.app';
+const APP_ORIGINS = [PROD_APP, 'https://triple-moon-goddess-dev.web.app'];
+
+// Pages the app reads from the browser, and so must allow that one app origin
+// to read (Lisa, 2026-10-18): the admin Reading Reconciliation report reads the
+// event list from events.html. One named origin, never '*' (ZAP 10098).
+const APP_READABLE_PAGES = ['/events.html', '/events'];
 
 // Outside hosts the site may load, by CSP directive. Adding one is a deliberate edit.
 const ALLOWED = {
@@ -102,7 +112,8 @@ function minifyScripts(siteDir) {
   return count;
 }
 
-function buildConfig(siteDir) {
+function buildConfig(siteDir, { appOrigin = PROD_APP } = {}) {
+  if (!APP_ORIGINS.includes(appOrigin)) throw new Error(`unknown app origin: ${appOrigin}`);
   const scriptHashes = new Set();
   const styleHashes = new Set();
   const errors = [];
@@ -158,6 +169,13 @@ function buildConfig(siteDir) {
             { key: 'Cache-Control', value: 'no-cache, no-store, must-revalidate' },
           ],
         },
+        ...APP_READABLE_PAGES.map((source) => ({
+          source,
+          headers: [
+            { key: 'Access-Control-Allow-Origin', value: appOrigin },
+            { key: 'Vary', value: 'Origin' },
+          ],
+        })),
         // Public files only; names are not content-hashed, so a day, never immutable.
         { source: '/assets/**', headers: [{ key: 'Cache-Control', value: 'public, max-age=86400' }] },
         { source: '**/*.@(png|jpg|jpeg|gif|svg|ico|webp)', headers: [{ key: 'Cache-Control', value: 'public, max-age=86400' }] },
@@ -168,10 +186,12 @@ function buildConfig(siteDir) {
 }
 
 function main(argv) {
-  const [siteDir, out] = argv;
-  if (!siteDir || !out) { console.error('usage: build-config.cjs <built site dir> <out firebase.json>'); return 2; }
+  const [siteDir, out, ...rest] = argv;
+  if (!siteDir || !out) { console.error('usage: build-config.cjs <built site dir> <out firebase.json> [--app-origin <origin>]'); return 2; }
+  const i = rest.indexOf('--app-origin');
+  const appOrigin = i >= 0 ? rest[i + 1] : PROD_APP;
   const minified = minifyScripts(siteDir);
-  const { config, errors, counts } = buildConfig(siteDir);
+  const { config, errors, counts } = buildConfig(siteDir, { appOrigin });
   if (errors.length) {
     console.error(`REFUSED: ${errors.length} problem(s) the security headers would break:\n  ${errors.join('\n  ')}`);
     return 1;
@@ -183,4 +203,4 @@ function main(argv) {
 
 if (require.main === module) process.exit(main(process.argv.slice(2)));
 
-module.exports = { inspect, buildConfig, minifyScripts, sha, pages, ALLOWED };
+module.exports = { inspect, buildConfig, minifyScripts, sha, pages, ALLOWED, PROD_APP, APP_ORIGINS, APP_READABLE_PAGES };
