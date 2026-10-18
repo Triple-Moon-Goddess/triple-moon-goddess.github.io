@@ -183,4 +183,4 @@ function main(argv) {
 
 if (require.main === module) process.exit(main(process.argv.slice(2)));
 
-module.exports = { inspect, buildConfig, minifyScripts, sha, ALLOWED };
+module.exports = { inspect, buildConfig, minifyScripts, sha, pages, ALLOWED };
