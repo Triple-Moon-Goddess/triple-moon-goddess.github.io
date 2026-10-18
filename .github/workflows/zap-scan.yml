@@ -8,8 +8,8 @@ name: ZAP Scan
 # deploy; page_build while the site is still on GitHub Pages), Mondays 09:27 UTC,
 # and by hand.
 # The report is kept as an artifact, the findings are emailed to Lisa on every
-# run, and a finding of Low risk or higher fails the run (Informational findings
-# are listed, not failed) — the same rules as the app repo's zap-scan.yml.
+# run, and ANY finding fails the run, Informational included (Lisa, 2026-10-18)
+# — the same rules as the app repo's zap-scan.yml.
 # Findings Lisa decided on (.hosting/zap-decisions.json) are listed with her note
 # and do not count.
 # ZAP never files GitHub issues.

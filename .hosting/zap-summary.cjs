@@ -4,7 +4,8 @@
 // are listed with her note and not counted. A decision matches only when plugin AND name
 // match, every URL is on a TMG host, and — where the entry says so — every evidence value
 // matches its patterns, every URL matches its urlPattern, and the alert's other info
-// matches otherinfoPattern. Any other finding of Low risk or higher fails the run.
+// matches otherinfoPattern. Any other finding fails the run, Informational included
+// (Lisa, 2026-10-18: every finding alerts).
 //
 //   node .hosting/zap-summary.cjs <report_json.json> <title> <out.md>
 // Prints "subject=…" and "rc=0|1" lines (for $GITHUB_OUTPUT).
@@ -51,8 +52,8 @@ function summarize(report, title, decisions) {
     md.push('', '## Decided by Lisa (listed every run, not counted)', '');
     for (const a of decided) md.push(`- **${KIND[a.decision.kind]}** — ${a.name} (plugin ${a.pluginid}, ${RISK[a.riskcode]}) — ${a.decision.decided}`, `  - ${a.decision.note}`, ...lines(a));
   }
-  const failing = counts.High + counts.Medium + counts.Low;
-  if (failing) md.push('', `**FAIL: ${failing} finding(s) at Low risk or higher.**`);
+  const failing = open.length;
+  if (failing) md.push('', `**FAIL: ${failing} finding(s) — every finding fails, Informational included.**`);
   const c = Object.entries(counts).map(([k, v]) => `${k} ${v}`).join(', ');
   return { md: md.join('\n') + '\n', subject: `${failing ? '🚨 FAILED' : 'passed'} — ${title}: ${c}`, rc: failing ? 1 : 0 };
 }
