@@ -4,6 +4,29 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 ---
 
+## v2026-10b — October 18, 2026
+
+**Reviewed:** October 18, 2026
+**Reviewed by:** Lisa Hagan + Claude (Anthropic)
+**Status:** Draft on branch `about-security-legal` until Lisa approves the wording; published when merged. Every statement was checked against `astrology-app-private` main `48d9a83ef` and read-only checks of the live production configuration on 2026-10-18.
+**Context:** The BAA-readiness work shipped October 7–18, 2026 made several v2026-10 statements untrue. Published alongside the new Security Brief page (`security.html`); Privacy Policy, Terms of Service and Security Brief now carry versions and a version history (`_data/doc_versions.yml`).
+
+### Changes (material)
+
+- **Email fingerprint:** "one-way SHA-256 hash" is now "keyed one-way fingerprint (HMAC-SHA256, key in Secret Manager)" everywhere (summary, Section VI, Section IX).
+- **Section II scope:** adds the Relationship Advice app and clients who share their records with a practitioner.
+- **Section IV AI:** free AI uses are 5 per chart, counted on the server. Practitioner AI is own-key only and goes directly from the practitioner's browser to Anthropic, outside TMG's systems and agreements. The practitioner touchpoints now list chart placements, intake answers and journal entries.
+- **Section V processors:** added OpenStreetMap Nominatim (birthplace geocoding) and Google Identity Platform (email-link sign-in, two-step sign-in, password off, 30-minute idle sign-out).
+  - **Email delivery:** mail now comes from notifications@ and our copies are purged after 30 days. The Gmail API is used only on our own mailbox, read-only, for bounce detection and the purge. This replaces "We do not use the Gmail API".
+  - **Calendar:** the event description carries the client's email, order reference and product.
+  - **MailerLite:** a chart email also adds the address to the subscriber list, and subscribers' personal transit notes are sent to MailerLite. Both are flagged in the fix plan for review.
+- **Section VIII retention:** added sign-in links (15 minutes), return links (72 hours from the last email), invitations (7 days), mailbox copies (30 days), video and preview files (7 days), reading PDFs, audit logs (6 years), application logs (30 days), and practitioner records. Removed the email-queue row; the send-email extension was uninstalled on 2026-10-10.
+- **Section IX security:** added two-step sign-in, the one-hour session limit and idle sign-out. The consent-based practitioner decryption replaces "clients assigned to them". "Client clinical notes" is now "practitioner notes" (no clinical terms). Removed the retired passphrase paragraph, the candidate-for-deletion watch item below.
+- **Section X storage:** the minor chart key covers all users under 18. Added the encrypted own-AI-key storage (`tmg_anthropic_key_enc`, IndexedDB `tmg-ai-key`).
+- **Section XI children:** the on-device chart applies to everyone under 18, not 13 to 17. Added the server's refusal to store under-18 birth data except Lisa's in-person charts with parental consent, and that readings are adults only.
+- **Section XII rights:** "Settings → Danger Zone" (no such label in the apps) replaced by the real Delete All Data and Delete Data paths. Says what deletion keeps and how to stop sharing with a practitioner. Removed "Firebase analytics"; there is no analytics SDK.
+- **Section XIII practitioners:** rewritten for the invitation and consent model shipped in v1.155 to v1.167. Practitioners never enter birth data. Covers what practitioners see and write, deletion on cancellation, and own-key AI. "Research corpus" wording now matches what is actually stored.
+
 ## v2026-10 — October 4, 2026
 
 **Reviewed:** October 4, 2026 (Q4 2026 quarterly review)
@@ -209,7 +232,7 @@ This section is the single home for the privacy review cadence and any open priv
 - **New app added to ecosystem** — triggers a policy update at that point.
 - **Resolved 2026-07-19 — in-app copy now matches the shipped architecture.** `apps/client/src/components/SubscribePage.tsx` in `Triple-Moon-Goddess/astrology-app-private` (practitioner subscribe screen) described the retired passphrase encryption scheme ("encrypted in my browser with a passphrase I set," "no recovery mechanism"). Section 4 was retitled to drop "Passphrase" and items 1–2 rewritten to the managed-key Cloud KMS + account-security model; the emailed copy (`functions/scheduling.js` `sendPractitionerWaiverCopy`) was matched word-for-word, `WAIVER_VERSION` bumped 2.0 → 2.1, the stale `PractitionerWaiverStep` header comment fixed, and the canonical wording landed first in `business/legal/consent-register.md` (tmg-library). Committed on `astrology-app-private` `main` (8533c7a5) and **confirmed live in prod** — the subscribe bundle now serves the "Data, Encryption & Account Security" / Cloud KMS copy with zero passphrase language (verified 2026-07-19). Opened 2026-07-16, closed 2026-07-19.
 
-- **Candidate for deletion at a future review (not urgent).** Section VIII states that legacy passphrase-sealed data is unrecoverable and marked as such. Lisa confirmed 2026-07-19 that no practitioner ever held passphrase-sealed data, so the clause describes a condition that does not exist. Not inaccurate, just dead weight — remove it whenever Section VIII is next opened for another reason. Does not justify a version bump on its own.
+- **Resolved 2026-10-18 in v2026-10b — retired passphrase paragraph removed from Section IX.**
 
 - **Resolved 2026-10-04 in v2026-10 — AI touchpoint table is incomplete (material).** Section IV lists three touchpoints (Journal AI Dialog, Practitioner AI Summary, Practitioner AI Dialog). Not listed: **journal tongue-photo analysis** (`TongueTab.tsx` → `proxyTongueAnalysis`, which sends the tongue photo to Anthropic; the image is not stored) and the **practitioner Soul / Synastry AI panels** (`proxyClaudeConsult`). Add each with the data sent and its notice. Note: the 5-free-uses-then-own-key model in Section IV is accurate (`packages/shared/src/aiAccess.ts`) and the Soul / Synastry panels follow it, and since app v1.145 (2026-10-04) tongue analysis does too: Lisa chose to gate it, so the same 5-free-uses / own-key rule now covers every AI touchpoint. Cross-ref: NIST finding A2.
 - **Resolved 2026-10-04 in v2026-10 — Section V Third-Party Processors is missing processors in use (material).** **Stripe** (payments) and **MailerLite** (newsletter subscribe) are both called by production code but not listed. **Formspree** handles the triplemoongoddess.com contact form (`contact.html` posts name, email and message to `formspree.io`). Its disclosure was drafted on branch `privacy/disclose-formspree-contact-form` (945e2f1, 2026-08-17) and has not been merged. Merge or redo it, and add Stripe and MailerLite.
