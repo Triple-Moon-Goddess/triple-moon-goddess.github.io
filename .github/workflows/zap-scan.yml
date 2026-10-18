@@ -7,8 +7,8 @@ name: ZAP Scan
 # Runs after every publish (called by deploy-firebase.yml after its Firebase
 # deploy; page_build while the site is still on GitHub Pages), Mondays 09:27 UTC,
 # and by hand.
-# The report is kept as an artifact, the findings are emailed to Lisa on every
-# run, and ANY finding fails the run, Informational included (Lisa, 2026-10-18)
+# The report is kept as an artifact, the findings are emailed to Lisa when the
+# run fails (Lisa, 2026-10-18: email only when there is a problem), and ANY finding fails the run, Informational included (Lisa, 2026-10-18)
 # — the same rules as the app repo's zap-scan.yml.
 # Findings Lisa decided on (.hosting/zap-decisions.json) are listed with her note
 # and do not count.
@@ -83,8 +83,9 @@ jobs:
           node repo/.hosting/zap-summary.cjs report_json.json "ZAP baseline (passive) scan — ${TARGET}" zap-summary.md >> "$GITHUB_OUTPUT"
           cat zap-summary.md >> "$GITHUB_STEP_SUMMARY"
 
+      # Email only when there is a problem (Lisa, 2026-10-18): a finding, or no report.
       - name: Email the findings to Lisa
-        if: always()
+        if: always() && steps.sum.outputs.rc != '0'
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
