@@ -10,6 +10,11 @@
 # the visitor presses play. Each video needs its thumbnail saved as
 # assets/video-thumbs/<youtube_id>.jpg (from https://i.ytimg.com/vi/<id>/maxresdefault.jpg).
 
+- title: "Triple Moon Goddess Podcast Reading with Judy Wallace"
+  youtube_id: "keuNF5d3vUQ"
+  date: "2026-10-17"
+  location: "Triple Moon Goddess Podcast"
+
 - title: "Sisters Enchanted Podcast Interview with Sara"
   youtube_id: "-J-drJ8-L0w"
   date: "2026-08-27"
