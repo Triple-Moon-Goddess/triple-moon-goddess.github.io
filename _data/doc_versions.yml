@@ -17,7 +17,7 @@ security:
 privacy:
   - version: v2026-10e
     date: October 19, 2026
-    summary: The website contact form is handled by Triple Moon Goddess's own server instead of Formspree; it asks for no name and stores nothing. Formspree removed from the processors.
+    summary: The website contact form is handled by Triple Moon Goddess's own server instead of Formspree; it asks for no name, stores nothing, and its email to Lisa is deleted after 30 days. Formspree removed from the processors.
   - version: v2026-10d
     date: October 19, 2026
     summary: US-only. TMG offers its services in the United States and does not target people elsewhere; the GDPR, UK, Brazil, Canada and Australia sections and GDPR legal-basis wording are replaced by one set of rights for everyone, California and other states, a written appeal process, and the new Consumer Health Data Privacy Policy (Washington My Health My Data Act).
