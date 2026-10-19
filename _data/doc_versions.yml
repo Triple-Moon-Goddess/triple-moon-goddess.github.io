@@ -7,6 +7,9 @@
 # Privacy details: legal/PRIVACY_CHANGELOG.md. Update both in the same commit.
 
 security:
+  - version: v2026-10c
+    date: October 20, 2026
+    summary: Deleting client data removes every sign-in account that held only that client's records, not just the email sign-in.
   - version: v2026-10b
     date: October 18, 2026
     summary: Published on the website. Every statement re-checked against the code and the live system; wording corrected where the October 13 edition overstated the controls, and the documents offered on request limited to those that exist; a third-party penetration test is arranged on request.
@@ -15,6 +18,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-10g
+    date: October 20, 2026
+    summary: The Health Journal also exports Markdown with a machine-readable copy; deleting your data also removes an anonymous sign-in that held only your charts.
   - version: v2026-10f
     date: October 19, 2026
     summary: Deleted files clear from storage within 7 days. A deleted reading PDF's recovery copy is removed automatically within 7 days, and video readings and previews are deleted about 7 days after they are made, with their recovery copy removed within 7 more days.
