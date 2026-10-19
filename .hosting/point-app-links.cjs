@@ -13,9 +13,14 @@
 const fs = require('fs');
 const { pages, PROD_APP, APP_ORIGINS } = require('./build-config.cjs');
 
-/** Returns the page text with every prod app link pointed at `origin`. */
+// The contact form posts to the app project's functions (contactFormSubmit), so
+// the dev copy must post to dev's, never prod's (2026-10-19).
+const PROD_FUNCTIONS = 'https://us-central1-triple-moon-goddess.cloudfunctions.net';
+const functionsFor = (origin) => (origin === PROD_APP ? PROD_FUNCTIONS : 'https://us-central1-triple-moon-goddess-dev.cloudfunctions.net');
+
+/** Returns the page text with every prod app link and functions URL pointed at `origin`'s project. */
 function pointAppLinks(html, origin) {
-  return html.split(PROD_APP).join(origin);
+  return html.split(PROD_APP).join(origin).split(PROD_FUNCTIONS).join(functionsFor(origin));
 }
 
 /** Rewrites every page under `dir`; returns how many links changed. */
@@ -24,7 +29,7 @@ function pointSiteAppLinks(dir, origin) {
   let changed = 0;
   for (const file of pages(dir)) {
     const html = fs.readFileSync(file, 'utf8');
-    const count = html.split(PROD_APP).length - 1;
+    const count = (html.split(PROD_APP).length - 1) + (html.split(PROD_FUNCTIONS).length - 1);
     if (count === 0) continue;
     fs.writeFileSync(file, pointAppLinks(html, origin));
     changed += count;
@@ -43,4 +48,4 @@ function main([dir, origin]) {
 
 if (require.main === module) process.exit(main(process.argv.slice(2)));
 
-module.exports = { pointAppLinks, pointSiteAppLinks, PROD_APP };
+module.exports = { pointAppLinks, pointSiteAppLinks, PROD_APP, PROD_FUNCTIONS };
