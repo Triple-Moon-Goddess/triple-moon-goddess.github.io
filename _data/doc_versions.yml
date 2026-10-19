@@ -15,6 +15,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-10c
+    date: October 18, 2026
+    summary: Data location corrected — TMG's databases, files, backups, keys and servers are in the United States only (the earlier "US and EU data centres" was not accurate). Chart emails now carry a newsletter unsubscribe link.
   - version: v2026-10b
     date: October 18, 2026
     summary: Brought in line with the BAA-readiness changes shipped October 7–18, 2026 — client sign-in by email link, two-step sign-in for practitioners, keyed email fingerprints, practitioner AI on the practitioner's own key, invitation and consent for practitioner clients, audit-log and link retention, and the mailbox purge.

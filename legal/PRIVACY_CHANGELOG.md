@@ -4,6 +4,17 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 ---
 
+## v2026-10c — October 18, 2026
+
+**Reviewed:** October 18, 2026 · **Reviewed by:** Lisa Hagan + Claude (Anthropic)
+**Context:** Found by the CAIQ v4.1 review (DSP-19.1). Live check 2026-10-18: Firestore `nam5` (US multi-region); every Cloud Storage bucket US / US-CENTRAL1 / US-EAST1 (incl. the backup vault and audit archive); Cloud Functions and Cloud Run us-central1 (one service us-east1); KMS key us-central1. Lisa: "update privacy policy to US only."
+
+### Changes (material)
+- Section V Firebase card: "across US and EU data centres" → "in Google data centres in the United States".
+- Section VII: states that databases, file storage, backups, encryption keys and servers are all in the United States, and that data of users outside the US is transferred to and stored there; third-party processors may process elsewhere under their own terms.
+- Section V MailerLite: every chart email carries an "Unsubscribe from the newsletter" link and one-click unsubscribe headers; an address that unsubscribes is not re-added by a later chart email (app CHANGELOG, CAIQ review item 8). **Publish only after that code is live on prod.**
+- Not stated as US-only yet: Cloud Logging buckets use Google's "global" location — fix plan item to recreate them in the US region before any claim covers logs.
+
 ## v2026-10b — October 18, 2026
 
 **Reviewed:** October 18, 2026
