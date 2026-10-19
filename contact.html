@@ -343,6 +343,8 @@
     to   { opacity: 1; transform: translateY(0); }
   }
   @keyframes fadeIn { to { opacity: 1; } }
+  /* Spam trap: hidden from people, filled only by bots (contactFormSubmit drops it). */
+  .trap-field { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 </style>
 </head>
 <body>
@@ -381,12 +383,7 @@
 
       <div class="form-error" id="form-error"></div>
 
-      <form id="contact-form" method="post" action="https://formspree.io/f/xwvyrrbr">
-
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" placeholder="How should Lisa address you?" required>
-        </div>
+      <form id="contact-form" data-endpoint="https://us-central1-triple-moon-goddess.cloudfunctions.net/contactFormSubmit">
 
         <div class="form-group">
           <label for="email">Email Address</label>
@@ -395,7 +392,12 @@
 
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="What's on your mind?" required></textarea>
+          <textarea id="message" name="message" placeholder="What's on your mind? Sign it however you like." required></textarea>
+        </div>
+
+        <div class="form-group trap-field" aria-hidden="true">
+          <label for="website">Leave this empty</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
         </div>
 
         <button type="submit" class="submit-btn" id="submit-btn">Send Message</button>
@@ -428,13 +430,14 @@
     submitBtn.textContent = 'Sending…';
     formError.style.display = 'none';
 
-    const data = new FormData(form);
+    // Sent to Triple Moon Goddess's own server, which emails Lisa; nothing is stored.
+    const data = Object.fromEntries(new FormData(form).entries());
 
     try {
-      const res = await fetch('https://formspree.io/f/xwvyrrbr', {
+      const res = await fetch(form.dataset.endpoint, {
         method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
       });
 
       if (res.ok) {
@@ -444,7 +447,7 @@
         successState.style.background = '#0d0709';
       } else {
         const json = await res.json().catch(() => ({}));
-        const msg = (json.errors || []).map(e => e.message).join(' ') || 'Something went wrong. Please email Lisa@TripleMoonGoddess.com directly.';
+        const msg = json.error || 'Something went wrong. Please email Lisa@TripleMoonGoddess.com directly.';
         formError.textContent = msg;
         formError.style.display = 'block';
         submitBtn.disabled = false;
