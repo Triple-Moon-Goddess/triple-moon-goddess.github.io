@@ -8,7 +8,7 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 ## v2026-10e — October 19, 2026
 
-- **Contact form without a third party (Lisa, 2026-10-19).** The website contact form now posts to TMG's own server (`contactFormSubmit`), which emails the message to Lisa and stores nothing. The form asks for email and message only (no name, per the no-names rule). Formspree is removed from Section V and the retention table; Section III describes the new handling.
+- **Contact form without a third party (Lisa, 2026-10-19).** The website contact form now posts to TMG's own server (`contactFormSubmit`), which emails the message to Lisa and stores nothing; that email is deleted after 30 days by the notifications mailbox purge. The form asks for email and message only (no name, per the no-names rule). Formspree is removed from Section V and the retention table; Section III describes the new handling.
 
 ## v2026-10d — October 19, 2026
 
