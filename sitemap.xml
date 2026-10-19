@@ -96,6 +96,11 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://triplemoongoddess.com/consumer-health-data.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://triplemoongoddess.com/terms.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
