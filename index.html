@@ -159,6 +159,9 @@
   .apppurpose a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(240,199,110,.4);}
   .lede strong{color:var(--ink);font-weight:500;}
   .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:36px;}
+  /* 90-minute session and 30-minute reading side by side; stacks on phones. */
+  .hero-offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px 40px;align-items:start;}
+  .hero-offers .bigline{font-size:clamp(2.6rem,4.6vw,4.2rem);}
   .hero-cta .btn{padding:15px 32px;font-size:.92rem;}
   .hero-cta .btn-ghost{padding:15px 28px;font-size:.92rem;}
   .facts{
@@ -418,12 +421,24 @@
     <h1 class="appname">Triple Moon Goddess</h1>
     <p class="apptag">An integrative astrology web application &mdash; your constitution, health patterns, and growth patterns, mapped from your birth data.</p>
     <p class="apppurpose">You give Triple Moon Goddess your birth data; it calculates your natal chart, derives your constitutional and growth profile, and returns practical guidance drawn from that pattern. Individuals use the free chart apps with no account and no Google sign-in. Practitioners subscribe and sign in with Google to use the same engine inside their own practice. Booking a 90-minute session with Lisa Hagan creates the appointment on her business calendar through the Google Calendar API. See <a href="#google-data">how the app uses Google data</a> and the <a href="/privacy.html">privacy policy</a>.</p>
-    <div class="pill"><span class="dot"></span> 90-minute consultations &middot; live &middot; one to one</div>
-    <div class="bigline">Ninety minutes<br>that go <span class="grad">all the way down</span>.</div>
-    <p class="lede">Most readings hand you a description of yourself. This one hands you the <strong>pattern underneath it</strong> &mdash; your chart, your constitution, and what to actually do about both. I read all of it before you arrive, so the whole ninety belongs to you.</p>
-    <div class="hero-cta">
-      <a class="btn" href="/schedule.html">Book your ninety &mdash; $150</a>
-      <a class="btn-ghost" href="#happens">See what happens &darr;</a>
+    <div class="hero-offers">
+      <div class="hero-offer">
+        <div class="pill"><span class="dot"></span> 90-minute consultations &middot; live &middot; one to one</div>
+        <div class="bigline">Ninety minutes<br>that go <span class="grad">all the way down</span>.</div>
+        <p class="lede">Most readings hand you a description of yourself. This one hands you the <strong>pattern underneath it</strong> &mdash; your chart, your constitution, and what to actually do about both. I read all of it before you arrive, so the whole ninety belongs to you.</p>
+        <div class="hero-cta">
+          <a class="btn" href="/schedule.html">Book your ninety &mdash; $150</a>
+          <a class="btn-ghost" href="#happens">See what happens &darr;</a>
+        </div>
+      </div>
+      <div class="hero-offer">
+        <div class="pill"><span class="dot"></span> $50 &middot; 30-minute call</div>
+        <div class="bigline">Topic Reading and <span class="grad">Chart Walkthrough</span></div>
+        <p class="lede">Romantic, Family, Career, Soul Purpose, or Personal Question, and a walkthrough of your chart &mdash; 12 houses &middot; 12 signs &middot; 10 planets &middot; North &amp; South Node &middot; Ascendant. <strong>$50 session credit included.</strong></p>
+        <div class="hero-cta">
+          <a class="btn" href="/online-readings.html">Get Your Reading &mdash; $50</a>
+        </div>
+      </div>
     </div>
     <div class="facts">
       <span>Live on Google Meet</span>
