@@ -9,7 +9,7 @@
 security:
   - version: v2026-10b
     date: October 18, 2026
-    summary: Published on the website. Every statement re-checked against the code and the live system; wording corrected where the October 13 edition overstated the controls, and the documents offered on request limited to those that exist.
+    summary: Published on the website. Every statement re-checked against the code and the live system; wording corrected where the October 13 edition overstated the controls, and the documents offered on request limited to those that exist; a third-party penetration test is arranged on request.
   - version: v2026-10
     date: October 13, 2026
     summary: First edition, a two-page PDF.
