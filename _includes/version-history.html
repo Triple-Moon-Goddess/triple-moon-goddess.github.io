@@ -1,0 +1,26 @@
+{%- comment -%}
+  Version history list for a versioned document. Usage:
+    {% include version-history.html doc="terms" %}
+  Lists every entry of site.data.doc_versions[doc], newest first.
+{%- endcomment -%}
+<style id="tmg-version-history-css">
+  .tmg-doc-version { font-family: 'Cinzel', Georgia, serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(201, 184, 150, 0.7); text-align: center; margin-top: 6px; }
+  .tmg-doc-version a { color: #d4af6a; text-decoration: none; border-bottom: 1px solid #b8945a; }
+  .tmg-version-history { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 40px 0 64px; }
+  .tmg-version-history h2 { font-family: 'Cinzel', Georgia, serif; font-weight: 400; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: #d4af6a; text-align: center; margin: 0 0 20px; }
+  .tmg-version-history ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(212, 175, 106, 0.18); }
+  .tmg-version-history li { display: grid; grid-template-columns: 110px 150px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(212, 175, 106, 0.18); color: #c9b896; font-size: 14px; line-height: 1.6; }
+  .tmg-version-history .v { color: #e8c989; font-family: 'Cinzel', Georgia, serif; font-size: 12px; letter-spacing: 0.08em; }
+  .tmg-version-history .current { color: #d4af6a; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; display: block; }
+  @media (max-width: 640px) {
+    .tmg-version-history li { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>
+<section class="tmg-version-history" id="version-history" aria-label="Version history">
+  <h2>Version history</h2>
+  <ol>
+    {%- for entry in site.data.doc_versions[include.doc] %}
+    <li><span class="v">{{ entry.version }}{% if forloop.first %}<span class="current">Current</span>{% endif %}</span><span>{{ entry.date }}</span><span>{{ entry.summary }}</span></li>
+    {%- endfor %}
+  </ol>
+</section>

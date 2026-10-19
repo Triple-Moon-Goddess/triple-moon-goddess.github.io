@@ -30,6 +30,7 @@ All consultations below are booked at https://triplemoongoddess.com/schedule.htm
 - [Speaking & Events](https://triplemoongoddess.com/events.html): Scheduled speaking engagements and event appearances.
 - [Recorded Talks & Interviews](https://triplemoongoddess.com/recorded.html): Recorded talks and podcast interviews, with date, time, and location for each.
 - [Mission](https://triplemoongoddess.com/mission.html): Triple Moon Goddess is a lifelong devotion — deepening the work, reaching the people it's meant for, and continuous growth in craft and spirit.
+- [Security Brief](https://triplemoongoddess.com/security.html): How the practitioner subscriptions protect client records — access control, encryption, AI, backups, testing and retention. For IT and security reviewers.
 - [Integrative Pattern Astrology](https://triplemoongoddess.com/ipa.html): The pattern method behind the application.
 
 ## Contact
