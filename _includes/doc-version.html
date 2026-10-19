@@ -1,0 +1,7 @@
+{%- comment -%}
+  Current-version stamp for a versioned document. Usage:
+    {% include doc-version.html doc="privacy" name="Privacy Policy" %}
+  Reads the first (newest) entry of site.data.doc_versions[doc].
+{%- endcomment -%}
+{%- assign tmg_doc_current = site.data.doc_versions[include.doc] | first -%}
+<p class="tmg-doc-version">{{ include.name }} {{ tmg_doc_current.version }} &nbsp;&middot;&nbsp; Effective {{ tmg_doc_current.date }} &nbsp;&middot;&nbsp; <a href="#version-history">Version history</a></p>
