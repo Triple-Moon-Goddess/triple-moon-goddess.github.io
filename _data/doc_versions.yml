@@ -15,6 +15,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-10d
+    date: October 19, 2026
+    summary: US-only. TMG offers its services in the United States and does not target people elsewhere; the GDPR, UK, Brazil, Canada and Australia sections and GDPR legal-basis wording are replaced by one set of rights for everyone, California and other states, a written appeal process, and the new Consumer Health Data Privacy Policy (Washington My Health My Data Act).
   - version: v2026-10c
     date: October 18, 2026
     summary: Data location corrected — TMG's databases, files, backups, keys and servers are in the United States only (the earlier "US and EU data centres" was not accurate). Chart emails now carry a newsletter unsubscribe link.
@@ -53,3 +56,8 @@ terms:
   - version: v2026-05
     date: May 2026
     summary: First publication.
+
+health_data:
+  - version: v2026-10
+    date: October 19, 2026
+    summary: First edition. The consumer health data TMG collects and why, where it comes from, who receives it, and how to use your rights and appeal (Washington My Health My Data Act and similar state laws).

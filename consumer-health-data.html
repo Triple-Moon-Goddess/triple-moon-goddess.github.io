@@ -1,0 +1,143 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consumer Health Data Privacy Policy — Triple Moon Goddess</title>
+{% include head-meta.html title="Consumer Health Data Privacy Policy — Triple Moon Goddess" description="The consumer health data Triple Moon Goddess collects, why, where it comes from, who receives it, and how to use your rights under Washington's My Health My Data Act and similar state laws." url="/consumer-health-data.html" %}
+{% include schema-org.html %}
+<style>
+  :root { --gold: #d4af6a; --gold-bright: #e8c989; --gold-deep: #b8945a; --ink: #f5e8d0; --ink-soft: #c9b896; --bg: #0a0608; --bg-deep: #050304; --bg-card: #110a0d; --line: rgba(212, 175, 106, 0.18); --line-strong: rgba(212, 175, 106, 0.4); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; position: relative; min-height: 100vh; }
+  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 15% 20%, rgba(212,175,106,0.08) 0%, transparent 45%), radial-gradient(ellipse at 85% 75%, rgba(184,148,90,0.06) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(20,12,8,1) 0%, var(--bg) 70%); pointer-events: none; z-index: 0; }
+  body::after { content: ''; position: fixed; inset: 0; background-image: radial-gradient(1px 1px at 23% 17%, rgba(232,201,137,0.8), transparent), radial-gradient(1px 1px at 67% 83%, rgba(232,201,137,0.6), transparent), radial-gradient(1px 1px at 41% 52%, rgba(232,201,137,0.5), transparent), radial-gradient(1px 1px at 89% 11%, rgba(232,201,137,0.7), transparent), radial-gradient(1px 1px at 12% 73%, rgba(232,201,137,0.4), transparent), radial-gradient(1px 1px at 78% 41%, rgba(232,201,137,0.6), transparent), radial-gradient(2px 2px at 56% 29%, rgba(232,201,137,0.9), transparent), radial-gradient(1px 1px at 33% 88%, rgba(232,201,137,0.5), transparent), radial-gradient(1px 1px at 7% 38%, rgba(232,201,137,0.7), transparent), radial-gradient(2px 2px at 94% 62%, rgba(232,201,137,0.8), transparent); background-size: 100% 100%; pointer-events: none; z-index: 0; opacity: 0.7; animation: twinkle 8s ease-in-out infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0.7} 50%{opacity:0.4} }
+  .container { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 32px; }
+  .policy-header { text-align: center; padding: 32px 0 0; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); line-height: 2; }
+  .policy-header a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); }
+  .policy-header a:hover { color: var(--gold-bright); }
+  .policy-header .version { color: rgba(201,184,150,0.5); margin-top: 4px; }
+  .hero { padding: 100px 0 56px; text-align: center; }
+  .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; margin-bottom: 28px; }
+  .hero-eyebrow::before, .hero-eyebrow::after { content: '✦'; margin: 0 14px; color: var(--gold-deep); font-size: 10px; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.1; letter-spacing: -0.01em; color: var(--gold-bright); margin-bottom: 24px; }
+  .hero h1 em { font-style: italic; color: var(--ink); font-weight: 300; }
+  .meta { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.2em; color: var(--ink-soft); text-transform: uppercase; margin-top: 32px; }
+  .ornament { margin: 48px auto; width: 200px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); position: relative; }
+  .ornament::before { content: '☾'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: var(--bg); padding: 0 18px; color: var(--gold); font-size: 18px; }
+  section.policy { margin-bottom: 56px; padding: 0 8px; }
+  section.policy h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 400; color: var(--gold-bright); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  section.policy h2 .num { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.24em; color: var(--gold); margin-right: 14px; vertical-align: middle; }
+  section.policy h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 500; color: var(--gold); margin-top: 24px; margin-bottom: 8px; font-style: italic; }
+  section.policy p { color: var(--ink); margin-bottom: 16px; font-size: 0.97rem; }
+  section.policy p strong { color: var(--gold-bright); font-weight: 500; }
+  section.policy a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); transition: color 0.3s ease; }
+  section.policy a:hover { color: var(--gold-bright); }
+  section.policy code { font-family: 'Courier New', monospace; font-size: 0.88em; background: rgba(212,175,106,0.08); padding: 2px 8px; border-radius: 3px; color: var(--gold-bright); }
+  .callout { background: linear-gradient(180deg, rgba(20,12,8,0.7) 0%, rgba(10,6,8,0.95) 100%); border: 1px solid var(--line); border-left: 3px solid var(--gold); padding: 18px 24px; margin: 20px 0; font-size: 0.94rem; color: var(--ink-soft); line-height: 1.65; }
+  .callout strong { color: var(--gold-bright); font-weight: 500; }
+  .never-list { list-style: none; margin: 12px 0 16px 0; }
+  .never-list li { padding: 8px 0 8px 32px; position: relative; color: var(--ink); font-size: 0.97rem; border-bottom: 1px solid var(--line); }
+  .never-list li:last-child { border-bottom: none; }
+  .never-list li::before { content: '✗'; position: absolute; left: 4px; top: 8px; color: var(--gold); font-weight: bold; font-size: 0.95rem; }
+  .processor-card { background: linear-gradient(180deg, rgba(20,12,8,0.5) 0%, rgba(10,6,8,0.85) 100%); border: 1px solid var(--line); padding: 22px 24px; margin-bottom: 16px; transition: border-color 0.4s ease; }
+  .processor-card:hover { border-color: var(--line-strong); }
+  .processor-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: var(--gold-bright); margin-bottom: 10px; font-style: italic; }
+  .processor-card p { margin-bottom: 10px; font-size: 0.93rem; }
+  .processor-card a { font-family: 'Courier New', monospace; font-size: 0.85rem; border-bottom: none; color: var(--gold); }
+  .processor-card a:hover { color: var(--gold-bright); text-decoration: underline; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 16px 0 20px; }
+  .data-table th { background: rgba(20,12,8,0.7); color: var(--gold-bright); padding: 12px 16px; text-align: left; border: 1px solid var(--line); font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; }
+  .data-table td { padding: 12px 16px; border: 1px solid var(--line); vertical-align: top; color: var(--ink); }
+  .data-table tr:nth-child(even) td { background: rgba(20,12,8,0.3); }
+  .rights-grid { display: grid; grid-template-columns: 1fr 2fr; border: 1px solid var(--line); margin-bottom: 16px; font-size: 0.93rem; }
+  .rights-grid .cell { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+  .rights-grid .cell:nth-child(odd) { background: rgba(20,12,8,0.5); color: var(--gold-bright); font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; border-right: 1px solid var(--line); }
+  .rights-grid .cell:nth-child(even) { color: var(--ink); }
+  .rights-grid .cell:last-child, .rights-grid .cell:nth-last-child(2) { border-bottom: none; }
+  @media (max-width: 540px) { .rights-grid { grid-template-columns: 1fr; } .rights-grid .cell:nth-child(odd) { border-right: none; } .rights-grid .cell:nth-child(even) { border-bottom: 1px solid var(--line); } }
+  section.policy.summary { background: linear-gradient(180deg, rgba(20,12,8,0.6) 0%, rgba(10,6,8,0.9) 100%); border: 1px solid var(--line); border-left: 3px solid var(--gold); padding: 28px 32px; margin-bottom: 56px; }
+  section.policy.summary h2 { border-bottom: 1px solid var(--line); }
+  section.policy ul.data-list { list-style: none; margin: 10px 0 18px; }
+  section.policy ul.data-list li { position: relative; padding: 9px 0 9px 26px; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 0.97rem; }
+  section.policy ul.data-list li:last-child { border-bottom: none; }
+  section.policy ul.data-list li strong { color: var(--gold-bright); font-weight: 500; }
+  section.policy ul.data-list li::before { content: '☾'; position: absolute; left: 2px; top: 9px; color: var(--gold); font-size: 0.9rem; }
+</style>
+</head>
+<body>
+{% include nav.html active="/consumer-health-data.html" %}
+
+<div class="container">
+
+  <div class="policy-header">
+    <p>Triple Moon Goddess &nbsp;&middot;&nbsp; <a href="/">triplemoongoddess.com</a> &nbsp;&middot;&nbsp; <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a></p>
+    {% include doc-version.html doc="health_data" name="Consumer Health Data Privacy Policy" %}
+  </div>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Consumer Health Data</div>
+    <h1>Your health data,<br><em>plainly</em>.</h1>
+    <div class="ornament"></div>
+  </section>
+
+  <section class="policy" id="about">
+    <h2><span class="num">I</span>About This Policy</h2>
+    <p>This policy covers consumer health data as defined by Washington's My Health My Data Act (RCW 19.373) and similar state laws, including Nevada's and Connecticut's. It applies to the Triple Moon Goddess apps and website, operated by Lisa Hagan, 3654 Thornton Ave, Unit #748, Fremont, CA 94536, United States. Our general <a href="/privacy.html">Privacy Policy</a> covers everything else.</p>
+  </section>
+
+  <section class="policy" id="collected">
+    <h2><span class="num">II</span>Consumer Health Data We Collect, and Why</h2>
+    <table class="data-table"><thead><tr><th>Category</th><th>Purpose</th></tr></thead><tbody>
+      <tr><td>Health Journal entries: daily body scores (mood, energy, optimism, stamina), sleep, symptoms and their severity, medication and supplement logs, food and drink, tongue observations, and your notes</td><td>To keep your journal, show your patterns, and produce the PDF exports you ask for</td></tr>
+      <tr><td>Messages you write to the journal's AI assistant, and tongue photos you submit for AI analysis (photos are not stored)</td><td>To answer you, only when you use these optional features</td></tr>
+      <tr><td>Answers to intake questions (for example digestion, symptoms, conditions and medications) and Soul questionnaire answers about emotional patterns</td><td>To prepare readings and, if you share with a practitioner, their work with you</td></tr>
+      <tr><td>The constitutional and health-tendency profile our software derives from your birth chart</td><td>To produce your chart, blueprint and readings</td></tr>
+      <tr><td>Readings you buy that concern physical health, the question you submit with them, your reading PDFs, and the fact that you booked a consult</td><td>To prepare, deliver and schedule the reading</td></tr>
+      <tr><td>Notes, readings and follow-ups a practitioner you chose writes about you</td><td>For that practitioner's work with you</td></tr>
+      <tr><td>Session recordings, only if you consent to recording</td><td>To give you a copy of your session; deleted within one month</td></tr>
+    </tbody></table>
+    <p>We collect consumer health data only with your consent, or when it is necessary to provide a service you asked for. We do not collect precise location, and we do not use geofencing.</p>
+  </section>
+
+  <section class="policy" id="sources">
+    <h2><span class="num">III</span>Where It Comes From</h2>
+    <ul class="data-list">
+      <li>You, when you use the apps, answer questions, or speak with Lisa in a session.</li>
+      <li>A practitioner you have chosen to share your records with, who writes notes about you.</li>
+      <li>Our software, which derives your constitutional profile from the birth data you enter.</li>
+    </ul>
+  </section>
+
+  <section class="policy" id="shared">
+    <h2><span class="num">IV</span>What We Share, and With Whom</h2>
+    <table class="data-table"><thead><tr><th>Who receives it</th><th>What, and when</th></tr></thead><tbody>
+      <tr><td>A practitioner you choose</td><td>Your intake and Soul answers, your chart-derived profile and, while your journal sharing setting is on, your journal. Only after you accept that practitioner's invitation, and you can withdraw it at any time (Section V).</td></tr>
+      <tr><td>Our service providers (processors), under contract: Google (hosting, storage, email and calendar), Anthropic (AI), and Stripe (payments)</td><td>Google holds the data to run the service. Anthropic receives the data for an AI request only when you, or a practitioner you share with, use an AI feature; no name, email or birth data is sent. Stripe receives the name of the reading you buy, never your journal, intake answers or question.</td></tr>
+      <tr><td>An AI provider your practitioner chooses</td><td>When your practitioner uses AI with their own Anthropic account, the client data for that request goes to their account, labelled only "CLIENT".</td></tr>
+    </tbody></table>
+    <p>We have no affiliates. We do not sell consumer health data, and we do not share it with advertisers.</p>
+  </section>
+
+  <section class="policy" id="rights">
+    <h2><span class="num">V</span>Your Rights and How to Use Them</h2>
+    <ul class="data-list">
+      <li><strong>Know and access:</strong> ask whether we collect, share or sell your consumer health data, and get a copy of it, with a list of every third party it was shared with and how to contact each one.</li>
+      <li><strong>Delete:</strong> delete your data yourself in the app (Health Journal: Settings → <strong>Delete All Data</strong>; chart page: <strong>Delete Data</strong>), or ask us. We delete it from our live systems at once and tell our processors to delete it too; it ages out of our encrypted backups within 98 days.</li>
+      <li><strong>Withdraw consent:</strong> stop future collection by deleting your data or not using the feature, turn off journal sharing, or stop sharing with your practitioner altogether, in the journal's Settings → Practitioner (or email us).</li>
+    </ul>
+    <p>To make a request, email <a href="mailto:Lisa@TripleMoonGoddess.com">Lisa@TripleMoonGoddess.com</a>. We answer within 45 days (one 45-day extension if needed, and we will tell you why). Requests are free, up to twice a year.</p>
+    <h3>Appeals</h3>
+    <p>If we refuse a request, reply to our answer with the word "appeal". Lisa will review it and answer in writing within 45 days, explaining the decision. If the appeal is refused, you can contact the Washington State Attorney General (<a href="https://www.atg.wa.gov/file-complaint" target="_blank" rel="noopener">atg.wa.gov/file-complaint</a>) or your own state's attorney general.</p>
+  </section>
+
+  {% include version-history.html doc="health_data" %}
+
+</div>
+{% include footer.html %}
+</body>
+</html>

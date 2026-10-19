@@ -214,7 +214,7 @@
     .tmg-nav-sub .tmg-nav-link:hover { background: none; }
   }
 </style>
-{% assign about_pages = "/about.html|/training.html|/mission.html|/faq.html|/security.html|/privacy.html|/terms.html" | split: "|" %}
+{% assign about_pages = "/about.html|/training.html|/mission.html|/faq.html|/security.html|/privacy.html|/consumer-health-data.html|/terms.html" | split: "|" %}
 {% assign readings_pages = "/online-readings.html|/readings.html" | split: "|" %}
 {% assign contact_pages = "/contact.html|/rectification.html" | split: "|" %}
 {% assign events_pages = "/events.html|/recorded.html" | split: "|" %}
@@ -254,6 +254,7 @@
           <li><a class="tmg-nav-link" href="/faq.html"{% if include.active == "/faq.html" %} aria-current="page"{% endif %}>Questions</a></li>
           <li><a class="tmg-nav-link" href="/security.html"{% if include.active == "/security.html" %} aria-current="page"{% endif %}>Security</a></li>
           <li><a class="tmg-nav-link" href="/privacy.html"{% if include.active == "/privacy.html" %} aria-current="page"{% endif %}>Privacy Policy</a></li>
+          <li><a class="tmg-nav-link" href="/consumer-health-data.html"{% if include.active == "/consumer-health-data.html" %} aria-current="page"{% endif %}>Consumer Health Data</a></li>
           <li><a class="tmg-nav-link" href="/terms.html"{% if include.active == "/terms.html" %} aria-current="page"{% endif %}>Terms of Service</a></li>
         </ul>
       </li>

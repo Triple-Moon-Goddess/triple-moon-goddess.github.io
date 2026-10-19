@@ -53,4 +53,5 @@ These accounts are the same practice as this site.
 
 - [Dev Blog](https://triplemoongoddess.com/blog.html): Astrology infrastructure, Python, and AI-augmented engineering.
 - [Privacy Policy](https://triplemoongoddess.com/privacy.html)
+- [Consumer Health Data Privacy Policy](https://triplemoongoddess.com/consumer-health-data.html)
 - [Terms of Service](https://triplemoongoddess.com/terms.html)
