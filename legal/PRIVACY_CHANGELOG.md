@@ -5,13 +5,12 @@ This changelog records all material and non-material changes to the Triple Moon 
 ---
 
 
-## v2026-10d — DRAFT (not yet published)
+## v2026-10d — October 19, 2026
 
 - **US-only (Lisa, 2026-10-19).** Section II: services offered in the US, data stored and processed only in the US, no marketing to or targeting of people elsewhere; the Section XII rights still apply to anyone. Removed: the GDPR Article tables and legal-basis lines (Sections III, IV), the EU transfer mechanisms (VII, now "Where Your Data Is"), the Brazil/Canada/Australia section, EU authorities in XV, the EU age and Formspree SCC mentions, and the GDPR 72-hour breach wording (US state breach laws now).
 - **One set of rights for everyone** (know/access, correct, delete, withdraw consent, no sale/no discrimination), California and other states, and a **written appeal process**: reply "appeal", written answer within 45 days, then the state attorney general.
 - **New linked page: Consumer Health Data Privacy Policy** (`consumer-health-data.html`, Washington My Health My Data Act, RCW 19.373, and similar Nevada/Connecticut laws): categories and purposes, sources, recipients, rights, 45-day answers, free twice a year, appeals. Linked from every page footer and the About menu.
 - **Clients stop sharing with a practitioner themselves** in the journal's Settings → Practitioner (typed confirmation; app security review 1.7), not only by email.
-- **Not publishable until** the app release that stops sending the reading question to Stripe and adds the in-app stop-sharing control is on prod (both on app main 2026-10-19), and a lawyer has reviewed the health-data page.
 
 ## v2026-10c — October 18, 2026
 
