@@ -5,6 +5,11 @@ This changelog records all material and non-material changes to the Triple Moon 
 ---
 
 
+
+## v2026-10e — October 19, 2026
+
+- **Contact form without a third party (Lisa, 2026-10-19).** The website contact form now posts to TMG's own server (`contactFormSubmit`), which emails the message to Lisa and stores nothing; that email is deleted after 30 days by the notifications mailbox purge. The form asks for email and message only (no name, per the no-names rule). Formspree is removed from Section V and the retention table; Section III describes the new handling.
+
 ## v2026-10d — October 19, 2026
 
 - **US-only (Lisa, 2026-10-19).** Section II: services offered in the US, data stored and processed only in the US, no marketing to or targeting of people elsewhere; the Section XII rights still apply to anyone. Removed: the GDPR Article tables and legal-basis lines (Sections III, IV), the EU transfer mechanisms (VII, now "Where Your Data Is"), the Brazil/Canada/Australia section, EU authorities in XV, the EU age and Formspree SCC mentions, and the GDPR 72-hour breach wording (US state breach laws now).

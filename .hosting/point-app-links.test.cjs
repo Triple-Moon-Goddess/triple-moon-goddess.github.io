@@ -5,7 +5,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const assert = require('assert');
-const { pointAppLinks, pointSiteAppLinks, PROD_APP } = require('./point-app-links.cjs');
+const { pointAppLinks, pointSiteAppLinks, PROD_APP, PROD_FUNCTIONS } = require('./point-app-links.cjs');
 
 const DEV_APP = 'https://triple-moon-goddess-dev.web.app';
 let passed = 0;
@@ -14,6 +14,13 @@ function test(name, fn) { fn(); passed++; console.log(`✓ ${name}`); }
 test('a reading button opens the dev app', () => {
   const html = `<a href="${PROD_APP}/reading-checkout?type=romantic_reading">Get</a>`;
   assert.strictEqual(pointAppLinks(html, DEV_APP), `<a href="${DEV_APP}/reading-checkout?type=romantic_reading">Get</a>`);
+});
+
+test('the contact form posts to the dev functions on the dev copy, never prod (2026-10-19)', () => {
+  const html = `<form id="contact-form" data-endpoint="${PROD_FUNCTIONS}/contactFormSubmit">`;
+  const dev = pointAppLinks(html, DEV_APP);
+  assert.strictEqual(dev, '<form id="contact-form" data-endpoint="https://us-central1-triple-moon-goddess-dev.cloudfunctions.net/contactFormSubmit">');
+  assert.strictEqual(pointAppLinks(html, PROD_APP), html);
 });
 
 test('other hosts are left alone', () => {

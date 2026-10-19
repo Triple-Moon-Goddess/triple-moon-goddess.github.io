@@ -35,8 +35,10 @@ const APP_READABLE_PAGES = ['/events.html', '/events'];
 const ALLOWED = {
   'img-src': ['https://i.ytimg.com'],
   'frame-src': ['https://www.youtube-nocookie.com'],
-  'connect-src': ['https://formspree.io'],
-  'form-action': ['https://formspree.io'],
+  // The contact form posts to TMG's own contactFormSubmit (prod; the dev copy is
+  // pointed at dev by point-app-links.cjs). Formspree is no longer used (2026-10-19).
+  'connect-src': ['https://us-central1-triple-moon-goddess.cloudfunctions.net', 'https://us-central1-triple-moon-goddess-dev.cloudfunctions.net'],
+  'form-action': [],
 };
 
 function pages(dir) {
