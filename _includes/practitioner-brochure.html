@@ -1,0 +1,136 @@
+{% comment %}
+  Practitioner brochure page body (Practitioner ▾ For …).
+  Usage: {% include practitioner-brochure.html key="therapists" %}
+  Per-audience text: _data/practitioner_brochures.yml. Text shared by all three
+  brochures (BAA, record steps 1-5, research, IT reviewer, bio) is written here once.
+  Styling follows practitioners.html (same palette, fonts and card frame).
+{% endcomment %}
+{% assign b = site.data.practitioner_brochures[include.key] %}
+<style>
+  :root { --gold: #d4af6a; --gold-bright: #e8c989; --gold-deep: #b8945a; --ink: #f5e8d0; --ink-soft: #c9b896; --bg: #0a0608; --bg-deep: #050304; --line: rgba(212, 175, 106, 0.18); --line-strong: rgba(212, 175, 106, 0.4); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; min-height: 100vh; }
+  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 15% 20%, rgba(212, 175, 106, 0.08) 0%, transparent 45%), radial-gradient(ellipse at 85% 75%, rgba(184, 148, 90, 0.06) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+  .br { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; padding: 0 32px; }
+  .br-hero { padding: 88px 0 24px; text-align: center; }
+  .br-eyebrow { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; margin-bottom: 22px; }
+  .br-eyebrow::before, .br-eyebrow::after { content: '✦'; margin: 0 14px; color: var(--gold-deep); font-size: 10px; }
+  .br-title { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 0.24em; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 18px; }
+  .br-hero h1 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1.1; color: var(--gold-bright); margin-bottom: 24px; }
+  .br-hero h1 em { font-style: italic; color: var(--ink); font-weight: 300; }
+  .br-lead { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 1.6vw, 1.3rem); color: var(--ink-soft); max-width: 680px; margin: 0 auto; line-height: 1.55; }
+  .br-moons { margin: 40px auto; color: var(--gold); letter-spacing: 0.6em; font-size: 16px; text-align: center; }
+  .br-card { position: relative; background: linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%); border: 1px solid var(--line); padding: 40px; margin-bottom: 32px; }
+  .br-card::before, .br-card::after { content: ''; position: absolute; width: 24px; height: 24px; border: 1px solid var(--gold-deep); opacity: 0.5; }
+  .br-card::before { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+  .br-card::after { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+  .br-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 48px; }
+  .br-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.26em; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
+  .br h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--gold-bright); margin-bottom: 14px; line-height: 1.2; }
+  .br h2 em { font-style: italic; color: var(--ink); }
+  .br-list { list-style: none; margin-bottom: 8px; }
+  .br-list li { padding: 9px 0 9px 26px; position: relative; border-bottom: 1px solid var(--line); font-size: 0.95rem; line-height: 1.5; }
+  .br-list li:last-child { border-bottom: none; }
+  .br-list li::before { content: '✦'; position: absolute; left: 0; top: 10px; color: var(--gold); font-size: 0.75rem; }
+  .br-note { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ink-soft); font-size: 1.05rem; margin-top: 8px; }
+  .br-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--ink-soft); margin-bottom: 16px; line-height: 1.5; }
+  .br-short { border-left: 2px solid var(--gold-deep); padding: 6px 0 6px 20px; margin: 8px 0 8px; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; line-height: 1.5; }
+  .br-steps { list-style: none; counter-reset: step; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 48px; }
+  .br-steps li { counter-increment: step; position: relative; padding-left: 40px; font-size: 0.95rem; line-height: 1.5; }
+  .br-steps li::before { content: counter(step); position: absolute; left: 0; top: -4px; font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--gold); }
+  .br-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 48px; }
+  .br-facts p { font-size: 0.95rem; line-height: 1.55; }
+  .br-motto { text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.35rem; color: var(--gold-bright); margin: 40px 0; }
+  .br-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 8px 0 40px; }
+  .br-cta a { display: inline-block; text-align: center; padding: 16px 28px; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; text-decoration: none; transition: all 0.4s ease; }
+  .br-cta .primary { background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-bright) 100%); color: var(--bg-deep); font-weight: 500; }
+  .br-cta .secondary { color: var(--gold); border: 1px solid var(--gold-deep); }
+  .br-cta a:hover { box-shadow: 0 0 32px rgba(212, 175, 106, 0.35); }
+  .br-bio { text-align: center; padding: 8px 0 80px; color: var(--ink-soft); font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; }
+  .br-bio strong { display: block; font-family: 'Cinzel', serif; font-weight: 400; letter-spacing: 0.2em; color: var(--gold-bright); font-size: 13px; text-transform: uppercase; margin-bottom: 6px; }
+  .br .gold-link { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); }
+  .br-bio a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-deep); }
+  @media (max-width: 760px) {
+    .br { padding: 0 18px; }
+    .br-hero { padding: 56px 0 16px; }
+    .br-card { padding: 32px 22px; }
+    .br-grid, .br-steps, .br-facts { grid-template-columns: 1fr; }
+    .br-eyebrow::before, .br-eyebrow::after { margin: 0 8px; }
+  }
+</style>
+
+<main class="br">
+  <section class="br-hero">
+    <div class="br-eyebrow">{{ b.eyebrow }}</div>
+    <div class="br-title">{{ b.title }}</div>
+    <h1>{{ b.headline }}</h1>
+    <p class="br-lead">{{ b.lead }}</p>
+  </section>
+  <div class="br-moons" aria-hidden="true">☾ ● ☽</div>
+
+  <section class="br-card br-grid">
+    <div>
+      <div class="br-label">{{ b.list1_title }}</div>
+      <ul class="br-list">{% for i in b.list1 %}<li>{{ i }}</li>{% endfor %}</ul>
+    </div>
+    <div>
+      <div class="br-label">{{ b.list2_title }}</div>
+      <ul class="br-list">{% for i in b.list2 %}<li>{{ i }}</li>{% endfor %}</ul>
+      {% if b.list2_note %}<p class="br-note">{{ b.list2_note }}</p>{% endif %}
+    </div>
+  </section>
+
+  {% if b.list3 %}
+  <section class="br-card">
+    <div class="br-label">{{ b.list3_title }}</div>
+    <ul class="br-list br-grid">{% for i in b.list3 %}<li>{{ i }}</li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+
+  <section class="br-card">
+    <div class="br-label">The AI sounding board</div>
+    <p class="br-intro">{{ b.ai_intro }}</p>
+    <ul class="br-list br-grid">
+      {% for i in b.ai %}<li>{{ i }}</li>{% endfor %}
+      <li>Receives scores and intake responses only. Name, email, and birth data stay out.</li>
+      <li>Runs on your own Anthropic account, directly from your browser to Anthropic.</li>
+    </ul>
+  </section>
+
+  <section class="br-card">
+    <div class="br-label">HIPAA &amp; your practice</div>
+    <h2>Ready for clinical practice. <em>BAA signed when you subscribe.</em></h2>
+    <div class="br-label">The short answer</div>
+    <p class="br-short">Triple Moon Goddess signs a Business Associate Agreement with your practice as part of the subscription process. Your clients decide what you see, and clinical judgment stays with you.</p>
+  </section>
+
+  <section class="br-card">
+    <div class="br-label">How a client record works</div>
+    <ol class="br-steps">
+      <li>Your client creates their own account and enters their own birth data.</li>
+      <li>Birth data is held in a separate, pseudonymized table and stays there. The assessment uses the results.</li>
+      <li>Your client completes the intake themselves.</li>
+      <li>You look up your client by email. Once they approve, their record is available only to you.</li>
+      <li>Optional client codes: work under a code and keep identifying details in your own handwritten log.</li>
+      <li>{{ b.step6 }}</li>
+    </ol>
+  </section>
+
+  <section class="br-card br-facts">
+    <div><div class="br-label">One consent</div><p>{{ b.consent }}</p></div>
+    <div><div class="br-label">Under the BAA</div><p>Triple Moon Goddess safeguards your clients’ records and notifies your practice of any breach involving them.</p></div>
+    <div><div class="br-label">Your records</div><p>{{ b.records }}</p></div>
+    <div><div class="br-label">Research</div><p>Assessments contribute to research. Research data is anonymized; clients can delete their own data at any time.</p></div>
+    <div><div class="br-label">For your IT reviewer</div><p>A separate <a class="gold-link" href="/security.html">security brief</a> covers safeguards and testing.</p></div>
+  </section>
+
+  <p class="br-motto">Pseudonymity protects clients. Anonymity protects research.</p>
+
+  <div class="br-cta">
+    <a class="primary" href="https://triple-moon-goddess.web.app/?page=subscribe&tier={{ b.tier }}&interval=monthly" target="_blank" rel="noopener">Begin Monthly</a>
+    <a class="secondary" href="https://triple-moon-goddess.web.app/?page=subscribe&tier={{ b.tier }}&interval=yearly" target="_blank" rel="noopener">Begin Annual</a>
+    <a class="secondary" href="/practitioners.html#plans">{{ b.plan }} pricing</a>
+  </div>
+
+  <p class="br-bio"><strong>Lisa Hagan</strong>Astrologer with a cybersecurity background, trained in psychological astrology.<br><a href="mailto:lisa@triplemoongoddess.com">lisa@triplemoongoddess.com</a></p>
+</main>

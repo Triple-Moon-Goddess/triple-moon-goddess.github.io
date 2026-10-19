@@ -26,6 +26,21 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://triplemoongoddess.com/for-therapists.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://triplemoongoddess.com/for-medical-practitioners.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://triplemoongoddess.com/for-astrologers.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://triplemoongoddess.com/ipa.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
