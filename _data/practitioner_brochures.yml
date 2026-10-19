@@ -1,0 +1,107 @@
+# Triple Moon Goddess — practitioner brochure pages (Practitioner ▾ For …).
+#
+# SOURCE OF TRUTH for for-therapists.html, for-medical-practitioners.html and
+# for-astrologers.html. Each page is one line: {% include practitioner-brochure.html key="…" %}.
+# Text comes from Lisa's printed brochures (TMG-*-Brochure.pdf, 2026-10-19).
+# BAA wording: the BAA is signed as part of the subscription process (Lisa, 2026-10-19).
+#
+# Per audience: eyebrow, title, headline, lead, two lists (shows / included),
+# an optional middle list, the AI sounding board, the record steps that differ
+# (step 6), the consent + records text, and the subscribe tier.
+# Shared text (BAA, record steps 1-5, research, IT reviewer, bio) lives in
+# _includes/practitioner-brochure.html so it is written once.
+
+therapists:
+  url: /for-therapists.html
+  nav: For Therapists
+  eyebrow: For Therapists, Psychologists &amp; Psychiatrists
+  title: Soul Pattern Assessment
+  headline: Pinpoint primary triggers. <em>See what correlates.</em>
+  lead: A practitioner tool that compares a client’s lived experience with their pattern profile, so you can see which patterns are active, which are not, and where each one is most likely to show up.
+  meta: Soul Pattern Assessment for therapists, psychologists and psychiatrists — compare a client’s lived experience with their pattern profile. BAA signed as part of the subscription process.
+  list1_title: What it shows
+  list1:
+    - Primary triggers, identified from the client’s own intake responses.
+    - "Correlation: which reported symptoms line up with the client’s pattern profile, which do not, and what each result means."
+    - Trigger notes that point to the life areas where each pattern is most likely to activate.
+    - The client’s self-report is the ground truth. The profile maps possibilities; the intake shows what is being lived.
+  list2_title: What’s included
+  list2:
+    - Intake, completed by your client.
+    - Comparison of the intake with the pattern profile, with an explanation of each result.
+    - AI sounding board, available whenever you choose to use it.
+    - Journal, yours to use at your discretion.
+  list2_note: Written in your terms. No astrology education required.
+  ai_intro: "An optional AI thinking partner for the practitioner, built on one rule: no shame, no blame, no diagnosis, no inference."
+  ai:
+    - Names where the profile and lived experience align or diverge, plainly and factually.
+    - Quotes trigger notes as written and closes with open questions back to you.
+    - Uses growth and pattern language; clinical judgment stays with you.
+    - When you share a client’s history, it acknowledges it briefly and asks what you observe.
+  step6: The journal is yours to use at your discretion.
+  consent: One approval from your client shares their intake and comparison with you.
+  records: Delete your journal entries at any time. When your subscription ends, your records are deleted and clients keep their own.
+  plan: Personal Growth App
+  tier: soul_pattern
+
+medical:
+  url: /for-medical-practitioners.html
+  nav: For Medical Practitioners
+  eyebrow: For Doctors &amp; Naturopaths
+  title: Constitutional Health Assessment
+  headline: Read the constitution. <em>Shape the protocol.</em>
+  lead: A practitioner tool that compares a client’s intake with their constitutional profile and lays out remedy protocols spanning constitution, diet, herbs and acupressure, in the language of your practice.
+  meta: Constitutional Health Assessment for doctors and naturopaths — compare a client’s intake with their constitutional profile and shape remedy protocols. BAA signed as part of the subscription process.
+  list1_title: What it shows
+  list1:
+    - Constitutional profile, set beside the client’s own intake responses.
+    - Comparison of reported symptoms with the profile, in constitutional health language.
+    - Remedy protocols covering constitution, diet, herbs and acupressure.
+    - The client’s self-report is the ground truth. The profile maps possibilities; the intake shows what is being lived.
+  list2_title: What’s included
+  list2:
+    - Intake, completed by your client.
+    - Comparison of the intake with the constitutional profile.
+    - "Remedy page: constitution, diet, herbs and acupressure."
+    - Practitioner notes, yours alone.
+    - AI sounding board, available whenever you choose to use it.
+  list2_note: Written in your terms. No astrology education required.
+  ai_intro: An optional AI thinking partner for the practitioner. Clinical judgment stays with you.
+  ai: []
+  step6: Your practitioner notes are yours alone.
+  consent: One approval from your client shares their constitutional health record with you.
+  records: Delete your notes at any time. When your subscription ends, your records are deleted and clients keep their own.
+  plan: Physical Health App
+  tier: constitutional_health
+
+astrologers:
+  url: /for-astrologers.html
+  nav: For Astrologers
+  eyebrow: For Astrologers &amp; Integrative Practitioners
+  title: Integrated Practitioner App
+  headline: The full method. <em>Every module, astrology surfaced.</em>
+  lead: "The complete Triple Moon Goddess methodology in one app: astrology, Soul, Constitutional and Relationships, with editable libraries and orb settings. For practitioners who operate the framework, not just use it."
+  meta: Integrated Practitioner App for astrologers and integrative practitioners — the complete Triple Moon Goddess methodology in one app. BAA signed as part of the subscription process.
+  list1_title: The modules
+  list1:
+    - "Astrology: the full framework, with Whole Sign and Placidus charts."
+    - "Soul: personal growth pattern assessment."
+    - "Constitutional: remedy page covering constitution, diet, herbs and acupressure."
+    - Relationships.
+  list2_title: What’s included
+  list2:
+    - Custom client intake generated from the natal chart.
+    - Notes and journal pages.
+    - Unlimited client charts and sessions.
+    - Practitioner research participation.
+  list3_title: Make it yours
+  list3:
+    - "Editable libraries: intake questions, herbs, food and acupressure points."
+    - Orb settings and AI module configuration.
+  ai_intro: An optional AI thinking partner for the practitioner.
+  ai: []
+  step6: Notes and journal pages are yours to use at your discretion.
+  consent: One approval from your client covers their physical health, personal growth and relationship records.
+  records: Delete your notes and readings at any time. When your subscription ends, your records are deleted and clients keep their own.
+  plan: Integrative Practitioner App
+  tier: integrative_practitioner

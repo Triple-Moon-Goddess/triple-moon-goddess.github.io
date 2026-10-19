@@ -218,6 +218,7 @@
 {% assign readings_pages = "/online-readings.html|/readings.html" | split: "|" %}
 {% assign contact_pages = "/contact.html|/rectification.html" | split: "|" %}
 {% assign events_pages = "/events.html|/recorded.html" | split: "|" %}
+{% assign practitioner_pages = "/practitioners.html|/for-therapists.html|/for-medical-practitioners.html|/for-astrologers.html" | split: "|" %}
 <nav class="tmg-nav" aria-label="Main">
   <div class="tmg-nav-inner">
     <a class="tmg-nav-brand" href="/">Triple Moon Goddess</a>
@@ -234,7 +235,15 @@
         </ul>
       </li>
       <li><a class="tmg-nav-link" href="/schedule.html"{% if include.active == "/schedule.html" %} aria-current="page"{% endif %}>Schedule</a></li>
-      <li><a class="tmg-nav-link" href="/practitioners.html"{% if include.active == "/practitioners.html" %} aria-current="page"{% endif %}>Practitioner</a></li>
+      <li class="tmg-nav-drop">
+        <button type="button" class="tmg-nav-drop-btn{% if practitioner_pages contains include.active %} tmg-nav-drop-current{% endif %}" aria-haspopup="true" aria-expanded="false">Practitioner</button>
+        <ul class="tmg-nav-sub">
+          <li><a class="tmg-nav-link" href="/practitioners.html"{% if include.active == "/practitioners.html" %} aria-current="page"{% endif %}>Subscriptions</a></li>
+          <li><a class="tmg-nav-link" href="/for-therapists.html"{% if include.active == "/for-therapists.html" %} aria-current="page"{% endif %}>For Therapists</a></li>
+          <li><a class="tmg-nav-link" href="/for-medical-practitioners.html"{% if include.active == "/for-medical-practitioners.html" %} aria-current="page"{% endif %}>For Medical Practitioners</a></li>
+          <li><a class="tmg-nav-link" href="/for-astrologers.html"{% if include.active == "/for-astrologers.html" %} aria-current="page"{% endif %}>For Astrologers</a></li>
+        </ul>
+      </li>
       <li><a class="tmg-nav-link" href="/ipa.html"{% if include.active == "/ipa.html" %} aria-current="page"{% endif %}>IPA</a></li>
       <li><a class="tmg-nav-link" href="/apps.html"{% if include.active == "/apps.html" %} aria-current="page"{% endif %}>Apps</a></li>
       <li><a class="tmg-nav-link" href="/testimonials.html"{% if include.active == "/testimonials.html" %} aria-current="page"{% endif %}>Testimonials</a></li>
