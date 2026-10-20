@@ -18,6 +18,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-10h
+    date: October 20, 2026
+    summary: Where your data is says where each processor stores it (Anthropic in the US, Stripe including the US and India, MailerLite in the European Union, Google Workspace wherever Google has facilities); only TMG's own systems are US-only. Records of which app a session opened are deleted after 1 year, old AI summary counters after 30 days, and anonymous sign-in sessions after a year unused.
   - version: v2026-10g
     date: October 20, 2026
     summary: The Health Journal also exports Markdown with a machine-readable copy; deleting your data also removes an anonymous sign-in that held only your charts; stopping sharing with a practitioner deletes nothing; your records close to them, and the notes they wrote stay theirs.
