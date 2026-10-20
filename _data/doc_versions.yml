@@ -9,7 +9,7 @@
 security:
   - version: v2026-10d
     date: October 20, 2026
-    summary: Deleting client data also deletes the client's MailerLite subscriber, booking events and Stripe customer, retrying and alerting Lisa if a step fails. Records of app use, AI rate counters and unused anonymous sessions are deleted automatically. What the logs hold is stated exactly, including the email addresses some entries carry.
+    summary: Deleting client data also deletes the client's MailerLite subscriber, booking events and Stripe customer, retrying and alerting Lisa if a step fails. Records of app use, AI rate counters and unused anonymous sessions are deleted automatically. What the logs hold is stated exactly, including the email addresses some entries carry. Every production release is first scanned with Semgrep against our own security rules, offline, and any finding stops it. A tenth breach alert watches for changes to the email encryption key's versions.
   - version: v2026-10c
     date: October 20, 2026
     summary: Deleting client data removes every sign-in account that held only that client's records, not just the email sign-in. A cancelled practitioner's records are deleted when the paid period ends, not at the moment of cancelling.
