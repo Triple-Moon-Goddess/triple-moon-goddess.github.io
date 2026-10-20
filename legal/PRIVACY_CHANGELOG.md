@@ -6,6 +6,10 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 
 
+## v2026-10f — October 19, 2026
+
+- **Deleted files: the 7-day recovery copy (Lisa, 2026-10-19).** Live check 2026-10-19 of prod bucket `triple-moon-goddess.appspot.com`: soft delete keeps a recovery copy of every deleted object for 7 days (604800 s); a lifecycle rule deletes `videos/` and `previews/` 7 days after creation (Google runs lifecycle deletes up to about a day late). Bucket held 37 reading PDFs and 1 image at the check. Summary, "Deleting your data": deleted files clear from storage within 7 days. Section VIII table: Reading PDFs gains the 7-day recovery-copy sentence; Video readings and previews now reads "about 7 days after they are made; the recovery copy is removed automatically within 7 more days" (it said "after 7 days", which left out the recovery copy). Consumer Health Data Privacy Policy v2026-10b, Section V "Delete": the same 7-day storage sentence.
+
 ## v2026-10e — October 19, 2026
 
 - **Contact form without a third party (Lisa, 2026-10-19).** The website contact form now posts to TMG's own server (`contactFormSubmit`), which emails the message to Lisa and stores nothing; that email is deleted after 30 days by the notifications mailbox purge. The form asks for email and message only (no name, per the no-names rule). Formspree is removed from Section V and the retention table; Section III describes the new handling.
