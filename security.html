@@ -307,6 +307,7 @@
         <ul>
           <li>A release that changes database or storage rules ships only if every rule path, tried as each kind of user, answers exactly as expected. The same full test runs weekly.</li>
           <li>Every server function must have a written expected-access rule, and the attacker test suites must pass, before it can deploy.</li>
+          <li>Before a production release, the code being shipped is scanned with Semgrep against our own security rules. The scan runs on our machine with network access blocked, so no code leaves it. Any finding stops the release.</li>
           <li>Right after a release through the standard deploy pipeline, a stranger attacks every live function, endpoint and storage bucket. An unexpected answer emails an alert at once, and the release is not recorded as complete until it is fixed.</li>
           <li>OWASP ZAP scans the apps and the website after release. Any finding fails the scan.</li>
         </ul>
@@ -317,7 +318,7 @@
         <ul>
           <li>A stranger attacks production every day.</li>
           <li>A weekly audit checks least-privilege access, key and secret rotation, credentials in code and critical or high dependency vulnerabilities, and runs a mutation test proving the tests catch an opened database rule. The report is sent every week, pass or fail.</li>
-          <li>9 breach and backup alerts, 5 of them with 24-hour checks for slow attacks, plus 3 application-error alerts.</li>
+          <li>10 breach and backup alerts, 5 of them with 24-hour checks for slow attacks, plus 3 application-error alerts.</li>
         </ul>
       </div>
 
