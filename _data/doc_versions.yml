@@ -15,6 +15,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-10f
+    date: October 19, 2026
+    summary: Deleted files clear from storage within 7 days. A deleted reading PDF's recovery copy is removed automatically within 7 days, and video readings and previews are deleted about 7 days after they are made, with their recovery copy removed within 7 more days.
   - version: v2026-10e
     date: October 19, 2026
     summary: The website contact form is handled by Triple Moon Goddess's own server instead of Formspree; it asks for no name, stores nothing, and its email to Lisa is deleted after 30 days. Formspree removed from the processors.
@@ -61,6 +64,9 @@ terms:
     summary: First publication.
 
 health_data:
+  - version: v2026-10b
+    date: October 19, 2026
+    summary: Deleting your data now says that deleted files clear from storage within 7 days, as well as aging out of the encrypted backups within 98 days.
   - version: v2026-10
     date: October 19, 2026
     summary: First edition. The consumer health data TMG collects and why, where it comes from, who receives it, and how to use your rights and appeal (Washington My Health My Data Act and similar state laws).
