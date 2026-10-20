@@ -269,7 +269,7 @@
           <li>Encrypted in transit (HTTPS) and at rest.</li>
           <li>In our database, email addresses, birth data, practitioner notes and readings are encrypted with a managed Cloud KMS key that only server functions use. The key rotates every 90 days.</li>
           <li>Records are keyed by pseudonymous access codes. Email lookups use keyed fingerprints (HMAC-SHA256) with the key held in Secret Manager.</li>
-          <li>Application logs carry no email addresses, access codes or AI text. Data-access audit logs record which records were read and by which signed-in account.</li>
+          <li>Since October 8, 2026, application logs carry no email addresses, access codes or AI text; some older entries from September 20 to October 8, 2026 hold a newsletter sign-up's email address and are waiting to be removed by Google after their 30 days. Data-access audit logs record which records were read and by which signed-in account; an entry for a lookup by email address (correcting a client's email, deleting a client's data, or sending a sign-in link) also holds that address.</li>
           <li>Email addresses also go to the services that need them: Stripe for receipts, Google Calendar for booking invitations, MailerLite for the opt-in newsletter, and Google Workspace for mail.</li>
         </ul>
       </div>
@@ -324,9 +324,10 @@
       <div class="card">
         <h3>Retention &amp; deletion</h3>
         <ul>
-          <li>Clients can delete their data at any time. Their records, files and sign-in accounts are removed. Payment records keep only amounts and status. Practitioner notes stay until the practitioner deletes them. Backups age out within 98 days.</li>
+          <li>Clients can delete their data at any time. Their records, files and sign-in accounts are removed. Payment records keep only amounts and status. Practitioner notes stay until the practitioner deletes them. Deleting also deletes the client's MailerLite subscriber, their booking events on the business calendar (a future session is cancelled) and their Stripe customer; payment records Stripe must keep by law stay with Stripe. Each of those steps retries on its own, and one that keeps failing is emailed to Lisa and finished by hand. Backups age out within 98 days.</li>
           <li>When a cancelled practitioner subscription reaches the end of its paid period, that practitioner's records are deleted automatically. A suspended account keeps its records until it is restored or cancelled.</li>
           <li>Sign-in links work once and expire after 15 minutes. Return links expire 72 hours after the most recent email that carried them. Expired links are then deleted automatically.</li>
+          <li>Records of which app a session opened are deleted automatically after 1 year, AI rate-limit counters after 30 days, and anonymous sign-in sessions after 1 year without use.</li>
           <li>Automated emails carrying client data are sent from a dedicated address and deleted from our mailbox after 30 days. Replies and calendar invitations are kept in our Google Workspace.</li>
         </ul>
       </div>
