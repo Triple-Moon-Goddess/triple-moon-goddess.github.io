@@ -7,6 +7,9 @@
 # Privacy details: legal/PRIVACY_CHANGELOG.md. Update both in the same commit.
 
 security:
+  - version: v2026-10c
+    date: October 20, 2026
+    summary: Deleting client data removes every sign-in account that held only that client's records, not just the email sign-in. A cancelled practitioner's records are deleted when the paid period ends, not at the moment of cancelling.
   - version: v2026-10b
     date: October 18, 2026
     summary: Published on the website. Every statement re-checked against the code and the live system; wording corrected where the October 13 edition overstated the controls, and the documents offered on request limited to those that exist; a third-party penetration test is arranged on request.
@@ -15,6 +18,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-10g
+    date: October 20, 2026
+    summary: The Health Journal also exports Markdown with a machine-readable copy; deleting your data also removes an anonymous sign-in that held only your charts; stopping sharing with a practitioner deletes nothing; your records close to them, and the notes they wrote stay theirs.
   - version: v2026-10f
     date: October 19, 2026
     summary: Deleted files clear from storage within 7 days. A deleted reading PDF's recovery copy is removed automatically within 7 days, and video readings and previews are deleted about 7 days after they are made, with their recovery copy removed within 7 more days.
@@ -53,6 +59,9 @@ privacy:
     summary: First publication.
 
 terms:
+  - version: v2026-10b
+    date: October 20, 2026
+    summary: Cancelling stops the next renewal; the account stays open until the end of the paid period, then closes and is deleted permanently (it said cancellation was immediate). Practitioners can cancel in Settings → Manage billing.
   - version: v2026-10
     date: October 18, 2026
     summary: Brought in line with the shipped platform — all four practitioner tiers, client invitation and consent, practitioner AI on the practitioner's own key, the HIPAA and BAA position, and research use matched to the Privacy Policy.
@@ -64,6 +73,9 @@ terms:
     summary: First publication.
 
 health_data:
+  - version: v2026-10c
+    date: October 20, 2026
+    summary: Stopping sharing with a practitioner deletes nothing; your records close to them, and the notes they wrote about you stay theirs to keep, edit or delete.
   - version: v2026-10b
     date: October 19, 2026
     summary: Deleting your data now says that deleted files clear from storage within 7 days, as well as aging out of the encrypted backups within 98 days.

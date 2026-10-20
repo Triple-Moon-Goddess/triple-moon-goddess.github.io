@@ -6,6 +6,12 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 
 
+## v2026-10g — October 20, 2026
+
+- **Export (Section XII):** the Health Journal exports a PDF or a Markdown file with a machine-readable (JSON) copy of the entries; the access code is never in either.
+- **Delete (Section XII):** deleting your data also deletes an anonymous sign-in that held only your charts (app security review 1.6).
+- **Withdraw consent (Section XII):** stopping sharing with a practitioner deletes nothing. The client's records close to the practitioner; the notes the practitioner wrote stay theirs to read, edit or delete (Lisa, 2026-10-19: "practitioner controls their notes and client controls theirs"), until their account closes. Same text in the Consumer Health Data Privacy Policy (v2026-10c).
+
 ## v2026-10f — October 19, 2026
 
 - **Deleted files: the 7-day recovery copy (Lisa, 2026-10-19).** Live check 2026-10-19 of prod bucket `triple-moon-goddess.appspot.com`: soft delete keeps a recovery copy of every deleted object for 7 days (604800 s); a lifecycle rule deletes `videos/` and `previews/` 7 days after creation (Google runs lifecycle deletes up to about a day late). Bucket held 37 reading PDFs and 1 image at the check. Summary, "Deleting your data": deleted files clear from storage within 7 days. Section VIII table: Reading PDFs gains the 7-day recovery-copy sentence; Video readings and previews now reads "about 7 days after they are made; the recovery copy is removed automatically within 7 more days" (it said "after 7 days", which left out the recovery copy). Consumer Health Data Privacy Policy v2026-10b, Section V "Delete": the same 7-day storage sentence.
