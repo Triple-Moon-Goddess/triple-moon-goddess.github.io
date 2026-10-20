@@ -9,7 +9,7 @@
 security:
   - version: v2026-10c
     date: October 20, 2026
-    summary: Deleting client data removes every sign-in account that held only that client's records, not just the email sign-in.
+    summary: Deleting client data removes every sign-in account that held only that client's records, not just the email sign-in. A cancelled practitioner's records are deleted when the paid period ends, not at the moment of cancelling.
   - version: v2026-10b
     date: October 18, 2026
     summary: Published on the website. Every statement re-checked against the code and the live system; wording corrected where the October 13 edition overstated the controls, and the documents offered on request limited to those that exist; a third-party penetration test is arranged on request.
