@@ -6,6 +6,10 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 
 
+## v2026-10i — October 20, 2026
+
+- **Deleted files: 14 days, and the isolated backup's real length (tmg-cspm R14, R13; Lisa approved the plan 2026-10-19).** Object versioning is turned on for the prod client-file bucket `triple-moon-goddess.appspot.com` (same day as this page) with a lifecycle rule deleting noncurrent versions 7 days after they become noncurrent; soft delete (604800 s) then keeps a recovery copy for 7 more days. Tested in dev 2026-10-20 on `triple-moon-goddess-dev-storage`: delete of the live object returned it as not found (404) while one noncurrent version remained; the erase code (`functions-lib/clientErase.js`) checks and deletes the live object only, so it is unaffected. Summary "Deleting your data" and Section VIII (Reading PDFs; Video readings and previews) now say 14 days. Database backups: the isolated vault `tmg-firestore-vault` deletes exports at 31 days (lifecycle age 31; read 2026-10-20), then soft delete keeps a recovery copy 7 days and Google runs lifecycle up to about a day late, so "about 30 days" becomes "31 days … recovery copy removed within about 9 more days". Consumer Health Data Privacy Policy v2026-10d, Section V "Delete": 14 days.
+
 ## v2026-10h — October 20, 2026
 
 - **Section II: where each processor stores data (CAIQ review item 73; DSP-19.1).** Section II said data is "stored and processed only in the United States", which held for TMG's own systems but not for every processor. Now: TMG's own databases, files, backups, keys and servers (and the chart service, Cloud Run `swisseph-api` in us-central1, read 2026-10-20) are in the US; each processor's location is stated only as its own documentation states it (checked 2026-10-20):
