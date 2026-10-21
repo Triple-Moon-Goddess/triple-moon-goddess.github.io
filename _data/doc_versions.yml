@@ -24,6 +24,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-10l
+    date: October 21, 2026
+    summary: Google Workspace, which carries our business email and calendar, stores that data at rest in the United States under our Workspace data region setting; it may still transmit and process it in other countries.
   - version: v2026-10k
     date: October 21, 2026
     summary: Emails that carry your data are sent through the Gmail API with permission to send only, instead of over SMTP with a mail password. Nothing else about what is sent, to whom, or how long our copies are kept changes.
