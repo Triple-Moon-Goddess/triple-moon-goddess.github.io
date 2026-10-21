@@ -5,3 +5,6 @@ theme: minima
 plugins:
   - jekyll-feed
 google_site_verification: Pxp5d1q4ePJSaqNyb6G4s8HM-1x2eN4UP_nGd7xyEh4
+# Jekyll skips dot folders; the MTA-STS policy (/.well-known/mta-sts.txt) must ship.
+include:
+  - .well-known
