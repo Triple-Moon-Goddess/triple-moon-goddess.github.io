@@ -6,6 +6,18 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 
 
+## v2026-10h — October 20, 2026
+
+- **Section II: where each processor stores data (CAIQ review item 73; DSP-19.1).** Section II said data is "stored and processed only in the United States", which held for TMG's own systems but not for every processor. Now: TMG's own databases, files, backups, keys and servers (and the chart service, Cloud Run `swisseph-api` in us-central1, read 2026-10-20) are in the US; each processor's location is stated only as its own documentation states it (checked 2026-10-20):
+  - Anthropic: "Note that data is stored in the US"; traffic may be routed to "select countries in the US, Europe, Asia and Australia" (privacy.claude.com/en/articles/7996890).
+  - Stripe: "it's sometimes necessary for us to transfer your Personal Data to countries other than your own, including the United States and India" (stripe.com/privacy).
+  - MailerLite: "Our data storage center is located in the European Union" (mailerlite.com/help/is-my-data-safe-with-mailerlite; same in mailerlite.com/legal/privacy-policy §9.2). No MailerLite page found naming Germany or the Netherlands for storage, so no country is named.
+  - Google Workspace (Gmail, Calendar): "Customer Data may be processed in any country where Google or its Subprocessors maintain facilities", subject to data location commitments (Cloud Data Processing Addendum §10.1, cloud.google.com/terms/data-processing-addendum). Whether a Workspace data region is set was not checked, so no region is claimed.
+  Section VII points to Section II. BAA/HIPAA wording unchanged.
+- **Section VIII retention (DPIA R10, Lisa 2026-10-20):** records of which app a session opened (`app_activity`) are deleted 1 year after the visit; old daily AI summary counters (`rate_limits`) 30 days after their day; anonymous sign-in sessions after 1 year without use (charts stay until the client deletes). Reading PDFs unchanged (until the client deletes). App change: astrology-app-private `ac5ffc090` (`functions-lib/ttlExpiry.js`, `deleteIdleAnonymousSessions`). **Publish only after that code and the prod TTL policies are live.**
+- **Deletion reaches the processors (Summary, Section V, Section XII; CAIQ review item 74, Lisa approved 2026-10-20):** deleting your data also deletes your MailerLite subscriber record (API delete), every booking event of your orders on the business calendar, past and future (a future session is cancelled; no separate notice is sent), and your Stripe customer record (never a practitioner's); payment records Stripe must keep by law stay with Stripe. Each step retries with backoff; after 6 tries Lisa is emailed and finishes it by hand (admin portal, Processor deletes). App change: astrology-app-private `855b33255` (`functions-lib/processorErase.js`, `functions/processorEraseTasks.js`), tested end to end on dev 2026-10-20.
+- **Section VIII log rows stated exactly (CAIQ review item 72):** application logs have carried no email address since 2026-10-08 (`emailForLog`); 63 older `[subscribeEmailToMailerLite]` lines (2026-09-20 to 2026-10-08) with a plain address were still readable in prod `_Default` on 2026-10-20 though past its 30-day period, so the row says so. Data-access audit entries for a lookup by plain email (admin email correction `adminEmail.js`, the client erase `clientErase.js`) and Firebase Auth sign-in-link requests hold that address as a query value (DATA-MAP §3, read 2026-10-20); the row now says so.
+
 ## v2026-10g — October 20, 2026
 
 - **Export (Section XII):** the Health Journal exports a PDF or a Markdown file with a machine-readable (JSON) copy of the entries; the access code is never in either.

@@ -7,6 +7,9 @@
 # Privacy details: legal/PRIVACY_CHANGELOG.md. Update both in the same commit.
 
 security:
+  - version: v2026-10d
+    date: October 20, 2026
+    summary: Deleting client data also deletes the client's MailerLite subscriber, booking events and Stripe customer, retrying and alerting Lisa if a step fails. Records of app use, AI rate counters and unused anonymous sessions are deleted automatically. What the logs hold is stated exactly, including the email addresses some entries carry. Every production release is first scanned with Semgrep against our own security rules, offline, and any finding stops it. A tenth breach alert watches for changes to the email encryption key's versions.
   - version: v2026-10c
     date: October 20, 2026
     summary: Deleting client data removes every sign-in account that held only that client's records, not just the email sign-in. A cancelled practitioner's records are deleted when the paid period ends, not at the moment of cancelling.
@@ -18,6 +21,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-10h
+    date: October 20, 2026
+    summary: Where your data is says where each processor stores it (Anthropic in the US, Stripe including the US and India, MailerLite in the European Union, Google Workspace wherever Google has facilities); only TMG's own systems are US-only. Records of which app a session opened are deleted after 1 year, old AI summary counters after 30 days, and anonymous sign-in sessions after a year unused. Deleting your data also deletes your MailerLite subscriber record, your booking events (a future session is cancelled) and your Stripe customer record. The log rows say exactly which entries hold an email address.
   - version: v2026-10g
     date: October 20, 2026
     summary: The Health Journal also exports Markdown with a machine-readable copy; deleting your data also removes an anonymous sign-in that held only your charts; stopping sharing with a practitioner deletes nothing; your records close to them, and the notes they wrote stay theirs.
