@@ -8,7 +8,7 @@
 
 security:
   - version: v2026-10e
-    date: October 2026
+    date: October 20, 2026
     summary: Requests from the apps carry a Firebase App Check token from Google reCAPTCHA Enterprise; requests without one are counted and, for now, still answered.
   - version: v2026-10d
     date: October 20, 2026
@@ -25,7 +25,7 @@ security:
 
 privacy:
   - version: v2026-10j
-    date: October 2026
+    date: October 20, 2026
     summary: Google reCAPTCHA Enterprise, through Firebase App Check, runs on every app page to tell our own pages apart from automated scripts. It receives browser, device and page-use information, never your name, email, access code, birth, health or journal data. Two new storage entries (_grecaptcha and the App Check token), and Google may set its own security cookie.
   - version: v2026-10i
     date: October 20, 2026
@@ -89,7 +89,7 @@ terms:
 
 health_data:
   - version: v2026-10e
-    date: October 2026
+    date: October 20, 2026
     summary: Google's reCAPTCHA, which checks that requests come from our own app pages, is listed among our processors; it receives browser, device and page-use information, never your answers, journal or birth data.
   - version: v2026-10d
     date: October 20, 2026
