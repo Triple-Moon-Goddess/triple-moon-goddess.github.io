@@ -21,6 +21,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-10i
+    date: October 20, 2026
+    summary: Deleted files clear from storage within 14 days. File storage now keeps a deleted file's earlier version for 7 days before the 7-day recovery copy, so a deleted reading PDF, video or preview is fully gone within 14 days. The isolated backup copy is kept 31 days, and its recovery copy is removed within about 9 more days.
   - version: v2026-10h
     date: October 20, 2026
     summary: Where your data is says where each processor stores it (Anthropic in the US, Stripe including the US and India, MailerLite in the European Union, Google Workspace wherever Google has facilities); only TMG's own systems are US-only. Records of which app a session opened are deleted after 1 year, old AI summary counters after 30 days, and anonymous sign-in sessions after a year unused. Deleting your data also deletes your MailerLite subscriber record, your booking events (a future session is cancelled) and your Stripe customer record. The log rows say exactly which entries hold an email address.
@@ -79,6 +82,9 @@ terms:
     summary: First publication.
 
 health_data:
+  - version: v2026-10d
+    date: October 20, 2026
+    summary: Deleted files clear from storage within 14 days (was 7), because file storage now keeps a deleted file's earlier version for 7 days before its 7-day recovery copy.
   - version: v2026-10c
     date: October 20, 2026
     summary: Stopping sharing with a practitioner deletes nothing; your records close to them, and the notes they wrote about you stay theirs to keep, edit or delete.
