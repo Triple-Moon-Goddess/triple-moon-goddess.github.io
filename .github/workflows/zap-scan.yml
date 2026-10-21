@@ -31,10 +31,15 @@ on:
         default: prod
         type: choice
         options: [prod, firebase, dev]
+      test_mail:
+        description: 'Send the findings email even when the scan passes (to test the mail path)'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
   pages: read
+  id-token: write   # the findings email signs in by Workload Identity Federation
 
 concurrency:
   group: zap-site
@@ -84,26 +89,28 @@ jobs:
           cat zap-summary.md >> "$GITHUB_STEP_SUMMARY"
 
       # Email only when there is a problem (Lisa, 2026-10-18): a finding, or no report.
-      - name: Email the findings to Lisa
-        if: always() && steps.sum.outputs.rc != '0'
-        uses: dawidd6/action-send-mail@v3
+      - name: Sign in to Google Cloud for the mail sender (Workload Identity Federation)
+        if: always() && (steps.sum.outputs.rc != '0' || inputs.test_mail)
+        uses: google-github-actions/auth@v2
         with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          secure: true
-          username: ${{ secrets.LISA_CONTACT_EMAIL }}
-          password: ${{ secrets.GMAIL_APP_PASSWORD }}
-          to: ${{ secrets.LISA_CONTACT_EMAIL }}
-          from: "TMG Security Bot <${{ secrets.LISA_CONTACT_EMAIL }}>"
-          subject: ${{ steps.sum.outputs.subject }}
-          convert_markdown: true
-          html_body: file://zap-summary.md
-          body: |
+          workload_identity_provider: projects/770432131793/locations/global/workloadIdentityPools/github-pool/providers/github-website
+          service_account: gh-website-deploy@triplemoongoddess-website.iam.gserviceaccount.com
+      # No app password (Workspace audit ADD-34): Gmail API, send-only, as Lisa.
+      - name: Email the findings to Lisa
+        if: always() && (steps.sum.outputs.rc != '0' || inputs.test_mail)
+        env:
+          LISA_EMAIL: ${{ secrets.LISA_CONTACT_EMAIL }}
+          MAIL_TO: ${{ secrets.LISA_CONTACT_EMAIL }}
+          MAIL_FROM: "TMG Security Bot <${{ secrets.LISA_CONTACT_EMAIL }}>"
+          MAIL_SUBJECT: ${{ inputs.test_mail && format('[test] {0}', steps.sum.outputs.subject) || steps.sum.outputs.subject }}
+          MAIL_ATTACHMENT: zap-summary.md
+          MAIL_BODY: |
             ${{ steps.sum.outputs.subject }}
             Trigger: ${{ github.event_name }} (commit ${{ github.sha }})
             Run (the report is its artifact):
             https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          attachments: zap-summary.md
+            The findings are attached (zap-summary.md).
+        run: node repo/.hosting/send-mail.cjs
 
       - name: A finding fails the run
         if: always()
