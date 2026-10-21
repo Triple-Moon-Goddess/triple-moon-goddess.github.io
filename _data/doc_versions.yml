@@ -7,6 +7,9 @@
 # Privacy details: legal/PRIVACY_CHANGELOG.md. Update both in the same commit.
 
 security:
+  - version: v2026-10e
+    date: October 2026
+    summary: Requests from the apps carry a Firebase App Check token from Google reCAPTCHA Enterprise; requests without one are counted and, for now, still answered.
   - version: v2026-10d
     date: October 20, 2026
     summary: Deleting client data also deletes the client's MailerLite subscriber, booking events and Stripe customer, retrying and alerting Lisa if a step fails. Records of app use, AI rate counters and unused anonymous sessions are deleted automatically. What the logs hold is stated exactly, including the email addresses some entries carry. Every production release is first scanned with Semgrep against our own security rules, offline, and any finding stops it. A tenth breach alert watches for changes to the email encryption key's versions.
@@ -21,6 +24,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-10j
+    date: October 2026
+    summary: Google reCAPTCHA Enterprise, through Firebase App Check, runs on every app page to tell our own pages apart from automated scripts. It receives browser, device and page-use information, never your name, email, access code, birth, health or journal data. Two new storage entries (_grecaptcha and the App Check token), and Google may set its own security cookie.
   - version: v2026-10i
     date: October 20, 2026
     summary: Deleted files clear from storage within 14 days. File storage now keeps a deleted file's earlier version for 7 days before the 7-day recovery copy, so a deleted reading PDF, video or preview is fully gone within 14 days. The isolated backup copy is kept 31 days, and its recovery copy is removed within about 9 more days.
@@ -82,6 +88,9 @@ terms:
     summary: First publication.
 
 health_data:
+  - version: v2026-10e
+    date: October 2026
+    summary: Google's reCAPTCHA, which checks that requests come from our own app pages, is listed among our processors; it receives browser, device and page-use information, never your answers, journal or birth data.
   - version: v2026-10d
     date: October 20, 2026
     summary: Deleted files clear from storage within 14 days (was 7), because file storage now keeps a deleted file's earlier version for 7 days before its 7-day recovery copy.
