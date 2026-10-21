@@ -24,6 +24,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-10k
+    date: October 21, 2026
+    summary: Emails that carry your data are sent through the Gmail API with permission to send only, instead of over SMTP with a mail password. Nothing else about what is sent, to whom, or how long our copies are kept changes.
   - version: v2026-10j
     date: October 20, 2026
     summary: Google reCAPTCHA Enterprise, through Firebase App Check, runs on every app page to tell our own pages apart from automated scripts. It receives browser, device and page-use information, never your name, email, access code, birth, health or journal data. Two new storage entries (_grecaptcha and the App Check token), and Google may set its own security cookie.
