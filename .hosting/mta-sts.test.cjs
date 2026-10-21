@@ -31,8 +31,8 @@ test('policy has exactly version, mode, mx and max_age', () => {
   assert.strictEqual(policy.version, 'STSv1');
 });
 
-test('mode is testing or enforce', () => {
-  assert.ok(['testing', 'enforce'].includes(policy.mode), policy.mode);
+test('mode is enforce (Lisa, 2026-10-21)', () => {
+  assert.strictEqual(policy.mode, 'enforce');
 });
 
 test('mx is Google Workspace mail (matches the MX record 1 smtp.google.com)', () => {
