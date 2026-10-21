@@ -6,7 +6,7 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 
 
-## v2026-10j — publish the day App Check reaches prod
+## v2026-10j — October 20, 2026 (published with App Check on prod, app release 1.176)
 
 - **Google reCAPTCHA Enterprise through Firebase App Check (tmg-cspm R02; Lisa, 2026-10-20: "go ahead and set it up").** App commit d8768757a: the shared Firebase init starts App Check with reCAPTCHA Enterprise on every app page; site keys per project in `packages/shared/src/appCheckConfig.ts`. Tested on dev 1.175.3 (2026-10-21): `www.google.com/recaptcha/enterprise.js` and the anchor frame load on every app page; the App Check exchange `content-firebaseappcheck.googleapis.com/v1/projects/triple-moon-goddess-dev/apps/…` returned 200; function logs show `verifications.app: VALID` for the browser's calls; the page stores `_grecaptcha` (localStorage) and `firebase-app-check-database` (IndexedDB; token TTL 3600 s from the App Check config); no console or CSP errors. Not enforced: no function sets `enforceAppCheck` and no Firebase service is set to enforce (App Check `services` list empty), so requests without a token are still answered.
   - Section II: reCAPTCHA Enterprise is a Google Cloud service; location stated as Google's Cloud Data Processing Addendum §10.1 states it ("any country where Google or its Subprocessors maintain facilities").
