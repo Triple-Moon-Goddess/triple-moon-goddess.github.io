@@ -6,6 +6,10 @@ This changelog records all material and non-material changes to the Triple Moon 
 
 
 
+## v2026-10l — October 21, 2026
+
+- **Section II: Google Workspace data at rest is in the United States (CAIQ review item 83; Lisa, 2026-10-21).** The page said Workspace "may store data in any country where Google or its subprocessors have facilities". The Workspace Admin console, Data → Compliance → Data regions (`admin.google.com/ac/managedsettings/…/DATA_LOCATION_SETTING`, read 2026-10-21), shows "Data at rest — Region for storing data at rest: United States". Data regions cover data at rest only, so the sentence now says Workspace stores the email and calendar data at rest in the US and may transmit and process it in other countries. Evidence: tmg-library `security-audit/evidence/workspace-data-regions-2026-10-21.md` and `workspace-data-region-2026-10-21.png`. No other section changes; no new processor.
+
 ## v2026-10k — October 21, 2026
 
 - **Section V, Email delivery: Gmail API instead of SMTP (Workspace audit ADD-34; Lisa approved shipping 2026-10-20).** The page said emails carrying client data "are sent over authenticated SMTP" and that the Gmail API was used "read-only" plus for the 30-day purge. App passwords are being turned off in Google Workspace, so every TMG email now goes through the Gmail API (`users.messages.send`) as the business mailbox, with a token from Workspace domain-wide delegation signed by a dedicated service account (`tmg-mail-sender@`) granted only `https://www.googleapis.com/auth/gmail.send`: it can send, not read or delete. No password, key or secret is stored. App change: astrology-app-private `29535a812`, `26de66e73` (`functions-lib/gmailSend.js`, `functions-lib/emailSend.js`). Tested 2026-10-20: dev sends arrived from notifications@ (contact form, chart, blueprint, sign-in link); prod sender issued a token, a test send arrived and a mailbox read was refused (HTTP 403). Same From address, recipients, content and 30-day purge; no new processor. **Publish only after the prod functions deploy of that code.**
