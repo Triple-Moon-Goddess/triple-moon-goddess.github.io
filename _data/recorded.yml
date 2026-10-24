@@ -10,6 +10,12 @@
 # the visitor presses play. Each video needs its thumbnail saved as
 # assets/video-thumbs/<youtube_id>.jpg (from https://i.ytimg.com/vi/<id>/maxresdefault.jpg).
 
+- title: "Santa Clara Talk"
+  youtube_id: "OjfNTFB4y80"
+  date: "2026-10-24"
+  time: "2 PM"
+  location: "Soul Search Santa Clara Expo"
+
 - title: "Triple Moon Goddess Podcast Reading with Judy Wallace"
   youtube_id: "keuNF5d3vUQ"
   date: "2026-10-17"
