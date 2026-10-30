@@ -39,9 +39,9 @@ Two apps, the same symptom, and two different causes. One was a gap that won't c
 
 ## Keys, and who can reach this
 
-The same tradeoff I described in the register post applies here: transactions sit in a private GitHub repo, and that's a real exposure I've chosen. Plaid keys and the bank access token don't. They're in a private file outside the repo, and the tests check that they never appear in the data folder or any API response. I also searched the repo's history for bank access tokens and found none.
+As in the register, transactions sit in a private GitHub repo, and Plaid keys and the bank access token don't. Those live only in Bitwarden. The app holds them in memory after I unlock, and the tests check that they never appear in the data folder or any API response. I also searched every commit in the repo for the real values and found none.
 
-On the laptop it's a full dashboard. On my phone, through my private Tailscale network, it's a short list of envelopes and what's left in each. The Mac has to be on and awake, which is the honest price of $0. Bank setup is refused from anywhere but the Mac itself, and the tests send those requests from the tailnet address and check that they're refused.
+On the laptop it's a full dashboard. On my phone, through my private Tailscale network, it's a short list of envelopes and what's left in each. The Mac has to be on and awake, and after a restart it has to be unlocked once before it can reach the bank, which is the honest price of $0 with no secrets on disk. Bank setup is refused from anywhere but the Mac itself, and the tests send those requests from the tailnet address and check that they're refused.
 
 ## The principle
 
