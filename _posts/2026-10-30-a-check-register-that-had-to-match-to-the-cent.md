@@ -40,11 +40,11 @@ The dashboard compares the bank's balance with the register's cleared balance. A
 
 ## What I got less tidy about
 
-In July I wrote that [my back office should back up the system, not the data](/2026/07/04/the-back-office-in-one-folder.html). This app doesn't follow that. Its ledger is JSON in a private GitHub repo, committed automatically, because GitHub history is the backup and the undo log. Anyone who got into that repo could read my business's transaction history.
+In July I wrote that [my back office should back up the system, not the data](/2026/07/04/the-back-office-in-one-folder.html). This app doesn't follow that. Its ledger is JSON in a private GitHub repo, committed automatically, because GitHub history is the backup and the undo log. Anyone who got into that repo could read my business's transaction history. There are no clients in it, though: Stripe shows up as lump transfers and expo cash as expo readings, and the bank can give me the electronic side again.
 
-Here's the part I did hold onto: the Plaid keys and the bank access token aren't in the repo. They sit in a private file outside it, readable only by my user account, and the page is never sent them. The tests check every API response and data file for them, and I searched the git history for bank access tokens and found none. Bank setup works only from the Mac itself. My phone reaches the app over my private Tailscale network, where it can read and press Update, and the tests check that every setup route refuses it.
+Secrets are a different matter. The Plaid keys and the bank access token live only in Bitwarden. The app holds them in memory after I unlock, so after a restart it can't reach the bank until I type my password into a Mac dialog. The page is never sent them, and the tests check every API response and data file for them. I also searched every commit in the repo for the real values and found none. Bank setup works only from the Mac itself. My phone reaches the app over my private Tailscale network, where it can read and press Update, and the tests check that every setup route refuses it.
 
-That's a real tradeoff, and I'd rather state it than pretend July's rule still holds.
+The line I actually care about is secrets, so that's where the rule is strict.
 
 ## The principle
 
