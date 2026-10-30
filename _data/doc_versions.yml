@@ -4,7 +4,6 @@
 # and the whole list shows at the bottom (_includes/version-history.html).
 # Version names follow the privacy policy's scheme: vYYYY-MM, then a letter
 # suffix (b, c, ...) for a further version in the same month.
-# Privacy details: legal/PRIVACY_CHANGELOG.md. Update both in the same commit.
 
 security:
   - version: v2026-10e

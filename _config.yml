@@ -8,11 +8,3 @@ google_site_verification: Pxp5d1q4ePJSaqNyb6G4s8HM-1x2eN4UP_nGd7xyEh4
 # Jekyll skips dot folders; the MTA-STS policy (/.well-known/mta-sts.txt) must ship.
 include:
   - .well-known
-# Internal docs: kept in the repo, not published. Setting exclude replaces Jekyll's defaults, so they're listed too.
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor
-  - STYLE_GUIDE.md
-  - legal/PRIVACY_CHANGELOG.md
