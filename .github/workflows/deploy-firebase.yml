@@ -49,6 +49,7 @@ jobs:
           node .hosting/build-config.test.cjs
           node .hosting/send-mail.test.cjs
           node .hosting/mta-sts.test.cjs
+          node .hosting/footer-source-link.test.cjs
           node .hosting/build-config.cjs _site .hosting/firebase.json
       - uses: actions/upload-artifact@v4
         with:

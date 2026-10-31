@@ -7,8 +7,6 @@ date: 2026-03-06
 
 *What I Built and Why It Matters*
 
-**Patent Pending — Application \#63/998,305**
-
 Lisa Hagan  |  March 6, 2026
 
 # **The Short Version**
@@ -128,7 +126,5 @@ IPA is currently under development at triplemoongoddess.com. The platform is des
 The broader vision is a practitioner platform available to naturopaths, integrative medicine physicians, therapists, and wellness practitioners across multiple disciplines — each accessing the same calculation engine in the vocabulary of their own tradition.
 
 ***Every tradition contains truth. IPA brings them together.***
-
-Patent Pending — Application \#63/998,305  |  Filed March 6, 2026
 
 Lisa Hagan  |  lisa@triplemoongoddess.com  |  triplemoongoddess.com
