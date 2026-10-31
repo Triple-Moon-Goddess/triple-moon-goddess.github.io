@@ -1,0 +1,161 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talk Feedback — Triple Moon Goddess</title>
+{% include head-meta.html title="Talk Feedback — Triple Moon Goddess" description="Tell Lisa Hagan which parts of her talk you would like more or less of." url="/feedback" %}
+{% include schema-org.html %}
+<style>
+  :root {
+    --gold: #d4af6a;
+    --gold-bright: #e8c989;
+    --ink: #f5e8d0;
+    --ink-soft: #c9b896;
+    --line: rgba(212, 175, 106, 0.4);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #0a0608;
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  .container { max-width: 640px; margin: 0 auto; padding: 32px 16px 56px; }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(2.2rem, 8vw, 3rem);
+    line-height: 1.1;
+    color: var(--gold-bright);
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .segment { padding: 18px 0; border-top: 1px solid var(--line); }
+  .segment p { font-size: 1.0625rem; margin-bottom: 12px; }
+  .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .choice, .submit-btn {
+    min-height: 48px;
+    font: inherit;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  .choice { background: transparent; color: var(--ink); border: 1px solid var(--gold); }
+  .choice[aria-pressed="true"] { background: var(--gold); color: #0a0608; }
+  .choice:focus-visible, .submit-btn:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
+  .email-group { padding-top: 22px; border-top: 1px solid var(--line); }
+  .email-group label { display: block; margin-bottom: 10px; color: var(--ink); }
+  .email-group input {
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 12px;
+    font: inherit;
+    font-size: 16px; /* below 16px, iPhones zoom the page when the field is tapped */
+    color: #1a1208;
+    background: #f5e8d0;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+  }
+  .submit-btn { display: block; width: 100%; margin-top: 22px; background: var(--gold-bright); color: #0a0608; border: none; }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .form-error { display: none; margin-top: 14px; color: #ffb4a8; }
+  .thanks { display: none; font-size: 1.125rem; text-align: center; padding: 32px 0; }
+  .thanks a { color: var(--gold-bright); text-decoration: underline; }
+  /* Spam trap: hidden from people, filled only by bots (talkFeedbackSubmit drops it). */
+  .trap-field { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+</style>
+</head>
+<body>
+{% include nav.html active="/feedback" %}
+
+<main class="container">
+  <div id="form-wrap">
+    <h1>Talk Feedback</h1>
+    <form id="feedback-form" method="post" data-endpoint="https://us-central1-triple-moon-goddess.cloudfunctions.net/talkFeedbackSubmit" novalidate>
+      {% for segment in site.data.talk_feedback %}
+      <div class="segment" role="group" aria-labelledby="q-{{ segment.id }}" data-segment="{{ segment.id }}">
+        <p id="q-{{ segment.id }}">{{ segment.label }}</p>
+        <div class="choices">
+          <button type="button" class="choice" data-answer="more" aria-pressed="false">Do More</button>
+          <button type="button" class="choice" data-answer="less" aria-pressed="false">Do Less</button>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="email-group">
+        <label for="email">If you would like to hear back from Lisa, please enter your email address and she will reach out to you for more info.</label>
+        <input type="email" id="email" name="email" autocomplete="email" inputmode="email">
+      </div>
+      <div class="trap-field" aria-hidden="true">
+        <label for="website">Leave this empty</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit" class="submit-btn" id="submit-btn">Submit</button>
+      <div class="form-error" id="form-error" role="alert"></div>
+    </form>
+  </div>
+  <p class="thanks" id="thanks" tabindex="-1">Thank you for the feedback, this is very helpful. If you'd like more info about TMG <a href="https://triplemoongoddess.com">click here</a></p>
+</main>
+
+<script>
+  const form = document.getElementById('feedback-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const formError = document.getElementById('form-error');
+
+  // One answer per segment; tapping the chosen button again clears it.
+  form.addEventListener('click', function (e) {
+    const choice = e.target.closest('.choice');
+    if (!choice) return;
+    const wasOn = choice.getAttribute('aria-pressed') === 'true';
+    choice.parentElement.querySelectorAll('.choice').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+    if (!wasOn) choice.setAttribute('aria-pressed', 'true');
+  });
+
+  function showError(message) {
+    formError.textContent = message;
+    formError.style.display = 'block';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit';
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    formError.style.display = 'none';
+
+    const answers = {};
+    form.querySelectorAll('.segment').forEach(function (row) {
+      const chosen = row.querySelector('.choice[aria-pressed="true"]');
+      if (chosen) answers[row.dataset.segment] = chosen.dataset.answer;
+    });
+
+    try {
+      const res = await fetch(form.dataset.endpoint, {
+        method: 'POST',
+        body: JSON.stringify({ answers: answers, email: form.email.value, website: form.website.value }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+      if (res.ok) {
+        document.getElementById('form-wrap').style.display = 'none';
+        const thanks = document.getElementById('thanks');
+        thanks.style.display = 'block';
+        thanks.focus();
+        window.scrollTo(0, 0);
+      } else {
+        const json = await res.json().catch(function () { return {}; });
+        showError(json.error || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      showError('Something went wrong. Please check your connection and try again.');
+    }
+  });
+</script>
+
+{% include footer.html %}
+</body>
+</html>

@@ -1,0 +1,16 @@
+# The talk feedback form's segments, in slide order (feedback.html).
+# `id` is what the form sends: keep in step with SEGMENTS in the app repo's functions-lib/talkFeedback.js.
+- id: story
+  label: "Was learning Lisa's story helpful?"
+- id: psyche
+  label: "How was learning how astrology impacts Lisa's psyche?"
+- id: moon
+  label: "How was the Moon interpretation reading?"
+- id: health
+  label: "How was hearing Lisa's physical health story?"
+- id: constitutions
+  label: "How was learning how constitutions work?"
+- id: apps
+  label: "How was learning about the free apps?"
+- id: readings
+  label: "How were the readings?"
