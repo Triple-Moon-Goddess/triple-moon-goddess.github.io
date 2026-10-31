@@ -26,6 +26,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-10m
+    date: October 30, 2026
+    summary: Corrected after a full review of the in-app consent text. Journal chat sends 14 days of journal and is saved; email is also sealed on a practitioner link and a signed waiver; a signed waiver holds your name; where recording answers are stored.
   - version: v2026-10l
     date: October 21, 2026
     summary: Google Workspace, which carries our business email and calendar, stores that data at rest in the United States under our Workspace data region setting; it may still transmit and process it in other countries.
