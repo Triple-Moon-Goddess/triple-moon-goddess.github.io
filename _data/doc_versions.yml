@@ -6,6 +6,9 @@
 # suffix (b, c, ...) for a further version in the same month.
 
 security:
+  - version: v2026-10f
+    date: October 30, 2026
+    summary: There are now 4 application-error alerts. The new one fires when a function repeatedly fails to start.
   - version: v2026-10e
     date: October 20, 2026
     summary: Requests from the apps carry a Firebase App Check token from Google reCAPTCHA Enterprise; requests without one are counted and, for now, still answered.
