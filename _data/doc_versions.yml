@@ -6,6 +6,9 @@
 # suffix (b, c, ...) for a further version in the same month.
 
 security:
+  - version: v2026-11
+    date: November 1, 2026
+    summary: A client's delete, and anything else that acts on an email, needs that email proved first.
   - version: v2026-10f
     date: October 30, 2026
     summary: There are now 4 application-error alerts. The new one fires when a function repeatedly fails to start.
@@ -26,6 +29,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-11
+    date: November 1, 2026
+    summary: Deleting your data now first asks you to open a sign-in link emailed to you; a one-way hash of your IP address is briefly counted to slow repeated tries.
   - version: v2026-10m
     date: October 30, 2026
     summary: Corrected after a full review of the in-app consent text. Journal chat sends 14 days of journal and is saved; email is also sealed on a practitioner link and a signed waiver; a signed waiver holds your name; where recording answers are stored.

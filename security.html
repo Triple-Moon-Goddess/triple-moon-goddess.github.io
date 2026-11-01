@@ -258,7 +258,7 @@
           <li>Clients who work with a practitioner sign in with an emailed single-use link. Free-app users need no account; a single-use link that expires in 15 minutes restores their records on a new device. Password sign-in is off.</li>
           <li>Practitioners and the administrator sign in with Google plus two-step sign-in (an authenticator app), and must have signed in within the last hour.</li>
           <li>Practitioners, the administrator and signed-in clients are signed out after 30 minutes idle.</li>
-          <li>Access codes are issued by the server. An email address or a code alone opens no records. The sign-in step does say whether an email already has a chart, so it can send the link.</li>
+          <li>Access codes are issued by the server. An email address or a code alone opens no records, and typing an email on a chart grants nothing until it is proved. The sign-in step does say whether an email already has a chart, so it can send the link.</li>
           <li>The Triple Moon Goddess administrator account is the one account not limited by client consent. Its reads of birth data are audit-logged.</li>
         </ul>
       </div>
@@ -326,7 +326,7 @@
       <div class="card">
         <h3>Retention &amp; deletion</h3>
         <ul>
-          <li>Clients can delete their data at any time. Their records, files and sign-in accounts are removed. Payment records keep only amounts and status. Practitioner notes stay until the practitioner deletes them. Deleting also deletes the client's MailerLite subscriber, their booking events on the business calendar (a future session is cancelled) and their Stripe customer; payment records Stripe must keep by law stay with Stripe. Each of those steps retries on its own, and one that keeps failing is emailed to Lisa and finished by hand. Backups age out within 98 days.</li>
+          <li>Clients can delete their data at any time. A delete runs only after the email on the record is proved, by an emailed sign-in link or the client's own verified account. Their records, files and sign-in accounts are removed. Payment records keep only amounts and status. Practitioner notes stay until the practitioner deletes them. Deleting also deletes the client's MailerLite subscriber, their booking events on the business calendar (a future session is cancelled) and their Stripe customer; payment records Stripe must keep by law stay with Stripe. Each of those steps retries on its own, and one that keeps failing is emailed to Lisa and finished by hand. Backups age out within 98 days.</li>
           <li>When a cancelled practitioner subscription reaches the end of its paid period, that practitioner's records are deleted automatically. A suspended account keeps its records until it is restored or cancelled.</li>
           <li>Sign-in links work once and expire after 15 minutes. Return links expire 72 hours after the most recent email that carried them. Expired links are then deleted automatically.</li>
           <li>Records of which app a session opened are deleted automatically after 1 year, AI rate-limit counters after 30 days, and anonymous sign-in sessions after 1 year without use.</li>
