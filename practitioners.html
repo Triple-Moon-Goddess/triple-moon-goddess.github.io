@@ -28,7 +28,7 @@
   .ornament::before { content: '☾'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--bg); padding: 0 18px; color: var(--gold); font-size: 18px; }
   .pricing { padding: 24px 0 80px; display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 720px; margin: 0 auto; }
   .tier { position: relative; background: linear-gradient(180deg, rgba(20, 12, 8, 0.7) 0%, rgba(10, 6, 8, 0.95) 100%); border: 1px solid var(--line); padding: 48px 40px 40px; backdrop-filter: blur(8px); transition: border-color 0.5s ease, transform 0.5s ease; opacity: 0; animation: fadeUp 1s ease-out 1s forwards; }
-  .tier:nth-child(2) { animation-delay: 1.15s; } .tier:nth-child(3) { animation-delay: 1.3s; }
+  .tier:nth-child(2) { animation-delay: 1.15s; } .tier:nth-child(3) { animation-delay: 1.3s; } .tier:nth-child(4) { animation-delay: 1.45s; }
   .tier:hover { border-color: var(--line-strong); transform: translateY(-4px); }
   .tier::before, .tier::after { content: ''; position: absolute; width: 24px; height: 24px; border: 1px solid var(--gold-deep); opacity: 0.5; }
   .tier::before { top: 12px; left: 12px; border-right: none; border-bottom: none; } .tier::after { bottom: 12px; right: 12px; border-left: none; border-top: none; }
@@ -88,7 +88,7 @@
   <section class="hero">
     <div class="hero-eyebrow">For Practitioners</div>
     <h1>Astrology meets <em>medicine</em><br>in your practice.</h1>
-    <p class="hero-lead">Triple Moon Goddess offers three apps for three professional audiences — astrologers and integrative practitioners, licensed therapists and psychologists, and health practitioners and medical doctors. Each surfaces the chart’s intelligence in the language of your practice.</p>
+    <p class="hero-lead">Triple Moon Goddess offers four apps for four professional audiences — astrologers and integrative practitioners, licensed therapists and psychologists, health practitioners and medical doctors, and practitioners who work with family patterns. Each surfaces the chart’s intelligence in the language of your practice.</p>
     <div class="ornament"></div>
   </section>
   <section class="pricing" id="plans">
@@ -163,6 +163,29 @@
       <div class="cta-group">
         <a href="https://triple-moon-goddess.web.app/?page=subscribe&tier=constitutional_health&interval=monthly" target="_blank" rel="noopener" class="cta cta-primary">Begin Monthly</a>
         <a href="https://triple-moon-goddess.web.app/?page=subscribe&tier=constitutional_health&interval=yearly" target="_blank" rel="noopener" class="cta cta-secondary">Begin Annual</a>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">Family Astrology App</div>
+      <h2 class="tier-name">Family<br><em>Patterns</em></h2>
+      <p class="tier-tagline">Family patterns in plain English — no astrology surfaced. For each family role, the facts in the client’s chart and the questions they raise, never a conclusion.</p>
+      <div class="price-block">
+        <div class="price-row"><span class="price-row-label">Monthly</span><span class="price-row-value">$150<span class="unit">/mo</span></span></div>
+        <div class="price-row"><span class="price-row-label">Annual</span><span class="price-row-value">$1,500<span class="unit">/yr</span><span class="savings">Save $300</span></span></div>
+      </div>
+      <ul class="features">
+        <li>Look up clients by email</li>
+        <li>Family report by role — influencer, nurturer, authority, siblings, children</li>
+        <li>Facts and questions to explore with your client, in plain English</li>
+        <li>Download the report as a PDF or Markdown file</li>
+        <li>Family notes — yours alone, isolated at the database level</li>
+        <li>Optional AI dialog (requires your own Anthropic API key, ~$5/mo)</li>
+        <li>Unlimited client charts &amp; sessions</li>
+        <li>Free 1-hour onboarding call with Lisa</li>
+      </ul>
+      <div class="cta-group">
+        <a href="https://triple-moon-goddess.web.app/?page=subscribe&tier=family_astrology&interval=monthly" target="_blank" rel="noopener" class="cta cta-primary">Begin Monthly</a>
+        <a href="https://triple-moon-goddess.web.app/?page=subscribe&tier=family_astrology&interval=yearly" target="_blank" rel="noopener" class="cta cta-secondary">Begin Annual</a>
       </div>
     </div>
   </section>
