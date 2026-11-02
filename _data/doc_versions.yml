@@ -6,6 +6,9 @@
 # suffix (b, c, ...) for a further version in the same month.
 
 security:
+  - version: v2026-11c
+    date: November 2, 2026
+    summary: Adds the Family Astrology practitioner tier.
   - version: v2026-11b
     date: November 2, 2026
     summary: Requests that fail Google reCAPTCHA are still answered, but share a small hourly allowance per network on the functions that create records, send mail or reach a paid service.
@@ -32,6 +35,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-11b
+    date: November 2, 2026
+    summary: Adds the Family Astrology app and its Family AI, what it sends to Anthropic and the notice it shows first.
   - version: v2026-11
     date: November 1, 2026
     summary: Deleting your data now first asks you to open a sign-in link emailed to you; a one-way hash of your IP address is briefly counted to slow repeated tries.
@@ -94,6 +100,9 @@ privacy:
     summary: First publication.
 
 terms:
+  - version: v2026-11
+    date: November 2, 2026
+    summary: Adds the Family Astrology practitioner tier ($150/month or $1,500/year).
   - version: v2026-10b
     date: October 20, 2026
     summary: Cancelling stops the next renewal; the account stays open until the end of the paid period, then closes and is deleted permanently (it said cancellation was immediate). Practitioners can cancel in Settings → Manage billing.
