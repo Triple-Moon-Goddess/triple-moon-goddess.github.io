@@ -37,7 +37,7 @@ security:
 privacy:
   - version: v2026-11b
     date: November 2, 2026
-    summary: Adds the Family Astrology app and its Family AI: what it sends to Anthropic and the notice it shows first.
+    summary: Adds the Family Astrology app and its Family AI, what it sends to Anthropic and the notice it shows first.
   - version: v2026-11
     date: November 1, 2026
     summary: Deleting your data now first asks you to open a sign-in link emailed to you; a one-way hash of your IP address is briefly counted to slow repeated tries.
