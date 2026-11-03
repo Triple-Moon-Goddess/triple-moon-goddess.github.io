@@ -287,7 +287,7 @@
         <h3>Backups &amp; recovery</h3>
         <ul>
           <li>Daily and weekly backups are kept 98 days, with point-in-time recovery for 7 days.</li>
-          <li>A separate export vault in its own project is kept 30 days under a locked retention policy.</li>
+          <li>A separate export vault in its own project is kept 90 days under a locked retention policy, which no one can shorten.</li>
           <li>Delete protection is on for the production database.</li>
         </ul>
       </div>
@@ -326,7 +326,7 @@
       <div class="card">
         <h3>Retention &amp; deletion</h3>
         <ul>
-          <li>Clients can delete their data at any time. A delete runs only after the email on the record is proved, by an emailed sign-in link or the client's own verified account. Their records, files and sign-in accounts are removed. Payment records keep only amounts and status. Practitioner notes stay until the practitioner deletes them. Deleting also deletes the client's MailerLite subscriber, their booking events on the business calendar (a future session is cancelled) and their Stripe customer; payment records Stripe must keep by law stay with Stripe. Each of those steps retries on its own, and one that keeps failing is emailed to Lisa and finished by hand. Backups age out within 98 days.</li>
+          <li>Clients can delete their data at any time. A delete runs only after the email on the record is proved, by an emailed sign-in link or the client's own verified account. Their records, files and sign-in accounts are removed. Payment records keep only amounts and status. Practitioner notes stay until the practitioner deletes them. Deleting also deletes the client's MailerLite subscriber, their booking events on the business calendar (a future session is cancelled) and their Stripe customer; payment records Stripe must keep by law stay with Stripe. Each of those steps retries on its own, and one that keeps failing is emailed to Lisa and finished by hand. Backups age out within 100 days.</li>
           <li>When a cancelled practitioner subscription reaches the end of its paid period, that practitioner's records are deleted automatically. A suspended account keeps its records until it is restored or cancelled.</li>
           <li>Sign-in links work once and expire after 15 minutes. Return links expire 72 hours after the most recent email that carried them. Expired links are then deleted automatically.</li>
           <li>Records of which app a session opened are deleted automatically after 1 year, AI rate-limit counters after 30 days, and anonymous sign-in sessions after 1 year without use.</li>
