@@ -6,6 +6,9 @@
 # suffix (b, c, ...) for a further version in the same month.
 
 security:
+  - version: v2026-11f
+    date: November 5, 2026
+    summary: New logs are stored in the United States. A completed CSA CAIQ v4.1 questionnaire is available on request. The alert count is corrected to 11 breach and backup alerts, 6 with 24-hour checks (the client-file deletion alert added November 2 was not counted).
   - version: v2026-11e
     date: November 3, 2026
     summary: A third-party penetration test is available once there is a revenue commitment, not arranged on request.
@@ -41,6 +44,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-11e
+    date: November 5, 2026
+    summary: Our logs are stored in the United States since November 5, 2026; older entries stay in Google's global storage until their retention ends.
   - version: v2026-11d
     date: November 3, 2026
     summary: TMG never adds a name, email or access code to an AI request, but what a person types is sent as written; Journal Chat removes typed email addresses and phone numbers first, and the server refuses AI requests sent without the current notice.
