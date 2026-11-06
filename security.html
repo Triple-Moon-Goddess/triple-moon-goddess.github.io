@@ -319,7 +319,7 @@
           <li>A stranger attacks production every day.</li>
           <li>Every request from the apps carries a Firebase App Check token from Google reCAPTCHA Enterprise, showing it came from our own pages. Requests without one are still answered, because some real visitors fail the check, but on the functions that create records, send mail or reach a paid service they share a small hourly allowance for each network.</li>
           <li>A weekly audit checks least-privilege access, key and secret rotation, credentials in code and critical or high dependency vulnerabilities, and runs a mutation test proving the tests catch an opened database rule. The report is sent every week, pass or fail.</li>
-          <li>11 breach and backup alerts, 6 of them with 24-hour checks for slow attacks, plus 4 application-error alerts.</li>
+          <li>12 breach and backup alerts, 6 of them with 24-hour checks for slow attacks, plus 4 application-error alerts. One of them emails and texts Lisa whenever a person changes who can access anything in the production Google Cloud project.</li>
         </ul>
       </div>
 
