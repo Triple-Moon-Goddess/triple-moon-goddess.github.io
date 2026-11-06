@@ -6,6 +6,9 @@
 # suffix (b, c, ...) for a further version in the same month.
 
 security:
+  - version: v2026-11g
+    date: November 5, 2026
+    summary: A twelfth breach alert emails and texts Lisa whenever a person changes who can access anything in the production Google Cloud project.
   - version: v2026-11f
     date: November 5, 2026
     summary: New logs are stored in the United States. A completed CSA CAIQ v4.1 questionnaire is available on request. The alert count is corrected to 11 breach and backup alerts, 6 with 24-hour checks (the client-file deletion alert added November 2 was not counted).
