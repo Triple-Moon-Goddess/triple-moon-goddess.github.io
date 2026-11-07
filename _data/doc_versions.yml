@@ -47,6 +47,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-11f
+    date: November 6, 2026
+    summary: A chart email adds you to the newsletter list only if you tick "Do you want to receive a newsletter", which starts unticked.
   - version: v2026-11e
     date: November 5, 2026
     summary: Our logs are stored in the United States since November 5, 2026; older entries stay in Google's global storage until their retention ends.
