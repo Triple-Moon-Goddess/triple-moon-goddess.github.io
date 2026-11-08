@@ -10,6 +10,12 @@
 # the visitor presses play. Each video needs its thumbnail saved as
 # assets/video-thumbs/<youtube_id>.jpg (from https://i.ytimg.com/vi/<id>/maxresdefault.jpg).
 
+- title: "Palo Alto Talk"
+  youtube_id: "rJnqR1Eu82M"
+  date: "2026-11-07"
+  time: "2 PM"
+  location: "Soul Search Palo Alto Expo"
+
 - title: "Santa Clara Talk"
   youtube_id: "OjfNTFB4y80"
   date: "2026-10-24"
