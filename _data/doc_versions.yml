@@ -6,6 +6,9 @@
 # suffix (b, c, ...) for a further version in the same month.
 
 security:
+  - version: v2026-11h
+    date: November 10, 2026
+    summary: A fifth application-error alert emails Lisa when our servers fail to check a sign-in, for example because Google’s sign-in keys cannot be reached.
   - version: v2026-11g
     date: November 5, 2026
     summary: A twelfth breach alert emails and texts Lisa whenever a person changes who can access anything in the production Google Cloud project.
@@ -47,6 +50,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-11f
+    date: November 10, 2026
+    summary: A chart email adds you to the newsletter list only if you tick "Do you want to receive a newsletter", which starts unticked. Adds the practitioner's follow-up email draft to the AI touchpoints, and how practitioners log follow-ups.
   - version: v2026-11e
     date: November 5, 2026
     summary: Our logs are stored in the United States since November 5, 2026; older entries stay in Google's global storage until their retention ends.
