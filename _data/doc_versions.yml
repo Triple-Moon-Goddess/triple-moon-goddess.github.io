@@ -127,6 +127,9 @@ privacy:
     summary: First publication.
 
 terms:
+  - version: v2026-11b
+    date: November 10, 2026
+    summary: Practitioners may keep session notes in the Soul Journal, encrypted and readable only by them and the administrator; a HIPAA-covered practice needs a signed BAA first.
   - version: v2026-11
     date: November 2, 2026
     summary: Adds the Family Astrology practitioner tier ($150/month or $1,500/year).
