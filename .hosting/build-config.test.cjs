@@ -6,7 +6,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const assert = require('assert');
-const { buildConfig, PROD_APP } = require('./build-config.cjs');
+const { buildConfig, PROD_APP, OLD_PAGE_REDIRECTS } = require('./build-config.cjs');
 
 const DEV_APP = 'https://triple-moon-goddess-dev.web.app';
 const site = fs.mkdtempSync(path.join(os.tmpdir(), 'tmg-site-'));
@@ -40,6 +40,24 @@ test('no page is readable by any origin (no wildcard), and only the events page 
 
 test('an unknown app origin is refused', () => {
   assert.throws(() => buildConfig(site, { appOrigin: 'https://evil.example' }), /unknown app origin/);
+});
+
+test('old-site addresses are permanent (301) redirects to a page the site builds', () => {
+  const pagesDir = fs.mkdtempSync(path.join(os.tmpdir(), 'tmg-site-'));
+  for (const f of ['index.html', 'practitioners.html', 'online-readings.html']) fs.writeFileSync(path.join(pagesDir, f), '<p>x</p>');
+  const { config } = buildConfig(pagesDir);
+  assert.deepStrictEqual(config.hosting.redirects, [
+    { source: '/practitioner', destination: '/practitioners.html', type: 301 },
+    { source: '/astrology', destination: '/online-readings.html', type: 301 },
+    { source: '/relationship', destination: '/online-readings.html', type: 301 },
+  ]);
+  const repo = path.join(__dirname, '..');
+  for (const r of OLD_PAGE_REDIRECTS) assert.ok(fs.existsSync(path.join(repo, r.destination)), `${r.destination} is not a page in the repo`);
+});
+
+test('a redirect never shadows a live page', () => {
+  const repo = path.join(__dirname, '..');
+  for (const r of OLD_PAGE_REDIRECTS) assert.ok(!fs.existsSync(path.join(repo, `${r.source}.html`)), `${r.source}.html exists, so ${r.source} must not redirect`);
 });
 
 console.log(`build-config: ${passed} passed`);

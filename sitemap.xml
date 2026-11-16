@@ -1,3 +1,6 @@
+---
+# Liquid runs on this file so every blog post is listed automatically (posts loop at the end).
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -7,6 +10,11 @@
   </url>
   <url>
     <loc>https://triplemoongoddess.com/readings.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://triplemoongoddess.com/online-readings.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -120,4 +128,12 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+{%- for post in site.posts %}
+  <url>
+    <loc>https://triplemoongoddess.com{{ post.url }}</loc>
+    <lastmod>{{ post.last_modified_at | default: post.date | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+{%- endfor %}
 </urlset>

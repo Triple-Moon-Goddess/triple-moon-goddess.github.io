@@ -12,6 +12,7 @@
 //     on*= event handler, a javascript: URL) or on an outside host that is not
 //     in ALLOWED below — the page would break under the policy;
 //   - serves /about as /about.html for every top-level page, as GitHub Pages did;
+//   - 301-redirects old-site addresses to the page that replaced them (OLD_PAGE_REDIRECTS);
 //   - lets the one app origin (--app-origin, default the prod app) read events.html.
 //
 // No Cross-Origin-Embedder-Policy: tested 2026-10-14, COEP credentialless stops the
@@ -30,6 +31,15 @@ const APP_ORIGINS = [PROD_APP, 'https://triple-moon-goddess-dev.web.app'];
 // to read (Lisa, 2026-10-18): the admin Reading Reconciliation report reads the
 // event list from events.html. One named origin, never '*' (ZAP 10098).
 const APP_READABLE_PAGES = ['/events.html', '/events'];
+
+// Addresses from the old site that Google still crawls (Search Console "Not found
+// (404)", 2026-11-15), sent for good to the page that replaced them. Only addresses
+// with a real replacement; /tarot, /oracle and the like stay 404, which is correct.
+const OLD_PAGE_REDIRECTS = [
+  { source: '/practitioner', destination: '/practitioners.html' },
+  { source: '/astrology', destination: '/online-readings.html' },
+  { source: '/relationship', destination: '/online-readings.html' },
+];
 
 // Outside hosts the site may load, by CSP directive. Adding one is a deliberate edit.
 const ALLOWED = {
@@ -155,6 +165,7 @@ function buildConfig(siteDir, { appOrigin = PROD_APP } = {}) {
       public: path.relative(path.dirname(path.resolve(process.argv[3] || '.hosting/firebase.json')), path.resolve(siteDir)),
       ignore: ['CNAME', '**/.*'],
       cleanUrls: false,
+      redirects: OLD_PAGE_REDIRECTS.map((r) => ({ ...r, type: 301 })),
       rewrites: topPages.map((f) => ({ source: `/${f.replace(/\.html$/, '')}`, destination: `/${f}` })),
       headers: [
         {
@@ -205,4 +216,4 @@ function main(argv) {
 
 if (require.main === module) process.exit(main(process.argv.slice(2)));
 
-module.exports = { inspect, buildConfig, minifyScripts, sha, pages, ALLOWED, PROD_APP, APP_ORIGINS, APP_READABLE_PAGES };
+module.exports = { inspect, buildConfig, minifyScripts, sha, pages, ALLOWED, PROD_APP, APP_ORIGINS, APP_READABLE_PAGES, OLD_PAGE_REDIRECTS };
