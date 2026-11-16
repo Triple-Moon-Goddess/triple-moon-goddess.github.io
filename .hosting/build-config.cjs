@@ -33,12 +33,16 @@ const APP_ORIGINS = [PROD_APP, 'https://triple-moon-goddess-dev.web.app'];
 const APP_READABLE_PAGES = ['/events.html', '/events'];
 
 // Addresses from the old site that Google still crawls (Search Console "Not found
-// (404)", 2026-11-15), sent for good to the page that replaced them. Only addresses
-// with a real replacement; /tarot, /oracle and the like stay 404, which is correct.
+// (404)", 2026-11-15), sent for good to the closest current page so none is left
+// as a 404 (Lisa, 2026-11-15: fix every Search Console error).
 const OLD_PAGE_REDIRECTS = [
   { source: '/practitioner', destination: '/practitioners.html' },
   { source: '/astrology', destination: '/online-readings.html' },
   { source: '/relationship', destination: '/online-readings.html' },
+  { source: '/tarot', destination: '/online-readings.html' },
+  { source: '/oracle', destination: '/online-readings.html' },
+  { source: '/naLogImpressions', destination: '/' },
+  { source: '/legal/PRIVACY_CHANGELOG.html', destination: '/privacy.html' },
 ];
 
 // Outside hosts the site may load, by CSP directive. Adding one is a deliberate edit.
