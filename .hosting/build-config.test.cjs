@@ -50,14 +50,30 @@ test('old-site addresses are permanent (301) redirects to a page the site builds
     { source: '/practitioner', destination: '/practitioners.html', type: 301 },
     { source: '/astrology', destination: '/online-readings.html', type: 301 },
     { source: '/relationship', destination: '/online-readings.html', type: 301 },
+    { source: '/tarot', destination: '/online-readings.html', type: 301 },
+    { source: '/oracle', destination: '/online-readings.html', type: 301 },
+    { source: '/naLogImpressions', destination: '/', type: 301 },
+    { source: '/legal/PRIVACY_CHANGELOG.html', destination: '/privacy.html', type: 301 },
   ]);
   const repo = path.join(__dirname, '..');
-  for (const r of OLD_PAGE_REDIRECTS) assert.ok(fs.existsSync(path.join(repo, r.destination)), `${r.destination} is not a page in the repo`);
+  for (const r of OLD_PAGE_REDIRECTS) {
+    const page = r.destination === '/' ? '/index.html' : r.destination;
+    assert.ok(fs.existsSync(path.join(repo, page)), `${r.destination} is not a page in the repo`);
+  }
+});
+
+test('every old address Search Console reported as 404 (2026-11-15) now redirects', () => {
+  const reported = ['/practitioner', '/oracle', '/relationship', '/astrology', '/naLogImpressions', '/tarot', '/legal/PRIVACY_CHANGELOG.html'];
+  const sources = OLD_PAGE_REDIRECTS.map((r) => r.source);
+  for (const u of reported) assert.ok(sources.includes(u), `${u} still 404s`);
 });
 
 test('a redirect never shadows a live page', () => {
   const repo = path.join(__dirname, '..');
-  for (const r of OLD_PAGE_REDIRECTS) assert.ok(!fs.existsSync(path.join(repo, `${r.source}.html`)), `${r.source}.html exists, so ${r.source} must not redirect`);
+  for (const r of OLD_PAGE_REDIRECTS) {
+    const file = r.source.endsWith('.html') ? r.source : `${r.source}.html`;
+    assert.ok(!fs.existsSync(path.join(repo, file)), `${file} exists, so ${r.source} must not redirect`);
+  }
 });
 
 console.log(`build-config: ${passed} passed`);
