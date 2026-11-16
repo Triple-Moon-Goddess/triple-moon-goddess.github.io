@@ -269,7 +269,7 @@
           <li>Encrypted in transit (HTTPS) and at rest.</li>
           <li>In our database, email addresses, birth data, practitioner notes and readings are encrypted with a managed Cloud KMS key that only server functions use. The key rotates every 90 days.</li>
           <li>Records are keyed by pseudonymous access codes. Email lookups use keyed fingerprints (HMAC-SHA256) with the key held in Secret Manager.</li>
-          <li>Since October 8, 2026, application logs carry no email addresses, access codes or AI text; some older entries from September 20 to October 8, 2026 hold a newsletter sign-up's email address and are waiting to be removed by Google after their 30 days. Data-access audit logs record which records were read and by which signed-in account; an entry for a lookup by email address (correcting a client's email, deleting a client's data, or sending a sign-in link) also holds that address.</li>
+          <li>Since October 8, 2026, application logs carry no email addresses, access codes or AI text; some older entries from September 20 to October 8, 2026 hold a newsletter sign-up's email address and are waiting to be removed by Google after their 30 days. Since November 16, 2026, our server functions also replace any person’s email address in a log line with a fingerprint before the line is written. Data-access audit logs record which records were read and by which signed-in account; an entry for a lookup by email address (correcting a client's email, deleting a client's data, or sending a sign-in link) also holds that address.</li>
           <li>Email addresses also go to the services that need them: Stripe for receipts, Google Calendar for booking invitations, MailerLite for the opt-in newsletter, and Google Workspace for mail.</li>
         </ul>
       </div>
@@ -317,7 +317,7 @@
         <h3>Continuous monitoring</h3>
         <ul>
           <li>A stranger attacks production every day.</li>
-          <li>Every request from the apps carries a Firebase App Check token from Google reCAPTCHA Enterprise, showing it came from our own pages. Requests without one are still answered, because some real visitors fail the check, but on the functions that create records, send mail or reach a paid service they share a small hourly allowance for each network.</li>
+          <li>Every request from the apps carries a Firebase App Check token from Google reCAPTCHA Enterprise, showing it came from our own pages. Since November 16, 2026, our server functions refuse a request from the apps that has no valid token.</li>
           <li>A weekly audit checks least-privilege access, key and secret rotation, credentials in code and critical or high dependency vulnerabilities, and runs a mutation test proving the tests catch an opened database rule. The report is sent every week, pass or fail.</li>
           <li>12 breach and backup alerts, 6 of them with 24-hour checks for slow attacks, plus 5 application-error alerts, one of them for when our servers fail to check a sign-in, for example because Google’s sign-in keys cannot be reached. One of the breach alerts emails and texts Lisa whenever a person changes who can access anything in the production Google Cloud project.</li>
         </ul>

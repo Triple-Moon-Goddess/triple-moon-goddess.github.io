@@ -6,6 +6,9 @@
 # suffix (b, c, ...) for a further version in the same month.
 
 security:
+  - version: v2026-11j
+    date: November 16, 2026
+    summary: "Our server functions now refuse app requests without a valid App Check token, and replace any person’s email address in a log line with a fingerprint before it is written."
   - version: v2026-11i
     date: November 14, 2026
     summary: "The administrator signs in with a hardware security key and its PIN; practitioners may choose one instead of an authenticator app. Fingerprint, face and phone passkeys are refused, and recovery codes are stored as hashes. Corrects the rate-limit counter line: short counters are deleted after their window, the old AI-summary counters after 30 days."
@@ -53,6 +56,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-11h
+    date: November 16, 2026
+    summary: "Our server functions now refuse app requests without a valid App Check token from Google reCAPTCHA Enterprise (Section V)."
   - version: v2026-11g
     date: November 14, 2026
     summary: "Adds hardware security keys (such as a YubiKey) for two-step sign-in: what we store for each key and its recovery codes, and how long. We never receive the key’s PIN. Separates short rate-limit counters, such as recovery-code tries, from the old AI summary counters, and says what they hold and when they are deleted."
