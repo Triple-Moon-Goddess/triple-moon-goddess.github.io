@@ -8,7 +8,7 @@
 security:
   - version: v2026-11l
     date: November 17, 2026
-    summary: "When a client deletes their data, the record that they signed the consent form and of their answer about being recorded is kept, filed under a code derived from the client's email address, without the name, signature or email address, and marked with the date of the delete."
+    summary: "When a client deletes their data, the record that they signed the consent form and of their answer about being recorded is kept, filed under a code derived from the client's email address, without the name, signature or email address, and marked with the date of the delete. A sales export is no longer an accepted reason for the administrator to read a client's stored birth data back; it stays a reason for the email lookups."
   - version: v2026-11k
     date: November 16, 2026
     summary: "The administrator must choose a reason from a fixed list before reading a client’s stored birth data back; each such lookup is logged with the administrator’s account and the reason, and kept 6 years. Adds a short guide to who is responsible for what."
