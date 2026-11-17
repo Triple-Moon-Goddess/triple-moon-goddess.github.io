@@ -322,7 +322,7 @@
           <li>A stranger attacks production every day.</li>
           <li>Every request from the apps carries a Firebase App Check token from Google reCAPTCHA Enterprise, showing it came from our own pages. Since November 16, 2026, our server functions refuse a request from the apps that has no valid token.</li>
           <li>A weekly audit checks least-privilege access, key and secret rotation, credentials in code and critical or high dependency vulnerabilities, and runs a mutation test proving the tests catch an opened database rule. The report is sent every week, pass or fail.</li>
-          <li>12 breach and backup alerts, 6 of them with 24-hour checks for slow attacks, plus 5 application-error alerts, one of them for when our servers fail to check a sign-in, for example because Google’s sign-in keys cannot be reached. One of the breach alerts emails and texts Lisa whenever a person changes who can access anything in the production Google Cloud project.</li>
+          <li>13 breach and backup alerts, 6 of them with 24-hour checks for slow attacks, plus 5 application-error alerts, one of them for when our servers fail to check a sign-in, for example because Google’s sign-in keys cannot be reached. One of the breach alerts emails and texts Lisa whenever a person changes who can access anything in the production Google Cloud project. A further alert emails and texts Lisa when the server that carries our calls to payment, newsletter, AI and place-lookup services is running but has stopped working.</li>
         </ul>
       </div>
 
