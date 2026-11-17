@@ -259,7 +259,10 @@
           <li>Practitioners and the administrator sign in with Google plus two-step sign-in, and must have signed in within the last hour. The administrator's second step is a hardware security key or a single-use recovery code; a practitioner may use an authenticator app or a hardware security key. A key counts only if it is a hardware key that checks its PIN; fingerprint, face and phone passkeys are refused when added and at sign-in. Once a practitioner adds a key, an authenticator code no longer signs them in. Each person with keys gets 10 single-use recovery codes, stored as scrypt hashes, with 5 tries per 15 minutes.</li>
           <li>Practitioners, the administrator and signed-in clients are signed out after 30 minutes idle.</li>
           <li>Access codes are issued by the server. An email address or a code alone opens no records, and typing an email on a chart grants nothing until it is proved. The sign-in step does say whether an email already has a chart, so it can send the link.</li>
-          <li>The Triple Moon Goddess administrator account is the one account not limited by client consent. Its reads of birth data are audit-logged.</li>
+          <li>The Triple Moon Goddess administrator account is the one account not limited by client consent. The administrator can read a client's stored birth data back in one place only, the screen for correcting a birth record, and only after choosing a reason from a fixed list. The server refuses the read without one.</li>
+          <li>The reasons on the list are: the client asked, correcting a stored record, matching a payment, a sales export, managing accounts, the recording-consent report, testing with the administrator's own test records, and a legal or records request. The same list guards the administrator's “Show email” control and the email lookups for payment matching, reports, the sales export and account management.</li>
+          <li>Each of these lookups writes one audit line: the administrator's account, the tool used, the reason, and a reference that stands in for the client's access code or a count of records. It never holds the email address, the access code or the birth data. The administrator's bookings, credits, partners and program-application lists show email addresses without this step.</li>
+          <li>Clients are not asked to approve the administrator's lookups and are not notified of them.</li>
         </ul>
       </div>
 
@@ -338,6 +341,7 @@
         <h3>Audit logs</h3>
         <ul>
           <li>Data-access audit logs are kept 6 years. The archived copy is held under a retention policy and is readable only by the account owner.</li>
+          <li>The audit lines written when the administrator looks up a client's stored birth data or email address with a recorded reason (Access control, above) have been kept 6 years with the data-access audit logs since November 16, 2026.</li>
           <li>Application logs are kept 30 days.</li>
           <li>New logs have been stored in the United States since November 5, 2026. Entries written before then stay in Google's global storage until their retention period ends.</li>
         </ul>
@@ -348,6 +352,58 @@
           <li>OWASP ZAP scan reports</li>
           <li>A completed Cloud Security Alliance CAIQ v4.1 (Consensus Assessments Initiative Questionnaire)</li>
           <li>A third-party penetration test, available once there is a revenue commitment</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="part">
+    <h2 class="part-title">Who is responsible for what</h2>
+    <p class="part-lede">A short guide for clients, practitioners and their reviewers. The Privacy Policy and the Terms of Service hold the detail.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Triple Moon Goddess</h3>
+        <ul>
+          <li>The apps and their code, and testing every release before and after it ships.</li>
+          <li>Who can reach which record: the database and storage rules, the consent check on every practitioner action, and sign-in for practitioners and the administrator.</li>
+          <li>Encrypting email addresses, birth data, practitioner notes and readings with our own key, and controlling who can use that key.</li>
+          <li>Backups, retention and deletion, including removing a client from the services that hold their email when they delete their data.</li>
+          <li>Logs, alerts and responding to an incident, including telling the people affected.</li>
+          <li>Choosing the providers below, sending each one only the data listed in the Privacy Policy (Section V), and keeping two-step sign-in on our own accounts with them.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Practitioners</h3>
+        <ul>
+          <li>Your own practice: your professional duties, your licence and the laws that apply to you, and how you use and explain what the platform shows (Terms of Service, Section VI).</li>
+          <li>Inviting only clients who have agreed to be invited, and not entering a client's birth data yourself.</li>
+          <li>Your Google account, your authenticator app or security key, and your recovery codes. Keep them to yourself, and tell us at once if one is lost or you think someone else has signed in as you.</li>
+          <li>The devices you sign in on: a screen lock, current updates, and signing out on a shared computer.</li>
+          <li>Your own Anthropic account and API key if you use the AI features. What you send to Anthropic is between you and Anthropic, outside our systems and agreements.</li>
+          <li>Anything you copy, export or write down outside the apps.</li>
+          <li>If you are covered by HIPAA: deciding whether your use fits your own obligations, and signing a Business Associate Agreement with us before you keep client notes here (Terms of Service, Section VIII).</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Clients</h3>
+        <ul>
+          <li>Your email account. Sign-in links are sent there, so whoever can open that mailbox can open your records.</li>
+          <li>The devices you use, and signing out on one you share.</li>
+          <li>Choosing whether to accept a practitioner's invitation. You can stop sharing with a practitioner at any time (Privacy Policy, Section XII).</li>
+          <li>What you type or attach. Text you send to an AI feature is sent as written, except that Journal Chat removes email addresses and phone numbers first.</li>
+          <li>Deleting your data when you no longer want us to hold it.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Our providers</h3>
+        <ul>
+          <li>Google runs the data centres, servers and network, and the database, file storage, sign-in, key-management and logging services we build on. We set the rules, keys, access and alerts inside them.</li>
+          <li>Stripe takes card payments. Card details are entered on Stripe and never reach us.</li>
+          <li>Anthropic processes AI requests, MailerLite holds the newsletter list, and Google Workspace carries our email and calendar. Each receives only what Section V of the Privacy Policy lists.</li>
+          <li>We rely on each provider's published terms and security statements. We obtain and read the independent audit reports of Google Cloud, Google Workspace and Stripe each year.</li>
         </ul>
       </div>
     </div>
