@@ -8,7 +8,7 @@
 security:
   - version: v2026-11l
     date: November 17, 2026
-    summary: "When a client deletes their data, the record that they signed the consent form and of their answer about being recorded is kept, filed under a code derived from the client's email address, without the name, signature or email address, and marked with the date of the delete. A sales export is no longer an accepted reason for the administrator to read a client's stored birth data back; it stays a reason for the email lookups."
+    summary: "When a client deletes their data, the record that they signed the consent form and of their answer about being recorded is kept, filed under a code derived from the client's email address, without the name, signature or email address, and marked with the date of the delete. A sales export is no longer an accepted reason for the administrator to read a client's stored birth data back; it stays a reason for the email lookups. Corrects the alert count to 13 breach and backup alerts, and adds the alert that emails and texts Lisa when the server carrying our calls to payment, newsletter, AI and place-lookup services is running but has stopped working."
   - version: v2026-11k
     date: November 16, 2026
     summary: "The administrator must choose a reason from a fixed list before reading a client’s stored birth data back; each such lookup is logged with the administrator’s account and the reason, and kept 6 years. Adds a short guide to who is responsible for what."
@@ -64,7 +64,7 @@ security:
 privacy:
   - version: v2026-11j
     date: November 17, 2026
-    summary: "When you delete your data we keep the record that you signed our consent form and of your answer about being recorded, filed under a code derived from your email address, without your name, signature or email address, marked with the date of the deletion (Summary, Sections VIII and XII). If a data breach affects your information, we will notify you no later than 30 calendar days after we discover it (Section IX)."
+    summary: "When you delete your data we keep the record that you signed our consent form and of your answer about being recorded, filed under a code derived from your email address, without your name, signature or email address, marked with the date of the deletion; it also says whether your email address had been confirmed and, for an answer given out loud, when and by which administrator account it was recorded (Summary, Sections VIII and XII). If a data breach affects your information, we will notify you no later than 30 calendar days after we discover it (Section IX)."
   - version: v2026-11i
     date: November 16, 2026
     summary: "Lisa, as administrator, must choose a reason from a fixed list before reading your stored birth data back; her account and the reason are recorded each time and kept 6 years (Summary, Sections VIII and IX)."
