@@ -6,6 +6,9 @@
 # suffix (b, c, ...) for a further version in the same month.
 
 security:
+  - version: v2026-11l
+    date: November 17, 2026
+    summary: "When a client deletes their data, the record that they signed the consent form and of their answer about being recorded is kept, without the name, signature or email address, marked with the date of the delete."
   - version: v2026-11j
     date: November 16, 2026
     summary: "Our server functions now refuse app requests without a valid App Check token, and replace any person’s email address in a log line with a fingerprint before it is written."
@@ -56,6 +59,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-11j
+    date: November 17, 2026
+    summary: "When you delete your data we keep the record that you signed our consent form and of your answer about being recorded, without your name, signature or email address, marked with the date of the deletion (Summary, Sections VIII and XII)."
   - version: v2026-11h
     date: November 16, 2026
     summary: "Our server functions now refuse app requests without a valid App Check token from Google reCAPTCHA Enterprise (Section V)."
