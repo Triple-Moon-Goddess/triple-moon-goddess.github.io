@@ -6,6 +6,9 @@
 # suffix (b, c, ...) for a further version in the same month.
 
 security:
+  - version: v2026-11k
+    date: November 16, 2026
+    summary: "The administrator must choose a reason from a fixed list before reading a client’s stored birth data back; each such lookup is logged with the administrator’s account and the reason, and kept 6 years. Adds a short guide to who is responsible for what."
   - version: v2026-11j
     date: November 16, 2026
     summary: "Our server functions now refuse app requests without a valid App Check token, and replace any person’s email address in a log line with a fingerprint before it is written."
@@ -56,6 +59,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-11i
+    date: November 16, 2026
+    summary: "Lisa, as administrator, must choose a reason from a fixed list before reading your stored birth data back; her account and the reason are recorded each time and kept 6 years (Summary, Sections VIII and IX)."
   - version: v2026-11h
     date: November 16, 2026
     summary: "Our server functions now refuse app requests without a valid App Check token from Google reCAPTCHA Enterprise (Section V)."
