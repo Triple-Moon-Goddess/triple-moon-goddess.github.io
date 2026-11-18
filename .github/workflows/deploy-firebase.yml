@@ -11,10 +11,16 @@ name: Build and deploy (Firebase Hosting)
 #           Federation; this repo's main branch only)
 #   scan    the OWASP ZAP baseline of the deployed Firebase site (zap-scan.yml): report kept,
 #           findings emailed to Lisa, any finding (Informational included) fails the run
+# On a pull request into main (Lisa, 2026-11-17, approval-list item 34(a): a required
+# check on the website repo) only the build job runs: the Jekyll build, the .hosting
+# tests and the CSP check. Deploy and scan are guarded so they never run for a pull
+# request, and the pull-request path uses no secrets and no Workload Identity auth.
 
 on:
   push:
     branches: [main, firebase-hosting]   # firebase-hosting builds only; deploy runs on main
+  pull_request:
+    branches: [main]                     # build + CSP check only (job "Build site")
   workflow_dispatch:
 
 permissions:
@@ -26,6 +32,7 @@ concurrency:
 
 jobs:
   build:
+    name: Build site   # the required check's name; keep it stable
     runs-on: ubuntu-latest
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/.hosting/Gemfile
@@ -63,7 +70,8 @@ jobs:
 
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main'
+    # Never for a pull request; only main (a push, or a manual run on main).
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -83,6 +91,7 @@ jobs:
 
   scan:
     needs: deploy
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     # The called workflow reads Pages build status; a called workflow can only use
     # permissions its caller grants (without this, GitHub refuses to start the run).
     permissions:
