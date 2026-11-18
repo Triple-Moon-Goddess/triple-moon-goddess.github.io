@@ -8,7 +8,7 @@
 security:
   - version: v2026-11m
     date: November 18, 2026
-    summary: "When a cancelled practitioner subscription ends, the practitioner's sign-in account and encrypted email record are deleted too, with the stated exceptions; the record that they accepted the Soul module terms and their signed agreement are kept without name, signature or email address, marked with the date of the deletion."
+    summary: "When a cancelled practitioner subscription ends, the practitioner's sign-in account and encrypted email record are deleted too, with the stated exceptions; the record of their one-time Soul module question library acknowledgment and their signed agreement are kept without name, signature or email address, marked with the date of the deletion."
   - version: v2026-11l
     date: November 17, 2026
     summary: "When a client deletes their data, the record that they signed the consent form and of their answer about being recorded is kept, filed under a code derived from the client's email address, without the name, signature or email address, and marked with the date of the delete. A sales export is no longer an accepted reason for the administrator to read a client's stored birth data back; it stays a reason for the email lookups. Corrects the alert count to 13 breach and backup alerts, and adds the alert that emails and texts Lisa when the server carrying our calls to payment, newsletter, AI and place-lookup services is running but has stopped working. Adds the uptime checks: each of the TMG app's 25 page addresses is checked every 5 minutes from three US locations, and Lisa is emailed and texted when a page stops answering."
@@ -67,7 +67,7 @@ security:
 privacy:
   - version: v2026-11k
     date: November 18, 2026
-    summary: "When a practitioner's cancelled subscription ends, their sign-in account and encrypted email record are deleted, with the exceptions stated; the record that they accepted the Soul module terms and their signed practitioner agreement are kept without name, signature or email address, marked with the date of the deletion (Sections VI and VIII)."
+    summary: "When a practitioner's cancelled subscription ends, their sign-in account and encrypted email record are deleted, with the exceptions stated; the record of their one-time Soul module question library acknowledgment and their signed practitioner agreement are kept without name, signature or email address, marked with the date of the deletion (Sections VI and VIII)."
   - version: v2026-11j
     date: November 17, 2026
     summary: "When you delete your data we keep the record that you signed our consent form and of your answer about being recorded, filed under a code derived from your email address, without your name, signature or email address, marked with the date of the deletion; it also says whether your email address had been confirmed and, for an answer given out loud, when and by which administrator account it was recorded (Summary, Sections VIII and XII). If a data breach affects your information, we will notify you no later than 30 calendar days after we discover it (Section IX). Corrects the Stripe card: the reading question (until October 18, 2026) and the access code and email address in the order details (until October 5, 2026) were sent to Stripe with earlier payments, and we removed them from those payment records on November 17, 2026 (Section V)."
@@ -159,7 +159,7 @@ privacy:
 terms:
   - version: v2026-11d
     date: November 18, 2026
-    summary: "Section V says what else a cancellation deletes (your sign-in account and encrypted email record, with the stated exceptions) and what it keeps: the record that you accepted the Soul module terms and the record that you signed this agreement, without your name, signature or email address."
+    summary: "Section V says what else a cancellation deletes (your sign-in account and encrypted email record, with the stated exceptions) and what it keeps: the record of your one-time Soul module question library acknowledgment and the record that you signed this agreement, without your name, signature or email address."
   - version: v2026-11c
     date: November 14, 2026
     summary: "Adds hardware security keys for two-step sign-in (required for the administrator, optional for practitioners), keeping the keys and recovery codes safe, and their deletion when a subscription ends."
