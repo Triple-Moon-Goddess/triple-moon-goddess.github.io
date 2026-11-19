@@ -54,6 +54,8 @@ test('old-site addresses are permanent (301) redirects to a page the site builds
     { source: '/oracle', destination: '/online-readings.html', type: 301 },
     { source: '/naLogImpressions', destination: '/', type: 301 },
     { source: '/legal/PRIVACY_CHANGELOG.html', destination: '/privacy.html', type: 301 },
+    { source: '/home', destination: '/', type: 301 },
+    { source: '/home/', destination: '/', type: 301 },
   ]);
   const repo = path.join(__dirname, '..');
   for (const r of OLD_PAGE_REDIRECTS) {
@@ -71,9 +73,31 @@ test('every old address Search Console reported as 404 (2026-11-15) now redirect
 test('a redirect never shadows a live page', () => {
   const repo = path.join(__dirname, '..');
   for (const r of OLD_PAGE_REDIRECTS) {
-    const file = r.source.endsWith('.html') ? r.source : `${r.source}.html`;
+    const file = r.source.endsWith('.html') ? r.source : r.source.endsWith('/') ? `${r.source}index.html` : `${r.source}.html`;
     assert.ok(!fs.existsSync(path.join(repo, file)), `${file} exists, so ${r.source} must not redirect`);
+    assert.ok(!fs.existsSync(path.join(repo, r.source, 'index.html')), `${r.source}/index.html exists, so ${r.source} must not redirect`);
   }
+});
+
+test('the old /home address is a 301 to the homepage, not a noindex page (Search Console 2026-11-16)', () => {
+  for (const source of ['/home', '/home/']) {
+    assert.deepStrictEqual(OLD_PAGE_REDIRECTS.find((r) => r.source === source), { source, destination: '/' });
+  }
+});
+
+test('no page but 404.html carries a noindex tag', () => {
+  const repo = path.join(__dirname, '..');
+  const flagged = [];
+  const walk = (d) => {
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      if (e.name.startsWith('.') || e.name === 'node_modules' || e.name === '_site') continue;
+      const p = path.join(d, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (e.name.endsWith('.html') && /<meta[^>]+name=["']robots["'][^>]+noindex/i.test(fs.readFileSync(p, 'utf8'))) flagged.push(path.relative(repo, p));
+    }
+  };
+  walk(repo);
+  assert.deepStrictEqual(flagged, ['404.html']);
 });
 
 console.log(`build-config: ${passed} passed`);
