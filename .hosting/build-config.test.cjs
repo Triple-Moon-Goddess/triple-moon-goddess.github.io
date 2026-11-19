@@ -87,16 +87,9 @@ test('the old /home address is a 301 to the homepage, not a noindex page (Search
 
 test('no page but 404.html carries a noindex tag', () => {
   const repo = path.join(__dirname, '..');
-  const flagged = [];
-  const walk = (d) => {
-    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-      if (e.name.startsWith('.') || e.name === 'node_modules' || e.name === '_site') continue;
-      const p = path.join(d, e.name);
-      if (e.isDirectory()) walk(p);
-      else if (e.name.endsWith('.html') && /<meta[^>]+name=["']robots["'][^>]+noindex/i.test(fs.readFileSync(p, 'utf8'))) flagged.push(path.relative(repo, p));
-    }
-  };
-  walk(repo);
+  // The site's own pages only (git-tracked), never CI's installed gems under vendor/.
+  const tracked = require('child_process').execFileSync('git', ['ls-files', '*.html'], { cwd: repo, encoding: 'utf8' }).split('\n').filter(Boolean);
+  const flagged = tracked.filter((f) => /<meta[^>]+name=["']robots["'][^>]+noindex/i.test(fs.readFileSync(path.join(repo, f), 'utf8')));
   assert.deepStrictEqual(flagged, ['404.html']);
 });
 
