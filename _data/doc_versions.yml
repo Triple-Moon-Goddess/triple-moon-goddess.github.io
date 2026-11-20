@@ -6,9 +6,6 @@
 # suffix (b, c, ...) for a further version in the same month.
 
 security:
-  - version: v2026-11n
-    date: November 19, 2026
-    summary: "Clients now sign in with a 6-digit code emailed to them and typed in on the same screen, instead of an emailed link. The code is stored only as a keyed one-way hash, works once and only in the browser that asked for it, ends after 5 wrong tries, expires after 10 minutes, and an address gets at most 3 codes in 15 minutes."
   - version: v2026-11m
     date: November 18, 2026
     summary: "When a cancelled practitioner subscription ends, the practitioner's sign-in account and encrypted email record are deleted too, with the stated exceptions; the record of their one-time Soul module question library acknowledgment and their signed agreement are kept without name, signature or email address, marked with the date of the deletion."
@@ -68,9 +65,6 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
-  - version: v2026-11l
-    date: November 19, 2026
-    summary: "You now confirm your email with a 6-digit code we email you and you type in on the same screen, instead of a sign-in link. We keep only a one-way keyed hash of the code; it works once, only in the browser that asked, stops after 5 wrong tries and is deleted automatically after 10 minutes (Summary, Sections III, V, VIII and XIII)."
   - version: v2026-11k
     date: November 18, 2026
     summary: "When a practitioner's cancelled subscription ends, their sign-in account and encrypted email record are deleted, with the exceptions stated; the record of their one-time Soul module question library acknowledgment and their signed practitioner agreement are kept without name, signature or email address, marked with the date of the deletion (Sections VI and VIII)."
