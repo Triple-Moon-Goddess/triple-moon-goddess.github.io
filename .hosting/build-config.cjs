@@ -43,6 +43,11 @@ const OLD_PAGE_REDIRECTS = [
   { source: '/oracle', destination: '/online-readings.html' },
   { source: '/naLogImpressions', destination: '/' },
   { source: '/legal/PRIVACY_CHANGELOG.html', destination: '/privacy.html' },
+  // The old /home address (Search Console "Excluded by 'noindex' tag", 2026-11-16) was a
+  // noindex page that refreshed to the homepage; a 301 says the same thing without the
+  // warning (Lisa, 2026-11-19: so real notices are never ignored).
+  { source: '/home', destination: '/' },
+  { source: '/home/', destination: '/' },
 ];
 
 // Outside hosts the site may load, by CSP directive. Adding one is a deliberate edit.
