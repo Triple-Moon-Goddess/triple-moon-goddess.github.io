@@ -6,6 +6,9 @@
 # suffix (b, c, ...) for a further version in the same month.
 
 security:
+  - version: v2026-11n
+    date: November 21, 2026
+    summary: "Customers confirm their email with a single-use code we email them, entered on the same screen, in place of an emailed sign-in link; it expires in 15 minutes. A delete runs after that code proves the email; an email sign-in account made before the switch to codes is still accepted as proof until that client deletes their data."
   - version: v2026-11m
     date: November 18, 2026
     summary: "When a cancelled practitioner subscription ends, the practitioner's sign-in account and encrypted email record are deleted too, with the stated exceptions; the record of their one-time Soul module question library acknowledgment and their signed agreement are kept without name, signature or email address, marked with the date of the deletion."
@@ -65,6 +68,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-11l
+    date: November 21, 2026
+    summary: "We confirm your email with a one-time code we email you, entered on the same screen, in place of a sign-in link (Summary and Sections III, V, VIII and XIII). An email sign-in account made before the switch to codes is still accepted as proof, and still exists, until you delete your data."
   - version: v2026-11k
     date: November 18, 2026
     summary: "When a practitioner's cancelled subscription ends, their sign-in account and encrypted email record are deleted, with the exceptions stated; the record of their one-time Soul module question library acknowledgment and their signed practitioner agreement are kept without name, signature or email address, marked with the date of the deletion (Sections VI and VIII)."
