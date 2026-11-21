@@ -5,25 +5,13 @@
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
+const { parseFlatYaml } = require('./flat-yaml.cjs');
 
 const root = path.join(__dirname, '..');
 let passed = 0;
 function test(name, fn) { fn(); passed++; console.log(`✓ ${name}`); }
 
-/** The flat "- key: value" list shape recorded.yml uses (no nesting). */
-function parseRecorded(text) {
-  const out = [];
-  for (const line of text.split(/\r?\n/)) {
-    if (/^\s*(#|$)/.test(line)) continue;
-    const m = line.match(/^(- |  )([a-z_]+): "(.*)"$/);
-    assert.ok(m, `bad recorded.yml line: ${line}`);
-    if (m[1] === '- ') out.push({});
-    out[out.length - 1][m[2]] = m[3];
-  }
-  return out;
-}
-
-const videos = parseRecorded(fs.readFileSync(path.join(root, '_data', 'recorded.yml'), 'utf8'));
+const videos = parseFlatYaml(fs.readFileSync(path.join(root, '_data', 'recorded.yml'), 'utf8'), 'recorded.yml');
 
 test('there is at least one video', () => assert.ok(videos.length > 0));
 
