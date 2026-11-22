@@ -6,6 +6,9 @@
 # suffix (b, c, ...) for a further version in the same month.
 
 security:
+  - version: v2026-11o
+    date: November 21, 2026
+    summary: "Every Google sign-in asks Google for the email address only; no display name or profile photo is received or kept."
   - version: v2026-11n
     date: November 21, 2026
     summary: "Customers confirm their email with a single-use code we email them, entered on the same screen, in place of an emailed sign-in link; it expires in 15 minutes. A delete runs after that code proves the email; an email sign-in account made before the switch to codes is still accepted as proof until that client deletes their data. Health Journal users sign in with Google and are signed out after 30 minutes idle."
@@ -68,6 +71,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-11m
+    date: November 21, 2026
+    summary: "Every Google sign-in now asks Google for the email address only: practitioner, partner and administrator accounts no longer receive or keep the Google display name or profile photo (Section V)."
   - version: v2026-11l
     date: November 21, 2026
     summary: "We confirm your email with a one-time code we email you, entered on the same screen, in place of a sign-in link (Summary and Sections III, V, VIII and XIII). An email sign-in account made before the switch to codes is still accepted as proof, and still exists, until you delete your data. The Health Journal now signs in with Google, asking for your email address only; Section V says what Google sends for each kind of account."
@@ -163,6 +169,9 @@ privacy:
     summary: First publication.
 
 terms:
+  - version: v2026-11f
+    date: November 21, 2026
+    summary: "Google Sign-In: every sign-in asks Google for the email address only."
   - version: v2026-11e
     date: November 21, 2026
     summary: "Health Journal users sign in with Google (Google Sign-In section)."
