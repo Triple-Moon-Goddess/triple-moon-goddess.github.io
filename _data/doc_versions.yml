@@ -6,6 +6,9 @@
 # suffix (b, c, ...) for a further version in the same month.
 
 security:
+  - version: v2026-11p
+    date: November 23, 2026
+    summary: "MailerLite holds a client email list as well as the newsletter list: every chart email adds its address to the client list; the newsletter stays opt-in."
   - version: v2026-11o
     date: November 21, 2026
     summary: "Every Google sign-in asks Google for the email address only; no display name or profile photo is received or kept."
@@ -71,6 +74,9 @@ security:
     summary: First edition, a two-page PDF.
 
 privacy:
+  - version: v2026-11n
+    date: November 23, 2026
+    summary: "When we email you your chart, your email address is added to our client list in MailerLite and you get one follow-up email about your reading; you join the newsletter only if you tick the box (Section V)."
   - version: v2026-11m
     date: November 21, 2026
     summary: "Every Google sign-in now asks Google for the email address only: practitioner, partner and administrator accounts no longer receive or keep the Google display name or profile photo (Section V)."
